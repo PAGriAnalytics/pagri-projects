@@ -1,0 +1,7 @@
+---
+title: "Мои проекты"
+listing:
+  - fields: [title, description]
+page-layout: full
+---
+

@@ -1,0 +1,27 @@
+---
+title: "Pavel Grigoryev"
+image: avatar.jpg
+about:
+  template: solana
+  image-shape: rounded
+  links:
+    - text: GitHub
+      icon: github
+      url: "https://github.com/PAGriAnalytics"
+    - text: Email
+      url: "mailto:pagri.analytics@gmail.com"
+    - text: Resume
+      url: "resume.pdf"
+comments: false
+---
+::: {#hero-heading}
+
+## WELCOME!
+
+I'm Pavel Grigoryev. Data Scientist with a passion for data analysis and visualization.
+I specialize in data analysis and visualization, with a focus on empowering informed decision-making.
+By extracting insights from complex data sets, I help organizations make data-driven decisions that drive business growth and improvement.
+
+On this site I keep a list of [my projects](projects) and [my resume](resume.pdf).
+
+:::

@@ -1,0 +1,31 @@
+project:
+  type: website
+  output-dir: docs
+  resources:
+    - resume.pdf
+  render:
+    - "*.qmd"
+    - "*.ipynb"
+    # - "!ignored.qmd"
+    # - "!project/"
+execute:
+  freeze: auto
+
+website:
+  title: "Pavel Grigoryev"
+  open-graph:
+    locale: en_US
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: projects
+        text: Projects
+
+format:
+  html:
+    theme: flatly
+    css: styles.css
+    # toc: true
+
+
