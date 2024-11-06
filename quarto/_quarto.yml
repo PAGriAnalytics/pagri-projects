@@ -1,8 +1,7 @@
 project:
   type: website
   output-dir: docs
-  resources:
-    - resume.pdf
+
   render:
     - "*.qmd"
     - "*.ipynb"
@@ -12,14 +11,12 @@ execute:
   freeze: auto
 
 website:
-  title: "Pavel Grigoryev"
+  title: "Pavel Grigoryev projects"
   open-graph:
     locale: en_US
   navbar:
     left:
-      - href: index.qmd
-        text: Home
-      - href: projects
+      - href: projects/index.qmd
         text: Projects
 
 format:
