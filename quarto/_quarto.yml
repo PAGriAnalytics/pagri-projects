@@ -16,8 +16,8 @@ website:
     locale: en_US
   navbar:
     left:
-      - href: projects/index.qmd
-        text: Projects
+      - href: index.qmd
+        text: 'Home'
 
 format:
   html:

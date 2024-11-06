@@ -5,5 +5,12 @@
       "/projects/creditworthiness-research/creditworthiness_research.html",
       "/projects/housing-ads-investigation/housing_ads_investigation.html"
     ]
+  },
+  {
+    "listing": "/index.html",
+    "items": [
+      "/projects/creditworthiness-research/creditworthiness_research.html",
+      "/projects/housing-ads-investigation/housing_ads_investigation.html"
+    ]
   }
 ]
