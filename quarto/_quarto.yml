@@ -5,6 +5,7 @@ project:
   render:
     - "*.qmd"
     - "*.ipynb"
+
     # - "!ignored.qmd"
     # - "!project/"
 execute:
