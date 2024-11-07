@@ -16,6 +16,7 @@ website:
   open-graph:
     locale: en_US
   navbar:
+    pinned: True
     left:
       - href: index.qmd
         text: 'Home'
