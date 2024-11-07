@@ -1,1 +1,1 @@
-Sitemap: https://PAGriAnalytics.github.io/pagri_projects/sitemap.xml
+Sitemap: https://PAGriAnalytics.github.io/pagri-projects/sitemap.xml
