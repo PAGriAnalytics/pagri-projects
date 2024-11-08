@@ -1,0 +1,44 @@
+{
+  "about.qmd": {
+    "about.html": "97d3943e"
+  },
+  "index.qmd": {
+    "index.html": "bf24864e"
+  },
+  "projects/creditworthiness-research/creditworthiness_research.ipynb": {
+    "creditworthiness_research.html": "9efe2b4c"
+  },
+  "projects/index.ipynb": {
+    "index.html": "036580bd"
+  },
+  "projects/index.qmd": {
+    "index.html": "4f66c665"
+  },
+  "projects.qmd": {
+    "projects.html": "c40b7868"
+  },
+  "projects/housing-ads-investigation/housing_ads_investigation.ipynb": {
+    "housing_ads_investigation.html": "a285a3e1"
+  },
+  "projects/creditworthiness-research copy copy copy (1)/creditworthiness_research.ipynb": {
+    "creditworthiness_research.html": "44eb8a81"
+  },
+  "projects/creditworthiness-research copy copy copy (2)/creditworthiness_research.ipynb": {
+    "creditworthiness_research.html": "b3f276c4"
+  },
+  "projects/creditworthiness-research copy copy copy copy/creditworthiness_research.ipynb": {
+    "creditworthiness_research.html": "2c50f1d0"
+  },
+  "projects/creditworthiness-research copy copy copy/creditworthiness_research.ipynb": {
+    "creditworthiness_research.html": "768dbaa2"
+  },
+  "projects/creditworthiness-research copy copy/creditworthiness_research.ipynb": {
+    "creditworthiness_research.html": "5e1ef5ed"
+  },
+  "projects/creditworthiness-research copy/creditworthiness_research.ipynb": {
+    "creditworthiness_research.html": "c039afb8"
+  },
+  "projects/housing-ads-investigation copy/housing_ads_investigation.ipynb": {
+    "housing_ads_investigation.html": "3118c624"
+  }
+}
