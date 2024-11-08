@@ -1,0 +1,5 @@
+/.quarto/
+.nojekyll
+.venv
+pyproject.toml
+poetry.lock
