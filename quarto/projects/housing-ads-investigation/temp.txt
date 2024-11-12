@@ -16,3 +16,11 @@
 
 
 
+у меня дубликаты в колонке    мне нужно дать рекомендации о возможных причинах дубликатов, назови возможные причины
+
+['total_images', 'last_price', 'total_area', 'first_day_exposition',
+       'rooms', 'ceiling_height', 'floors_total', 'living_area', 'floor',
+       'is_apartment', 'studio', 'open_plan', 'kitchen_area', 'balcony',
+       'locality_name', 'airports_nearest', 'city_centers_nearest',
+       'parks_around3000', 'parks_nearest', 'ponds_around3000',
+       'ponds_nearest', 'days_exposition'],
