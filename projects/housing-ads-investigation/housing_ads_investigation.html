@@ -7586,133 +7586,341 @@ Table&nbsp;35: Share in "rooms" by category "studio"
   
 </div>
 </div>
-<blockquote class="blockquote">
-<p>Если у нас есть категориальная переменная, в которйо больше 3 значений, то нужно подумать а не можем ли мы из нее сделать<br>
-новую категориальную переменную с 2-3 значениями, но тут важно, чтобы это несло смысл. Тут нам может помочь ИИ. И сообразительнсоть. Часто сразу не заментны возможные категории, котоыре несут смысл.<br>
-Тут исходим из смысла, наша задача созадть перменную, которая добавит нашему исследованию новый смысл, даст как бы новый разрез, и это улучшит<br>
-качество наших выводов.<br>
-Например, у нас столбец семейный стату, и там 6-7 статусов, мы можем собрать их в 2 семейный статус и не семейный статус.<br>
-Тут отлично помогает ИИ. Пишешь ему название переменной, униальные значения в ней,<br>
-и просишь придумать возможную новую категориальнуюд переменную из 2-3 значений.</p>
-</blockquote>
-<blockquote class="blockquote">
-<p>Вообще при категоризации ИИ очень хорошо помогает, он может дать идеи возможных категорий на оснвое имеющихся значений.<br>
-Поэтому можно все столбцы прогонять через ИИ и смотреть что он предлагает, если есть то , что даст новый разрез нашим данным, то созадем категорийю.</p>
-</blockquote>
-<blockquote class="blockquote">
-<p>Важно, когда мы создаем категории, то всегда смотреть value_counts.<br>
-И делаем так, чтобы в каждой группе было достаточно элементов, хотя бы больше 30, а лучше больше 100.<br>
-Иначе выводы будут некоректные.<br>
-В идеале, чтобы количество элементов в каждой группе было от 1000. Лучше изменить диапазон и забрать часть данных от другой категории.</p>
-</blockquote>
-<blockquote class="blockquote">
-<p>Важно, когда создаем категориальную переменную, то даем ей тип <code>category</code><br>
-Чтобы она появилась на графиках (так как идет фильтрация на числовые и категориальные)<br>
-и чтобы места меньше занимала</p>
-</blockquote>
-<blockquote class="blockquote">
-<p>Придумываем какие колонки можно дополнительно сделать из имеющихся.<br>
-Например у нас есть колонка длительность звонков, и 0 это пропущенный звонок,<br>
-мы можем сделать колонку is_missed, в которой будет true или false</p>
-</blockquote>
-<blockquote class="blockquote">
-<p>Стараемся сделать категориальную колонку с да нет для всех возможных колонок.<br>
-Например, у нас колонка количество детей и есть 0, 1, 2, 3, 4, 5 мы созадем колнку<br>
-есть дети или нет. 2 значения<br>
-Это очень полезно, так как мы можем посмотреть это на графиках и проверить гипотезы<br>
-стат тестами.</p>
-</blockquote>
-<blockquote class="blockquote">
-<p>Смотрим на колонки и думаем можно ли из нее сделать колонку с 2 значениями,<br>
-например есть и нет что-то</p>
-</blockquote>
-<blockquote class="blockquote">
-<p>Очень важно, когда мы создаем новые колонки, в которых используем несколько дургих, то нужно проверить распределение этой новой переменной, особенно выбросы.<br>
-Например, у нас начальная и конечная дата сессии и мы считаем длительность сессии. Вот тут нужно посмотреть какая минимальная длительность<br>
-и какая максимальная. Ну и естественно проверить есть ли длительность 0 и меньше нуля.<br>
-Таким образом мы можем найти инсайты уже после создания новых колонок, хотя в изначальных данных этих инсайдов не было видно.</p>
-</blockquote>
-<blockquote class="blockquote">
-<p>Обычная категоризация данных</p>
-</blockquote>
-<blockquote class="blockquote">
-<p>Категоризация помогает избежать проблемы с разреженными данными, когда у нас есть слишком много групп с небольшим количеством элементов.<br>
-Это может привести к некорректным выводам и ошибкам в анализе. Категоризация нужна, чтобы образовать группы, в которых достаточно значений для использования статистических методов.<br>
-И вообще, если в группе 1-10 элементов, например у нас возраст пользователей и 5 человек с возрастом 22, 3 человека с возрастом 23 и так далее.<br>
-Мы не можем разбивать по таким группам, так как их размер небльшой и выводы будут некорректные, поэтому нам нужно собрать их в группы,<br>
-чтобы у нас были группы с достаточным размером.</p>
-</blockquote>
-<ul>
-<li>Если у нас категориальная переменная имеет много значений, то мы не можем номрально с ней работать.<br>
-&gt;Так как мы не можем построить графики по ним, так как их много и они не числовые. Не можем сравнить их все.<br>
-&gt;Поэтому нам нужно сократить категории.<br>
-</li>
-<li>Нужно посмотреть на данные и подумать можем ли мы разделить их по сегментам рынка или по другим категориям, которые нам помогут.<br>
-</li>
-<li>Мы можем категоризировать на основе и числовых и категориальных столбцов. То есть мы можем из категориальной переменной сделать<br>
-&gt;другую категориальную, уменьшив или увеличив разбиение.<br>
-</li>
-<li>добавление категорий обогощает данные, при чем категории могут формироваться не из одной колонки, а из серии, то есть чтобы попасть<br>
-&gt;в определенную категорию значения столбцов должно быть такое то, а не только один столбец определяет категорию.<br>
-</li>
-<li>категории могут быть да нет, то есть состоять из двух значений, например, у нас есть данные о рекламе и столбец где она показвалась,<br>
-&gt;и у нас много много разных устройств. Мы можем разбить на да нет, то есть показвалась реклама по телеку или нет</li>
-</ul>
-<blockquote class="blockquote">
-<p>Мы можем разбить данные на категории двумя способами - разбивать на равные части<br>
-подходит, когда - диапазон значений является равномерным и имеет линейную структуру<br>
-- мы понимаем на какие интервалы хотим разбить данные<br>
-- мы хотим разделить диапазон значений на равные части для удобства анализа. - разбить на основе квантилей<br>
-подходит, если<br>
-- диапазон значений имеет неравномерную структуру - мы не можем понять какие интервалы выбрать - хотим выделить группы с конкретными характеристиками (например, группы с низким доходом, средним доходом и высоким доходом)</p>
-</blockquote>
-<blockquote class="blockquote">
-<p>Выбираем нужные способ и используем<br>
-<code>create_category_column</code></p>
-</blockquote>
-<blockquote class="blockquote">
-<p>Чтобы посмотреть распределение по квантилям используем <code>pagri_data_tools.quantiles_columns()</code></p>
-</blockquote>
-<div id="cell-223" class="cell">
+<p>Создадим новую категориальную переменную из этажа.<br>
+Сделаем 3 значения - первый, последний и другой</p>
+<div id="cell-210" class="cell" data-execution_count="47">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.quantiles_columns()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'floor_position'</span>] <span class="op">=</span> df.<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="st">'первый'</span> <span class="cf">if</span> x[<span class="st">'floor'</span>] <span class="op">==</span> <span class="dv">1</span> <span class="cf">else</span> <span class="st">'последний'</span> <span class="cf">if</span> x[<span class="st">'floor'</span>] <span class="op">==</span> x[<span class="st">'floors_total'</span>] <span class="cf">else</span> <span class="st">'другой'</span>, axis<span class="op">=</span><span class="dv">1</span>).value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-224" class="cell">
+<p>Создадим новую категориальную переменную из цены</p>
+<div id="cell-212" class="cell" data-execution_count="45">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb109"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.create_category_column()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<blockquote class="blockquote">
-<p>Сделаем следующие группы - до 30 лет - от 30 до 40 лет - от 40 до 50 лет - от 50 до 60 лет - старше 60 лет</p>
-</blockquote>
-<div id="cell-226" class="cell">
-<details class="code-fold">
-<summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a>labels <span class="op">=</span> [<span class="st">'до 30'</span>, <span class="st">'30-40'</span>, <span class="st">'40-50'</span>, <span class="st">'50-60'</span>, <span class="st">'старше 60'</span>]</span>
-<span id="cb110-2"><a href="#cb110-2" aria-hidden="true" tabindex="-1"></a>bins <span class="op">=</span> [<span class="op">-</span>np.inf, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>, <span class="dv">60</span>, np.inf]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<div id="cell-227" class="cell" data-outputid="eba9bd26-c261-441a-ce37-66e7f4818fcf">
-<details class="code-fold">
-<summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb111"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'age_cat'</span>] <span class="op">=</span> pagri_data_tools.create_category_column(df.age, labels<span class="op">=</span>labels, bins<span class="op">=</span>bins)</span>
-<span id="cb111-2"><a href="#cb111-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'age_cat'</span>].value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb109"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.quantiles_columns(df.last_price)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
-<pre><code>30-40        5704
-40-50        5241
-50-60        4520
-до 30        3804
-старше 60    2132
-Name: age_cat, dtype: int64</code></pre>
+<style type="text/css">
+#T_3ca77 caption {
+  font-size: 15px;
+}
+#T_3ca77_row0_col0, #T_3ca77_row0_col1, #T_3ca77_row1_col0, #T_3ca77_row1_col1, #T_3ca77_row2_col0, #T_3ca77_row2_col1, #T_3ca77_row3_col0, #T_3ca77_row3_col1, #T_3ca77_row4_col0, #T_3ca77_row4_col1, #T_3ca77_row5_col0, #T_3ca77_row5_col1, #T_3ca77_row6_col0, #T_3ca77_row6_col1 {
+  text-align: left;
+}
+</style>
+
+<div id="T_3ca77" class="dataframe quarto-float quarto-figure quarto-figure-center anchored" data-quarto-postprocess="true">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="T_3ca77-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;36: Quantiles
+</figcaption>
+<div aria-describedby="T_3ca77-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table id="T_3ca77" class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<tbody>
+<tr class="odd">
+<td id="T_3ca77_row0_col0" class="data row0 col0">Max</td>
+<td id="T_3ca77_row0_col1" class="data row0 col1">763 000 000</td>
+</tr>
+<tr class="even">
+<td id="T_3ca77_row1_col0" class="data row1 col0">5</td>
+<td id="T_3ca77_row1_col1" class="data row1 col1">1 870 000</td>
+</tr>
+<tr class="odd">
+<td id="T_3ca77_row2_col0" class="data row2 col0">25</td>
+<td id="T_3ca77_row2_col1" class="data row2 col1">3 400 000</td>
+</tr>
+<tr class="even">
+<td id="T_3ca77_row3_col0" class="data row3 col0">50</td>
+<td id="T_3ca77_row3_col1" class="data row3 col1">4 650 000</td>
+</tr>
+<tr class="odd">
+<td id="T_3ca77_row4_col0" class="data row4 col0">75</td>
+<td id="T_3ca77_row4_col1" class="data row4 col1">6 800 000</td>
+</tr>
+<tr class="even">
+<td id="T_3ca77_row5_col0" class="data row5 col0">95</td>
+<td id="T_3ca77_row5_col1" class="data row5 col1">15 300 000</td>
+</tr>
+<tr class="odd">
+<td id="T_3ca77_row6_col0" class="data row6 col0">Min</td>
+<td id="T_3ca77_row6_col1" class="data row6 col1">12 190</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
 </div>
 </div>
-<p>Из времени также можно сделать категориальный переменные, например, создать переменную для времени заправки, если больше 1 минуты, то долгая заправка, иначе короткая и так далее.</p>
-<p>ВАЖНО подумать какие переменные мы можем создать не только категориальные, но и числовые и временные.<br>
-Например, обрезание времени, чтобы получить дату по часам и прочее,</p>
+</div>
+<div id="cell-213" class="cell" data-execution_count="46">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a>labels <span class="op">=</span> [<span class="st">'эконом'</span>, <span class="st">'комфорт'</span>, <span class="st">'премиум'</span>]</span>
+<span id="cb110-2"><a href="#cb110-2" aria-hidden="true" tabindex="-1"></a>bins <span class="op">=</span> [<span class="op">-</span>np.inf, <span class="dv">4_000_000</span>, <span class="dv">10_000_000</span>, np.inf]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="cell-214" class="cell" data-execution_count="49">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb111"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'price_segment'</span>] <span class="op">=</span> pagri_data_tools.create_category_column(df.last_price, labels<span class="op">=</span>labels, bins<span class="op">=</span>bins)</span>
+<span id="cb111-2"><a href="#cb111-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'price_segment'</span>].value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="49">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">count</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">price_segment</th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">комфорт</td>
+<td>11883</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">эконом</td>
+<td>9095</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">премиум</td>
+<td>2721</td>
+</tr>
+</tbody>
+</table>
+
+</div><br><label><b>dtype:</b> int64</label>
+</div>
+</div>
+<p>Создадим переменную соотношение жилой и общей площади</p>
+<div id="cell-216" class="cell" data-execution_count="50">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a>df.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="50">
+<pre><code>Index(['total_images', 'last_price', 'total_area', 'first_day_exposition',
+       'rooms', 'ceiling_height', 'floors_total', 'living_area', 'floor',
+       'is_apartment', 'studio', 'open_plan', 'kitchen_area', 'balcony',
+       'locality_name', 'airports_nearest', 'city_centers_nearest',
+       'parks_around3000', 'parks_nearest', 'ponds_around3000',
+       'ponds_nearest', 'days_exposition', 'floor_cat', 'floor_position',
+       'price_segment'],
+      dtype='object')</code></pre>
+</div>
+</div>
+<div id="cell-217" class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'living_total_ratio'</span>] <span class="op">=</span> <span class="bu">round</span>(df[<span class="st">'living_area'</span>] <span class="op">/</span> df[<span class="st">'total_area'</span>],<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Создадим переменную отношения площади кухни к общей.</p>
+<div id="cell-219" class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb115"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'kitchen_total_ratio'</span>] <span class="op">=</span> <span class="bu">round</span>(df[<span class="st">'kitchen_area'</span>] <span class="op">/</span> df[<span class="st">'total_area'</span>],<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Создадим переменную цена квадратного метра</p>
+<div id="cell-221" class="cell" data-execution_count="60">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb116"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'price_per_sqm'</span>] <span class="op">=</span> (df[<span class="st">'last_price'</span>] <span class="op">/</span> df[<span class="st">'total_area'</span>]).astype(<span class="bu">int</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Создадим переменные день недели, месяц и год публикации объявления.</p>
+<div id="cell-223" class="cell" data-execution_count="64">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb117"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb117-1"><a href="#cb117-1" aria-hidden="true" tabindex="-1"></a>weekday_dict <span class="op">=</span> {</span>
+<span id="cb117-2"><a href="#cb117-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Monday'</span>: <span class="st">'Понедельник'</span>,</span>
+<span id="cb117-3"><a href="#cb117-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Tuesday'</span>: <span class="st">'Вторник'</span>,</span>
+<span id="cb117-4"><a href="#cb117-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Wednesday'</span>: <span class="st">'Среда'</span>,</span>
+<span id="cb117-5"><a href="#cb117-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Thursday'</span>: <span class="st">'Четверг'</span>,</span>
+<span id="cb117-6"><a href="#cb117-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Friday'</span>: <span class="st">'Пятница'</span>,</span>
+<span id="cb117-7"><a href="#cb117-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Saturday'</span>: <span class="st">'Суббота'</span>,</span>
+<span id="cb117-8"><a href="#cb117-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Sunday'</span>: <span class="st">'Воскресенье'</span></span>
+<span id="cb117-9"><a href="#cb117-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb117-10"><a href="#cb117-10" aria-hidden="true" tabindex="-1"></a>month_dict <span class="op">=</span> {</span>
+<span id="cb117-11"><a href="#cb117-11" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>: <span class="st">'Январь'</span>,</span>
+<span id="cb117-12"><a href="#cb117-12" aria-hidden="true" tabindex="-1"></a>    <span class="dv">2</span>: <span class="st">'Февраль'</span>,</span>
+<span id="cb117-13"><a href="#cb117-13" aria-hidden="true" tabindex="-1"></a>    <span class="dv">3</span>: <span class="st">'Март'</span>,</span>
+<span id="cb117-14"><a href="#cb117-14" aria-hidden="true" tabindex="-1"></a>    <span class="dv">4</span>: <span class="st">'Апрель'</span>,</span>
+<span id="cb117-15"><a href="#cb117-15" aria-hidden="true" tabindex="-1"></a>    <span class="dv">5</span>: <span class="st">'Май'</span>,</span>
+<span id="cb117-16"><a href="#cb117-16" aria-hidden="true" tabindex="-1"></a>    <span class="dv">6</span>: <span class="st">'Июнь'</span>,</span>
+<span id="cb117-17"><a href="#cb117-17" aria-hidden="true" tabindex="-1"></a>    <span class="dv">7</span>: <span class="st">'Июль'</span>,</span>
+<span id="cb117-18"><a href="#cb117-18" aria-hidden="true" tabindex="-1"></a>    <span class="dv">8</span>: <span class="st">'Август'</span>,</span>
+<span id="cb117-19"><a href="#cb117-19" aria-hidden="true" tabindex="-1"></a>    <span class="dv">9</span>: <span class="st">'Сентябрь'</span>,</span>
+<span id="cb117-20"><a href="#cb117-20" aria-hidden="true" tabindex="-1"></a>    <span class="dv">10</span>: <span class="st">'Октябрь'</span>,</span>
+<span id="cb117-21"><a href="#cb117-21" aria-hidden="true" tabindex="-1"></a>    <span class="dv">11</span>: <span class="st">'Ноябрь'</span>,</span>
+<span id="cb117-22"><a href="#cb117-22" aria-hidden="true" tabindex="-1"></a>    <span class="dv">12</span>: <span class="st">'Декабрь'</span></span>
+<span id="cb117-23"><a href="#cb117-23" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="cell-224" class="cell" data-execution_count="65">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb118"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'publication_weekday'</span>] <span class="op">=</span> df[<span class="st">'first_day_exposition'</span>].dt.day_name().<span class="bu">map</span>(weekday_dict)</span>
+<span id="cb118-2"><a href="#cb118-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'publication_month'</span>] <span class="op">=</span> df[<span class="st">'first_day_exposition'</span>].dt.month.<span class="bu">map</span>(month_dict)</span>
+<span id="cb118-3"><a href="#cb118-3" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'publication_year'</span>] <span class="op">=</span> df[<span class="st">'first_day_exposition'</span>].dt.year</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="cell-225" class="cell" data-execution_count="67">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb119"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb119-1"><a href="#cb119-1" aria-hidden="true" tabindex="-1"></a>df.dtypes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="67">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">0</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">total_images</td>
+<td>int64</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">last_price</td>
+<td>float64</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">total_area</td>
+<td>float64</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">first_day_exposition</td>
+<td>datetime64[ns]</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">rooms</td>
+<td>int64</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">ceiling_height</td>
+<td>float64</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">floors_total</td>
+<td>float64</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">living_area</td>
+<td>float64</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">floor</td>
+<td>int64</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">is_apartment</td>
+<td>category</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">studio</td>
+<td>category</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">open_plan</td>
+<td>category</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">kitchen_area</td>
+<td>float64</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">balcony</td>
+<td>float64</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">locality_name</td>
+<td>object</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">airports_nearest</td>
+<td>float64</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">city_centers_nearest</td>
+<td>float64</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">parks_around3000</td>
+<td>float64</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">parks_nearest</td>
+<td>float64</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">ponds_around3000</td>
+<td>float64</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">ponds_nearest</td>
+<td>float64</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">days_exposition</td>
+<td>float64</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">floor_cat</td>
+<td>float64</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">floor_position</td>
+<td>float64</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">price_segment</td>
+<td>category</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">living_total_ratio</td>
+<td>float64</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">kitchen_total_ratio</td>
+<td>float64</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">price_per_sqm</td>
+<td>int64</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">publication_weekday</td>
+<td>object</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">publication_month</td>
+<td>object</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">publication_year</td>
+<td>int32</td>
+</tr>
+</tbody>
+</table>
+
+</div><br><label><b>dtype:</b> object</label>
+</div>
+</div>
 </section>
 <section id="промежуточный-вывод-1" class="level3">
 <h3 class="anchored" data-anchor-id="промежуточный-вывод-1">Промежуточный вывод</h3>
@@ -7730,10 +7938,10 @@ Name: age_cat, dtype: int64</code></pre>
 <h2 class="anchored" data-anchor-id="анализ-корреляций-между-переменными">Анализ корреляций между переменными</h2>
 <p>ВАЖНО<br>
 проверить, что все категориальные переменные по прежнему имеют категориальный тип, чтобы при анализе они не поетрялись</p>
-<div id="cell-235" class="cell">
+<div id="cell-231" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb113"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb113-1"><a href="#cb113-1" aria-hidden="true" tabindex="-1"></a>df.dtypes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb120"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb120-1"><a href="#cb120-1" aria-hidden="true" tabindex="-1"></a>df.dtypes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <section id="исследование-корреляционных-связей" class="level3">
@@ -7750,11 +7958,11 @@ Name: age_cat, dtype: int64</code></pre>
 Задача изучить то, что мы не сможем изучить на графиках из-за болшого количества занчений в категориальной переменной,<br>
 поэтому мы берем топ n значений.</p>
 </blockquote>
-<div id="cell-239" class="cell">
+<div id="cell-235" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a>gen <span class="op">=</span> pagri_data_tools.top_n_values_gen()</span>
-<span id="cb114-2"><a href="#cb114-2" aria-hidden="true" tabindex="-1"></a><span class="bu">next</span>(gen)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb121"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb121-1"><a href="#cb121-1" aria-hidden="true" tabindex="-1"></a>gen <span class="op">=</span> pagri_data_tools.top_n_values_gen()</span>
+<span id="cb121-2"><a href="#cb121-2" aria-hidden="true" tabindex="-1"></a><span class="bu">next</span>(gen)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <blockquote class="blockquote">
@@ -7763,10 +7971,10 @@ Name: age_cat, dtype: int64</code></pre>
 <blockquote class="blockquote">
 <p><code>heatmap_corr(df)</code></p>
 </blockquote>
-<div id="cell-242" class="cell">
+<div id="cell-238" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb115"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.pagri_data_tools.heatmap_corr(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb122"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb122-1"><a href="#cb122-1" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.pagri_data_tools.heatmap_corr(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <blockquote class="blockquote">
@@ -7812,10 +8020,10 @@ Name: age_cat, dtype: int64</code></pre>
 <p>Строим модель и изучаем результат<br>
 <code>linear_regression_with_vif</code></p>
 </blockquote>
-<div id="cell-251" class="cell">
+<div id="cell-247" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb116"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.linear_regression_with_vif()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb123"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.linear_regression_with_vif()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <blockquote class="blockquote">
@@ -7828,18 +8036,18 @@ Name: age_cat, dtype: int64</code></pre>
 <p>Тут нужно подумать как использовать категориальные переменные тоже<br>
 Нужно их перевести в one hot encoding или подобное, чтобы также проверить силу их влияния на целевую перменную</p>
 </blockquote>
-<div id="cell-254" class="cell">
+<div id="cell-250" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb117"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb117-1"><a href="#cb117-1" aria-hidden="true" tabindex="-1"></a>titles_for_axis <span class="op">=</span> <span class="bu">dict</span>(</span>
-<span id="cb117-2"><a href="#cb117-2" aria-hidden="true" tabindex="-1"></a>    debt <span class="op">=</span> <span class="st">'долга'</span></span>
-<span id="cb117-3"><a href="#cb117-3" aria-hidden="true" tabindex="-1"></a>    , children <span class="op">=</span> <span class="st">'Кол-во детей'</span></span>
-<span id="cb117-4"><a href="#cb117-4" aria-hidden="true" tabindex="-1"></a>    , age <span class="op">=</span> <span class="st">'Возраст'</span></span>
-<span id="cb117-5"><a href="#cb117-5" aria-hidden="true" tabindex="-1"></a>    , total_income <span class="op">=</span> <span class="st">'Доход'</span></span>
-<span id="cb117-6"><a href="#cb117-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb117-7"><a href="#cb117-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb117-8"><a href="#cb117-8" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.plot_feature_importances_classifier(df, target<span class="op">=</span><span class="st">'debt'</span>, titles_for_axis<span class="op">=</span>titles_for_axis)</span>
-<span id="cb117-9"><a href="#cb117-9" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.plot_feature_importances_regression()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb124"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb124-1"><a href="#cb124-1" aria-hidden="true" tabindex="-1"></a>titles_for_axis <span class="op">=</span> <span class="bu">dict</span>(</span>
+<span id="cb124-2"><a href="#cb124-2" aria-hidden="true" tabindex="-1"></a>    debt <span class="op">=</span> <span class="st">'долга'</span></span>
+<span id="cb124-3"><a href="#cb124-3" aria-hidden="true" tabindex="-1"></a>    , children <span class="op">=</span> <span class="st">'Кол-во детей'</span></span>
+<span id="cb124-4"><a href="#cb124-4" aria-hidden="true" tabindex="-1"></a>    , age <span class="op">=</span> <span class="st">'Возраст'</span></span>
+<span id="cb124-5"><a href="#cb124-5" aria-hidden="true" tabindex="-1"></a>    , total_income <span class="op">=</span> <span class="st">'Доход'</span></span>
+<span id="cb124-6"><a href="#cb124-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb124-7"><a href="#cb124-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb124-8"><a href="#cb124-8" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.plot_feature_importances_classifier(df, target<span class="op">=</span><span class="st">'debt'</span>, titles_for_axis<span class="op">=</span>titles_for_axis)</span>
+<span id="cb124-9"><a href="#cb124-9" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.plot_feature_importances_regression()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <blockquote class="blockquote">
@@ -7912,48 +8120,48 @@ Name: age_cat, dtype: int64</code></pre>
 </section>
 <section id="изучение-зависимостей-между-числовыми-переменными" class="level3">
 <h3 class="anchored" data-anchor-id="изучение-зависимостей-между-числовыми-переменными">Изучение зависимостей между числовыми переменными</h3>
-<div id="cell-271" class="cell">
+<div id="cell-267" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb118"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a>Построить hexbinplot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb125"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a>Построить hexbinplot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <blockquote class="blockquote">
 <p>Изучаем scatter plots</p>
 </blockquote>
-<div id="cell-273" class="cell">
+<div id="cell-269" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb119"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb119-1"><a href="#cb119-1" aria-hidden="true" tabindex="-1"></a>titles_for_axis <span class="op">=</span> <span class="bu">dict</span>(</span>
-<span id="cb119-2"><a href="#cb119-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># numeric column</span></span>
-<span id="cb119-3"><a href="#cb119-3" aria-hidden="true" tabindex="-1"></a>    children <span class="op">=</span> <span class="st">'Кол-во детей'</span></span>
-<span id="cb119-4"><a href="#cb119-4" aria-hidden="true" tabindex="-1"></a>    , age <span class="op">=</span> <span class="st">'Возраст'</span></span>
-<span id="cb119-5"><a href="#cb119-5" aria-hidden="true" tabindex="-1"></a>    , total_income <span class="op">=</span> <span class="st">'Доход'</span></span>
-<span id="cb119-6"><a href="#cb119-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb126"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb126-1"><a href="#cb126-1" aria-hidden="true" tabindex="-1"></a>titles_for_axis <span class="op">=</span> <span class="bu">dict</span>(</span>
+<span id="cb126-2"><a href="#cb126-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># numeric column</span></span>
+<span id="cb126-3"><a href="#cb126-3" aria-hidden="true" tabindex="-1"></a>    children <span class="op">=</span> <span class="st">'Кол-во детей'</span></span>
+<span id="cb126-4"><a href="#cb126-4" aria-hidden="true" tabindex="-1"></a>    , age <span class="op">=</span> <span class="st">'Возраст'</span></span>
+<span id="cb126-5"><a href="#cb126-5" aria-hidden="true" tabindex="-1"></a>    , total_income <span class="op">=</span> <span class="st">'Доход'</span></span>
+<span id="cb126-6"><a href="#cb126-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-274" class="cell">
+<div id="cell-270" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb120"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb120-1"><a href="#cb120-1" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.pairplot(df, titles_for_axis<span class="op">=</span>titles_for_axis, horizontal_spacing<span class="op">=</span><span class="fl">0.12</span>, height<span class="op">=</span><span class="dv">400</span>, width<span class="op">=</span><span class="dv">1200</span>, rows<span class="op">=</span><span class="dv">1</span>, cols<span class="op">=</span><span class="dv">3</span>).show(config<span class="op">=</span><span class="bu">dict</span>(displayModeBar<span class="op">=</span><span class="va">False</span>, dpi<span class="op">=</span><span class="dv">200</span>), renderer<span class="op">=</span><span class="st">"png"</span>)</span>
-<span id="cb120-2"><a href="#cb120-2" aria-hidden="true" tabindex="-1"></a><span class="co"># если нужно интерактивый график, то</span></span>
-<span id="cb120-3"><a href="#cb120-3" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> pagri_data_tools.pairplot(df, titles_for_axis<span class="op">=</span>titles_for_axis, horizontal_spacing<span class="op">=</span><span class="fl">0.12</span>, height<span class="op">=</span><span class="dv">800</span>, width<span class="op">=</span><span class="dv">800</span>)</span>
-<span id="cb120-4"><a href="#cb120-4" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb127"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb127-1"><a href="#cb127-1" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.pairplot(df, titles_for_axis<span class="op">=</span>titles_for_axis, horizontal_spacing<span class="op">=</span><span class="fl">0.12</span>, height<span class="op">=</span><span class="dv">400</span>, width<span class="op">=</span><span class="dv">1200</span>, rows<span class="op">=</span><span class="dv">1</span>, cols<span class="op">=</span><span class="dv">3</span>).show(config<span class="op">=</span><span class="bu">dict</span>(displayModeBar<span class="op">=</span><span class="va">False</span>, dpi<span class="op">=</span><span class="dv">200</span>), renderer<span class="op">=</span><span class="st">"png"</span>)</span>
+<span id="cb127-2"><a href="#cb127-2" aria-hidden="true" tabindex="-1"></a><span class="co"># если нужно интерактивый график, то</span></span>
+<span id="cb127-3"><a href="#cb127-3" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> pagri_data_tools.pairplot(df, titles_for_axis<span class="op">=</span>titles_for_axis, horizontal_spacing<span class="op">=</span><span class="fl">0.12</span>, height<span class="op">=</span><span class="dv">800</span>, width<span class="op">=</span><span class="dv">800</span>)</span>
+<span id="cb127-4"><a href="#cb127-4" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
 <section id="изучение-зависимостей-между-категориальными-переменными" class="level3">
 <h3 class="anchored" data-anchor-id="изучение-зависимостей-между-категориальными-переменными">Изучение зависимостей между категориальными переменными</h3>
-<div id="cell-276" class="cell">
+<div id="cell-272" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb121"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb121-1"><a href="#cb121-1" aria-hidden="true" tabindex="-1"></a>gen <span class="op">=</span> pagri_graphs.categorical_graph_analys_gen(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb128"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb128-1"><a href="#cb128-1" aria-hidden="true" tabindex="-1"></a>gen <span class="op">=</span> pagri_graphs.categorical_graph_analys_gen(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-277" class="cell">
+<div id="cell-273" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb122"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb122-1"><a href="#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="bu">next</span>(gen)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb129"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb129-1"><a href="#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="bu">next</span>(gen)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <blockquote class="blockquote">
@@ -7968,10 +8176,10 @@ Name: age_cat, dtype: int64</code></pre>
 То есть у нас есть значение в ячейке, сумма всех, сумма по категории на оси x и сумма по категории на оси Y<br>
 Вот нужно как-то отобразить процент от суммы, процент от одной категории и от другой категории</p>
 </blockquote>
-<div id="cell-281" class="cell">
+<div id="cell-277" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb123"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="dv">12</span> (<span class="fl">0.5</span><span class="op">%</span> of total, <span class="dv">20</span><span class="op">%</span> of row, <span class="dv">15</span><span class="op">%</span> of col)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb130"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb130-1"><a href="#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="dv">12</span> (<span class="fl">0.5</span><span class="op">%</span> of total, <span class="dv">20</span><span class="op">%</span> of row, <span class="dv">15</span><span class="op">%</span> of col)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <blockquote class="blockquote">
@@ -7980,31 +8188,31 @@ Name: age_cat, dtype: int64</code></pre>
 <blockquote class="blockquote">
 <p>Можно сделать кнопки (процент от общего) (процент от тут указывается название оси x) (аналогично для второй оси)</p>
 </blockquote>
-<div id="cell-284" class="cell">
+<div id="cell-280" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb124"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb124-1"><a href="#cb124-1" aria-hidden="true" tabindex="-1"></a>titles_for_axis <span class="op">=</span> <span class="bu">dict</span>(</span>
-<span id="cb124-2"><a href="#cb124-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># numeric column</span></span>
-<span id="cb124-3"><a href="#cb124-3" aria-hidden="true" tabindex="-1"></a>    children <span class="op">=</span> [<span class="st">'Количество детей'</span>, <span class="st">'количество детей'</span>, <span class="dv">0</span>]</span>
-<span id="cb124-4"><a href="#cb124-4" aria-hidden="true" tabindex="-1"></a>    , age <span class="op">=</span> [<span class="st">'Возраст, лет'</span>, <span class="st">'возраст'</span>, <span class="dv">1</span>]</span>
-<span id="cb124-5"><a href="#cb124-5" aria-hidden="true" tabindex="-1"></a>    , total_income <span class="op">=</span> [<span class="st">'Ежемесячный доход'</span>, <span class="st">'ежемесячный доход'</span>, <span class="dv">1</span>]</span>
-<span id="cb124-6"><a href="#cb124-6" aria-hidden="true" tabindex="-1"></a>     <span class="co"># category column</span></span>
-<span id="cb124-7"><a href="#cb124-7" aria-hidden="true" tabindex="-1"></a>    , education <span class="op">=</span> [<span class="st">'Уровень образования'</span>, <span class="st">'уровня образования'</span>]</span>
-<span id="cb124-8"><a href="#cb124-8" aria-hidden="true" tabindex="-1"></a>    , family_status <span class="op">=</span> [<span class="st">'Семейное положение'</span>, <span class="st">'семейного положения'</span>]</span>
-<span id="cb124-9"><a href="#cb124-9" aria-hidden="true" tabindex="-1"></a>    , gender <span class="op">=</span> [<span class="st">'Пол'</span>, <span class="st">'пола'</span>]</span>
-<span id="cb124-10"><a href="#cb124-10" aria-hidden="true" tabindex="-1"></a>    , income_type <span class="op">=</span> [<span class="st">'Тип занятости'</span>, <span class="st">'типа занятости'</span>]</span>
-<span id="cb124-11"><a href="#cb124-11" aria-hidden="true" tabindex="-1"></a>    , debt <span class="op">=</span> [<span class="st">'Задолженность'</span>, <span class="st">'задолженности'</span>]</span>
-<span id="cb124-12"><a href="#cb124-12" aria-hidden="true" tabindex="-1"></a>    , purpose <span class="op">=</span> [<span class="st">'Цель получения кредита'</span>, <span class="st">'цели получения кредита'</span>]</span>
-<span id="cb124-13"><a href="#cb124-13" aria-hidden="true" tabindex="-1"></a>    , has_child <span class="op">=</span> [<span class="st">'Наличие детей'</span>, <span class="st">'наличия детей'</span>]</span>
-<span id="cb124-14"><a href="#cb124-14" aria-hidden="true" tabindex="-1"></a>    , age_cat <span class="op">=</span> [<span class="st">'Возрастная категория, лет'</span>, <span class="st">'возрастной категории'</span>]</span>
-<span id="cb124-15"><a href="#cb124-15" aria-hidden="true" tabindex="-1"></a>    , total_income_cat <span class="op">=</span> [<span class="st">'Категория дохода'</span>, <span class="st">'категории дохода'</span>]</span>
-<span id="cb124-16"><a href="#cb124-16" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb131"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb131-1"><a href="#cb131-1" aria-hidden="true" tabindex="-1"></a>titles_for_axis <span class="op">=</span> <span class="bu">dict</span>(</span>
+<span id="cb131-2"><a href="#cb131-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># numeric column</span></span>
+<span id="cb131-3"><a href="#cb131-3" aria-hidden="true" tabindex="-1"></a>    children <span class="op">=</span> [<span class="st">'Количество детей'</span>, <span class="st">'количество детей'</span>, <span class="dv">0</span>]</span>
+<span id="cb131-4"><a href="#cb131-4" aria-hidden="true" tabindex="-1"></a>    , age <span class="op">=</span> [<span class="st">'Возраст, лет'</span>, <span class="st">'возраст'</span>, <span class="dv">1</span>]</span>
+<span id="cb131-5"><a href="#cb131-5" aria-hidden="true" tabindex="-1"></a>    , total_income <span class="op">=</span> [<span class="st">'Ежемесячный доход'</span>, <span class="st">'ежемесячный доход'</span>, <span class="dv">1</span>]</span>
+<span id="cb131-6"><a href="#cb131-6" aria-hidden="true" tabindex="-1"></a>     <span class="co"># category column</span></span>
+<span id="cb131-7"><a href="#cb131-7" aria-hidden="true" tabindex="-1"></a>    , education <span class="op">=</span> [<span class="st">'Уровень образования'</span>, <span class="st">'уровня образования'</span>]</span>
+<span id="cb131-8"><a href="#cb131-8" aria-hidden="true" tabindex="-1"></a>    , family_status <span class="op">=</span> [<span class="st">'Семейное положение'</span>, <span class="st">'семейного положения'</span>]</span>
+<span id="cb131-9"><a href="#cb131-9" aria-hidden="true" tabindex="-1"></a>    , gender <span class="op">=</span> [<span class="st">'Пол'</span>, <span class="st">'пола'</span>]</span>
+<span id="cb131-10"><a href="#cb131-10" aria-hidden="true" tabindex="-1"></a>    , income_type <span class="op">=</span> [<span class="st">'Тип занятости'</span>, <span class="st">'типа занятости'</span>]</span>
+<span id="cb131-11"><a href="#cb131-11" aria-hidden="true" tabindex="-1"></a>    , debt <span class="op">=</span> [<span class="st">'Задолженность'</span>, <span class="st">'задолженности'</span>]</span>
+<span id="cb131-12"><a href="#cb131-12" aria-hidden="true" tabindex="-1"></a>    , purpose <span class="op">=</span> [<span class="st">'Цель получения кредита'</span>, <span class="st">'цели получения кредита'</span>]</span>
+<span id="cb131-13"><a href="#cb131-13" aria-hidden="true" tabindex="-1"></a>    , has_child <span class="op">=</span> [<span class="st">'Наличие детей'</span>, <span class="st">'наличия детей'</span>]</span>
+<span id="cb131-14"><a href="#cb131-14" aria-hidden="true" tabindex="-1"></a>    , age_cat <span class="op">=</span> [<span class="st">'Возрастная категория, лет'</span>, <span class="st">'возрастной категории'</span>]</span>
+<span id="cb131-15"><a href="#cb131-15" aria-hidden="true" tabindex="-1"></a>    , total_income_cat <span class="op">=</span> [<span class="st">'Категория дохода'</span>, <span class="st">'категории дохода'</span>]</span>
+<span id="cb131-16"><a href="#cb131-16" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-285" class="cell">
+<div id="cell-281" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb125"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.categorical_graph_analys_gen()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb132"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb132-1"><a href="#cb132-1" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.categorical_graph_analys_gen()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <blockquote class="blockquote">
@@ -8015,18 +8223,18 @@ Name: age_cat, dtype: int64</code></pre>
 if __name__ == '__main__':
    app.run_server(debug=True)</code></pre>
 </blockquote>
-<div id="cell-287" class="cell">
+<div id="cell-283" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb127"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb127-1"><a href="#cb127-1" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.treemap()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb134"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb134-1"><a href="#cb134-1" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.treemap()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-288" class="cell">
+<div id="cell-284" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb128"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb128-1"><a href="#cb128-1" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> pagri_data_tools.treemap_dash(df)</span>
-<span id="cb128-2"><a href="#cb128-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
-<span id="cb128-3"><a href="#cb128-3" aria-hidden="true" tabindex="-1"></a>    app.run_server(debug<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb135"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb135-1"><a href="#cb135-1" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> pagri_data_tools.treemap_dash(df)</span>
+<span id="cb135-2"><a href="#cb135-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
+<span id="cb135-3"><a href="#cb135-3" aria-hidden="true" tabindex="-1"></a>    app.run_server(debug<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <blockquote class="blockquote">
@@ -8037,18 +8245,18 @@ if __name__ == '__main__':
 if __name__ == '__main__':
    app.run_server(debug=True)</code></pre>
 </blockquote>
-<div id="cell-290" class="cell">
+<div id="cell-286" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb130"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb130-1"><a href="#cb130-1" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.parallel_categories()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb137"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb137-1"><a href="#cb137-1" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.parallel_categories()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-291" class="cell">
+<div id="cell-287" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb131"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb131-1"><a href="#cb131-1" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> pagri_data_tools.parallel_categories_dash(df)</span>
-<span id="cb131-2"><a href="#cb131-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
-<span id="cb131-3"><a href="#cb131-3" aria-hidden="true" tabindex="-1"></a>    app.run_server(debug<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb138"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb138-1"><a href="#cb138-1" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> pagri_data_tools.parallel_categories_dash(df)</span>
+<span id="cb138-2"><a href="#cb138-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
+<span id="cb138-3"><a href="#cb138-3" aria-hidden="true" tabindex="-1"></a>    app.run_server(debug<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <blockquote class="blockquote">
@@ -8059,18 +8267,18 @@ if __name__ == '__main__':
 if __name__ == '__main__':
    app.run_server(debug=True)</code></pre>
 </blockquote>
-<div id="cell-293" class="cell">
+<div id="cell-289" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb133"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb133-1"><a href="#cb133-1" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.sankey()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb140"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb140-1"><a href="#cb140-1" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.sankey()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-294" class="cell">
+<div id="cell-290" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb134"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb134-1"><a href="#cb134-1" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> pagri_data_tools.sankey_dash(df)</span>
-<span id="cb134-2"><a href="#cb134-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
-<span id="cb134-3"><a href="#cb134-3" aria-hidden="true" tabindex="-1"></a>    app.run_server(debug<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb141"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb141-1"><a href="#cb141-1" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> pagri_data_tools.sankey_dash(df)</span>
+<span id="cb141-2"><a href="#cb141-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
+<span id="cb141-3"><a href="#cb141-3" aria-hidden="true" tabindex="-1"></a>    app.run_server(debug<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
@@ -8083,10 +8291,10 @@ if __name__ == '__main__':
 <blockquote class="blockquote">
 <p><code>graph_analysis</code></p>
 </blockquote>
-<div id="cell-298" class="cell">
+<div id="cell-294" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb135"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb135-1"><a href="#cb135-1" aria-hidden="true" tabindex="-1"></a>gen <span class="op">=</span> pagri_data_tools.graph_analysis()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb142"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb142-1"><a href="#cb142-1" aria-hidden="true" tabindex="-1"></a>gen <span class="op">=</span> pagri_data_tools.graph_analysis()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <blockquote class="blockquote">
@@ -8098,43 +8306,43 @@ if __name__ == '__main__':
 Второй элемент списка - это как это название будет отображаться в заголовке графика<br>
 Для числовых столбцов также указывается род, чтобы правильно выбрать (Середнее, средний, средняя) (0 - средний род, 1 - мужской род, 2 - женский род)</p>
 </blockquote>
-<div id="cell-301" class="cell">
+<div id="cell-297" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb136"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb136-1"><a href="#cb136-1" aria-hidden="true" tabindex="-1"></a><span class="ss">f'Среднее / Медианное / Суммарное </span><span class="sc">{</span>numeric<span class="sc">}</span><span class="ss"> в зависимости от </span><span class="sc">{</span>category<span class="sc">}</span><span class="ss"> и </span><span class="sc">{</span>category<span class="sc">}</span><span class="ss">'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb143"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb143-1"><a href="#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="ss">f'Среднее / Медианное / Суммарное </span><span class="sc">{</span>numeric<span class="sc">}</span><span class="ss"> в зависимости от </span><span class="sc">{</span>category<span class="sc">}</span><span class="ss"> и </span><span class="sc">{</span>category<span class="sc">}</span><span class="ss">'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-302" class="cell">
+<div id="cell-298" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb137"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb137-1"><a href="#cb137-1" aria-hidden="true" tabindex="-1"></a>titles_for_axis <span class="op">=</span> <span class="bu">dict</span>(</span>
-<span id="cb137-2"><a href="#cb137-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># numeric column (0 - средний род, 1 - мужской род, 2 - женский род) (Середнее образовние, средний доход, средняя температура) )</span></span>
-<span id="cb137-3"><a href="#cb137-3" aria-hidden="true" tabindex="-1"></a>    children <span class="op">=</span> [<span class="st">'Количество детей'</span>, <span class="st">'количество детей'</span>, <span class="dv">0</span>]</span>
-<span id="cb137-4"><a href="#cb137-4" aria-hidden="true" tabindex="-1"></a>    , age <span class="op">=</span> [<span class="st">'Возраст, лет'</span>, <span class="st">'возраст'</span>, <span class="dv">1</span>]</span>
-<span id="cb137-5"><a href="#cb137-5" aria-hidden="true" tabindex="-1"></a>    , total_income <span class="op">=</span> [<span class="st">'Ежемесячный доход'</span>, <span class="st">'ежемесячный доход'</span>, <span class="dv">1</span>]</span>
-<span id="cb137-6"><a href="#cb137-6" aria-hidden="true" tabindex="-1"></a>     <span class="co"># category column</span></span>
-<span id="cb137-7"><a href="#cb137-7" aria-hidden="true" tabindex="-1"></a>    , education <span class="op">=</span> [<span class="st">'Уровень образования'</span>, <span class="st">'уровня образования'</span>]</span>
-<span id="cb137-8"><a href="#cb137-8" aria-hidden="true" tabindex="-1"></a>    , family_status <span class="op">=</span> [<span class="st">'Семейное положение'</span>, <span class="st">'семейного положения'</span>]</span>
-<span id="cb137-9"><a href="#cb137-9" aria-hidden="true" tabindex="-1"></a>    , gender <span class="op">=</span> [<span class="st">'Пол'</span>, <span class="st">'пола'</span>]</span>
-<span id="cb137-10"><a href="#cb137-10" aria-hidden="true" tabindex="-1"></a>    , income_type <span class="op">=</span> [<span class="st">'Тип занятости'</span>, <span class="st">'типа занятости'</span>]</span>
-<span id="cb137-11"><a href="#cb137-11" aria-hidden="true" tabindex="-1"></a>    , debt <span class="op">=</span> [<span class="st">'Задолженность (1 - имеется, 0 - нет)'</span>, <span class="st">'задолженности'</span>]</span>
-<span id="cb137-12"><a href="#cb137-12" aria-hidden="true" tabindex="-1"></a>    , purpose <span class="op">=</span> [<span class="st">'Цель получения кредита'</span>, <span class="st">'цели получения кредита'</span>]</span>
-<span id="cb137-13"><a href="#cb137-13" aria-hidden="true" tabindex="-1"></a>    , dob_cat <span class="op">=</span> [<span class="st">'Возрастная категория, лет'</span>, <span class="st">'возрастной категории'</span>]</span>
-<span id="cb137-14"><a href="#cb137-14" aria-hidden="true" tabindex="-1"></a>    , total_income_cat <span class="op">=</span> [<span class="st">'Категория дохода'</span>, <span class="st">'категории дохода'</span>]</span>
-<span id="cb137-15"><a href="#cb137-15" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb144"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb144-1"><a href="#cb144-1" aria-hidden="true" tabindex="-1"></a>titles_for_axis <span class="op">=</span> <span class="bu">dict</span>(</span>
+<span id="cb144-2"><a href="#cb144-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># numeric column (0 - средний род, 1 - мужской род, 2 - женский род) (Середнее образовние, средний доход, средняя температура) )</span></span>
+<span id="cb144-3"><a href="#cb144-3" aria-hidden="true" tabindex="-1"></a>    children <span class="op">=</span> [<span class="st">'Количество детей'</span>, <span class="st">'количество детей'</span>, <span class="dv">0</span>]</span>
+<span id="cb144-4"><a href="#cb144-4" aria-hidden="true" tabindex="-1"></a>    , age <span class="op">=</span> [<span class="st">'Возраст, лет'</span>, <span class="st">'возраст'</span>, <span class="dv">1</span>]</span>
+<span id="cb144-5"><a href="#cb144-5" aria-hidden="true" tabindex="-1"></a>    , total_income <span class="op">=</span> [<span class="st">'Ежемесячный доход'</span>, <span class="st">'ежемесячный доход'</span>, <span class="dv">1</span>]</span>
+<span id="cb144-6"><a href="#cb144-6" aria-hidden="true" tabindex="-1"></a>     <span class="co"># category column</span></span>
+<span id="cb144-7"><a href="#cb144-7" aria-hidden="true" tabindex="-1"></a>    , education <span class="op">=</span> [<span class="st">'Уровень образования'</span>, <span class="st">'уровня образования'</span>]</span>
+<span id="cb144-8"><a href="#cb144-8" aria-hidden="true" tabindex="-1"></a>    , family_status <span class="op">=</span> [<span class="st">'Семейное положение'</span>, <span class="st">'семейного положения'</span>]</span>
+<span id="cb144-9"><a href="#cb144-9" aria-hidden="true" tabindex="-1"></a>    , gender <span class="op">=</span> [<span class="st">'Пол'</span>, <span class="st">'пола'</span>]</span>
+<span id="cb144-10"><a href="#cb144-10" aria-hidden="true" tabindex="-1"></a>    , income_type <span class="op">=</span> [<span class="st">'Тип занятости'</span>, <span class="st">'типа занятости'</span>]</span>
+<span id="cb144-11"><a href="#cb144-11" aria-hidden="true" tabindex="-1"></a>    , debt <span class="op">=</span> [<span class="st">'Задолженность (1 - имеется, 0 - нет)'</span>, <span class="st">'задолженности'</span>]</span>
+<span id="cb144-12"><a href="#cb144-12" aria-hidden="true" tabindex="-1"></a>    , purpose <span class="op">=</span> [<span class="st">'Цель получения кредита'</span>, <span class="st">'цели получения кредита'</span>]</span>
+<span id="cb144-13"><a href="#cb144-13" aria-hidden="true" tabindex="-1"></a>    , dob_cat <span class="op">=</span> [<span class="st">'Возрастная категория, лет'</span>, <span class="st">'возрастной категории'</span>]</span>
+<span id="cb144-14"><a href="#cb144-14" aria-hidden="true" tabindex="-1"></a>    , total_income_cat <span class="op">=</span> [<span class="st">'Категория дохода'</span>, <span class="st">'категории дохода'</span>]</span>
+<span id="cb144-15"><a href="#cb144-15" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-303" class="cell">
+<div id="cell-299" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb138"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb138-1"><a href="#cb138-1" aria-hidden="true" tabindex="-1"></a>summory <span class="op">=</span> []</span>
-<span id="cb138-2"><a href="#cb138-2" aria-hidden="true" tabindex="-1"></a>columns <span class="op">=</span> []</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb145"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb145-1"><a href="#cb145-1" aria-hidden="true" tabindex="-1"></a>summory <span class="op">=</span> []</span>
+<span id="cb145-2"><a href="#cb145-2" aria-hidden="true" tabindex="-1"></a>columns <span class="op">=</span> []</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-304" class="cell">
+<div id="cell-300" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb139"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb139-1"><a href="#cb139-1" aria-hidden="true" tabindex="-1"></a>gen <span class="op">=</span> pagri_data_tools.graph_analysis_gen(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb146"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb146-1"><a href="#cb146-1" aria-hidden="true" tabindex="-1"></a>gen <span class="op">=</span> pagri_data_tools.graph_analysis_gen(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <blockquote class="blockquote">
@@ -8143,26 +8351,26 @@ if __name__ == '__main__':
 Далее пишем наблюдения, если хотим сохранить график и выполняем ячейку ниже.<br>
 Если сохранять не хотим, то просто выполняем дальше <code>columns = next(gen)</code></p>
 </blockquote>
-<div id="cell-306" class="cell">
+<div id="cell-302" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb140"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb140-1"><a href="#cb140-1" aria-hidden="true" tabindex="-1"></a>summory.append(<span class="bu">dict</span>(</span>
-<span id="cb140-2"><a href="#cb140-2" aria-hidden="true" tabindex="-1"></a>    columns <span class="op">=</span> columns</span>
-<span id="cb140-3"><a href="#cb140-3" aria-hidden="true" tabindex="-1"></a>    , observations <span class="op">=</span></span>
-<span id="cb140-4"><a href="#cb140-4" aria-hidden="true" tabindex="-1"></a><span class="st">'''</span></span>
-<span id="cb140-5"><a href="#cb140-5" aria-hidden="true" tabindex="-1"></a><span class="st">**Наблюдения:**</span></span>
-<span id="cb140-6"><a href="#cb140-6" aria-hidden="true" tabindex="-1"></a><span class="st">- 21</span></span>
-<span id="cb140-7"><a href="#cb140-7" aria-hidden="true" tabindex="-1"></a><span class="st">- Размер больше</span></span>
-<span id="cb140-8"><a href="#cb140-8" aria-hidden="true" tabindex="-1"></a><span class="st">- 1</span></span>
-<span id="cb140-9"><a href="#cb140-9" aria-hidden="true" tabindex="-1"></a><span class="st">- Сильнее других</span></span>
-<span id="cb140-10"><a href="#cb140-10" aria-hidden="true" tabindex="-1"></a><span class="st">-</span></span>
-<span id="cb140-11"><a href="#cb140-11" aria-hidden="true" tabindex="-1"></a><span class="st">'''</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb147"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb147-1"><a href="#cb147-1" aria-hidden="true" tabindex="-1"></a>summory.append(<span class="bu">dict</span>(</span>
+<span id="cb147-2"><a href="#cb147-2" aria-hidden="true" tabindex="-1"></a>    columns <span class="op">=</span> columns</span>
+<span id="cb147-3"><a href="#cb147-3" aria-hidden="true" tabindex="-1"></a>    , observations <span class="op">=</span></span>
+<span id="cb147-4"><a href="#cb147-4" aria-hidden="true" tabindex="-1"></a><span class="st">'''</span></span>
+<span id="cb147-5"><a href="#cb147-5" aria-hidden="true" tabindex="-1"></a><span class="st">**Наблюдения:**</span></span>
+<span id="cb147-6"><a href="#cb147-6" aria-hidden="true" tabindex="-1"></a><span class="st">- 21</span></span>
+<span id="cb147-7"><a href="#cb147-7" aria-hidden="true" tabindex="-1"></a><span class="st">- Размер больше</span></span>
+<span id="cb147-8"><a href="#cb147-8" aria-hidden="true" tabindex="-1"></a><span class="st">- 1</span></span>
+<span id="cb147-9"><a href="#cb147-9" aria-hidden="true" tabindex="-1"></a><span class="st">- Сильнее других</span></span>
+<span id="cb147-10"><a href="#cb147-10" aria-hidden="true" tabindex="-1"></a><span class="st">-</span></span>
+<span id="cb147-11"><a href="#cb147-11" aria-hidden="true" tabindex="-1"></a><span class="st">'''</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-307" class="cell">
+<div id="cell-303" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb141"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb141-1"><a href="#cb141-1" aria-hidden="true" tabindex="-1"></a>columns <span class="op">=</span> <span class="bu">next</span>(gen)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb148"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb148-1"><a href="#cb148-1" aria-hidden="true" tabindex="-1"></a>columns <span class="op">=</span> <span class="bu">next</span>(gen)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <blockquote class="blockquote">
@@ -8174,27 +8382,27 @@ if __name__ == '__main__':
 Мы в предваретельном выводе после раздела графиков вставляем выводы из summory<br>
 Чтобы их не собирать вручную у каждого графика</p>
 </blockquote>
-<div id="cell-310" class="cell">
+<div id="cell-306" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb142"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb142-1"><a href="#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> gen_temp():</span>
-<span id="cb142-2"><a href="#cb142-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> item <span class="kw">in</span> summory:</span>
-<span id="cb142-3"><a href="#cb142-3" aria-hidden="true" tabindex="-1"></a>        colunns <span class="op">=</span> item[<span class="st">'columns'</span>]</span>
-<span id="cb142-4"><a href="#cb142-4" aria-hidden="true" tabindex="-1"></a>        observations <span class="op">=</span> item[<span class="st">'observations'</span>]</span>
-<span id="cb142-5"><a href="#cb142-5" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(observations)</span>
-<span id="cb142-6"><a href="#cb142-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">yield</span> colunns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb149"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb149-1"><a href="#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> gen_temp():</span>
+<span id="cb149-2"><a href="#cb149-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> item <span class="kw">in</span> summory:</span>
+<span id="cb149-3"><a href="#cb149-3" aria-hidden="true" tabindex="-1"></a>        colunns <span class="op">=</span> item[<span class="st">'columns'</span>]</span>
+<span id="cb149-4"><a href="#cb149-4" aria-hidden="true" tabindex="-1"></a>        observations <span class="op">=</span> item[<span class="st">'observations'</span>]</span>
+<span id="cb149-5"><a href="#cb149-5" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(observations)</span>
+<span id="cb149-6"><a href="#cb149-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">yield</span> colunns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-311" class="cell">
+<div id="cell-307" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb143"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb143-1"><a href="#cb143-1" aria-hidden="true" tabindex="-1"></a>gen <span class="op">=</span> gen_temp()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb150"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb150-1"><a href="#cb150-1" aria-hidden="true" tabindex="-1"></a>gen <span class="op">=</span> gen_temp()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-312" class="cell" data-outputid="931b63d3-84a4-4193-a819-053cf34441ab">
+<div id="cell-308" class="cell" data-outputid="931b63d3-84a4-4193-a819-053cf34441ab">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb144"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb144-1"><a href="#cb144-1" aria-hidden="true" tabindex="-1"></a>colunns <span class="op">=</span> <span class="bu">next</span>(gen)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb151"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb151-1"><a href="#cb151-1" aria-hidden="true" tabindex="-1"></a>colunns <span class="op">=</span> <span class="bu">next</span>(gen)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -8210,17 +8418,17 @@ if __name__ == '__main__':
 <blockquote class="blockquote">
 <p>Чтобы построить график без category- просто закоментируй строку с category.</p>
 </blockquote>
-<div id="cell-314" class="cell">
+<div id="cell-310" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb146"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb146-1"><a href="#cb146-1" aria-hidden="true" tabindex="-1"></a>config <span class="op">=</span> <span class="bu">dict</span>(df <span class="op">=</span> df</span>
-<span id="cb146-2"><a href="#cb146-2" aria-hidden="true" tabindex="-1"></a>    , x <span class="op">=</span> colunns[<span class="dv">1</span>]</span>
-<span id="cb146-3"><a href="#cb146-3" aria-hidden="true" tabindex="-1"></a>    , y <span class="op">=</span> colunns[<span class="dv">0</span>]</span>
-<span id="cb146-4"><a href="#cb146-4" aria-hidden="true" tabindex="-1"></a>    , category <span class="op">=</span> colunns[<span class="dv">2</span>]</span>
-<span id="cb146-5"><a href="#cb146-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># , width = 800</span></span>
-<span id="cb146-6"><a href="#cb146-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># , orientation = 'h'</span></span>
-<span id="cb146-7"><a href="#cb146-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb146-8"><a href="#cb146-8" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.bar(config, titles_for_axis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb153"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb153-1"><a href="#cb153-1" aria-hidden="true" tabindex="-1"></a>config <span class="op">=</span> <span class="bu">dict</span>(df <span class="op">=</span> df</span>
+<span id="cb153-2"><a href="#cb153-2" aria-hidden="true" tabindex="-1"></a>    , x <span class="op">=</span> colunns[<span class="dv">1</span>]</span>
+<span id="cb153-3"><a href="#cb153-3" aria-hidden="true" tabindex="-1"></a>    , y <span class="op">=</span> colunns[<span class="dv">0</span>]</span>
+<span id="cb153-4"><a href="#cb153-4" aria-hidden="true" tabindex="-1"></a>    , category <span class="op">=</span> colunns[<span class="dv">2</span>]</span>
+<span id="cb153-5"><a href="#cb153-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># , width = 800</span></span>
+<span id="cb153-6"><a href="#cb153-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># , orientation = 'h'</span></span>
+<span id="cb153-7"><a href="#cb153-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb153-8"><a href="#cb153-8" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.bar(config, titles_for_axis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p><strong>Наблюдения:</strong> - У мужчин средний доход выше</p>
@@ -8275,24 +8483,24 @@ H1: The two categorical variables are not independent (i.e., there is a signific
 В идеале мы на графиках должны найти гипотезы и тут их проверить.<br>
 Но если у нас целевая переменная, то мы можем сравнить ее со всеми категориями</p>
 </blockquote>
-<div id="cell-329" class="cell">
+<div id="cell-325" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb147"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb147-1"><a href="#cb147-1" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.chi2_pearson()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb154"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb154-1"><a href="#cb154-1" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.chi2_pearson()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <blockquote class="blockquote">
 <p>Формируем словарь для подписей осей и названия гистограм</p>
 </blockquote>
-<div id="cell-331" class="cell">
+<div id="cell-327" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb148"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb148-1"><a href="#cb148-1" aria-hidden="true" tabindex="-1"></a>titles_for_axis <span class="op">=</span> <span class="bu">dict</span>(</span>
-<span id="cb148-2"><a href="#cb148-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># numeric column</span></span>
-<span id="cb148-3"><a href="#cb148-3" aria-hidden="true" tabindex="-1"></a>    children <span class="op">=</span> [<span class="st">'Количество детей'</span>, <span class="st">'количества детей'</span>]</span>
-<span id="cb148-4"><a href="#cb148-4" aria-hidden="true" tabindex="-1"></a>    , age <span class="op">=</span> [<span class="st">'Возраст'</span>, <span class="st">'возраста'</span>]</span>
-<span id="cb148-5"><a href="#cb148-5" aria-hidden="true" tabindex="-1"></a>    , total_income <span class="op">=</span> [<span class="st">'Ежемесячный доход'</span>, <span class="st">'ежемесячного дохода'</span>]</span>
-<span id="cb148-6"><a href="#cb148-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb155"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb155-1"><a href="#cb155-1" aria-hidden="true" tabindex="-1"></a>titles_for_axis <span class="op">=</span> <span class="bu">dict</span>(</span>
+<span id="cb155-2"><a href="#cb155-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># numeric column</span></span>
+<span id="cb155-3"><a href="#cb155-3" aria-hidden="true" tabindex="-1"></a>    children <span class="op">=</span> [<span class="st">'Количество детей'</span>, <span class="st">'количества детей'</span>]</span>
+<span id="cb155-4"><a href="#cb155-4" aria-hidden="true" tabindex="-1"></a>    , age <span class="op">=</span> [<span class="st">'Возраст'</span>, <span class="st">'возраста'</span>]</span>
+<span id="cb155-5"><a href="#cb155-5" aria-hidden="true" tabindex="-1"></a>    , total_income <span class="op">=</span> [<span class="st">'Ежемесячный доход'</span>, <span class="st">'ежемесячного дохода'</span>]</span>
+<span id="cb155-6"><a href="#cb155-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <blockquote class="blockquote">
@@ -8308,10 +8516,10 @@ H1: У мужчин средний доход выше, чем у женщин</
 <blockquote class="blockquote">
 <p>Смотрим распределение метрики</p>
 </blockquote>
-<div id="cell-336" class="cell">
+<div id="cell-332" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb149"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb149-1"><a href="#cb149-1" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.histogram(df.total_income, titles_for_axis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb156"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb156-1"><a href="#cb156-1" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.histogram(df.total_income, titles_for_axis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <blockquote class="blockquote">
@@ -8333,38 +8541,38 @@ df в ttest_ind_df и подобных можно испльзовать тол�
 <p>H0: У должников и не должников дисперсия не отличается<br>
 H1: У должников и не должников дисперсия отличается</p>
 </blockquote>
-<div id="cell-341" class="cell">
+<div id="cell-337" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb150"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb150-1"><a href="#cb150-1" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.levene_df</span>
-<span id="cb150-2"><a href="#cb150-2" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.levene</span>
-<span id="cb150-3"><a href="#cb150-3" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.bartlett_df</span>
-<span id="cb150-4"><a href="#cb150-4" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.bartlett</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb157"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb157-1"><a href="#cb157-1" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.levene_df</span>
+<span id="cb157-2"><a href="#cb157-2" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.levene</span>
+<span id="cb157-3"><a href="#cb157-3" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.bartlett_df</span>
+<span id="cb157-4"><a href="#cb157-4" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.bartlett</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <blockquote class="blockquote">
 <p>Выбираем критерий</p>
 </blockquote>
-<div id="cell-343" class="cell">
+<div id="cell-339" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb151"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb151-1"><a href="#cb151-1" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.chi2_pearson</span>
-<span id="cb151-2"><a href="#cb151-2" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.ttest_ind_df</span>
-<span id="cb151-3"><a href="#cb151-3" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.ttest_ind</span>
-<span id="cb151-4"><a href="#cb151-4" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.mannwhitneyu_df</span>
-<span id="cb151-5"><a href="#cb151-5" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.mannwhitneyu</span>
-<span id="cb151-6"><a href="#cb151-6" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.proportion_ztest_1sample</span>
-<span id="cb151-7"><a href="#cb151-7" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.proportions_ztest_2sample</span>
-<span id="cb151-8"><a href="#cb151-8" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.proportions_ztest_column_2sample</span>
-<span id="cb151-9"><a href="#cb151-9" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.proportions_chi2</span>
-<span id="cb151-10"><a href="#cb151-10" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.proportions_chi2_column</span>
-<span id="cb151-11"><a href="#cb151-11" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.anova_oneway_df</span>
-<span id="cb151-12"><a href="#cb151-12" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.anova_oneway</span>
-<span id="cb151-13"><a href="#cb151-13" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.tukey_hsd_df</span>
-<span id="cb151-14"><a href="#cb151-14" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.anova_oneway_welch_df</span>
-<span id="cb151-15"><a href="#cb151-15" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.kruskal_df</span>
-<span id="cb151-16"><a href="#cb151-16" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.kruskal</span>
-<span id="cb151-17"><a href="#cb151-17" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.bootstrap_diff_2sample <span class="co"># важно, сохраняем fig и в следующей ячейке делаем fig.shwo(), иначе на google colab работает некорректно</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb158"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb158-1"><a href="#cb158-1" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.chi2_pearson</span>
+<span id="cb158-2"><a href="#cb158-2" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.ttest_ind_df</span>
+<span id="cb158-3"><a href="#cb158-3" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.ttest_ind</span>
+<span id="cb158-4"><a href="#cb158-4" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.mannwhitneyu_df</span>
+<span id="cb158-5"><a href="#cb158-5" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.mannwhitneyu</span>
+<span id="cb158-6"><a href="#cb158-6" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.proportion_ztest_1sample</span>
+<span id="cb158-7"><a href="#cb158-7" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.proportions_ztest_2sample</span>
+<span id="cb158-8"><a href="#cb158-8" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.proportions_ztest_column_2sample</span>
+<span id="cb158-9"><a href="#cb158-9" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.proportions_chi2</span>
+<span id="cb158-10"><a href="#cb158-10" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.proportions_chi2_column</span>
+<span id="cb158-11"><a href="#cb158-11" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.anova_oneway_df</span>
+<span id="cb158-12"><a href="#cb158-12" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.anova_oneway</span>
+<span id="cb158-13"><a href="#cb158-13" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.tukey_hsd_df</span>
+<span id="cb158-14"><a href="#cb158-14" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.anova_oneway_welch_df</span>
+<span id="cb158-15"><a href="#cb158-15" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.kruskal_df</span>
+<span id="cb158-16"><a href="#cb158-16" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.kruskal</span>
+<span id="cb158-17"><a href="#cb158-17" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.bootstrap_diff_2sample <span class="co"># важно, сохраняем fig и в следующей ячейке делаем fig.shwo(), иначе на google colab работает некорректно</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <blockquote class="blockquote">
@@ -8373,26 +8581,26 @@ H1: У должников и не должников дисперсия отли
 <blockquote class="blockquote">
 <p>Если отклоняем гипотезу, то строим доверитлеьный интервал</p>
 </blockquote>
-<div id="cell-346" class="cell">
+<div id="cell-342" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb152"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb152-1"><a href="#cb152-1" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.confint_t_2samples</span>
-<span id="cb152-2"><a href="#cb152-2" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.confint_t_2samples_df</span>
-<span id="cb152-3"><a href="#cb152-3" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.confint_proportion_ztest_2sample</span>
-<span id="cb152-4"><a href="#cb152-4" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.confint_proportion_ztest_column_2sample</span>
-<span id="cb152-5"><a href="#cb152-5" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.confint_proportion_2sample_statsmodels</span>
-<span id="cb152-6"><a href="#cb152-6" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.confint_proportion_coluns_2sample_statsmodels</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb159"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb159-1"><a href="#cb159-1" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.confint_t_2samples</span>
+<span id="cb159-2"><a href="#cb159-2" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.confint_t_2samples_df</span>
+<span id="cb159-3"><a href="#cb159-3" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.confint_proportion_ztest_2sample</span>
+<span id="cb159-4"><a href="#cb159-4" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.confint_proportion_ztest_column_2sample</span>
+<span id="cb159-5"><a href="#cb159-5" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.confint_proportion_2sample_statsmodels</span>
+<span id="cb159-6"><a href="#cb159-6" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.confint_proportion_coluns_2sample_statsmodels</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-347" class="cell">
+<div id="cell-343" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb153"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb153-1"><a href="#cb153-1" aria-hidden="true" tabindex="-1"></a>titles_for_axis <span class="op">=</span> <span class="bu">dict</span>(</span>
-<span id="cb153-2"><a href="#cb153-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># numeric column</span></span>
-<span id="cb153-3"><a href="#cb153-3" aria-hidden="true" tabindex="-1"></a>    children <span class="op">=</span> [<span class="st">'Количество детей'</span>, <span class="st">'количества детей'</span>]</span>
-<span id="cb153-4"><a href="#cb153-4" aria-hidden="true" tabindex="-1"></a>    , age <span class="op">=</span> [<span class="st">'Возраст'</span>, <span class="st">'возраста'</span>]</span>
-<span id="cb153-5"><a href="#cb153-5" aria-hidden="true" tabindex="-1"></a>    , total_income <span class="op">=</span> [<span class="st">'Ежемесячный доход'</span>, <span class="st">'ежемесячного дохода'</span>]</span>
-<span id="cb153-6"><a href="#cb153-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb160"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb160-1"><a href="#cb160-1" aria-hidden="true" tabindex="-1"></a>titles_for_axis <span class="op">=</span> <span class="bu">dict</span>(</span>
+<span id="cb160-2"><a href="#cb160-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># numeric column</span></span>
+<span id="cb160-3"><a href="#cb160-3" aria-hidden="true" tabindex="-1"></a>    children <span class="op">=</span> [<span class="st">'Количество детей'</span>, <span class="st">'количества детей'</span>]</span>
+<span id="cb160-4"><a href="#cb160-4" aria-hidden="true" tabindex="-1"></a>    , age <span class="op">=</span> [<span class="st">'Возраст'</span>, <span class="st">'возраста'</span>]</span>
+<span id="cb160-5"><a href="#cb160-5" aria-hidden="true" tabindex="-1"></a>    , total_income <span class="op">=</span> [<span class="st">'Ежемесячный доход'</span>, <span class="st">'ежемесячного дохода'</span>]</span>
+<span id="cb160-6"><a href="#cb160-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <blockquote class="blockquote">
@@ -8407,10 +8615,10 @@ H1: Наличие детей влияет на возврат кредита в
 <p>Так как у нас обе переменных категориальные, то воспользуемся критерием хи-квадрат Пирсона.<br>
 Уровень значимости alpha выберем 0.05</p>
 </blockquote>
-<div id="cell-352" class="cell" data-outputid="5b38741d-75fa-4cfb-b881-534f42f8f055">
+<div id="cell-348" class="cell" data-outputid="5b38741d-75fa-4cfb-b881-534f42f8f055">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb154"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb154-1"><a href="#cb154-1" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.chi2_pearson(df.has_child, df.debt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb161"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb161-1"><a href="#cb161-1" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.chi2_pearson(df.has_child, df.debt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Хи-квадрат Пирсона
@@ -8428,36 +8636,36 @@ p-value =  1.724356890544321e-05
 <p>Также сделать функцию для доверилеьных интервалов для мана уитни через<br>
 the Hodges-Lehmann estimation, which provides a point estimate and a confidence interval for the difference in medians.</p>
 </blockquote>
-<div id="cell-356" class="cell">
+<div id="cell-352" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb156"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb156-1"><a href="#cb156-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pingouin <span class="im">as</span> pg</span>
-<span id="cb156-2"><a href="#cb156-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb156-3"><a href="#cb156-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform the Mann-Whitney U test and calculate the confidence interval</span></span>
-<span id="cb156-4"><a href="#cb156-4" aria-hidden="true" tabindex="-1"></a>mw_test <span class="op">=</span> pg.mwu(x, y, tail<span class="op">=</span><span class="st">'two-sided'</span>, confidence<span class="op">=</span><span class="fl">0.95</span>)</span>
-<span id="cb156-5"><a href="#cb156-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb156-6"><a href="#cb156-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the results</span></span>
-<span id="cb156-7"><a href="#cb156-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(mw_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb163"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb163-1"><a href="#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pingouin <span class="im">as</span> pg</span>
+<span id="cb163-2"><a href="#cb163-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb163-3"><a href="#cb163-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform the Mann-Whitney U test and calculate the confidence interval</span></span>
+<span id="cb163-4"><a href="#cb163-4" aria-hidden="true" tabindex="-1"></a>mw_test <span class="op">=</span> pg.mwu(x, y, tail<span class="op">=</span><span class="st">'two-sided'</span>, confidence<span class="op">=</span><span class="fl">0.95</span>)</span>
+<span id="cb163-5"><a href="#cb163-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb163-6"><a href="#cb163-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the results</span></span>
+<span id="cb163-7"><a href="#cb163-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(mw_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-357" class="cell">
+<div id="cell-353" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb157"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb157-1"><a href="#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb157-2"><a href="#cb157-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
-<span id="cb157-3"><a href="#cb157-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb157-4"><a href="#cb157-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform the Mann-Whitney U test</span></span>
-<span id="cb157-5"><a href="#cb157-5" aria-hidden="true" tabindex="-1"></a>u_stat, p_value <span class="op">=</span> stats.mannwhitneyu(x, y, alternative<span class="op">=</span><span class="st">'two-sided'</span>)</span>
-<span id="cb157-6"><a href="#cb157-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb157-7"><a href="#cb157-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the Hodges-Lehmann estimation</span></span>
-<span id="cb157-8"><a href="#cb157-8" aria-hidden="true" tabindex="-1"></a>hl_est <span class="op">=</span> np.median(np.array([x_i <span class="op">-</span> y_j <span class="cf">for</span> x_i <span class="kw">in</span> x <span class="cf">for</span> y_j <span class="kw">in</span> y]))</span>
-<span id="cb157-9"><a href="#cb157-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb157-10"><a href="#cb157-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the confidence interval</span></span>
-<span id="cb157-11"><a href="#cb157-11" aria-hidden="true" tabindex="-1"></a>ci <span class="op">=</span> stats.t.interval(<span class="fl">0.95</span>, <span class="bu">len</span>(x) <span class="op">+</span> <span class="bu">len</span>(y) <span class="op">-</span> <span class="dv">2</span>, loc<span class="op">=</span>hl_est, scale<span class="op">=</span>stats.sem(np.array([x_i <span class="op">-</span> y_j <span class="cf">for</span> x_i <span class="kw">in</span> x <span class="cf">for</span> y_j <span class="kw">in</span> y])))</span>
-<span id="cb157-12"><a href="#cb157-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb157-13"><a href="#cb157-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the results</span></span>
-<span id="cb157-14"><a href="#cb157-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Hodges-Lehmann estimation:'</span>, hl_est)</span>
-<span id="cb157-15"><a href="#cb157-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Confidence interval:'</span>, ci)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb164"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb164-1"><a href="#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb164-2"><a href="#cb164-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
+<span id="cb164-3"><a href="#cb164-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb164-4"><a href="#cb164-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform the Mann-Whitney U test</span></span>
+<span id="cb164-5"><a href="#cb164-5" aria-hidden="true" tabindex="-1"></a>u_stat, p_value <span class="op">=</span> stats.mannwhitneyu(x, y, alternative<span class="op">=</span><span class="st">'two-sided'</span>)</span>
+<span id="cb164-6"><a href="#cb164-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb164-7"><a href="#cb164-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the Hodges-Lehmann estimation</span></span>
+<span id="cb164-8"><a href="#cb164-8" aria-hidden="true" tabindex="-1"></a>hl_est <span class="op">=</span> np.median(np.array([x_i <span class="op">-</span> y_j <span class="cf">for</span> x_i <span class="kw">in</span> x <span class="cf">for</span> y_j <span class="kw">in</span> y]))</span>
+<span id="cb164-9"><a href="#cb164-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb164-10"><a href="#cb164-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the confidence interval</span></span>
+<span id="cb164-11"><a href="#cb164-11" aria-hidden="true" tabindex="-1"></a>ci <span class="op">=</span> stats.t.interval(<span class="fl">0.95</span>, <span class="bu">len</span>(x) <span class="op">+</span> <span class="bu">len</span>(y) <span class="op">-</span> <span class="dv">2</span>, loc<span class="op">=</span>hl_est, scale<span class="op">=</span>stats.sem(np.array([x_i <span class="op">-</span> y_j <span class="cf">for</span> x_i <span class="kw">in</span> x <span class="cf">for</span> y_j <span class="kw">in</span> y])))</span>
+<span id="cb164-12"><a href="#cb164-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb164-13"><a href="#cb164-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the results</span></span>
+<span id="cb164-14"><a href="#cb164-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Hodges-Lehmann estimation:'</span>, hl_est)</span>
+<span id="cb164-15"><a href="#cb164-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Confidence interval:'</span>, ci)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <blockquote class="blockquote">
@@ -8552,20 +8760,20 @@ https://habr.com/ru/articles/807051/</p>
 <blockquote class="blockquote">
 <p>Посмотрим p value для 0 (если различий нет, то разница должна быть 0) Для этого посчитаем cdf для + и - среднего, чтобы получить 2 значения cdf а теперь возьмем минимум и умножим на 2, так как альт гипотеза у нас.что просто не равно 0, значит и справа и слева</p>
 </blockquote>
-<div id="cell-367" class="cell">
+<div id="cell-363" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb158"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb158-1"><a href="#cb158-1" aria-hidden="true" tabindex="-1"></a>Estimating the power of a non<span class="op">-</span>parametric test using bootstrapping involves simulating the testing process multiple times to estimate the probability of rejecting the null hypothesis. Here<span class="st">'s a general outline of the steps:</span></span>
-<span id="cb158-2"><a href="#cb158-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb158-3"><a href="#cb158-3" aria-hidden="true" tabindex="-1"></a><span class="er">**Specify the null and alternative hypotheses **: Define the null and alternative hypotheses for your test. For example, the null hypothesis might be that the two groups have the same distribution, and the alternative hypothesis might be that the two groups have different distributions.</span></span>
-<span id="cb158-4"><a href="#cb158-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb158-5"><a href="#cb158-5" aria-hidden="true" tabindex="-1"></a>Generate simulated data: Generate simulated data that reflects the null hypothesis. For example, you could generate two groups of random data <span class="im">from</span> the same distribution.</span>
-<span id="cb158-6"><a href="#cb158-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb158-7"><a href="#cb158-7" aria-hidden="true" tabindex="-1"></a>Perform the Mann<span class="op">-</span>Whitney U test: Perform the Mann<span class="op">-</span>Whitney U test on the simulated data to obtain a p<span class="op">-</span>value.</span>
-<span id="cb158-8"><a href="#cb158-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb158-9"><a href="#cb158-9" aria-hidden="true" tabindex="-1"></a>Repeat steps <span class="dv">2</span><span class="op">-</span><span class="dv">3</span> many times: Repeat steps <span class="dv">2</span><span class="op">-</span><span class="dv">3</span> many times (e.g., <span class="dv">1000</span> times) to generate a distribution of p<span class="op">-</span>values under the null hypothesis.</span>
-<span id="cb158-10"><a href="#cb158-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb158-11"><a href="#cb158-11" aria-hidden="true" tabindex="-1"></a>Estimate the power: Estimate the power of the test by calculating the proportion of times the p<span class="op">-</span>value <span class="kw">is</span> below a certain significance level (e.g., <span class="fl">0.05</span>) when the alternative hypothesis <span class="kw">is</span> true. To do this, you<span class="st">'ll need to generate simulated data that reflects the alternative hypothesis and repeat steps 2-4.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb165"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb165-1"><a href="#cb165-1" aria-hidden="true" tabindex="-1"></a>Estimating the power of a non<span class="op">-</span>parametric test using bootstrapping involves simulating the testing process multiple times to estimate the probability of rejecting the null hypothesis. Here<span class="st">'s a general outline of the steps:</span></span>
+<span id="cb165-2"><a href="#cb165-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb165-3"><a href="#cb165-3" aria-hidden="true" tabindex="-1"></a><span class="er">**Specify the null and alternative hypotheses **: Define the null and alternative hypotheses for your test. For example, the null hypothesis might be that the two groups have the same distribution, and the alternative hypothesis might be that the two groups have different distributions.</span></span>
+<span id="cb165-4"><a href="#cb165-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb165-5"><a href="#cb165-5" aria-hidden="true" tabindex="-1"></a>Generate simulated data: Generate simulated data that reflects the null hypothesis. For example, you could generate two groups of random data <span class="im">from</span> the same distribution.</span>
+<span id="cb165-6"><a href="#cb165-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb165-7"><a href="#cb165-7" aria-hidden="true" tabindex="-1"></a>Perform the Mann<span class="op">-</span>Whitney U test: Perform the Mann<span class="op">-</span>Whitney U test on the simulated data to obtain a p<span class="op">-</span>value.</span>
+<span id="cb165-8"><a href="#cb165-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb165-9"><a href="#cb165-9" aria-hidden="true" tabindex="-1"></a>Repeat steps <span class="dv">2</span><span class="op">-</span><span class="dv">3</span> many times: Repeat steps <span class="dv">2</span><span class="op">-</span><span class="dv">3</span> many times (e.g., <span class="dv">1000</span> times) to generate a distribution of p<span class="op">-</span>values under the null hypothesis.</span>
+<span id="cb165-10"><a href="#cb165-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb165-11"><a href="#cb165-11" aria-hidden="true" tabindex="-1"></a>Estimate the power: Estimate the power of the test by calculating the proportion of times the p<span class="op">-</span>value <span class="kw">is</span> below a certain significance level (e.g., <span class="fl">0.05</span>) when the alternative hypothesis <span class="kw">is</span> true. To do this, you<span class="st">'ll need to generate simulated data that reflects the alternative hypothesis and repeat steps 2-4.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
@@ -8642,10 +8850,10 @@ https://habr.com/ru/articles/807051/</p>
 </ol>
 </blockquote>
 <p><strong>Сначала проверяем орфографические ошибки</strong></p>
-<div id="cell-384" class="cell">
+<div id="cell-380" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb159"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb159-1"><a href="#cb159-1" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.correct_notebook_text()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb166"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb166-1"><a href="#cb166-1" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.correct_notebook_text()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p><strong>Затем создаем номера у глав и оглавление</strong></p>
@@ -8656,10 +8864,10 @@ https://habr.com/ru/articles/807051/</p>
 <blockquote class="blockquote">
 <p>Сначала можно в режиме <code>draft</code> сделать пробный варант, проверить и потом уже запустить в режиме <code>final</code></p>
 </blockquote>
-<div id="cell-388" class="cell">
+<div id="cell-384" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb160"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb160-1"><a href="#cb160-1" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.make_headers_link_and_toc()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb167"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb167-1"><a href="#cb167-1" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.make_headers_link_and_toc()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p><strong>Далее создаем ссыки на выводы и аномалии</strong></p>
@@ -8674,21 +8882,21 @@ https://habr.com/ru/articles/807051/</p>
 аномалии должны начинаться с <code>_anomaly_</code><br>
 Примеры:</p>
 </blockquote>
-<div id="cell-392" class="cell">
+<div id="cell-388" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb161"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb161-1"><a href="#cb161-1" aria-hidden="true" tabindex="-1"></a>_anomalies_ В столбце с количеством детей есть отрицательные значения. <span class="dv">47</span> штук.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb168"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb168-1"><a href="#cb168-1" aria-hidden="true" tabindex="-1"></a>_anomalies_ В столбце с количеством детей есть отрицательные значения. <span class="dv">47</span> штук.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <blockquote class="blockquote">
 <p>Можно в одной ячейке и выводы и аномалии, с обеих ссылок будет переходить сюда, но назад будет возвращаться только в одно место,<br>
 в то, которое было первым в ячейке</p>
 </blockquote>
-<div id="cell-394" class="cell">
+<div id="cell-390" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb162"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb162-1"><a href="#cb162-1" aria-hidden="true" tabindex="-1"></a>_conclusion_ Только <span class="dv">5</span> процентов клиентов моложе <span class="dv">25</span> лет. Основная часть клиентов старше <span class="dv">30</span> лет.</span>
-<span id="cb162-2"><a href="#cb162-2" aria-hidden="true" tabindex="-1"></a>_anomalies_ В колонке возраста <span class="dv">101</span> нулевое значени.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb169"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb169-1"><a href="#cb169-1" aria-hidden="true" tabindex="-1"></a>_conclusion_ Только <span class="dv">5</span> процентов клиентов моложе <span class="dv">25</span> лет. Основная часть клиентов старше <span class="dv">30</span> лет.</span>
+<span id="cb169-2"><a href="#cb169-2" aria-hidden="true" tabindex="-1"></a>_anomalies_ В колонке возраста <span class="dv">101</span> нулевое значени.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <blockquote class="blockquote">
@@ -8708,39 +8916,39 @@ https://habr.com/ru/articles/807051/</p>
 <blockquote class="blockquote">
 <p>Примеры списков</p>
 </blockquote>
-<div id="cell-400" class="cell">
+<div id="cell-396" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb163"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb163-1"><a href="#cb163-1" aria-hidden="true" tabindex="-1"></a>order <span class="op">=</span> <span class="bu">dict</span>(</span>
-<span id="cb163-2"><a href="#cb163-2" aria-hidden="true" tabindex="-1"></a>            conclusions <span class="op">=</span>[ <span class="st">'Женщины чаще возвращают кредит, чем мужчины.'</span>]</span>
-<span id="cb163-3"><a href="#cb163-3" aria-hidden="true" tabindex="-1"></a>            , anomalies <span class="op">=</span> [<span class="st">'В датафрейме есть строки дубликаты. 54 строки. Меньше 1 % от всего датафрейма.  '</span>]</span>
-<span id="cb163-4"><a href="#cb163-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb170"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb170-1"><a href="#cb170-1" aria-hidden="true" tabindex="-1"></a>order <span class="op">=</span> <span class="bu">dict</span>(</span>
+<span id="cb170-2"><a href="#cb170-2" aria-hidden="true" tabindex="-1"></a>            conclusions <span class="op">=</span>[ <span class="st">'Женщины чаще возвращают кредит, чем мужчины.'</span>]</span>
+<span id="cb170-3"><a href="#cb170-3" aria-hidden="true" tabindex="-1"></a>            , anomalies <span class="op">=</span> [<span class="st">'В датафрейме есть строки дубликаты. 54 строки. Меньше 1 % от всего датафрейма.  '</span>]</span>
+<span id="cb170-4"><a href="#cb170-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-401" class="cell">
+<div id="cell-397" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb164"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb164-1"><a href="#cb164-1" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.add_conclusions_and_anomalies()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb171"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb171-1"><a href="#cb171-1" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.add_conclusions_and_anomalies()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p><strong>Если сильно нужно, создаем ссыки на гипотезы</strong></p>
 <blockquote class="blockquote">
 <p>В главе гипотез для каждой гипоетзы, куда будем переходить из оглавления, в начале перед гипотезой ставим <em>hypothesis</em> и пробел</p>
 </blockquote>
-<div id="cell-404" class="cell">
+<div id="cell-400" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb165"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb165-1"><a href="#cb165-1" aria-hidden="true" tabindex="-1"></a>_hypothesis_ <span class="op">**</span>Гипотеза <span class="dv">1</span>: Название гипотезы<span class="op">**</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb172"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb172-1"><a href="#cb172-1" aria-hidden="true" tabindex="-1"></a>_hypothesis_ <span class="op">**</span>Гипотеза <span class="dv">1</span>: Название гипотезы<span class="op">**</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <blockquote class="blockquote">
 <p>Выполняем следующую функцию и в начале отчета появится список гипотез с ссылками<br>
 Далее нужно добавить результат гипотез вручную</p>
 </blockquote>
-<div id="cell-406" class="cell">
+<div id="cell-402" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb166"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb166-1"><a href="#cb166-1" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.add_hypotheses_links_and_toc()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb173"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb173-1"><a href="#cb173-1" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.add_hypotheses_links_and_toc()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p><strong>Финальное размещение ноутбука на git hub с ссылкой на google colab</strong></p>
