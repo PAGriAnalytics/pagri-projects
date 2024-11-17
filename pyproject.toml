@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "pagri-projects"
+version = "0.1.0"
+description = ""
+authors = ["Pavel Grigoryev <pagri.analytics@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+pagri-data-tools = {path = "/home/pavel/git_repos/pagri_analytics_modules", develop = true}
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
