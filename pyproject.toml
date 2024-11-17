@@ -7,7 +7,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.12"
-pagri-data-tools = {path = "/home/pavel/git_repos/pagri_analytics_modules", develop = true}
+pagri-data-tools = {path = "/home/pagri/git_repos/pagri_analytics_modules", develop = true}
 
 
 [build-system]
