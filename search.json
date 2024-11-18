@@ -88,6 +88,6 @@
     "href": "projects/housing-ads-investigation/temp.html",
     "title": "Pavel Grigoryev projects",
     "section": "",
-    "text": "pagri_data_tools.func(total_images, kitchen_area)\nranges_x = [0.5097517730496456, 26.883865248226954]\nranges_y = [-0.15169288312557122, 74.8896623061352]\n\n\npagri_data_tools.func(total_images, floor)\nranges_x = [1.3962765957446812, 18.90514184397163]\nranges_y = [0.9705340699815773, 21.832412523020256]\n\n\npagri_data_tools.func(total_images, city_centers_nearest)\nranges_x = (np.int64(0), np.int64(50))\nranges_y = (np.float64(181.0), np.float64(65968.0))\n\n\npagri_data_tools.func(total_images, days_exposition)\nranges_x = (np.int64(0), np.int64(50))\nranges_y = (np.float64(1.0), np.float64(1580.0))\n\n\npagri_data_tools.func(last_price, living_area)\nranges_x = (np.int64(430000), np.int64(763000000))\nranges_y = (np.float64(2.0), np.float64(427.54672897196264))\n\n\n_gen_"
+    "text": "_gen_"
   }
 ]
