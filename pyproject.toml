@@ -10,6 +10,7 @@ python = "^3.12"
 pagri-data-tools = {path = "/home/pagri/git_repos/pagri_analytics_modules", develop = true}
 kaleido = "0.2.1"
 dash-bootstrap-components = "^1.6.0"
+dash-ag-grid = "^31.2.0"
 
 
 [build-system]
