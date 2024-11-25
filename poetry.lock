@@ -996,6 +996,20 @@ pyside6 = ["pyside6"]
 test = ["flaky", "ipyparallel", "pre-commit", "pytest (>=7.0)", "pytest-asyncio (>=0.23.5)", "pytest-cov", "pytest-timeout"]
 
 [[package]]
+name = "ipynbname"
+version = "2024.1.0.0"
+description = "Simply returns either notebook filename or the full path to the notebook when run from Jupyter notebook in browser."
+optional = false
+python-versions = "<4,>=3.4"
+files = [
+    {file = "ipynbname-2024.1.0.0-py3-none-any.whl", hash = "sha256:cdd098cfe1986baa1d4ecb0b42f7a2b63646f25570f57163239beba73f26d65a"},
+    {file = "ipynbname-2024.1.0.0.tar.gz", hash = "sha256:1d3c69cdee8a97814f456a7204e9cc195b4bbb4b9e45cbe757796b162493f606"},
+]
+
+[package.dependencies]
+ipykernel = "*"
+
+[[package]]
 name = "ipython"
 version = "8.27.0"
 description = "IPython: Productive Interactive Computing"
@@ -3478,4 +3492,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "921f2f9ce9a92a47894085c93447ef03792adbf3c3b5e975625353f514fadc18"
+content-hash = "2372b4ae925913473adb1c8872006504a2bd424c8b5a4d9cc212b396deaae4ea"
