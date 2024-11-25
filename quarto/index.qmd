@@ -2,6 +2,8 @@
 listing:
   type: grid
   contents: projects
-  fields: [title, description]
+  fields: [title, description_for_list]
+  field-display-names:
+    description_for_list: " "  
 page-layout: full
 ---
