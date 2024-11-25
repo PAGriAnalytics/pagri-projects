@@ -6,18 +6,4 @@
 a[name] {
     scroll-margin-top: 50px; /* Отступ сверху */
 }
-.scroll-to-top {
-    position: fixed; /* Фиксированное положение */
-    top: 20px; /* Отступ от верха */
-    left: 20px; /* Отступ от левого края */
-    background-color: #007bff; /* Цвет фона */
-    color: white; /* Цвет текста */
-    padding: 10px 15px; /* Отступы */
-    border-radius: 5px; /* Закругленные углы */
-    text-decoration: none; /* Убираем подчеркивание */
-    display: none; /* Скрываем кнопку по умолчанию */
-    z-index: 1000; /* Убедитесь, что кнопка поверх других элементов */
-}
-.scroll-to-top:hover {
-background-color: #0056b3; /* Цвет при наведении */
-}
+
