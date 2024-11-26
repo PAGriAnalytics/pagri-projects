@@ -23,8 +23,8 @@ website:
 
 format:
   html:
-    # theme: flatly.
-    theme: flatly
+    # theme: flatly
+    theme: flatly.scss
     css: styles.css
     # toc: true
 
