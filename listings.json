@@ -2,8 +2,10 @@
   {
     "listing": "/index.html",
     "items": [
+      "/projects/prospective_tariff_for_telecom/temp.html",
       "/projects/creditworthiness-research/creditworthiness_research.html",
-      "/projects/housing-ads-investigation/housing_ads_investigation.html"
+      "/projects/housing-ads-investigation/housing_ads_investigation.html",
+      "/projects/prospective_tariff_for_telecom/prospective_tariff_for_telecom.html"
     ]
   }
 ]
