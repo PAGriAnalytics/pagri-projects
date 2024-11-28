@@ -147,10 +147,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<div id="cell-0" class="cell" data-vscode="{&quot;languageId&quot;:&quot;plaintext&quot;}">
+<div id="cell-1" class="cell" data-vscode="{&quot;languageId&quot;:&quot;plaintext&quot;}">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>_gen_ </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-1" class="cell" data-vscode="{&quot;languageId&quot;:&quot;plaintext&quot;}">
+<div id="cell-2" class="cell" data-vscode="{&quot;languageId&quot;:&quot;plaintext&quot;}">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>Что изучить  </span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> Посмотреть поведение пользователей, которые перестали пользоваться тарифом  </span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>определить что их отличает от остальных, что у них общего</span>
@@ -172,7 +172,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Стоимость услуг сверх тарифного пакета: 1. минута разговора: 1 рубль; 2. сообщение: 1 рубль; 3. 1 Гб интернет-трафика: 150 рублей.</li>
 </ul></li>
 </ul>
-<div id="cell-3" class="cell" data-vscode="{&quot;languageId&quot;:&quot;plaintext&quot;}">
+<div id="cell-4" class="cell" data-vscode="{&quot;languageId&quot;:&quot;plaintext&quot;}">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df_users Таблица users (информация о пользователях)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>df_calls Таблица calls (информация о звонках)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>df_messages Таблица messages (информация о сообщениях)</span>
@@ -185,7 +185,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>df_arpu</span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-4" class="cell" data-vscode="{&quot;languageId&quot;:&quot;plaintext&quot;}">
+<div id="cell-5" class="cell" data-vscode="{&quot;languageId&quot;:&quot;plaintext&quot;}">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> В колонке с датой прекращения пользования тарифом <span class="dv">92</span> <span class="op">%</span> пропусков. Значит <span class="dv">92</span> <span class="op">%</span> пользователей ещё пользуются таррифом.</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> Есть пропущенные недели и дни в дате прекращения пользования тарифом, но в данном случае это нормально.  </span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> В колонке с датой подключения тарифа <span class="dv">26</span> <span class="op">%</span> дней пропущено.</span>
@@ -207,9 +207,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> Сделать проверку на нулевые значения в длительности звонка и в объеме интернет трафика.  </span>
 <span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> Большинство пользователей в возрасте старше <span class="dv">60</span> лет.</span>
 <span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> Летом совершалось меньше всего звонков.</span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> Больше всего звонков было в декабре и ноябре.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> Больше всего звонков было в декабре и ноябре.</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> На гистограмме выручки присутствуют <span class="dv">2</span> пика. Это связанно с абоненской платой, так как у нас <span class="dv">2</span> тарифа</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> Месячная выручка по пользователям варьируется от <span class="dv">550</span> до <span class="dv">6</span> <span class="fl">542.88</span><span class="er">рублей</span>.</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> В основном выручка лежит в диапазоне от <span class="fl">656.94</span> до <span class="dv">1</span> <span class="dv">950</span> рублей.</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> В тарифе премиум чаще не превышают лимит по тарифу. Это видно по самым распространенным значениям в выручке.  </span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> Средняя количество звонков в день варьируется от <span class="dv">0</span> до <span class="fl">100.</span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> В основном пользователи совершают от <span class="fl">1.95</span> до <span class="dv">3</span> звонков в день.</span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> Средняя количество сообщений в день варьируется от <span class="dv">0</span> до <span class="fl">51.67</span></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> В основном пользователи отправляют от <span class="fl">1.18</span> до <span class="fl">2.33</span> сообщений в день.</span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> Пользователи проводят от <span class="dv">0</span> до <span class="dv">58</span> интернет<span class="op">-</span>сессий в день.</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> В основном пользователи проводят от <span class="fl">1.75</span> до <span class="fl">2.35</span> интернет<span class="op">-</span>сесси в день.</span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> Средняя длительность звонка в день варьируется от <span class="dv">0</span> до <span class="dv">58</span> минут.</span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> В основном звонки длятся от <span class="fl">1.75</span> до <span class="fl">2.35</span> минут.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-5" class="cell" data-vscode="{&quot;languageId&quot;:&quot;plaintext&quot;}">
+<div id="cell-6" class="cell" data-vscode="{&quot;languageId&quot;:&quot;plaintext&quot;}">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>Переменные с <span class="bu">id</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> user_id (users) <span class="op">-</span> уникальный идентификатор пользователя</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> <span class="bu">id</span> (calls) <span class="op">-</span> уникальный номер звонка</span>
