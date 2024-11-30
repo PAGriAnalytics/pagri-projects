@@ -46,5 +46,8 @@
   },
   "projects/temp.qmd": {
     "temp.html": "e2efe86d"
+  },
+  "projects/prospective_tariff_for_telecom/prospective_tariff_for_telecom.ipynb": {
+    "prospective_tariff_for_telecom.html": "a384ca96"
   }
 }
