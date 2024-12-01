@@ -11,7 +11,7 @@
     "href": "projects/prospective_tariff_for_telecom/prospective_tariff_for_telecom.html#загрузка-библиотек",
     "title": "Определение перспективного тарифа для телеком-компании",
     "section": "Загрузка библиотек ",
-    "text": "Загрузка библиотек \n\n\nShow the code\n%load_ext autoreload\n%autoreload 2\nimport pandas as pd\nimport numpy as np\nimport plotly.express as px\nimport pagri_data_tools  # type: ignore\npd.set_option('display.max_columns', None)\n\n\nThe autoreload extension is already loaded. To reload it, use:\n  %reload_ext autoreload"
+    "text": "Загрузка библиотек \n\n\nShow the code\n%load_ext autoreload\n%autoreload 2\nimport pandas as pd\nimport numpy as np\nimport plotly.express as px\nimport pagri_data_tools  # type: ignore\npd.set_option('display.max_columns', None)"
   },
   {
     "objectID": "projects/prospective_tariff_for_telecom/prospective_tariff_for_telecom.html#описание-и-изучение-данных",
