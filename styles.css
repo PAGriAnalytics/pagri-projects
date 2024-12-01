@@ -7,7 +7,7 @@ a[name] {
     scroll-margin-top: 50px; /* Отступ сверху при переходе по ссылке */
 }
 body {
-    font-size: 14px; /* Размер шрифта основного текста */
+    font-size: 15px; /* Размер шрифта основного текста */
     font-family: 'Segoe UI', sans-serif; /* Семейство шрифта */
 }
 /* .small {
