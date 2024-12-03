@@ -147,23 +147,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<div id="cell-0" class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> rating<span class="op">==</span><span class="st">'E'</span> <span class="kw">or</span> rating<span class="op">==</span><span class="st">'K-A'</span>:</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">'Для всех'</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> rating<span class="op">==</span><span class="st">'M'</span>:</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">'От 17 лет'</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> rating<span class="op">==</span><span class="st">'T'</span>:</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">'От 13 лет'</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> rating <span class="op">==</span> <span class="st">'E10+'</span>:</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">'От 10 лет'</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> rating <span class="op">==</span> <span class="st">'AO'</span>:</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">'От 18 лет'</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> rating <span class="op">==</span> <span class="st">'EC'</span>:</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">'От 3 лет'</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> rating <span class="op">==</span> <span class="st">'RP'</span>:</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">'Не определен'</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"ND"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="2d94cb1e" class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>_gen_ </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-1" class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>_start_</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>_end_</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> IPython</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>notebook_path <span class="op">=</span> <span class="st">"/"</span>.join(</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        IPython.extract_module_locals()[<span class="dv">1</span>][<span class="st">"__vsc_ipynb_file__"</span>].split(<span class="st">"/"</span>))</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.collect_observations(notebook_path, <span class="st">'/home/pagri/git_repos/pagri-projects/quarto/projects/research_on_video_game_sales/temp_for_report.ipynb'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Corrected notebook saved to /home/pagri/git_repos/pagri-projects/quarto/projects/research_on_video_game_sales/temp_for_report.ipynb</code></pre>
+</div>
 </div>
 <p>Пропуски - В столбце с годом выпуска 2 % пропусков. - В столбце с оценкой критиков 51% пропущенных занчений. - В столбце с оценкой пользователей 55% пропущенных значений. - В столбце с названием игры есть 2 пропущенных значения (менее 1%) - В столбце с жанром игры 2% пропусков.<br>
 - В рейтинге 40% пропусков.</p>
@@ -179,71 +175,57 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Пропуски в одних и тех же строках в названии игры и в жанре.</li>
 </ul>
 <p>Наблюдения - Есть странное значение tbd, которое не является числом. И таких значений 24 %. - Игры имеют год выпуска от 1980 до 2016 года. - Основная часть игр имеет год выпуска от 2003 до 2010 года. - Больше всего игр 2008 года. - В столбце с продажами в Северной Америке есть нули (27%). По видимому для этих игр не было продаж в Северной Америке. - Количество проданных игр в Северной Америке лежит в диапазоне от 0 до 41.36 млн. - В основном количество проданных игр в Северной Америке находится в диапазоне от 0 до 0.24 млн. - В столбце с продажами в Европе есть нули (35%). По видимому для этих игр не было продаж в Европе. - Количество проданных игр в Европе лежит в диапазоне от 0 до 28.96 млн. - В основном количество проданных игр в Европе находится в диапазоне от 0 до 0.11 млн. - В столбце с продажами в Японии есть нули (63%). По видимому для этих игр не было продаж в Японии. - Количество проданных игр в Японии лежит в диапазоне от 0 до 10.22 млн. - В основном количество проданных игр в Японии находится в диапазоне от 0 до 0.4 млн. - В столбце с продажами в других странах есть нули (39%). По видимому для этих игр не было продаж в других странах. - Количество проданных игр в других странах лежит в диапазоне от 0 до 10.57 млн. - В основном количество проданных игр в других странах находится в диапазоне от 0 до 0.03 млн. - Оценка критиков лежит в диапазоне от 13 до 98. - В основном критики ставят оценки от 60 до 79. - Оценка пользователей варируется от 0 до 9.7. - В освновном пользователи ставят оценки от 6.4 до 8.2 - Топ 5 самых встречающихся игр: Need for Speed: Most Wanted, Ratatouille, LEGO Marvel Super Heroes, FIFA 14, Madden NFL 07 - Больше всего игр на платформах PS2 и DS (по 13% от общего числа игр). - Больше всего игр в жанре Action. - Больше всего игр с рейтингами E (40%) и T(30%).</p>
-<div id="2d94cb1e" class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>_gen_ </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="cell-3" class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>_start_</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>_end_</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> IPython</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>notebook_path <span class="op">=</span> <span class="st">"/"</span>.join(</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        IPython.extract_module_locals()[<span class="dv">1</span>][<span class="st">"__vsc_ipynb_file__"</span>].split(<span class="st">"/"</span>))</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.collect_observations(notebook_path, <span class="st">'/home/pagri/git_repos/pagri-projects/quarto/projects/research_on_video_game_sales/temp_for_report.ipynb'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Corrected notebook saved to /home/pagri/git_repos/pagri-projects/quarto/projects/research_on_video_game_sales/temp_for_report.ipynb</code></pre>
-</div>
-</div>
-<div id="cell-4" class="cell" data-vscode="{&quot;languageId&quot;:&quot;plaintext&quot;}">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>Переменные с <span class="bu">id</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> user_id (users) <span class="op">-</span> уникальный идентификатор пользователя</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> <span class="bu">id</span> (calls) <span class="op">-</span> уникальный номер звонка</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> <span class="bu">id</span> (messages) <span class="op">-</span> уникальный номер сообщения</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> user_id (calls) <span class="op">-</span> идентификатор пользователя, сделавшего звонок</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> user_id (messages) <span class="op">-</span> идентификатор пользователя, отправившего сообщение</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> <span class="bu">id</span> (internet) <span class="op">-</span> уникальный номер сессии</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> user_id (internet) <span class="op">-</span> идентификатор пользователя</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>Категориальные переменные</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> city (users) <span class="op">-</span> город проживания пользователя</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> tarif (users) <span class="op">-</span> название тарифного плана</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> tariff_name (tariffs) <span class="op">-</span> название тарифа</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> age_cat (users) <span class="op">-</span> возрастная категория</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> duration_cat (calls) <span class="op">-</span> категория длительности звонка</span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> mb_used_cat (internet) <span class="op">-</span> категория объема интернет трафика</span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> reg_date_weekday (users) <span class="op">-</span> день недели подключения тарифа</span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> reg_date_month (users) <span class="op">-</span> месяц подключения тарифа</span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> reg_date_weekday (users) <span class="op">-</span> день недели подключения тарифа</span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> reg_date_month (users) <span class="op">-</span> месяц подключения тарифа</span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> call_date_weekday (calls) <span class="op">-</span> день недели звонка</span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> call_date_month (calls) <span class="op">-</span> месяц звонка</span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> message_date_weekday (messages) <span class="op">-</span> день недели сообщения</span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> message_date_month (messages) <span class="op">-</span> месяц сообщения</span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> session_date_weekday (internet) <span class="op">-</span> день недели интернет<span class="op">-</span>сессии</span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> session_date_month (internet) <span class="op">-</span> месяц интернет<span class="op">-</span>сессии</span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> is_active <span class="op">-</span> активен ли тариф</span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>Числовые переменные</span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> age (users) <span class="op">-</span> возраст пользователя (годы)</span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> duration (calls) <span class="op">-</span> длительность звонка в минутах</span>
-<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> mb_used (internet) <span class="op">-</span> объём потраченного за сессию интернет<span class="op">-</span>трафика (в мегабайтах)</span>
-<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> rub_monthly_fee (tariffs) <span class="op">-</span> ежемесячная абонентская плата в рублях</span>
-<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> minutes_included (tariffs) <span class="op">-</span> количество минут разговора в месяц, включённых в абонентскую плату</span>
-<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> messages_included (tariffs) <span class="op">-</span> количество сообщений в месяц, включённых в абонентскую плату</span>
-<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> mb_per_month_included (tariffs) <span class="op">-</span> объём интернет<span class="op">-</span>трафика, включённого в абонентскую плату (в мегабайтах)</span>
-<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> rub_per_minute (tariffs) <span class="op">-</span> стоимость минуты разговора сверх тарифного пакета (например, если в тарифе <span class="dv">100</span> минут разговора в месяц, то со <span class="dv">101</span> минуты будет взиматься плата)</span>
-<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> rub_per_message (tariffs) <span class="op">-</span> стоимость отправки сообщения сверх тарифного пакета</span>
-<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> rub_per_gb (tariffs) <span class="op">-</span> стоимость дополнительного гигабайта интернет<span class="op">-</span>трафика сверх тарифного пакета (<span class="dv">1</span> гигабайт <span class="op">=</span> <span class="dv">1024</span> мегабайта)</span>
-<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>Временные переменные</span>
-<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> reg_date (users) <span class="op">-</span> дата подключения тарифа (день, месяц, год)</span>
-<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> churn_date (users) <span class="op">-</span> дата прекращения пользования тарифом (если значение пропущено, то тариф ещё действовал на момент выгрузки данных)</span>
-<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> call_date (calls) <span class="op">-</span> дата звонка</span>
-<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> message_date (messages) <span class="op">-</span> дата сообщения</span>
-<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> session_date (internet) <span class="op">-</span> дата интернет<span class="op">-</span>сессии</span>
-<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>Остальные</span>
-<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> first_name (users) <span class="op">-</span> имя пользователя</span>
-<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> last_name (users) <span class="op">-</span> фамилия пользователя</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-3" class="cell" data-vscode="{&quot;languageId&quot;:&quot;plaintext&quot;}">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>Переменные с <span class="bu">id</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> user_id (users) <span class="op">-</span> уникальный идентификатор пользователя</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> <span class="bu">id</span> (calls) <span class="op">-</span> уникальный номер звонка</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> <span class="bu">id</span> (messages) <span class="op">-</span> уникальный номер сообщения</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> user_id (calls) <span class="op">-</span> идентификатор пользователя, сделавшего звонок</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> user_id (messages) <span class="op">-</span> идентификатор пользователя, отправившего сообщение</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> <span class="bu">id</span> (internet) <span class="op">-</span> уникальный номер сессии</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> user_id (internet) <span class="op">-</span> идентификатор пользователя</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>Категориальные переменные</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> city (users) <span class="op">-</span> город проживания пользователя</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> tarif (users) <span class="op">-</span> название тарифного плана</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> tariff_name (tariffs) <span class="op">-</span> название тарифа</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> age_cat (users) <span class="op">-</span> возрастная категория</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> duration_cat (calls) <span class="op">-</span> категория длительности звонка</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> mb_used_cat (internet) <span class="op">-</span> категория объема интернет трафика</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> reg_date_weekday (users) <span class="op">-</span> день недели подключения тарифа</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> reg_date_month (users) <span class="op">-</span> месяц подключения тарифа</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> reg_date_weekday (users) <span class="op">-</span> день недели подключения тарифа</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> reg_date_month (users) <span class="op">-</span> месяц подключения тарифа</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> call_date_weekday (calls) <span class="op">-</span> день недели звонка</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> call_date_month (calls) <span class="op">-</span> месяц звонка</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> message_date_weekday (messages) <span class="op">-</span> день недели сообщения</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> message_date_month (messages) <span class="op">-</span> месяц сообщения</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> session_date_weekday (internet) <span class="op">-</span> день недели интернет<span class="op">-</span>сессии</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> session_date_month (internet) <span class="op">-</span> месяц интернет<span class="op">-</span>сессии</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> is_active <span class="op">-</span> активен ли тариф</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>Числовые переменные</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> age (users) <span class="op">-</span> возраст пользователя (годы)</span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> duration (calls) <span class="op">-</span> длительность звонка в минутах</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> mb_used (internet) <span class="op">-</span> объём потраченного за сессию интернет<span class="op">-</span>трафика (в мегабайтах)</span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> rub_monthly_fee (tariffs) <span class="op">-</span> ежемесячная абонентская плата в рублях</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> minutes_included (tariffs) <span class="op">-</span> количество минут разговора в месяц, включённых в абонентскую плату</span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> messages_included (tariffs) <span class="op">-</span> количество сообщений в месяц, включённых в абонентскую плату</span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> mb_per_month_included (tariffs) <span class="op">-</span> объём интернет<span class="op">-</span>трафика, включённого в абонентскую плату (в мегабайтах)</span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> rub_per_minute (tariffs) <span class="op">-</span> стоимость минуты разговора сверх тарифного пакета (например, если в тарифе <span class="dv">100</span> минут разговора в месяц, то со <span class="dv">101</span> минуты будет взиматься плата)</span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> rub_per_message (tariffs) <span class="op">-</span> стоимость отправки сообщения сверх тарифного пакета</span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> rub_per_gb (tariffs) <span class="op">-</span> стоимость дополнительного гигабайта интернет<span class="op">-</span>трафика сверх тарифного пакета (<span class="dv">1</span> гигабайт <span class="op">=</span> <span class="dv">1024</span> мегабайта)</span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>Временные переменные</span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> reg_date (users) <span class="op">-</span> дата подключения тарифа (день, месяц, год)</span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> churn_date (users) <span class="op">-</span> дата прекращения пользования тарифом (если значение пропущено, то тариф ещё действовал на момент выгрузки данных)</span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> call_date (calls) <span class="op">-</span> дата звонка</span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> message_date (messages) <span class="op">-</span> дата сообщения</span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> session_date (internet) <span class="op">-</span> дата интернет<span class="op">-</span>сессии</span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>Остальные</span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> first_name (users) <span class="op">-</span> имя пользователя</span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> last_name (users) <span class="op">-</span> фамилия пользователя</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>name - название игры</li>
@@ -258,23 +240,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>user_Score - оценка пользователей (максимум 10)</li>
 <li>rating - рейтинг от организации ESRB (англ. Entertainment Software Rating Board). Эта ассоциация определяет рейтинг компьютерных игр и присваивает им подходящую возрастную категорию.</li>
 </ul>
-<div id="cell-6" class="cell" data-vscode="{&quot;languageId&quot;:&quot;plaintext&quot;}">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>Существующие рейтинги:</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    Рейтинг в ожидании (RP)</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    Все (E)</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    Все <span class="dv">10</span><span class="op">+</span> (E10<span class="op">+</span>)</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    Подросток (Т)</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    Зрелые <span class="dv">17</span><span class="op">+</span> (М)</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    Только для взрослых <span class="dv">18</span><span class="op">+</span> (АО)</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>Прежние рейтинги:</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    Раннее детство (ЕС) <span class="op">-</span> Больше не используется с <span class="dv">2018</span> года</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    Для детей (K<span class="op">-</span>A)– для тех, кто уже научился говорить и держать джойстик, эти игры уже могут вызывать интерес (позже в <span class="dv">1998</span> году был переименован в Е – для всех возрастов, а также чуть позже был добавлен рейтинг Е<span class="dv">10</span><span class="op">+</span>, как промежуточный между Е и Т)</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-5" class="cell" data-vscode="{&quot;languageId&quot;:&quot;plaintext&quot;}">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>Существующие рейтинги:</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    Рейтинг в ожидании (RP)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    Все (E)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    Все <span class="dv">10</span><span class="op">+</span> (E10<span class="op">+</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    Подросток (Т)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    Зрелые <span class="dv">17</span><span class="op">+</span> (М)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    Только для взрослых <span class="dv">18</span><span class="op">+</span> (АО)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>Прежние рейтинги:</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    Раннее детство (ЕС) <span class="op">-</span> Больше не используется с <span class="dv">2018</span> года</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    Для детей (K<span class="op">-</span>A)– для тех, кто уже научился говорить и держать джойстик, эти игры уже могут вызывать интерес (позже в <span class="dv">1998</span> году был переименован в Е – для всех возрастов, а также чуть позже был добавлен рейтинг Е<span class="dv">10</span><span class="op">+</span>, как промежуточный между Е и Т)</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
