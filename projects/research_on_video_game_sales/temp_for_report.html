@@ -103,7 +103,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <link rel="stylesheet" href="../../styles.css">
 <meta property="og:title" content="Pavel Grigoryev projects">
-<meta property="og:description" content="">
 <meta property="og:site_name" content="Pavel Grigoryev projects">
 <meta property="og:locale" content="en_US">
 </head>
@@ -147,34 +146,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
+<div id="cell-1" class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>средняя оценка критиков не зависит от категории продаж</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    , x <span class="op">=</span> <span class="st">'sales_cat'</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    , y <span class="op">=</span> <span class="st">'critic_score'</span>  </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>средняя оценка критиков не зависит от жанра    </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>средняя оценка пользователей не зависит от жанра</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>средняя оценка критиков не зависит от рейтинга    </span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>средняя оценка пользователей не зависит от рейтинга</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <div id="2d94cb1e" class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>_gen_ </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>_gen_ </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-2" class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>_start_</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>_end_</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> IPython</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>notebook_path <span class="op">=</span> <span class="st">"/"</span>.join(</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        IPython.extract_module_locals()[<span class="dv">1</span>][<span class="st">"__vsc_ipynb_file__"</span>].split(<span class="st">"/"</span>))</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.collect_observations(notebook_path, <span class="st">'/home/pagri/git_repos/pagri-projects/quarto/projects/research_on_video_game_sales/temp_for_report.ipynb'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Corrected notebook saved to /home/pagri/git_repos/pagri-projects/quarto/projects/research_on_video_game_sales/temp_for_report.ipynb</code></pre>
+<div id="cell-3" class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>_start_</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>_end_</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> IPython</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>notebook_path <span class="op">=</span> <span class="st">"/"</span>.join(</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        IPython.extract_module_locals()[<span class="dv">1</span>][<span class="st">"__vsc_ipynb_file__"</span>].split(<span class="st">"/"</span>))</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.collect_observations(notebook_path, <span class="st">'/home/pagri/git_repos/pagri-projects/quarto/projects/research_on_video_game_sales/temp_for_report.ipynb'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-<p>Пропуски - В столбце с годом выпуска 2 % пропусков. - В столбце с оценкой критиков 51% пропущенных занчений. - В столбце с оценкой пользователей 55% пропущенных значений. - В столбце с названием игры есть 2 пропущенных значения (менее 1%) - В столбце с жанром игры 2% пропусков.<br>
-- В рейтинге 40% пропусков.</p>
-<ul>
-<li>У игры Madden NFL 13 все параметры совпадают в дублях, кроме количества проданных копий.<br>
-Возможно часть проданных копий учлась отдельно.</li>
-<li>В игре Need for Speed: Most Wanted у дублей разные года выпуска, поэтому это не дубли.</li>
-<li>Значение 0 в оценке пользователей явно является аномалией.</li>
-<li>Процент выбросов во всех колонках, кроме года выпуска, находится в диапазоне 0-5%. Это может указывать на то, что данные достаточно чистые и не содержат значительных аномалий.</li>
-<li>Процент выбросов во всех колонках примерно одинаковый, что может свидетельствовать об однородности данных.</li>
-<li>Почти все пропуски в рейтинге находятся в тех же строках, что и пропуски в оценке критиков и оценке пользователей.</li>
-<li>Большинство пропусков в столбцах оценка пользователей и оценка критиков находятся в одних и тех же строках.</li>
-<li>Пропуски в одних и тех же строках в названии игры и в жанре.</li>
-</ul>
-<p>Наблюдения - Есть странное значение tbd, которое не является числом. И таких значений 24 %. - Игры имеют год выпуска от 1980 до 2016 года. - Основная часть игр имеет год выпуска от 2003 до 2010 года. - Больше всего игр 2008 года. - В столбце с продажами в Северной Америке есть нули (27%). По видимому для этих игр не было продаж в Северной Америке. - Количество проданных игр в Северной Америке лежит в диапазоне от 0 до 41.36 млн. - В основном количество проданных игр в Северной Америке находится в диапазоне от 0 до 0.24 млн. - В столбце с продажами в Европе есть нули (35%). По видимому для этих игр не было продаж в Европе. - Количество проданных игр в Европе лежит в диапазоне от 0 до 28.96 млн. - В основном количество проданных игр в Европе находится в диапазоне от 0 до 0.11 млн. - В столбце с продажами в Японии есть нули (63%). По видимому для этих игр не было продаж в Японии. - Количество проданных игр в Японии лежит в диапазоне от 0 до 10.22 млн. - В основном количество проданных игр в Японии находится в диапазоне от 0 до 0.4 млн. - В столбце с продажами в других странах есть нули (39%). По видимому для этих игр не было продаж в других странах. - Количество проданных игр в других странах лежит в диапазоне от 0 до 10.57 млн. - В основном количество проданных игр в других странах находится в диапазоне от 0 до 0.03 млн. - Оценка критиков лежит в диапазоне от 13 до 98. - В основном критики ставят оценки от 60 до 79. - Оценка пользователей варируется от 0 до 9.7. - В освновном пользователи ставят оценки от 6.4 до 8.2 - Топ 5 самых встречающихся игр: Need for Speed: Most Wanted, Ratatouille, LEGO Marvel Super Heroes, FIFA 14, Madden NFL 07 - Больше всего игр на платформах PS2 и DS (по 13% от общего числа игр). - Больше всего игр в жанре Action. - Больше всего игр с рейтингами E (40%) и T(30%).</p>
 <div id="cell-4" class="cell" data-vscode="{&quot;languageId&quot;:&quot;plaintext&quot;}">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>Переменные с <span class="bu">id</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> user_id (users) <span class="op">-</span> уникальный идентификатор пользователя</span>
