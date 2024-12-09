@@ -2,10 +2,12 @@
   {
     "listing": "/index.html",
     "items": [
+      "/projects/business_metrics_in_yandex_afisha/business_metrics_in_yandex_afisha.html",
       "/projects/creditworthiness-research/creditworthiness_research.html",
       "/projects/housing-ads-investigation/housing_ads_investigation.html",
       "/projects/research_on_video_game_sales/research_on_video_game_sales.html",
-      "/projects/prospective_tariff_for_telecom/prospective_tariff_for_telecom.html"
+      "/projects/prospective_tariff_for_telecom/prospective_tariff_for_telecom.html",
+      "/projects/business_metrics_in_yandex_afisha/temp_for_report.html"
     ]
   }
 ]
