@@ -147,32 +147,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<div id="2d94cb1e" class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>_gen_ </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><p>В столбце с суммой заказов 51 нулевое значение (меньше 1%)</p></li>
+<li><p>В таблице с расходами на рекламные компании 7 уникальных рекламных компаний, а в табице с посещениями сайтов 9.<br>
+Компании 6 и 7 отстутствуют в таблице с расходами на рекламные компании. Возможно это бесплатный трафик.</p></li>
+<li><p>Сумма заказа в 2633.28 у.е. является выбросом</p></li>
+<li><p>В расходах на рекламные компании значение 1788.28 у.е. является выбросом.</p></li>
+<li><p>2 пользователя (id 5539673724080479777 и 11149926373378902217) имеют намного болше суммы заказов, чем остальные. Скорее всего это оптовики или перекупы.</p></li>
+<li><p>Для рекламной компании с id 3 были две очень крупные суммы расходов 2017-11-01 и 2017-12-11.</p></li>
+<li><p>Процент выбросов в выручке меньше 10%, это указывает на то, что выбросов не слишком много.</p></li>
+<li><p>Боьше всего суммарных выбросов в стоимости заказа было в декабре 2017 года</p></li>
+<li><p>Процент выбросов в расходах на рекламные компании чуть больше 10%, это указывает на то, что выбросов не слишком много.</p></li>
+<li><p>Боьше всего суммарные расходы в выбросах у компании с id 3.</p></li>
+<li><p>С ноября 2017 по март 2018 тратилось много денег на компаню с id 3.</p></li>
+<li><p>Рекламная. компания с id 3 имеет больше выбросов в расходах, чем другие компании. Также много выбросов в расходах у компании с id 10, но меньше</p></li>
+<li><p>У пользователя с id 2037345392173160982 больше всего нулей в стоимости заказа.</p></li>
+<li><p>В дате окончания сессии последняя дата попала на следующий месяц, нужно это учесть при расчете метрик.</p></li>
+<li><p>В дате окончания сессии есть пропуски в днях, но совсем мало (меньше 1%)</p></li>
+<li><p>В дате начала сессии есть пропуски в днях, но совсем мало (меньше 1%)</p></li>
+<li><p>В таблице с логами о посещении сайта 63% уникльных пользователей.</p></li>
+<li><p>Пользователей с девайсами desktop 73%, пользователей с девайсами touchpad 27%</p></li>
+<li><p>В таблице визитов 9 униклальных источников перехода на сайт</p></li>
+<li><p>Источники 6 и 7 очень редко встречаются</p></li>
+<li><p>В дате заказа последняя дата попала на следующий месяц, нужно это учесть при расчете метрик.</p></li>
+<li><p>В дате заказа есть пропущенные дни, но их мало (меньше 1%)</p></li>
+<li><p>Сумма заказа варируется от 0 до 2633.28 у.е.</p></li>
+<li><p>В основном заказы совершаются в диапазоне от 1.22 до 4.89 у.е.</p></li>
+<li><p>В таблице с заказами 72% уникльных пользователей.</p></li>
+<li><p>В таблице с расходами на рекламные компании есть попущенные дни, но их мало (меньше 1%)</p></li>
+<li><p>Расходы на рекламные компании варьируются от 0.54 до 1788.28 у.е.</p></li>
+<li><p>В основном расходы на рекламу лежат в диапазоне от 21.95 до 170.06 у.е.</p></li>
+</ul>
+<div id="4933dd08" class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.analyze_anomaly_by_category(df, series_missed, <span class="st">"by_category"</span>, <span class="st">"promo_costs"</span>, <span class="st">"source_id"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-1" class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>_start_</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>_end_</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> IPython</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>notebook_path <span class="op">=</span> <span class="st">"/"</span>.join(</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        IPython.extract_module_locals()[<span class="dv">1</span>][<span class="st">"__vsc_ipynb_file__"</span>].split(<span class="st">"/"</span>))</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.collect_observations(notebook_path, <span class="st">''</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Наблюдения:</strong> - Рекламная. компания с id 3 имеет больше выбросов в расходах, чем другие компании. Также много выбросов в расходах у компании с id 10, но меньше</p>
+<div id="2d94cb1e" class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>_gen_ </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-4" class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>_pagristart_</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>_pagriend_</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> IPython</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>notebook_path <span class="op">=</span> <span class="st">"/"</span>.join(</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        IPython.extract_module_locals()[<span class="dv">1</span>][<span class="st">"__vsc_ipynb_file__"</span>].split(<span class="st">"/"</span>))</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.collect_observations(notebook_path, <span class="st">''</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Corrected notebook saved to /home/pagri/git_repos/pagri-projects/quarto/projects/research_on_video_game_sales/temp_for_report.ipynb</code></pre>
 </div>
 </div>
-<div id="cell-2" class="cell" data-vscode="{&quot;languageId&quot;:&quot;plaintext&quot;}">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df_visits (лог сервера с информацией о посещениях сайта)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>df_orders (информацию о заказах)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>df_costs (информацию о расходах на маркетинг)</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-5" class="cell" data-vscode="{&quot;languageId&quot;:&quot;plaintext&quot;}">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df_visits (лог сервера с информацией о посещениях сайта)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>df_orders (информацию о заказах)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>df_costs (информацию о расходах на маркетинг)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-3" class="cell" data-vscode="{&quot;languageId&quot;:&quot;plaintext&quot;}">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> В колонке с датой прекращения пользования тарифом <span class="dv">92</span> <span class="op">%</span> пропусков. Значит <span class="dv">92</span> <span class="op">%</span> пользователей ещё пользуются таррифом.</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> На гистограмме выручки присутствуют <span class="dv">2</span> пика. Это связанно с абоненской платой, так как у нас <span class="dv">2</span> тарифа</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-6" class="cell" data-vscode="{&quot;languageId&quot;:&quot;plaintext&quot;}">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>оптовики</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="dv">5539673724080479777</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="dv">11149926373378902217</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-7" class="cell" data-vscode="{&quot;languageId&quot;:&quot;plaintext&quot;}">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> В колонке с датой прекращения пользования тарифом <span class="dv">92</span> <span class="op">%</span> пропусков. Значит <span class="dv">92</span> <span class="op">%</span> пользователей ещё пользуются таррифом.</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> На гистограмме выручки присутствуют <span class="dv">2</span> пика. Это связанно с абоненской платой, так как у нас <span class="dv">2</span> тарифа</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Таблица visits_log (лог сервера с информацией о посещениях сайта):</strong></p>
 <ul>
@@ -194,57 +234,57 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>dt - дата проведения рекламной кампании,</li>
 <li>costs - расходы на эту кампанию.</li>
 </ul>
-<div id="cell-7" class="cell" data-vscode="{&quot;languageId&quot;:&quot;plaintext&quot;}">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>Переменные с <span class="bu">id</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> user_id (users) <span class="op">-</span> уникальный идентификатор пользователя</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> <span class="bu">id</span> (calls) <span class="op">-</span> уникальный номер звонка</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> <span class="bu">id</span> (messages) <span class="op">-</span> уникальный номер сообщения</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> user_id (calls) <span class="op">-</span> идентификатор пользователя, сделавшего звонок</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> user_id (messages) <span class="op">-</span> идентификатор пользователя, отправившего сообщение</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> <span class="bu">id</span> (internet) <span class="op">-</span> уникальный номер сессии</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> user_id (internet) <span class="op">-</span> идентификатор пользователя</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>Категориальные переменные</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> city (users) <span class="op">-</span> город проживания пользователя</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> tarif (users) <span class="op">-</span> название тарифного плана</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> tariff_name (tariffs) <span class="op">-</span> название тарифа</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> age_cat (users) <span class="op">-</span> возрастная категория</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> duration_cat (calls) <span class="op">-</span> категория длительности звонка</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> mb_used_cat (internet) <span class="op">-</span> категория объема интернет трафика</span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> reg_date_weekday (users) <span class="op">-</span> день недели подключения тарифа</span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> reg_date_month (users) <span class="op">-</span> месяц подключения тарифа</span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> reg_date_weekday (users) <span class="op">-</span> день недели подключения тарифа</span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> reg_date_month (users) <span class="op">-</span> месяц подключения тарифа</span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> call_date_weekday (calls) <span class="op">-</span> день недели звонка</span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> call_date_month (calls) <span class="op">-</span> месяц звонка</span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> message_date_weekday (messages) <span class="op">-</span> день недели сообщения</span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> message_date_month (messages) <span class="op">-</span> месяц сообщения</span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> session_date_weekday (internet) <span class="op">-</span> день недели интернет<span class="op">-</span>сессии</span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> session_date_month (internet) <span class="op">-</span> месяц интернет<span class="op">-</span>сессии</span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> is_active <span class="op">-</span> активен ли тариф</span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>Числовые переменные</span>
-<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> age (users) <span class="op">-</span> возраст пользователя (годы)</span>
-<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> duration (calls) <span class="op">-</span> длительность звонка в минутах</span>
-<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> mb_used (internet) <span class="op">-</span> объём потраченного за сессию интернет<span class="op">-</span>трафика (в мегабайтах)</span>
-<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> rub_monthly_fee (tariffs) <span class="op">-</span> ежемесячная абонентская плата в рублях</span>
-<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> minutes_included (tariffs) <span class="op">-</span> количество минут разговора в месяц, включённых в абонентскую плату</span>
-<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> messages_included (tariffs) <span class="op">-</span> количество сообщений в месяц, включённых в абонентскую плату</span>
-<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> mb_per_month_included (tariffs) <span class="op">-</span> объём интернет<span class="op">-</span>трафика, включённого в абонентскую плату (в мегабайтах)</span>
-<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> rub_per_minute (tariffs) <span class="op">-</span> стоимость минуты разговора сверх тарифного пакета (например, если в тарифе <span class="dv">100</span> минут разговора в месяц, то со <span class="dv">101</span> минуты будет взиматься плата)</span>
-<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> rub_per_message (tariffs) <span class="op">-</span> стоимость отправки сообщения сверх тарифного пакета</span>
-<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> rub_per_gb (tariffs) <span class="op">-</span> стоимость дополнительного гигабайта интернет<span class="op">-</span>трафика сверх тарифного пакета (<span class="dv">1</span> гигабайт <span class="op">=</span> <span class="dv">1024</span> мегабайта)</span>
-<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>Временные переменные</span>
-<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> reg_date (users) <span class="op">-</span> дата подключения тарифа (день, месяц, год)</span>
-<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> churn_date (users) <span class="op">-</span> дата прекращения пользования тарифом (если значение пропущено, то тариф ещё действовал на момент выгрузки данных)</span>
-<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> call_date (calls) <span class="op">-</span> дата звонка</span>
-<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> message_date (messages) <span class="op">-</span> дата сообщения</span>
-<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> session_date (internet) <span class="op">-</span> дата интернет<span class="op">-</span>сессии</span>
-<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a>Остальные</span>
-<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> first_name (users) <span class="op">-</span> имя пользователя</span>
-<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> last_name (users) <span class="op">-</span> фамилия пользователя</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-11" class="cell" data-vscode="{&quot;languageId&quot;:&quot;plaintext&quot;}">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>Переменные с <span class="bu">id</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> user_id (users) <span class="op">-</span> уникальный идентификатор пользователя</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> <span class="bu">id</span> (calls) <span class="op">-</span> уникальный номер звонка</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> <span class="bu">id</span> (messages) <span class="op">-</span> уникальный номер сообщения</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> user_id (calls) <span class="op">-</span> идентификатор пользователя, сделавшего звонок</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> user_id (messages) <span class="op">-</span> идентификатор пользователя, отправившего сообщение</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> <span class="bu">id</span> (internet) <span class="op">-</span> уникальный номер сессии</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> user_id (internet) <span class="op">-</span> идентификатор пользователя</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>Категориальные переменные</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> city (users) <span class="op">-</span> город проживания пользователя</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> tarif (users) <span class="op">-</span> название тарифного плана</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> tariff_name (tariffs) <span class="op">-</span> название тарифа</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> age_cat (users) <span class="op">-</span> возрастная категория</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> duration_cat (calls) <span class="op">-</span> категория длительности звонка</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> mb_used_cat (internet) <span class="op">-</span> категория объема интернет трафика</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> reg_date_weekday (users) <span class="op">-</span> день недели подключения тарифа</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> reg_date_month (users) <span class="op">-</span> месяц подключения тарифа</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> reg_date_weekday (users) <span class="op">-</span> день недели подключения тарифа</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> reg_date_month (users) <span class="op">-</span> месяц подключения тарифа</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> call_date_weekday (calls) <span class="op">-</span> день недели звонка</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> call_date_month (calls) <span class="op">-</span> месяц звонка</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> message_date_weekday (messages) <span class="op">-</span> день недели сообщения</span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> message_date_month (messages) <span class="op">-</span> месяц сообщения</span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> session_date_weekday (internet) <span class="op">-</span> день недели интернет<span class="op">-</span>сессии</span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> session_date_month (internet) <span class="op">-</span> месяц интернет<span class="op">-</span>сессии</span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> is_active <span class="op">-</span> активен ли тариф</span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>Числовые переменные</span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> age (users) <span class="op">-</span> возраст пользователя (годы)</span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> duration (calls) <span class="op">-</span> длительность звонка в минутах</span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> mb_used (internet) <span class="op">-</span> объём потраченного за сессию интернет<span class="op">-</span>трафика (в мегабайтах)</span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> rub_monthly_fee (tariffs) <span class="op">-</span> ежемесячная абонентская плата в рублях</span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> minutes_included (tariffs) <span class="op">-</span> количество минут разговора в месяц, включённых в абонентскую плату</span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> messages_included (tariffs) <span class="op">-</span> количество сообщений в месяц, включённых в абонентскую плату</span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> mb_per_month_included (tariffs) <span class="op">-</span> объём интернет<span class="op">-</span>трафика, включённого в абонентскую плату (в мегабайтах)</span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> rub_per_minute (tariffs) <span class="op">-</span> стоимость минуты разговора сверх тарифного пакета (например, если в тарифе <span class="dv">100</span> минут разговора в месяц, то со <span class="dv">101</span> минуты будет взиматься плата)</span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> rub_per_message (tariffs) <span class="op">-</span> стоимость отправки сообщения сверх тарифного пакета</span>
+<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> rub_per_gb (tariffs) <span class="op">-</span> стоимость дополнительного гигабайта интернет<span class="op">-</span>трафика сверх тарифного пакета (<span class="dv">1</span> гигабайт <span class="op">=</span> <span class="dv">1024</span> мегабайта)</span>
+<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a>Временные переменные</span>
+<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> reg_date (users) <span class="op">-</span> дата подключения тарифа (день, месяц, год)</span>
+<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> churn_date (users) <span class="op">-</span> дата прекращения пользования тарифом (если значение пропущено, то тариф ещё действовал на момент выгрузки данных)</span>
+<span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> call_date (calls) <span class="op">-</span> дата звонка</span>
+<span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> message_date (messages) <span class="op">-</span> дата сообщения</span>
+<span id="cb8-46"><a href="#cb8-46" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> session_date (internet) <span class="op">-</span> дата интернет<span class="op">-</span>сессии</span>
+<span id="cb8-47"><a href="#cb8-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-48"><a href="#cb8-48" aria-hidden="true" tabindex="-1"></a>Остальные</span>
+<span id="cb8-49"><a href="#cb8-49" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> first_name (users) <span class="op">-</span> имя пользователя</span>
+<span id="cb8-50"><a href="#cb8-50" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> last_name (users) <span class="op">-</span> фамилия пользователя</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
