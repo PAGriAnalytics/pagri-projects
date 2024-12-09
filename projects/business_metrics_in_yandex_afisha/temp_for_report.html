@@ -194,13 +194,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div id="cell-3" class="cell" data-vscode="{&quot;languageId&quot;:&quot;plaintext&quot;}">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df_visits (лог сервера с информацией о посещениях сайта)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>[<span class="st">'device'</span>, <span class="st">'session_end_dt'</span>, <span class="st">'source_id'</span>, <span class="st">'session_start_dt'</span>, <span class="st">'uid'</span>]</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>df_orders (информацию о заказах)</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>[<span class="st">'order_dt'</span>, <span class="st">'revenue'</span>, <span class="st">'uid'</span>]</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>df_costs (информацию о расходах на маркетинг)</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>[<span class="st">'source_id'</span>, <span class="st">'promo_date'</span>, <span class="st">'promo_costs'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>[<span class="st">'device'</span>, <span class="st">'session_end_dt'</span>, <span class="st">'source_id'</span>, <span class="st">'session_start_dt'</span>, <span class="st">'uid'</span>,</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>       <span class="st">'session_duration'</span>, <span class="st">'is_zero_session'</span>, <span class="st">'session_start_dt_month_year'</span>]</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>df_orders (информацию о заказах)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>[<span class="st">'order_dt'</span>, <span class="st">'revenue'</span>, <span class="st">'uid'</span>, <span class="st">'revenue_cat'</span>, <span class="st">'order_dt_month_year'</span>]</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>df_costs (информацию о расходах на маркетинг)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>[<span class="st">'source_id'</span>, <span class="st">'promo_date'</span>, <span class="st">'promo_costs'</span>, <span class="st">'promo_costs_cat'</span>,</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>       <span class="st">'promo_date_month_year'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="cell-4" class="cell" data-vscode="{&quot;languageId&quot;:&quot;plaintext&quot;}">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>оптовики</span>
