@@ -1,0 +1,38 @@
+.reveal h1, .reveal h2, .reveal h3 {
+      color: #04795c; /* Замените на нужный вам цвет */
+}
+.reveal .progress {
+      height: 20px; /* Увеличьте высоту прогресс-бара */
+      color: #04795c
+}
+.reveal .slide-number {
+      color: #04795c; /* Измените цвет текста */
+      position: absolute; /* Позволяет изменять положение */
+      top: 10px; /* Поднимите номер слайда выше */
+      right: 10px; /* Позиционируйте номер слайда справа */
+      z-index: 1000; /* Убедитесь, что номер слайда выше других элементов */
+}
+.reveal .slide-number-a,
+.reveal .slide-number-delimiter,
+.reveal .slide-number-b{
+      font-size: 30px; /* Увеличьте размер шрифта */
+}
+.reveal .controls {
+    color: #04795c; /* Задайте желаемый цвет стрелок */
+}
+.reveal h1 {
+    font-size: 1.8em; /* Измените значение по вашему усмотрению */
+}
+
+/* Размер шрифта для названий слайдов */
+.reveal h2 {
+    font-size: 1.2em; /* Измените значение по вашему усмотрению */
+}
+
+/* Размер шрифта для обычного текста */
+.column {
+    font-size: 1em; /* Измените значение по вашему усмотрению */
+}
+.quarto-title-author-name{
+      font-size: 1.2em;
+}
