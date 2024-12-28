@@ -150,7 +150,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<div id="cell-1" class="cell" data-execution_count="102">
+<p>https://square-firefly-0750.ploomberapp.io/api/dashboard_for_yandex_afisha/</p>
+<div id="cell-2" class="cell" data-execution_count="102">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># импортируем библиотеки</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sqlalchemy <span class="im">import</span> create_engine</span>
@@ -170,7 +171,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>engine <span class="op">=</span> create_engine(connection_string) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Чтобы посмотреть, какие таблицы есть в базе данных, вы можете использовать SQL-запрос для получения списка таблиц. В PostgreSQL это можно сделать с помощью запроса к системной таблице <code>information_schema.tables</code>.</p>
-<div id="cell-3" class="cell" data-execution_count="103">
+<div id="cell-4" class="cell" data-execution_count="103">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Запрос для получения списка таблиц</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>query <span class="op">=</span> <span class="st">"""</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="st">SELECT table_name</span></span>
@@ -179,7 +180,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="st">ORDER BY table_name;</span></span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-4" class="cell" data-execution_count="104">
+<div id="cell-5" class="cell" data-execution_count="104">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>tables <span class="op">=</span> pd.read_sql(query, engine)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>tables</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="104">
@@ -212,7 +213,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-5" class="cell" data-execution_count="111">
+<div id="cell-6" class="cell" data-execution_count="111">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>table <span class="op">=</span> pd.read_sql(<span class="st">'select * from dash_visits'</span>, engine)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>table.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="111">
@@ -283,7 +284,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-6" class="cell" data-execution_count="106">
+<div id="cell-7" class="cell" data-execution_count="106">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>table.groupby([<span class="st">'dt'</span>, <span class="st">'item_topic'</span>])[[<span class="st">'visits'</span>]].<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="106">
 <div>
@@ -357,7 +358,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-7" class="cell" data-execution_count="107">
+<div id="cell-8" class="cell" data-execution_count="107">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>(table.groupby(<span class="st">'source_topic'</span>)[[<span class="st">'visits'</span>]].<span class="bu">sum</span>() <span class="op">*</span><span class="dv">100</span> <span class="op">/</span> table.visits.<span class="bu">sum</span>()).sort_values(<span class="st">'visits'</span>, ascending<span class="op">=</span><span class="va">False</span>).head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="107">
 <div>
@@ -401,7 +402,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-8" class="cell" data-execution_count="108">
+<div id="cell-9" class="cell" data-execution_count="108">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>top_item_topics <span class="op">=</span> table.groupby(<span class="st">'item_topic'</span>)[<span class="st">'visits'</span>].<span class="bu">sum</span>().sort_values(ascending<span class="op">=</span><span class="va">False</span>).head(<span class="dv">10</span>).index.values</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>table[<span class="st">'item_topic'</span>] <span class="op">=</span> table[<span class="st">'item_topic'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: x <span class="cf">if</span> x <span class="kw">in</span> top_item_topics <span class="cf">else</span> <span class="st">'Другое'</span>)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>top_item_topics</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -411,7 +412,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       dtype=object)</code></pre>
 </div>
 </div>
-<div id="cell-9" class="cell">
+<div id="cell-10" class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>table.pivot_table(index <span class="op">=</span> <span class="st">'item_topic'</span>, columns <span class="op">=</span> <span class="st">'source_topic'</span>, values<span class="op">=</span><span class="st">'visits'</span>, aggfunc<span class="op">=</span><span class="st">'sum'</span>).fillna(<span class="dv">0</span>).astype(<span class="bu">int</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
