@@ -19,6 +19,9 @@ telepot = "^12.7"
 validators = "^0.34.0"
 beautifulsoup4 = "^4.12.3"
 sqlalchemy = "^2.0.36"
+psycopg = "^3.2.3"
+psycopg2 = "^2.9.10"
+dash-iconify = "^0.1.2"
 
 
 [build-system]
