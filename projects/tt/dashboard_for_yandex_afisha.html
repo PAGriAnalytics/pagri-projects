@@ -150,7 +150,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<div id="cell-1" class="cell" data-execution_count="49">
+<div id="cell-1" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># импортируем библиотеки</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sqlalchemy <span class="im">import</span> create_engine</span>
@@ -179,14 +179,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="st">ORDER BY table_name;</span></span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-4" class="cell" data-execution_count="50">
+<div id="cell-4" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>tables <span class="op">=</span> pd.read_sql(query, engine)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>tables</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <div class="ansi-escaped-output">
 <pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[50], line 1</span>
+Cell <span class="ansi-green-fg">In[2], line 1</span>
 <span class="ansi-green-fg">----&gt; 1</span> tables <span style="color:rgb(98,98,98)">=</span> pd<span style="color:rgb(98,98,98)">.</span>read_sql(<span class="ansi-yellow-bg">query</span>, engine)
 <span class="ansi-green-fg ansi-bold">      2</span> tables
 
@@ -455,7 +455,7 @@ Cell <span class="ansi-green-fg">In[50], line 1</span>
 </div>
 </div>
 </div>
-<div id="cell-12" class="cell">
+<div id="cell-12" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>db_config <span class="op">=</span> {<span class="st">'user'</span>: <span class="st">'praktikum_student'</span>, <span class="co"># имя пользователя</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>            <span class="st">'pwd'</span>: <span class="st">'Sdf4$2;d-d30pp'</span>, <span class="co"># пароль</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>            <span class="st">'host'</span>: <span class="st">'rc1b-wcoijxj3yxfsf3fs.mdb.yandexcloud.net'</span>,</span>
@@ -479,10 +479,10 @@ Cell <span class="ansi-green-fg">In[50], line 1</span>
 <span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'source_topic'</span>] <span class="op">=</span> df[<span class="st">'source_topic'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: x <span class="cf">if</span> x <span class="kw">in</span> top_source_topic <span class="cf">else</span> <span class="st">'Другое'</span>)</span>
 <span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>df_aggregated_by_source_topic <span class="op">=</span> (df.groupby(<span class="st">'source_topic'</span>)[[<span class="st">'visits'</span>]].<span class="bu">sum</span>() <span class="op">*</span><span class="dv">100</span> <span class="op">/</span> df.visits.<span class="bu">sum</span>()).sort_values(<span class="st">'visits'</span>, ascending<span class="op">=</span><span class="va">False</span>).reset_index()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-13" class="cell" data-execution_count="66">
+<div id="cell-13" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>df_aggregated_by_source_topic <span class="op">=</span> (df.groupby(<span class="st">'source_topic'</span>)[[<span class="st">'visits'</span>]].<span class="bu">sum</span>() <span class="op">*</span><span class="dv">100</span> <span class="op">/</span> df.visits.<span class="bu">sum</span>()).sort_values(<span class="st">'visits'</span>, ascending<span class="op">=</span><span class="va">False</span>).reset_index()</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>df_aggregated_by_source_topic</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="66">
+<div class="cell-output cell-output-display" data-execution_count="5">
 <div>
 
 
@@ -556,8 +556,10 @@ Cell <span class="ansi-green-fg">In[50], line 1</span>
 </div>
 </div>
 </div>
-<div id="cell-15" class="cell" data-execution_count="42">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pagri_data_tools</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-15" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>load_ext autoreload</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>autoreload <span class="dv">2</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pagri_data_tools</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="cell-16" class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>titles_for_axis <span class="op">=</span> <span class="bu">dict</span>(</span>
@@ -608,422 +610,689 @@ Cell <span class="ansi-green-fg">In[50], line 1</span>
 <span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> pagri_data_tools.bar(config, titles_for_axis)</span>
 <span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>fig.update_layout(title_text<span class="op">=</span><span class="st">'Количество визитов по темам источников, %'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div id="cell-19" class="cell" data-execution_count="49">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>db_config <span class="op">=</span> {<span class="st">'user'</span>: <span class="st">'praktikum_student'</span>, <span class="co"># имя пользователя</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>            <span class="st">'pwd'</span>: <span class="st">'Sdf4$2;d-d30pp'</span>, <span class="co"># пароль</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>            <span class="st">'host'</span>: <span class="st">'rc1b-wcoijxj3yxfsf3fs.mdb.yandexcloud.net'</span>,</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>            <span class="st">'port'</span>: <span class="dv">6432</span>, <span class="co"># порт подключения</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>            <span class="st">'db'</span>: <span class="st">'data-analyst-zen-project-db'</span>} <span class="co"># название базы данных</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>connection_string <span class="op">=</span> <span class="st">'postgresql://</span><span class="sc">{}</span><span class="st">:</span><span class="sc">{}</span><span class="st">@</span><span class="sc">{}</span><span class="st">:</span><span class="sc">{}</span><span class="st">/</span><span class="sc">{}</span><span class="st">'</span>.<span class="bu">format</span>(db_config[<span class="st">'user'</span>],</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>                                                db_config[<span class="st">'pwd'</span>],</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>                                                db_config[<span class="st">'host'</span>],</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>                                                db_config[<span class="st">'port'</span>],</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>                                                db_config[<span class="st">'db'</span>])</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>engine <span class="op">=</span> create_engine(connection_string)</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_sql(<span class="st">'select * from dash_visits'</span>, engine)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <div id="cell-20" class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dash</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dash <span class="im">import</span> dcc, html, Input, Output</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dash <span class="im">import</span> no_update, ctx, State</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dash_bootstrap_components <span class="im">as</span> dbc</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dash_iconify <span class="im">import</span> DashIconify</span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="co"># импортируем библиотеки</span></span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sqlalchemy <span class="im">import</span> create_engine</span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>db_config <span class="op">=</span> {<span class="st">'user'</span>: <span class="st">'praktikum_student'</span>, <span class="co"># имя пользователя</span></span>
-<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>            <span class="st">'pwd'</span>: <span class="st">'Sdf4$2;d-d30pp'</span>, <span class="co"># пароль</span></span>
-<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>            <span class="st">'host'</span>: <span class="st">'rc1b-wcoijxj3yxfsf3fs.mdb.yandexcloud.net'</span>,</span>
-<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>            <span class="st">'port'</span>: <span class="dv">6432</span>, <span class="co"># порт подключения</span></span>
-<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>            <span class="st">'db'</span>: <span class="st">'data-analyst-zen-project-db'</span>} <span class="co"># название базы данных</span></span>
-<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>connection_string <span class="op">=</span> <span class="st">'postgresql://</span><span class="sc">{}</span><span class="st">:</span><span class="sc">{}</span><span class="st">@</span><span class="sc">{}</span><span class="st">:</span><span class="sc">{}</span><span class="st">/</span><span class="sc">{}</span><span class="st">'</span>.<span class="bu">format</span>(db_config[<span class="st">'user'</span>],</span>
-<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>                                                db_config[<span class="st">'pwd'</span>],</span>
-<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>                                                db_config[<span class="st">'host'</span>],</span>
-<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>                                                db_config[<span class="st">'port'</span>],</span>
-<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>                                                db_config[<span class="st">'db'</span>])</span>
-<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>engine <span class="op">=</span> create_engine(connection_string)</span>
-<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_sql(<span class="st">'select * from dash_visits'</span>, engine)</span>
-<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a>titles_for_axis <span class="op">=</span> <span class="bu">dict</span>(</span>
-<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a>    visits <span class="op">=</span> [<span class="st">'Количество визитов'</span>, <span class="st">'количество визитов'</span>, <span class="dv">0</span>]</span>
-<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a>    , visits_pct <span class="op">=</span> [<span class="st">'Количество визитов, %'</span>, <span class="st">'количество визитов, %'</span>, <span class="dv">0</span>]</span>
-<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a>    , dt <span class="op">=</span> [<span class="st">'Дата'</span>, <span class="st">'дата'</span>, <span class="dv">1</span>]</span>
-<span id="cb18-31"><a href="#cb18-31" aria-hidden="true" tabindex="-1"></a>    <span class="co"># categorical column ['Именительный падеж', 'для кого / чего', 'по кому чему']</span></span>
-<span id="cb18-32"><a href="#cb18-32" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Распределение долей по городу и тарифу с нормализацией по городу</span></span>
-<span id="cb18-33"><a href="#cb18-33" aria-hidden="true" tabindex="-1"></a>    , item_topic <span class="op">=</span> [<span class="st">'Тема карточки'</span>, <span class="st">'темы карточки'</span>, <span class="st">'теме карточки'</span>]</span>
-<span id="cb18-34"><a href="#cb18-34" aria-hidden="true" tabindex="-1"></a>    , source_topic <span class="op">=</span> [<span class="st">'Тема источника'</span>, <span class="st">'темы источника'</span>, <span class="st">'теме источника'</span>]</span>
-<span id="cb18-35"><a href="#cb18-35" aria-hidden="true" tabindex="-1"></a>    , age_segment <span class="op">=</span> [<span class="st">'Возрастная группа'</span>, <span class="st">'возрастная группа'</span>, <span class="st">'возрастной группе'</span>]</span>
-<span id="cb18-36"><a href="#cb18-36" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb18-37"><a href="#cb18-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-38"><a href="#cb18-38" aria-hidden="true" tabindex="-1"></a>full_filter_icon <span class="op">=</span> DashIconify(</span>
-<span id="cb18-39"><a href="#cb18-39" aria-hidden="true" tabindex="-1"></a>      icon<span class="op">=</span><span class="st">"bx:filter"</span>,</span>
-<span id="cb18-40"><a href="#cb18-40" aria-hidden="true" tabindex="-1"></a>      color<span class="op">=</span><span class="st">"green"</span>,</span>
-<span id="cb18-41"><a href="#cb18-41" aria-hidden="true" tabindex="-1"></a>      width<span class="op">=</span><span class="dv">30</span>,</span>
-<span id="cb18-42"><a href="#cb18-42" aria-hidden="true" tabindex="-1"></a>      height<span class="op">=</span><span class="dv">30</span></span>
-<span id="cb18-43"><a href="#cb18-43" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb18-44"><a href="#cb18-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-45"><a href="#cb18-45" aria-hidden="true" tabindex="-1"></a>partial_filter_icon <span class="op">=</span> DashIconify(</span>
-<span id="cb18-46"><a href="#cb18-46" aria-hidden="true" tabindex="-1"></a>      icon<span class="op">=</span><span class="st">"prime:filter-fill"</span>,</span>
-<span id="cb18-47"><a href="#cb18-47" aria-hidden="true" tabindex="-1"></a>      color<span class="op">=</span><span class="st">"green"</span>,</span>
-<span id="cb18-48"><a href="#cb18-48" aria-hidden="true" tabindex="-1"></a>      width<span class="op">=</span><span class="dv">20</span>,</span>
-<span id="cb18-49"><a href="#cb18-49" aria-hidden="true" tabindex="-1"></a>      height<span class="op">=</span><span class="dv">20</span></span>
-<span id="cb18-50"><a href="#cb18-50" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb18-51"><a href="#cb18-51" aria-hidden="true" tabindex="-1"></a><span class="co"># Пример данных</span></span>
-<span id="cb18-52"><a href="#cb18-52" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {</span>
-<span id="cb18-53"><a href="#cb18-53" aria-hidden="true" tabindex="-1"></a>    <span class="st">'dt'</span>: pd.date_range(start<span class="op">=</span><span class="st">'2023-01-01'</span>, periods<span class="op">=</span><span class="dv">100</span>, freq<span class="op">=</span><span class="st">'1D'</span>),</span>
-<span id="cb18-54"><a href="#cb18-54" aria-hidden="true" tabindex="-1"></a>    <span class="st">'item_topic'</span>: [<span class="st">'Topic A'</span>, <span class="st">'Topic B'</span>, <span class="st">'Topic C'</span>] <span class="op">*</span> <span class="dv">33</span> <span class="op">+</span> [<span class="st">'Topic A'</span>],</span>
-<span id="cb18-55"><a href="#cb18-55" aria-hidden="true" tabindex="-1"></a>    <span class="st">'source_topic'</span>: [<span class="st">'Source 1'</span>, <span class="st">'Source 2'</span>, <span class="st">'Source 3'</span>] <span class="op">*</span> <span class="dv">33</span> <span class="op">+</span> [<span class="st">'Source 1'</span>],</span>
-<span id="cb18-56"><a href="#cb18-56" aria-hidden="true" tabindex="-1"></a>    <span class="st">'age_segment'</span>: [<span class="st">'18-24'</span>, <span class="st">'25-34'</span>, <span class="st">'35-44'</span>] <span class="op">*</span> <span class="dv">33</span> <span class="op">+</span> [<span class="st">'18-24'</span>],</span>
-<span id="cb18-57"><a href="#cb18-57" aria-hidden="true" tabindex="-1"></a>    <span class="st">'visits'</span>: [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>] <span class="op">*</span> <span class="dv">33</span> <span class="op">+</span> [<span class="dv">10</span>]</span>
-<span id="cb18-58"><a href="#cb18-58" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb18-59"><a href="#cb18-59" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(data)</span>
-<span id="cb18-60"><a href="#cb18-60" aria-hidden="true" tabindex="-1"></a>checklist_all_values_item_topic <span class="op">=</span> df[<span class="st">'item_topic'</span>].unique()</span>
-<span id="cb18-61"><a href="#cb18-61" aria-hidden="true" tabindex="-1"></a>checklist_all_values_age_segment <span class="op">=</span> df[<span class="st">'age_segment'</span>].unique()</span>
-<span id="cb18-62"><a href="#cb18-62" aria-hidden="true" tabindex="-1"></a>dbc_css <span class="op">=</span> <span class="st">"https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates/dbc.min.css"</span></span>
-<span id="cb18-63"><a href="#cb18-63" aria-hidden="true" tabindex="-1"></a><span class="co"># Создание Dash приложения с использованием Bootstrap</span></span>
-<span id="cb18-64"><a href="#cb18-64" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> dash.Dash(<span class="va">__name__</span>, external_stylesheets<span class="op">=</span>[dbc.themes.BOOTSTRAP, dbc_css])</span>
-<span id="cb18-65"><a href="#cb18-65" aria-hidden="true" tabindex="-1"></a>filter_item_topic <span class="op">=</span> html.Div([</span>
-<span id="cb18-66"><a href="#cb18-66" aria-hidden="true" tabindex="-1"></a>        dbc.Row([</span>
-<span id="cb18-67"><a href="#cb18-67" aria-hidden="true" tabindex="-1"></a>            dbc.Col(dbc.Button(<span class="st">"Select All"</span>, <span class="bu">id</span><span class="op">=</span><span class="st">'select-all-button_item_topic'</span>, n_clicks<span class="op">=</span><span class="dv">0</span>, color<span class="op">=</span><span class="st">"link"</span>)),</span>
-<span id="cb18-68"><a href="#cb18-68" aria-hidden="true" tabindex="-1"></a>            dbc.Col(dbc.Button(<span class="st">"Clear"</span>, <span class="bu">id</span><span class="op">=</span><span class="st">'clear-button_item_topic'</span>, n_clicks<span class="op">=</span><span class="dv">0</span>, color<span class="op">=</span><span class="st">"link"</span>))</span>
-<span id="cb18-69"><a href="#cb18-69" aria-hidden="true" tabindex="-1"></a>        ]),</span>
-<span id="cb18-70"><a href="#cb18-70" aria-hidden="true" tabindex="-1"></a>        dbc.Row([</span>
-<span id="cb18-71"><a href="#cb18-71" aria-hidden="true" tabindex="-1"></a>            dbc.Col(</span>
-<span id="cb18-72"><a href="#cb18-72" aria-hidden="true" tabindex="-1"></a>            dcc.Checklist(</span>
-<span id="cb18-73"><a href="#cb18-73" aria-hidden="true" tabindex="-1"></a>            options<span class="op">=</span>[{<span class="st">'label'</span>: topic, <span class="st">'value'</span>: topic} <span class="cf">for</span> topic <span class="kw">in</span> checklist_all_values_item_topic],</span>
-<span id="cb18-74"><a href="#cb18-74" aria-hidden="true" tabindex="-1"></a>            value<span class="op">=</span>checklist_all_values_item_topic,</span>
-<span id="cb18-75"><a href="#cb18-75" aria-hidden="true" tabindex="-1"></a>            <span class="bu">id</span><span class="op">=</span><span class="st">"checklist_item_topic"</span>,</span>
-<span id="cb18-76"><a href="#cb18-76" aria-hidden="true" tabindex="-1"></a>            style<span class="op">=</span>{<span class="st">'maxHeight'</span>: <span class="st">'200px'</span>, <span class="st">'overflowY'</span>: <span class="st">'scroll'</span>, <span class="st">'accent-color'</span>: <span class="st">'transparent'</span>}))</span>
-<span id="cb18-77"><a href="#cb18-77" aria-hidden="true" tabindex="-1"></a>        ]),        </span>
-<span id="cb18-78"><a href="#cb18-78" aria-hidden="true" tabindex="-1"></a>      dbc.Row([</span>
-<span id="cb18-79"><a href="#cb18-79" aria-hidden="true" tabindex="-1"></a>        dbc.Col(dbc.Button(<span class="st">"Cancel"</span>, <span class="bu">id</span><span class="op">=</span><span class="st">'cancel-button_item_topic'</span>, outline<span class="op">=</span><span class="va">True</span>, color<span class="op">=</span><span class="st">"secondary"</span>, className<span class="op">=</span><span class="st">"me-1"</span>)),</span>
-<span id="cb18-80"><a href="#cb18-80" aria-hidden="true" tabindex="-1"></a>        dbc.Col(dbc.Button(<span class="st">"Apply"</span>, <span class="bu">id</span><span class="op">=</span><span class="st">'apply-button_item_topic'</span>, outline<span class="op">=</span><span class="va">True</span>, color<span class="op">=</span><span class="st">"success"</span>, className<span class="op">=</span><span class="st">"me-1"</span>)),</span>
-<span id="cb18-81"><a href="#cb18-81" aria-hidden="true" tabindex="-1"></a>        ])</span>
-<span id="cb18-82"><a href="#cb18-82" aria-hidden="true" tabindex="-1"></a>        ])</span>
-<span id="cb18-83"><a href="#cb18-83" aria-hidden="true" tabindex="-1"></a>popover_item_topic <span class="op">=</span> html.Div(</span>
-<span id="cb18-84"><a href="#cb18-84" aria-hidden="true" tabindex="-1"></a>        [</span>
-<span id="cb18-85"><a href="#cb18-85" aria-hidden="true" tabindex="-1"></a>        dbc.Button(<span class="bu">id</span><span class="op">=</span><span class="st">"popover_item_topic_target"</span>, children<span class="op">=</span><span class="st">'Фильтр по темам карточек'</span>, n_clicks<span class="op">=</span><span class="dv">0</span>), <span class="co"># color=None, style={'background-color': 'transparent', 'border': 'none'}),</span></span>
-<span id="cb18-86"><a href="#cb18-86" aria-hidden="true" tabindex="-1"></a>        dbc.Popover(</span>
-<span id="cb18-87"><a href="#cb18-87" aria-hidden="true" tabindex="-1"></a>            <span class="bu">id</span><span class="op">=</span><span class="st">'popover_item_topic'</span>,</span>
-<span id="cb18-88"><a href="#cb18-88" aria-hidden="true" tabindex="-1"></a>            children<span class="op">=</span>filter_item_topic,</span>
-<span id="cb18-89"><a href="#cb18-89" aria-hidden="true" tabindex="-1"></a>            target<span class="op">=</span><span class="st">"popover_item_topic_target"</span>,</span>
-<span id="cb18-90"><a href="#cb18-90" aria-hidden="true" tabindex="-1"></a>            body<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb18-91"><a href="#cb18-91" aria-hidden="true" tabindex="-1"></a>            trigger<span class="op">=</span><span class="st">"click"</span>,</span>
-<span id="cb18-92"><a href="#cb18-92" aria-hidden="true" tabindex="-1"></a>            placement<span class="op">=</span><span class="st">'right'</span>,</span>
-<span id="cb18-93"><a href="#cb18-93" aria-hidden="true" tabindex="-1"></a>                )</span>
-<span id="cb18-94"><a href="#cb18-94" aria-hidden="true" tabindex="-1"></a>            ]</span>
-<span id="cb18-95"><a href="#cb18-95" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb18-96"><a href="#cb18-96" aria-hidden="true" tabindex="-1"></a>filter_age_segment <span class="op">=</span> html.Div([</span>
-<span id="cb18-97"><a href="#cb18-97" aria-hidden="true" tabindex="-1"></a>        dbc.Row([</span>
-<span id="cb18-98"><a href="#cb18-98" aria-hidden="true" tabindex="-1"></a>            dbc.Col(dbc.Button(<span class="st">"Select All"</span>, <span class="bu">id</span><span class="op">=</span><span class="st">'select-all-button_age_segment'</span>, n_clicks<span class="op">=</span><span class="dv">0</span>, color<span class="op">=</span><span class="st">"link"</span>)),</span>
-<span id="cb18-99"><a href="#cb18-99" aria-hidden="true" tabindex="-1"></a>            dbc.Col(dbc.Button(<span class="st">"Clear"</span>, <span class="bu">id</span><span class="op">=</span><span class="st">'clear-button_age_segment'</span>, n_clicks<span class="op">=</span><span class="dv">0</span>, color<span class="op">=</span><span class="st">"link"</span>))</span>
-<span id="cb18-100"><a href="#cb18-100" aria-hidden="true" tabindex="-1"></a>        ]),</span>
-<span id="cb18-101"><a href="#cb18-101" aria-hidden="true" tabindex="-1"></a>        dbc.Row([</span>
-<span id="cb18-102"><a href="#cb18-102" aria-hidden="true" tabindex="-1"></a>            dbc.Col(</span>
-<span id="cb18-103"><a href="#cb18-103" aria-hidden="true" tabindex="-1"></a>            dcc.Checklist(</span>
-<span id="cb18-104"><a href="#cb18-104" aria-hidden="true" tabindex="-1"></a>            options<span class="op">=</span>[{<span class="st">'label'</span>: topic, <span class="st">'value'</span>: topic} <span class="cf">for</span> topic <span class="kw">in</span> checklist_all_values_age_segment],</span>
-<span id="cb18-105"><a href="#cb18-105" aria-hidden="true" tabindex="-1"></a>            value<span class="op">=</span>checklist_all_values_age_segment,</span>
-<span id="cb18-106"><a href="#cb18-106" aria-hidden="true" tabindex="-1"></a>            <span class="bu">id</span><span class="op">=</span><span class="st">"checklist_age_segment"</span>,</span>
-<span id="cb18-107"><a href="#cb18-107" aria-hidden="true" tabindex="-1"></a>            style<span class="op">=</span>{<span class="st">'maxHeight'</span>: <span class="st">'180px'</span>, <span class="st">'overflowY'</span>: <span class="st">'scroll'</span>, <span class="st">'accent-color'</span>: <span class="st">'transparent'</span>}))</span>
-<span id="cb18-108"><a href="#cb18-108" aria-hidden="true" tabindex="-1"></a>        ]),        </span>
-<span id="cb18-109"><a href="#cb18-109" aria-hidden="true" tabindex="-1"></a>      dbc.Row([</span>
-<span id="cb18-110"><a href="#cb18-110" aria-hidden="true" tabindex="-1"></a>        dbc.Col(dbc.Button(<span class="st">"Cancel"</span>, <span class="bu">id</span><span class="op">=</span><span class="st">'cancel-button_age_segment'</span>, outline<span class="op">=</span><span class="va">True</span>, color<span class="op">=</span><span class="st">"secondary"</span>, className<span class="op">=</span><span class="st">"me-1"</span>)),</span>
-<span id="cb18-111"><a href="#cb18-111" aria-hidden="true" tabindex="-1"></a>        dbc.Col(dbc.Button(<span class="st">"Apply"</span>, <span class="bu">id</span><span class="op">=</span><span class="st">'apply-button_age_segment'</span>, outline<span class="op">=</span><span class="va">True</span>, color<span class="op">=</span><span class="st">"success"</span>, className<span class="op">=</span><span class="st">"me-1"</span>)),</span>
-<span id="cb18-112"><a href="#cb18-112" aria-hidden="true" tabindex="-1"></a>        ])</span>
-<span id="cb18-113"><a href="#cb18-113" aria-hidden="true" tabindex="-1"></a>        ])</span>
-<span id="cb18-114"><a href="#cb18-114" aria-hidden="true" tabindex="-1"></a>popover_age_segment <span class="op">=</span> html.Div(</span>
-<span id="cb18-115"><a href="#cb18-115" aria-hidden="true" tabindex="-1"></a>        [</span>
-<span id="cb18-116"><a href="#cb18-116" aria-hidden="true" tabindex="-1"></a>        dbc.Button(<span class="bu">id</span><span class="op">=</span><span class="st">"popover_age_segment_target"</span>, children<span class="op">=</span><span class="st">'Фильтр по возрастным категориям'</span>, n_clicks<span class="op">=</span><span class="dv">0</span>), <span class="co"># color=None, style={'background-color': 'transparent', 'border': 'none'}),</span></span>
-<span id="cb18-117"><a href="#cb18-117" aria-hidden="true" tabindex="-1"></a>        dbc.Popover(</span>
-<span id="cb18-118"><a href="#cb18-118" aria-hidden="true" tabindex="-1"></a>            <span class="bu">id</span><span class="op">=</span><span class="st">'popover_age_segment'</span>,</span>
-<span id="cb18-119"><a href="#cb18-119" aria-hidden="true" tabindex="-1"></a>            children<span class="op">=</span>filter_age_segment,</span>
-<span id="cb18-120"><a href="#cb18-120" aria-hidden="true" tabindex="-1"></a>            target<span class="op">=</span><span class="st">"popover_age_segment_target"</span>,</span>
-<span id="cb18-121"><a href="#cb18-121" aria-hidden="true" tabindex="-1"></a>            body<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb18-122"><a href="#cb18-122" aria-hidden="true" tabindex="-1"></a>            trigger<span class="op">=</span><span class="st">"click"</span>,</span>
-<span id="cb18-123"><a href="#cb18-123" aria-hidden="true" tabindex="-1"></a>            placement<span class="op">=</span><span class="st">'right'</span>,</span>
-<span id="cb18-124"><a href="#cb18-124" aria-hidden="true" tabindex="-1"></a>                )</span>
-<span id="cb18-125"><a href="#cb18-125" aria-hidden="true" tabindex="-1"></a>            ]</span>
-<span id="cb18-126"><a href="#cb18-126" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb18-127"><a href="#cb18-127" aria-hidden="true" tabindex="-1"></a>app.layout <span class="op">=</span> dbc.Container([</span>
-<span id="cb18-128"><a href="#cb18-128" aria-hidden="true" tabindex="-1"></a>    dbc.Row([</span>
-<span id="cb18-129"><a href="#cb18-129" aria-hidden="true" tabindex="-1"></a>        dbc.Col(html.H1(<span class="st">"Дашборд по посещениям страниц сайта"</span>), className<span class="op">=</span><span class="st">"text-center mb-4"</span>)</span>
-<span id="cb18-130"><a href="#cb18-130" aria-hidden="true" tabindex="-1"></a>        , dbc.Col(</span>
-<span id="cb18-131"><a href="#cb18-131" aria-hidden="true" tabindex="-1"></a>            [dbc.Label(<span class="st">'Фильтр по дате'</span>),</span>
-<span id="cb18-132"><a href="#cb18-132" aria-hidden="true" tabindex="-1"></a>            dcc.DatePickerRange(</span>
-<span id="cb18-133"><a href="#cb18-133" aria-hidden="true" tabindex="-1"></a>            <span class="bu">id</span><span class="op">=</span><span class="st">'date-picker-range'</span>,</span>
-<span id="cb18-134"><a href="#cb18-134" aria-hidden="true" tabindex="-1"></a>            start_date<span class="op">=</span>df[<span class="st">'dt'</span>].<span class="bu">min</span>(),</span>
-<span id="cb18-135"><a href="#cb18-135" aria-hidden="true" tabindex="-1"></a>            end_date<span class="op">=</span>df[<span class="st">'dt'</span>].<span class="bu">max</span>(),</span>
-<span id="cb18-136"><a href="#cb18-136" aria-hidden="true" tabindex="-1"></a>            display_format<span class="op">=</span><span class="st">'YYYY-MM-DD'</span>,</span>
-<span id="cb18-137"><a href="#cb18-137" aria-hidden="true" tabindex="-1"></a>            className<span class="op">=</span><span class="st">"mb-4"</span></span>
-<span id="cb18-138"><a href="#cb18-138" aria-hidden="true" tabindex="-1"></a>        )], width<span class="op">=</span><span class="dv">3</span>),</span>
-<span id="cb18-139"><a href="#cb18-139" aria-hidden="true" tabindex="-1"></a>    ]),</span>
-<span id="cb18-140"><a href="#cb18-140" aria-hidden="true" tabindex="-1"></a>    dbc.Row([</span>
-<span id="cb18-141"><a href="#cb18-141" aria-hidden="true" tabindex="-1"></a>        dbc.Col(dbc.Label(<span class="st">'Дашборд фомирует интерактивные графики о событиях взаимодействия пользователей с карточками.</span><span class="ch">\n</span><span class="st"> Данные фильтруются по времени, теме карточки и возрастной категории.'</span>)),</span>
-<span id="cb18-142"><a href="#cb18-142" aria-hidden="true" tabindex="-1"></a>        dbc.Col(popover_item_topic, width<span class="op">=</span><span class="dv">3</span>), </span>
-<span id="cb18-143"><a href="#cb18-143" aria-hidden="true" tabindex="-1"></a>        dbc.Col(popover_age_segment, width<span class="op">=</span><span class="dv">3</span>), </span>
-<span id="cb18-144"><a href="#cb18-144" aria-hidden="true" tabindex="-1"></a>    ]),</span>
-<span id="cb18-145"><a href="#cb18-145" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb18-146"><a href="#cb18-146" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb18-147"><a href="#cb18-147" aria-hidden="true" tabindex="-1"></a>    dbc.Row([</span>
-<span id="cb18-148"><a href="#cb18-148" aria-hidden="true" tabindex="-1"></a>        dbc.Col(dcc.Graph(<span class="bu">id</span><span class="op">=</span><span class="st">'absolute-visits-by-item--graph'</span>), width<span class="op">=</span><span class="dv">4</span>),</span>
-<span id="cb18-149"><a href="#cb18-149" aria-hidden="true" tabindex="-1"></a>        dbc.Col(dcc.Graph(<span class="bu">id</span><span class="op">=</span><span class="st">'relative-visits-by-item--graph'</span>), width<span class="op">=</span><span class="dv">4</span>),</span>
-<span id="cb18-150"><a href="#cb18-150" aria-hidden="true" tabindex="-1"></a>        dbc.Col(dcc.Graph(<span class="bu">id</span><span class="op">=</span><span class="st">'visits-by-source-graph'</span>), width<span class="op">=</span><span class="dv">4</span>),</span>
-<span id="cb18-151"><a href="#cb18-151" aria-hidden="true" tabindex="-1"></a>    ]),</span>
-<span id="cb18-152"><a href="#cb18-152" aria-hidden="true" tabindex="-1"></a>    dcc.Store(<span class="bu">id</span><span class="op">=</span><span class="st">'store-checklist-value_item_topic'</span>, storage_type<span class="op">=</span><span class="st">'memory'</span>), </span>
-<span id="cb18-153"><a href="#cb18-153" aria-hidden="true" tabindex="-1"></a>    dcc.Store(<span class="bu">id</span><span class="op">=</span><span class="st">'store-checklist-value_age_segment'</span>, storage_type<span class="op">=</span><span class="st">'memory'</span>)</span>
-<span id="cb18-154"><a href="#cb18-154" aria-hidden="true" tabindex="-1"></a>], fluid<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb18-155"><a href="#cb18-155" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-156"><a href="#cb18-156" aria-hidden="true" tabindex="-1"></a><span class="at">@app.callback</span>(</span>
-<span id="cb18-157"><a href="#cb18-157" aria-hidden="true" tabindex="-1"></a>    Output(<span class="st">'absolute-visits-by-item-graph'</span>, <span class="st">'figure'</span>),</span>
-<span id="cb18-158"><a href="#cb18-158" aria-hidden="true" tabindex="-1"></a>    Output(<span class="st">'relative-visits-by-item-graph'</span>, <span class="st">'figure'</span>),</span>
-<span id="cb18-159"><a href="#cb18-159" aria-hidden="true" tabindex="-1"></a>    Output(<span class="st">'visits-by-source-graph'</span>, <span class="st">'figure'</span>),</span>
-<span id="cb18-160"><a href="#cb18-160" aria-hidden="true" tabindex="-1"></a>    Input(<span class="st">'date-picker-range'</span>, <span class="st">'start_date'</span>),</span>
-<span id="cb18-161"><a href="#cb18-161" aria-hidden="true" tabindex="-1"></a>    Input(<span class="st">'date-picker-range'</span>, <span class="st">'end_date'</span>),</span>
-<span id="cb18-162"><a href="#cb18-162" aria-hidden="true" tabindex="-1"></a>    Input(<span class="st">'checklist_item_topic'</span>, <span class="st">'value'</span>),</span>
-<span id="cb18-163"><a href="#cb18-163" aria-hidden="true" tabindex="-1"></a>    Input(<span class="st">'checklist_age_segment'</span>, <span class="st">'value'</span>),</span>
-<span id="cb18-164"><a href="#cb18-164" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Input('age-segment-dropdown', 'value')</span></span>
-<span id="cb18-165"><a href="#cb18-165" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb18-166"><a href="#cb18-166" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> update_graphs(start_date, end_date, selected_item_topics, selected_age_segments):</span>
-<span id="cb18-167"><a href="#cb18-167" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Фильтрация данных    </span></span>
-<span id="cb18-168"><a href="#cb18-168" aria-hidden="true" tabindex="-1"></a>    filtered_df <span class="op">=</span> df[</span>
-<span id="cb18-169"><a href="#cb18-169" aria-hidden="true" tabindex="-1"></a>        (df[<span class="st">'dt'</span>] <span class="op">&gt;=</span> start_date) <span class="op">&amp;</span></span>
-<span id="cb18-170"><a href="#cb18-170" aria-hidden="true" tabindex="-1"></a>        (df[<span class="st">'dt'</span>] <span class="op">&lt;=</span> end_date)</span>
-<span id="cb18-171"><a href="#cb18-171" aria-hidden="true" tabindex="-1"></a>    ]</span>
-<span id="cb18-172"><a href="#cb18-172" aria-hidden="true" tabindex="-1"></a>    <span class="co"># print(selected_item_topics)</span></span>
-<span id="cb18-173"><a href="#cb18-173" aria-hidden="true" tabindex="-1"></a>    <span class="co"># print(selected_age_segments)</span></span>
-<span id="cb18-174"><a href="#cb18-174" aria-hidden="true" tabindex="-1"></a>    filtered_df <span class="op">=</span> filtered_df[filtered_df[<span class="st">'item_topic'</span>].isin(selected_item_topics)]</span>
-<span id="cb18-175"><a href="#cb18-175" aria-hidden="true" tabindex="-1"></a>    filtered_df <span class="op">=</span> filtered_df[filtered_df[<span class="st">'age_segment'</span>].isin(selected_age_segments)]</span>
-<span id="cb18-176"><a href="#cb18-176" aria-hidden="true" tabindex="-1"></a>    top_item_topics <span class="op">=</span> filtered_df.groupby(<span class="st">'item_topic'</span>)[<span class="st">'visits'</span>].<span class="bu">sum</span>().sort_values(ascending<span class="op">=</span><span class="va">False</span>).head(<span class="dv">10</span>).index.values</span>
-<span id="cb18-177"><a href="#cb18-177" aria-hidden="true" tabindex="-1"></a>    filtered_df[<span class="st">'item_topic'</span>] <span class="op">=</span> filtered_df[<span class="st">'item_topic'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: x <span class="cf">if</span> x <span class="kw">in</span> top_item_topics <span class="cf">else</span> <span class="st">'Другое'</span>)</span>
-<span id="cb18-178"><a href="#cb18-178" aria-hidden="true" tabindex="-1"></a>    df_aggregated_by_item_topic <span class="op">=</span> filtered_df.groupby([<span class="st">'dt'</span>, <span class="st">'item_topic'</span>])[[<span class="st">'visits'</span>]].<span class="bu">sum</span>()</span>
-<span id="cb18-179"><a href="#cb18-179" aria-hidden="true" tabindex="-1"></a>    df_aggregated_by_item_topic[<span class="st">'all_visits'</span>] <span class="op">=</span> df_aggregated_by_item_topic.groupby(<span class="st">'dt'</span>)[<span class="st">'visits'</span>].transform(<span class="st">'sum'</span>)</span>
-<span id="cb18-180"><a href="#cb18-180" aria-hidden="true" tabindex="-1"></a>    df_aggregated_by_item_topic[<span class="st">'visits_pct'</span>] <span class="op">=</span> df_aggregated_by_item_topic[<span class="st">'visits'</span>] <span class="op">*</span> <span class="dv">100</span> <span class="op">/</span> df_aggregated_by_item_topic[<span class="st">'all_visits'</span>]</span>
-<span id="cb18-181"><a href="#cb18-181" aria-hidden="true" tabindex="-1"></a>    df_aggregated_by_item_topic <span class="op">=</span> df_aggregated_by_item_topic.reset_index()</span>
-<span id="cb18-182"><a href="#cb18-182" aria-hidden="true" tabindex="-1"></a>    top_source_topic <span class="op">=</span> filtered_df.groupby(<span class="st">'source_topic'</span>)[<span class="st">'visits'</span>].<span class="bu">sum</span>().sort_values(ascending<span class="op">=</span><span class="va">False</span>).head(<span class="dv">10</span>).index.values</span>
-<span id="cb18-183"><a href="#cb18-183" aria-hidden="true" tabindex="-1"></a>    filtered_df[<span class="st">'source_topic'</span>] <span class="op">=</span> filtered_df[<span class="st">'source_topic'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: x <span class="cf">if</span> x <span class="kw">in</span> top_source_topic <span class="cf">else</span> <span class="st">'Другое'</span>)</span>
-<span id="cb18-184"><a href="#cb18-184" aria-hidden="true" tabindex="-1"></a>    df_aggregated_by_source_topic <span class="op">=</span> (filtered_df.groupby(<span class="st">'source_topic'</span>)[[<span class="st">'visits'</span>]].<span class="bu">sum</span>() <span class="op">*</span><span class="dv">100</span> <span class="op">/</span> filtered_df.visits.<span class="bu">sum</span>()).sort_values(<span class="st">'visits'</span>, ascending<span class="op">=</span><span class="va">False</span>).reset_index()</span>
-<span id="cb18-185"><a href="#cb18-185" aria-hidden="true" tabindex="-1"></a>    config <span class="op">=</span> <span class="bu">dict</span>(</span>
-<span id="cb18-186"><a href="#cb18-186" aria-hidden="true" tabindex="-1"></a>        df <span class="op">=</span> df_aggregated_by_item_topic</span>
-<span id="cb18-187"><a href="#cb18-187" aria-hidden="true" tabindex="-1"></a>        , x <span class="op">=</span> <span class="st">'dt'</span>  </span>
-<span id="cb18-188"><a href="#cb18-188" aria-hidden="true" tabindex="-1"></a>        , y <span class="op">=</span> <span class="st">'visits'</span></span>
-<span id="cb18-189"><a href="#cb18-189" aria-hidden="true" tabindex="-1"></a>        , category <span class="op">=</span> <span class="st">'item_topic'</span></span>
-<span id="cb18-190"><a href="#cb18-190" aria-hidden="true" tabindex="-1"></a>        , width <span class="op">=</span> <span class="va">None</span></span>
-<span id="cb18-191"><a href="#cb18-191" aria-hidden="true" tabindex="-1"></a>        , height <span class="op">=</span> <span class="va">None</span></span>
-<span id="cb18-192"><a href="#cb18-192" aria-hidden="true" tabindex="-1"></a>        , orientation <span class="op">=</span> <span class="st">'v'</span></span>
-<span id="cb18-193"><a href="#cb18-193" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb18-194"><a href="#cb18-194" aria-hidden="true" tabindex="-1"></a>    visits_by_item_topic_absolute_fig <span class="op">=</span> pagri_data_tools.area(config, titles_for_axis)</span>
-<span id="cb18-195"><a href="#cb18-195" aria-hidden="true" tabindex="-1"></a>    visits_by_item_topic_absolute_fig <span class="op">=</span> visits_by_item_topic_absolute_fig.update_layout(title_text<span class="op">=</span><span class="st">'Количество визитов по темам карточек'</span>)    </span>
-<span id="cb18-196"><a href="#cb18-196" aria-hidden="true" tabindex="-1"></a>    config <span class="op">=</span> <span class="bu">dict</span>(</span>
-<span id="cb18-197"><a href="#cb18-197" aria-hidden="true" tabindex="-1"></a>        df <span class="op">=</span> df_aggregated_by_item_topic</span>
-<span id="cb18-198"><a href="#cb18-198" aria-hidden="true" tabindex="-1"></a>        , x <span class="op">=</span> <span class="st">'dt'</span>  </span>
-<span id="cb18-199"><a href="#cb18-199" aria-hidden="true" tabindex="-1"></a>        , y <span class="op">=</span> <span class="st">'visits_pct'</span></span>
-<span id="cb18-200"><a href="#cb18-200" aria-hidden="true" tabindex="-1"></a>        , category <span class="op">=</span> <span class="st">'item_topic'</span></span>
-<span id="cb18-201"><a href="#cb18-201" aria-hidden="true" tabindex="-1"></a>        , width <span class="op">=</span> <span class="va">None</span></span>
-<span id="cb18-202"><a href="#cb18-202" aria-hidden="true" tabindex="-1"></a>        , height <span class="op">=</span> <span class="va">None</span></span>
-<span id="cb18-203"><a href="#cb18-203" aria-hidden="true" tabindex="-1"></a>        , orientation <span class="op">=</span> <span class="st">'v'</span></span>
-<span id="cb18-204"><a href="#cb18-204" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb18-205"><a href="#cb18-205" aria-hidden="true" tabindex="-1"></a>    visits_by_item_topic_pct_fig <span class="op">=</span> pagri_data_tools.area(config, titles_for_axis)</span>
-<span id="cb18-206"><a href="#cb18-206" aria-hidden="true" tabindex="-1"></a>    visits_by_item_topic_pct_fig.update_layout(title_text<span class="op">=</span><span class="st">'Количество визитов по темам карточек, %'</span>)    </span>
-<span id="cb18-207"><a href="#cb18-207" aria-hidden="true" tabindex="-1"></a>    config <span class="op">=</span> <span class="bu">dict</span>(</span>
-<span id="cb18-208"><a href="#cb18-208" aria-hidden="true" tabindex="-1"></a>        df <span class="op">=</span> df_aggregated_by_source_topic</span>
-<span id="cb18-209"><a href="#cb18-209" aria-hidden="true" tabindex="-1"></a>        , x <span class="op">=</span> <span class="st">'source_topic'</span>  </span>
-<span id="cb18-210"><a href="#cb18-210" aria-hidden="true" tabindex="-1"></a>        , y <span class="op">=</span> <span class="st">'visits'</span></span>
-<span id="cb18-211"><a href="#cb18-211" aria-hidden="true" tabindex="-1"></a>        , width <span class="op">=</span> <span class="va">None</span></span>
-<span id="cb18-212"><a href="#cb18-212" aria-hidden="true" tabindex="-1"></a>        , height <span class="op">=</span> <span class="va">None</span></span>
-<span id="cb18-213"><a href="#cb18-213" aria-hidden="true" tabindex="-1"></a>        , orientation <span class="op">=</span> <span class="st">'h'</span></span>
-<span id="cb18-214"><a href="#cb18-214" aria-hidden="true" tabindex="-1"></a>        , showgrid_y <span class="op">=</span> <span class="va">False</span></span>
-<span id="cb18-215"><a href="#cb18-215" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb18-216"><a href="#cb18-216" aria-hidden="true" tabindex="-1"></a>    visits_by_source_topic_fig <span class="op">=</span> pagri_data_tools.bar(config, titles_for_axis)</span>
-<span id="cb18-217"><a href="#cb18-217" aria-hidden="true" tabindex="-1"></a>    visits_by_source_topic_fig <span class="op">=</span> visits_by_source_topic_fig.update_layout(title_text<span class="op">=</span><span class="st">'Количество визитов по темам источников, %'</span>)    </span>
-<span id="cb18-218"><a href="#cb18-218" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-219"><a href="#cb18-219" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> visits_by_item_topic_absolute_fig, visits_by_item_topic_pct_fig, visits_by_source_topic_fig</span>
-<span id="cb18-220"><a href="#cb18-220" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-221"><a href="#cb18-221" aria-hidden="true" tabindex="-1"></a><span class="co"># @app.callback(</span></span>
-<span id="cb18-222"><a href="#cb18-222" aria-hidden="true" tabindex="-1"></a><span class="co">#     Output("my-ag-grid", "rowData"),</span></span>
-<span id="cb18-223"><a href="#cb18-223" aria-hidden="true" tabindex="-1"></a><span class="co">#     Input("store-checklist-value", 'data'),</span></span>
-<span id="cb18-224"><a href="#cb18-224" aria-hidden="true" tabindex="-1"></a><span class="co"># )</span></span>
-<span id="cb18-225"><a href="#cb18-225" aria-hidden="true" tabindex="-1"></a><span class="co"># def update_ag_grid(data):</span></span>
-<span id="cb18-226"><a href="#cb18-226" aria-hidden="true" tabindex="-1"></a><span class="co">#   if data is not None:</span></span>
-<span id="cb18-227"><a href="#cb18-227" aria-hidden="true" tabindex="-1"></a><span class="co">#     return ag_grid_data_df[ag_grid_data_df["value"].isin(data)].to_dict('records')</span></span>
-<span id="cb18-228"><a href="#cb18-228" aria-hidden="true" tabindex="-1"></a><span class="co">#   return no_update</span></span>
-<span id="cb18-229"><a href="#cb18-229" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-230"><a href="#cb18-230" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-231"><a href="#cb18-231" aria-hidden="true" tabindex="-1"></a><span class="at">@app.callback</span>(</span>
-<span id="cb18-232"><a href="#cb18-232" aria-hidden="true" tabindex="-1"></a>    [Output(<span class="st">"popover_item_topic"</span>, <span class="st">"is_open"</span>), Output(<span class="st">"checklist_item_topic"</span>, <span class="st">"value"</span>, allow_duplicate<span class="op">=</span><span class="va">True</span>), Output(<span class="st">"store-checklist-value_item_topic"</span>, <span class="st">"data"</span>),</span>
-<span id="cb18-233"><a href="#cb18-233" aria-hidden="true" tabindex="-1"></a>     Output(<span class="st">"popover_age_segment"</span>, <span class="st">"is_open"</span>), Output(<span class="st">"checklist_age_segment"</span>, <span class="st">"value"</span>, allow_duplicate<span class="op">=</span><span class="va">True</span>), Output(<span class="st">"store-checklist-value_age_segment"</span>, <span class="st">"data"</span>)],</span>
-<span id="cb18-234"><a href="#cb18-234" aria-hidden="true" tabindex="-1"></a>    [Input(<span class="st">"select-all-button_item_topic"</span>, <span class="st">'n_clicks'</span>), Input(<span class="st">"clear-button_item_topic"</span>, <span class="st">"n_clicks"</span>), Input(<span class="st">"cancel-button_item_topic"</span>, <span class="st">'n_clicks'</span>), Input(<span class="st">"apply-button_item_topic"</span>, <span class="st">"n_clicks"</span>)],</span>
-<span id="cb18-235"><a href="#cb18-235" aria-hidden="true" tabindex="-1"></a>    [State(<span class="st">"checklist_item_topic"</span>, <span class="st">"options"</span>), State(<span class="st">"checklist_item_topic"</span>, <span class="st">"value"</span>)],</span>
-<span id="cb18-236"><a href="#cb18-236" aria-hidden="true" tabindex="-1"></a>    [Input(<span class="st">"select-all-button_age_segment"</span>, <span class="st">'n_clicks'</span>), Input(<span class="st">"clear-button_age_segment"</span>, <span class="st">"n_clicks"</span>), Input(<span class="st">"cancel-button_age_segment"</span>, <span class="st">'n_clicks'</span>), Input(<span class="st">"apply-button_age_segment"</span>, <span class="st">"n_clicks"</span>)],</span>
-<span id="cb18-237"><a href="#cb18-237" aria-hidden="true" tabindex="-1"></a>    [State(<span class="st">"checklist_age_segment"</span>, <span class="st">"options"</span>), State(<span class="st">"checklist_age_segment"</span>, <span class="st">"value"</span>)],    </span>
-<span id="cb18-238"><a href="#cb18-238" aria-hidden="true" tabindex="-1"></a>    prevent_initial_call<span class="op">=</span><span class="va">True</span></span>
-<span id="cb18-239"><a href="#cb18-239" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb18-240"><a href="#cb18-240" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> update_popover(select_all_button_n_clicks_item_topic, clear_button_n_clicks_item_topic, cancel_n_clicks_item_topic, apply_n_clicks_item_topic, options_item_topic, value_item_topic,</span>
-<span id="cb18-241"><a href="#cb18-241" aria-hidden="true" tabindex="-1"></a>                   select_all_button_n_clicks_age_segment, clear_button_n_clicks_age_segment, cancel_n_clicks_age_segment, apply_n_clicks_age_segment, options_age_segment, value_age_segment):</span>
-<span id="cb18-242"><a href="#cb18-242" aria-hidden="true" tabindex="-1"></a>    <span class="co"># print(ctx.triggered_id)</span></span>
-<span id="cb18-243"><a href="#cb18-243" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> ctx.triggered_id <span class="op">==</span> <span class="st">'select-all-button_item_topic'</span>:</span>
-<span id="cb18-244"><a href="#cb18-244" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> no_update, checklist_all_values_item_topic, no_update, no_update, no_update, no_update</span>
-<span id="cb18-245"><a href="#cb18-245" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-246"><a href="#cb18-246" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> ctx.triggered_id <span class="op">==</span> <span class="st">'clear-button_item_topic'</span>:</span>
-<span id="cb18-247"><a href="#cb18-247" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> no_update, [], no_update, no_update, no_update, no_update</span>
-<span id="cb18-248"><a href="#cb18-248" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-249"><a href="#cb18-249" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> ctx.triggered_id <span class="op">==</span> <span class="st">'cancel-button_item_topic'</span>:</span>
-<span id="cb18-250"><a href="#cb18-250" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">False</span>, checklist_all_values_item_topic, checklist_all_values_item_topic, no_update, no_update, no_update</span>
-<span id="cb18-251"><a href="#cb18-251" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-252"><a href="#cb18-252" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> ctx.triggered_id <span class="op">==</span> <span class="st">'apply-button_item_topic'</span>:</span>
-<span id="cb18-253"><a href="#cb18-253" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">False</span>, no_update, value_item_topic, no_update, no_update, no_update</span>
-<span id="cb18-254"><a href="#cb18-254" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb18-255"><a href="#cb18-255" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> ctx.triggered_id <span class="op">==</span> <span class="st">'select-all-button_age_segment'</span>:</span>
-<span id="cb18-256"><a href="#cb18-256" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> no_update, no_update, no_update, no_update, checklist_all_values_age_segment, no_update</span>
-<span id="cb18-257"><a href="#cb18-257" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-258"><a href="#cb18-258" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> ctx.triggered_id <span class="op">==</span> <span class="st">'clear-button_age_segment'</span>:</span>
-<span id="cb18-259"><a href="#cb18-259" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> no_update, no_update, no_update, no_update, [], no_update</span>
-<span id="cb18-260"><a href="#cb18-260" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-261"><a href="#cb18-261" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> ctx.triggered_id <span class="op">==</span> <span class="st">'cancel-button_age_segment'</span>:</span>
-<span id="cb18-262"><a href="#cb18-262" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> no_update, no_update, no_update, <span class="va">False</span>, checklist_all_values_age_segment, checklist_all_values_age_segment</span>
-<span id="cb18-263"><a href="#cb18-263" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-264"><a href="#cb18-264" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> ctx.triggered_id <span class="op">==</span> <span class="st">'apply-button_age_segment'</span>:</span>
-<span id="cb18-265"><a href="#cb18-265" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> no_update, no_update, no_update, <span class="va">False</span>, no_update, value_age_segment</span>
-<span id="cb18-266"><a href="#cb18-266" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-267"><a href="#cb18-267" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-268"><a href="#cb18-268" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> no_update</span>
-<span id="cb18-269"><a href="#cb18-269" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-270"><a href="#cb18-270" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
-<span id="cb18-271"><a href="#cb18-271" aria-hidden="true" tabindex="-1"></a>    app.run_server(debug<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dash</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dash <span class="im">import</span> dcc, html, Input, Output</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dash <span class="im">import</span> no_update, ctx, State</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dash_bootstrap_components <span class="im">as</span> dbc</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dash_iconify <span class="im">import</span> DashIconify</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="co"># импортируем библиотеки</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sqlalchemy <span class="im">import</span> create_engine</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="co"># db_config = {'user': 'praktikum_student', # имя пользователя</span></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a><span class="co">#             'pwd': 'Sdf4$2;d-d30pp', # пароль</span></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a><span class="co">#             'host': 'rc1b-wcoijxj3yxfsf3fs.mdb.yandexcloud.net',</span></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a><span class="co">#             'port': 6432, # порт подключения</span></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a><span class="co">#             'db': 'data-analyst-zen-project-db'} # название базы данных</span></span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a><span class="co"># connection_string = 'postgresql://{}:{}@{}:{}/{}'.format(db_config['user'],</span></span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a><span class="co">#                                                 db_config['pwd'],</span></span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a><span class="co">#                                                 db_config['host'],</span></span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a><span class="co">#                                                 db_config['port'],</span></span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a><span class="co">#                                                 db_config['db'])</span></span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a><span class="co"># engine = create_engine(connection_string)</span></span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a><span class="co"># df = pd.read_sql('select * from dash_visits', engine)</span></span>
+<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a>titles_for_axis <span class="op">=</span> <span class="bu">dict</span>(</span>
+<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a>    visits <span class="op">=</span> [<span class="st">'Количество визитов'</span>, <span class="st">'количество визитов'</span>, <span class="dv">0</span>]</span>
+<span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a>    , visits_pct <span class="op">=</span> [<span class="st">'Количество визитов, %'</span>, <span class="st">'количество визитов, %'</span>, <span class="dv">0</span>]</span>
+<span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a>    , dt <span class="op">=</span> [<span class="st">'Дата'</span>, <span class="st">'дата'</span>, <span class="dv">1</span>]</span>
+<span id="cb19-31"><a href="#cb19-31" aria-hidden="true" tabindex="-1"></a>    <span class="co"># categorical column ['Именительный падеж', 'для кого / чего', 'по кому чему']</span></span>
+<span id="cb19-32"><a href="#cb19-32" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Распределение долей по городу и тарифу с нормализацией по городу</span></span>
+<span id="cb19-33"><a href="#cb19-33" aria-hidden="true" tabindex="-1"></a>    , item_topic <span class="op">=</span> [<span class="st">'Тема карточки'</span>, <span class="st">'темы карточки'</span>, <span class="st">'теме карточки'</span>]</span>
+<span id="cb19-34"><a href="#cb19-34" aria-hidden="true" tabindex="-1"></a>    , source_topic <span class="op">=</span> [<span class="st">'Тема источника'</span>, <span class="st">'темы источника'</span>, <span class="st">'теме источника'</span>]</span>
+<span id="cb19-35"><a href="#cb19-35" aria-hidden="true" tabindex="-1"></a>    , age_segment <span class="op">=</span> [<span class="st">'Возрастная группа'</span>, <span class="st">'возрастная группа'</span>, <span class="st">'возрастной группе'</span>]</span>
+<span id="cb19-36"><a href="#cb19-36" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb19-37"><a href="#cb19-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-38"><a href="#cb19-38" aria-hidden="true" tabindex="-1"></a>full_filter_icon <span class="op">=</span> DashIconify(</span>
+<span id="cb19-39"><a href="#cb19-39" aria-hidden="true" tabindex="-1"></a>      icon<span class="op">=</span><span class="st">"bx:filter"</span>,</span>
+<span id="cb19-40"><a href="#cb19-40" aria-hidden="true" tabindex="-1"></a>      color<span class="op">=</span><span class="st">"green"</span>,</span>
+<span id="cb19-41"><a href="#cb19-41" aria-hidden="true" tabindex="-1"></a>      width<span class="op">=</span><span class="dv">30</span>,</span>
+<span id="cb19-42"><a href="#cb19-42" aria-hidden="true" tabindex="-1"></a>      height<span class="op">=</span><span class="dv">30</span></span>
+<span id="cb19-43"><a href="#cb19-43" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb19-44"><a href="#cb19-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-45"><a href="#cb19-45" aria-hidden="true" tabindex="-1"></a>partial_filter_icon <span class="op">=</span> DashIconify(</span>
+<span id="cb19-46"><a href="#cb19-46" aria-hidden="true" tabindex="-1"></a>      icon<span class="op">=</span><span class="st">"prime:filter-fill"</span>,</span>
+<span id="cb19-47"><a href="#cb19-47" aria-hidden="true" tabindex="-1"></a>      color<span class="op">=</span><span class="st">"green"</span>,</span>
+<span id="cb19-48"><a href="#cb19-48" aria-hidden="true" tabindex="-1"></a>      width<span class="op">=</span><span class="dv">20</span>,</span>
+<span id="cb19-49"><a href="#cb19-49" aria-hidden="true" tabindex="-1"></a>      height<span class="op">=</span><span class="dv">20</span></span>
+<span id="cb19-50"><a href="#cb19-50" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb19-51"><a href="#cb19-51" aria-hidden="true" tabindex="-1"></a>checklist_all_values_item_topic <span class="op">=</span> df[<span class="st">'item_topic'</span>].unique()</span>
+<span id="cb19-52"><a href="#cb19-52" aria-hidden="true" tabindex="-1"></a>checklist_all_values_age_segment <span class="op">=</span> df[<span class="st">'age_segment'</span>].unique()</span>
+<span id="cb19-53"><a href="#cb19-53" aria-hidden="true" tabindex="-1"></a>dbc_css <span class="op">=</span> <span class="st">"https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates/dbc.min.css"</span></span>
+<span id="cb19-54"><a href="#cb19-54" aria-hidden="true" tabindex="-1"></a><span class="co"># Создание Dash приложения с использованием Bootstrap</span></span>
+<span id="cb19-55"><a href="#cb19-55" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> dash.Dash(<span class="va">__name__</span>, external_stylesheets<span class="op">=</span>[dbc.themes.BOOTSTRAP, dbc_css])</span>
+<span id="cb19-56"><a href="#cb19-56" aria-hidden="true" tabindex="-1"></a>filter_item_topic <span class="op">=</span> html.Div([</span>
+<span id="cb19-57"><a href="#cb19-57" aria-hidden="true" tabindex="-1"></a>        dbc.Row([</span>
+<span id="cb19-58"><a href="#cb19-58" aria-hidden="true" tabindex="-1"></a>            dbc.Col(dbc.Button(<span class="st">"Select All"</span>, <span class="bu">id</span><span class="op">=</span><span class="st">'select-all-button_item_topic'</span>, n_clicks<span class="op">=</span><span class="dv">0</span>, color<span class="op">=</span><span class="st">"link"</span>)),</span>
+<span id="cb19-59"><a href="#cb19-59" aria-hidden="true" tabindex="-1"></a>            dbc.Col(dbc.Button(<span class="st">"Clear"</span>, <span class="bu">id</span><span class="op">=</span><span class="st">'clear-button_item_topic'</span>, n_clicks<span class="op">=</span><span class="dv">0</span>, color<span class="op">=</span><span class="st">"link"</span>))</span>
+<span id="cb19-60"><a href="#cb19-60" aria-hidden="true" tabindex="-1"></a>        ]),</span>
+<span id="cb19-61"><a href="#cb19-61" aria-hidden="true" tabindex="-1"></a>        dbc.Row([</span>
+<span id="cb19-62"><a href="#cb19-62" aria-hidden="true" tabindex="-1"></a>            dbc.Col(</span>
+<span id="cb19-63"><a href="#cb19-63" aria-hidden="true" tabindex="-1"></a>            dcc.Checklist(</span>
+<span id="cb19-64"><a href="#cb19-64" aria-hidden="true" tabindex="-1"></a>            options<span class="op">=</span>[{<span class="st">'label'</span>: topic, <span class="st">'value'</span>: topic} <span class="cf">for</span> topic <span class="kw">in</span> checklist_all_values_item_topic],</span>
+<span id="cb19-65"><a href="#cb19-65" aria-hidden="true" tabindex="-1"></a>            value<span class="op">=</span>checklist_all_values_item_topic,</span>
+<span id="cb19-66"><a href="#cb19-66" aria-hidden="true" tabindex="-1"></a>            <span class="bu">id</span><span class="op">=</span><span class="st">"checklist_item_topic"</span>,</span>
+<span id="cb19-67"><a href="#cb19-67" aria-hidden="true" tabindex="-1"></a>            style<span class="op">=</span>{<span class="st">'maxHeight'</span>: <span class="st">'200px'</span>, <span class="st">'overflowY'</span>: <span class="st">'scroll'</span>, <span class="st">'accent-color'</span>: <span class="st">'transparent'</span>}))</span>
+<span id="cb19-68"><a href="#cb19-68" aria-hidden="true" tabindex="-1"></a>        ]),        </span>
+<span id="cb19-69"><a href="#cb19-69" aria-hidden="true" tabindex="-1"></a>      dbc.Row([</span>
+<span id="cb19-70"><a href="#cb19-70" aria-hidden="true" tabindex="-1"></a>        dbc.Col(dbc.Button(<span class="st">"Cancel"</span>, <span class="bu">id</span><span class="op">=</span><span class="st">'cancel-button_item_topic'</span>, outline<span class="op">=</span><span class="va">True</span>, color<span class="op">=</span><span class="st">"secondary"</span>, className<span class="op">=</span><span class="st">"me-1"</span>)),</span>
+<span id="cb19-71"><a href="#cb19-71" aria-hidden="true" tabindex="-1"></a>        dbc.Col(dbc.Button(<span class="st">"Apply"</span>, <span class="bu">id</span><span class="op">=</span><span class="st">'apply-button_item_topic'</span>, outline<span class="op">=</span><span class="va">True</span>, color<span class="op">=</span><span class="st">"success"</span>, className<span class="op">=</span><span class="st">"me-1"</span>)),</span>
+<span id="cb19-72"><a href="#cb19-72" aria-hidden="true" tabindex="-1"></a>        ])</span>
+<span id="cb19-73"><a href="#cb19-73" aria-hidden="true" tabindex="-1"></a>        ])</span>
+<span id="cb19-74"><a href="#cb19-74" aria-hidden="true" tabindex="-1"></a>popover_item_topic <span class="op">=</span> html.Div(</span>
+<span id="cb19-75"><a href="#cb19-75" aria-hidden="true" tabindex="-1"></a>        [</span>
+<span id="cb19-76"><a href="#cb19-76" aria-hidden="true" tabindex="-1"></a>        dbc.Button(<span class="bu">id</span><span class="op">=</span><span class="st">"popover_item_topic_target"</span>, children<span class="op">=</span><span class="st">'Фильтр по темам карточек'</span>, n_clicks<span class="op">=</span><span class="dv">0</span>), <span class="co"># color=None, style={'background-color': 'transparent', 'border': 'none'}),</span></span>
+<span id="cb19-77"><a href="#cb19-77" aria-hidden="true" tabindex="-1"></a>        dbc.Popover(</span>
+<span id="cb19-78"><a href="#cb19-78" aria-hidden="true" tabindex="-1"></a>            <span class="bu">id</span><span class="op">=</span><span class="st">'popover_item_topic'</span>,</span>
+<span id="cb19-79"><a href="#cb19-79" aria-hidden="true" tabindex="-1"></a>            children<span class="op">=</span>filter_item_topic,</span>
+<span id="cb19-80"><a href="#cb19-80" aria-hidden="true" tabindex="-1"></a>            target<span class="op">=</span><span class="st">"popover_item_topic_target"</span>,</span>
+<span id="cb19-81"><a href="#cb19-81" aria-hidden="true" tabindex="-1"></a>            body<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb19-82"><a href="#cb19-82" aria-hidden="true" tabindex="-1"></a>            trigger<span class="op">=</span><span class="st">"click"</span>,</span>
+<span id="cb19-83"><a href="#cb19-83" aria-hidden="true" tabindex="-1"></a>            placement<span class="op">=</span><span class="st">'right'</span>,</span>
+<span id="cb19-84"><a href="#cb19-84" aria-hidden="true" tabindex="-1"></a>                )</span>
+<span id="cb19-85"><a href="#cb19-85" aria-hidden="true" tabindex="-1"></a>            ]</span>
+<span id="cb19-86"><a href="#cb19-86" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb19-87"><a href="#cb19-87" aria-hidden="true" tabindex="-1"></a>filter_age_segment <span class="op">=</span> html.Div([</span>
+<span id="cb19-88"><a href="#cb19-88" aria-hidden="true" tabindex="-1"></a>        dbc.Row([</span>
+<span id="cb19-89"><a href="#cb19-89" aria-hidden="true" tabindex="-1"></a>            dbc.Col(dbc.Button(<span class="st">"Select All"</span>, <span class="bu">id</span><span class="op">=</span><span class="st">'select-all-button_age_segment'</span>, n_clicks<span class="op">=</span><span class="dv">0</span>, color<span class="op">=</span><span class="st">"link"</span>)),</span>
+<span id="cb19-90"><a href="#cb19-90" aria-hidden="true" tabindex="-1"></a>            dbc.Col(dbc.Button(<span class="st">"Clear"</span>, <span class="bu">id</span><span class="op">=</span><span class="st">'clear-button_age_segment'</span>, n_clicks<span class="op">=</span><span class="dv">0</span>, color<span class="op">=</span><span class="st">"link"</span>))</span>
+<span id="cb19-91"><a href="#cb19-91" aria-hidden="true" tabindex="-1"></a>        ]),</span>
+<span id="cb19-92"><a href="#cb19-92" aria-hidden="true" tabindex="-1"></a>        dbc.Row([</span>
+<span id="cb19-93"><a href="#cb19-93" aria-hidden="true" tabindex="-1"></a>            dbc.Col(</span>
+<span id="cb19-94"><a href="#cb19-94" aria-hidden="true" tabindex="-1"></a>            dcc.Checklist(</span>
+<span id="cb19-95"><a href="#cb19-95" aria-hidden="true" tabindex="-1"></a>            options<span class="op">=</span>[{<span class="st">'label'</span>: topic, <span class="st">'value'</span>: topic} <span class="cf">for</span> topic <span class="kw">in</span> checklist_all_values_age_segment],</span>
+<span id="cb19-96"><a href="#cb19-96" aria-hidden="true" tabindex="-1"></a>            value<span class="op">=</span>checklist_all_values_age_segment,</span>
+<span id="cb19-97"><a href="#cb19-97" aria-hidden="true" tabindex="-1"></a>            <span class="bu">id</span><span class="op">=</span><span class="st">"checklist_age_segment"</span>,</span>
+<span id="cb19-98"><a href="#cb19-98" aria-hidden="true" tabindex="-1"></a>            style<span class="op">=</span>{<span class="st">'maxHeight'</span>: <span class="st">'180px'</span>, <span class="st">'overflowY'</span>: <span class="st">'scroll'</span>, <span class="st">'accent-color'</span>: <span class="st">'transparent'</span>}))</span>
+<span id="cb19-99"><a href="#cb19-99" aria-hidden="true" tabindex="-1"></a>        ]),        </span>
+<span id="cb19-100"><a href="#cb19-100" aria-hidden="true" tabindex="-1"></a>      dbc.Row([</span>
+<span id="cb19-101"><a href="#cb19-101" aria-hidden="true" tabindex="-1"></a>        dbc.Col(dbc.Button(<span class="st">"Cancel"</span>, <span class="bu">id</span><span class="op">=</span><span class="st">'cancel-button_age_segment'</span>, outline<span class="op">=</span><span class="va">True</span>, color<span class="op">=</span><span class="st">"secondary"</span>, className<span class="op">=</span><span class="st">"me-1"</span>)),</span>
+<span id="cb19-102"><a href="#cb19-102" aria-hidden="true" tabindex="-1"></a>        dbc.Col(dbc.Button(<span class="st">"Apply"</span>, <span class="bu">id</span><span class="op">=</span><span class="st">'apply-button_age_segment'</span>, outline<span class="op">=</span><span class="va">True</span>, color<span class="op">=</span><span class="st">"success"</span>, className<span class="op">=</span><span class="st">"me-1"</span>)),</span>
+<span id="cb19-103"><a href="#cb19-103" aria-hidden="true" tabindex="-1"></a>        ])</span>
+<span id="cb19-104"><a href="#cb19-104" aria-hidden="true" tabindex="-1"></a>        ])</span>
+<span id="cb19-105"><a href="#cb19-105" aria-hidden="true" tabindex="-1"></a>popover_age_segment <span class="op">=</span> html.Div(</span>
+<span id="cb19-106"><a href="#cb19-106" aria-hidden="true" tabindex="-1"></a>        [</span>
+<span id="cb19-107"><a href="#cb19-107" aria-hidden="true" tabindex="-1"></a>        dbc.Button(<span class="bu">id</span><span class="op">=</span><span class="st">"popover_age_segment_target"</span>, children<span class="op">=</span><span class="st">'Фильтр по возрастным категориям'</span>, n_clicks<span class="op">=</span><span class="dv">0</span>), <span class="co"># color=None, style={'background-color': 'transparent', 'border': 'none'}),</span></span>
+<span id="cb19-108"><a href="#cb19-108" aria-hidden="true" tabindex="-1"></a>        dbc.Popover(</span>
+<span id="cb19-109"><a href="#cb19-109" aria-hidden="true" tabindex="-1"></a>            <span class="bu">id</span><span class="op">=</span><span class="st">'popover_age_segment'</span>,</span>
+<span id="cb19-110"><a href="#cb19-110" aria-hidden="true" tabindex="-1"></a>            children<span class="op">=</span>filter_age_segment,</span>
+<span id="cb19-111"><a href="#cb19-111" aria-hidden="true" tabindex="-1"></a>            target<span class="op">=</span><span class="st">"popover_age_segment_target"</span>,</span>
+<span id="cb19-112"><a href="#cb19-112" aria-hidden="true" tabindex="-1"></a>            body<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb19-113"><a href="#cb19-113" aria-hidden="true" tabindex="-1"></a>            trigger<span class="op">=</span><span class="st">"click"</span>,</span>
+<span id="cb19-114"><a href="#cb19-114" aria-hidden="true" tabindex="-1"></a>            placement<span class="op">=</span><span class="st">'right'</span>,</span>
+<span id="cb19-115"><a href="#cb19-115" aria-hidden="true" tabindex="-1"></a>                )</span>
+<span id="cb19-116"><a href="#cb19-116" aria-hidden="true" tabindex="-1"></a>            ]</span>
+<span id="cb19-117"><a href="#cb19-117" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb19-118"><a href="#cb19-118" aria-hidden="true" tabindex="-1"></a>app.layout <span class="op">=</span> dbc.Container([</span>
+<span id="cb19-119"><a href="#cb19-119" aria-hidden="true" tabindex="-1"></a>    dbc.Row([</span>
+<span id="cb19-120"><a href="#cb19-120" aria-hidden="true" tabindex="-1"></a>        dbc.Col(html.H4(<span class="st">"Анализ взаимодействия пользователей с карточками статей Яндекс Дзен"</span>), className<span class="op">=</span><span class="st">"text-center mb-4"</span>)</span>
+<span id="cb19-121"><a href="#cb19-121" aria-hidden="true" tabindex="-1"></a>        , dbc.Col(</span>
+<span id="cb19-122"><a href="#cb19-122" aria-hidden="true" tabindex="-1"></a>            [dbc.Label(<span class="st">'Фильтр по времени'</span>),</span>
+<span id="cb19-123"><a href="#cb19-123" aria-hidden="true" tabindex="-1"></a>        <span class="co">#     dcc.DatePickerRange(</span></span>
+<span id="cb19-124"><a href="#cb19-124" aria-hidden="true" tabindex="-1"></a>        <span class="co">#     id='date-picker-range',</span></span>
+<span id="cb19-125"><a href="#cb19-125" aria-hidden="true" tabindex="-1"></a>        <span class="co">#     start_date=df['dt'].min(),</span></span>
+<span id="cb19-126"><a href="#cb19-126" aria-hidden="true" tabindex="-1"></a>        <span class="co">#     end_date=df['dt'].max(),</span></span>
+<span id="cb19-127"><a href="#cb19-127" aria-hidden="true" tabindex="-1"></a>        <span class="co">#     display_format='YYYY-MM-DD',</span></span>
+<span id="cb19-128"><a href="#cb19-128" aria-hidden="true" tabindex="-1"></a>        <span class="co">#     className="mb-4"</span></span>
+<span id="cb19-129"><a href="#cb19-129" aria-hidden="true" tabindex="-1"></a>        <span class="co"># )</span></span>
+<span id="cb19-130"><a href="#cb19-130" aria-hidden="true" tabindex="-1"></a>            dbc.Row([</span>
+<span id="cb19-131"><a href="#cb19-131" aria-hidden="true" tabindex="-1"></a>                dbc.Col(dbc.Label(<span class="st">''</span>, <span class="bu">id</span><span class="op">=</span><span class="st">'date_range_slider_start_text'</span>, style<span class="op">=</span>{<span class="st">'fontSize'</span>: <span class="st">'12px'</span>, <span class="st">'margin'</span>: <span class="st">'0'</span>, <span class="st">'padding'</span>: <span class="st">'0'</span>}), width<span class="op">=</span><span class="dv">2</span>),</span>
+<span id="cb19-132"><a href="#cb19-132" aria-hidden="true" tabindex="-1"></a>                dbc.Col(dcc.RangeSlider(</span>
+<span id="cb19-133"><a href="#cb19-133" aria-hidden="true" tabindex="-1"></a>                    <span class="bu">id</span><span class="op">=</span><span class="st">'date-picker-range'</span>,</span>
+<span id="cb19-134"><a href="#cb19-134" aria-hidden="true" tabindex="-1"></a>                    <span class="bu">min</span><span class="op">=</span><span class="dv">0</span>,</span>
+<span id="cb19-135"><a href="#cb19-135" aria-hidden="true" tabindex="-1"></a>                    <span class="bu">max</span><span class="op">=</span><span class="bu">len</span>(df) <span class="op">-</span> <span class="dv">1</span>,</span>
+<span id="cb19-136"><a href="#cb19-136" aria-hidden="true" tabindex="-1"></a>                    value<span class="op">=</span>[<span class="dv">0</span>, <span class="bu">len</span>(df) <span class="op">-</span> <span class="dv">1</span>],</span>
+<span id="cb19-137"><a href="#cb19-137" aria-hidden="true" tabindex="-1"></a>                    marks<span class="op">=</span><span class="va">None</span>,</span>
+<span id="cb19-138"><a href="#cb19-138" aria-hidden="true" tabindex="-1"></a>                    step<span class="op">=</span><span class="dv">1</span>,  <span class="co"># шаг в 60 секунд</span></span>
+<span id="cb19-139"><a href="#cb19-139" aria-hidden="true" tabindex="-1"></a>                ), width<span class="op">=</span><span class="dv">8</span>, style<span class="op">=</span>{<span class="st">'margin'</span>: <span class="st">'0'</span>, <span class="st">'padding'</span>: <span class="st">'0'</span>}),</span>
+<span id="cb19-140"><a href="#cb19-140" aria-hidden="true" tabindex="-1"></a>                dbc.Col(dbc.Label(<span class="st">''</span>, <span class="bu">id</span><span class="op">=</span><span class="st">'date_range_slider_end_text'</span>, style<span class="op">=</span>{<span class="st">'fontSize'</span>: <span class="st">'12px'</span>, <span class="st">'margin'</span>: <span class="st">'0'</span>, <span class="st">'padding'</span>: <span class="st">'0'</span>}), width<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb19-141"><a href="#cb19-141" aria-hidden="true" tabindex="-1"></a>            ])</span>
+<span id="cb19-142"><a href="#cb19-142" aria-hidden="true" tabindex="-1"></a>            ], width<span class="op">=</span><span class="dv">4</span>),</span>
+<span id="cb19-143"><a href="#cb19-143" aria-hidden="true" tabindex="-1"></a>    ]),</span>
+<span id="cb19-144"><a href="#cb19-144" aria-hidden="true" tabindex="-1"></a>    dbc.Row([</span>
+<span id="cb19-145"><a href="#cb19-145" aria-hidden="true" tabindex="-1"></a>        dbc.Col(dbc.Label(<span class="st">'Дашборд фомирует интерактивные графики о событиях взаимодействия пользователей с карточками.</span><span class="ch">\n</span><span class="st"> Данные фильтруются по времени, теме карточки и возрастной категории.'</span>)),</span>
+<span id="cb19-146"><a href="#cb19-146" aria-hidden="true" tabindex="-1"></a>        dbc.Col(popover_item_topic, width<span class="op">=</span><span class="dv">3</span>), </span>
+<span id="cb19-147"><a href="#cb19-147" aria-hidden="true" tabindex="-1"></a>        dbc.Col(popover_age_segment, width<span class="op">=</span><span class="dv">3</span>), </span>
+<span id="cb19-148"><a href="#cb19-148" aria-hidden="true" tabindex="-1"></a>    ]),</span>
+<span id="cb19-149"><a href="#cb19-149" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb19-150"><a href="#cb19-150" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb19-151"><a href="#cb19-151" aria-hidden="true" tabindex="-1"></a>    dbc.Row([</span>
+<span id="cb19-152"><a href="#cb19-152" aria-hidden="true" tabindex="-1"></a>        dbc.Col(dcc.Graph(<span class="bu">id</span><span class="op">=</span><span class="st">'absolute-visits-by-item-graph'</span>), width<span class="op">=</span><span class="dv">4</span>),</span>
+<span id="cb19-153"><a href="#cb19-153" aria-hidden="true" tabindex="-1"></a>        dbc.Col(dcc.Graph(<span class="bu">id</span><span class="op">=</span><span class="st">'relative-visits-by-item-graph'</span>), width<span class="op">=</span><span class="dv">4</span>),</span>
+<span id="cb19-154"><a href="#cb19-154" aria-hidden="true" tabindex="-1"></a>        dbc.Col(dcc.Graph(<span class="bu">id</span><span class="op">=</span><span class="st">'visits-by-source-graph'</span>), width<span class="op">=</span><span class="dv">4</span>),</span>
+<span id="cb19-155"><a href="#cb19-155" aria-hidden="true" tabindex="-1"></a>    ]),</span>
+<span id="cb19-156"><a href="#cb19-156" aria-hidden="true" tabindex="-1"></a>    dcc.Store(<span class="bu">id</span><span class="op">=</span><span class="st">'store-checklist-value_item_topic'</span>, storage_type<span class="op">=</span><span class="st">'memory'</span>), </span>
+<span id="cb19-157"><a href="#cb19-157" aria-hidden="true" tabindex="-1"></a>    dcc.Store(<span class="bu">id</span><span class="op">=</span><span class="st">'store-checklist-value_age_segment'</span>, storage_type<span class="op">=</span><span class="st">'memory'</span>)</span>
+<span id="cb19-158"><a href="#cb19-158" aria-hidden="true" tabindex="-1"></a>], fluid<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb19-159"><a href="#cb19-159" aria-hidden="true" tabindex="-1"></a><span class="at">@app.callback</span>(</span>
+<span id="cb19-160"><a href="#cb19-160" aria-hidden="true" tabindex="-1"></a>    [Output(<span class="st">'date_range_slider_start_text'</span>, <span class="st">'children'</span>),</span>
+<span id="cb19-161"><a href="#cb19-161" aria-hidden="true" tabindex="-1"></a>     Output(<span class="st">'date_range_slider_end_text'</span>, <span class="st">'children'</span>)],</span>
+<span id="cb19-162"><a href="#cb19-162" aria-hidden="true" tabindex="-1"></a>    [Input(<span class="st">'date-picker-range'</span>, <span class="st">'value'</span>)]</span>
+<span id="cb19-163"><a href="#cb19-163" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb19-164"><a href="#cb19-164" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> update_labels(selected_range):</span>
+<span id="cb19-165"><a href="#cb19-165" aria-hidden="true" tabindex="-1"></a>    start_index, end_index <span class="op">=</span> selected_range</span>
+<span id="cb19-166"><a href="#cb19-166" aria-hidden="true" tabindex="-1"></a>    start_time <span class="op">=</span> df[<span class="st">'dt'</span>].iloc[start_index].strftime(<span class="st">'%H:%M:%S'</span>)</span>
+<span id="cb19-167"><a href="#cb19-167" aria-hidden="true" tabindex="-1"></a>    end_time <span class="op">=</span> df[<span class="st">'dt'</span>].iloc[end_index].strftime(<span class="st">'%H:%M:%S'</span>)</span>
+<span id="cb19-168"><a href="#cb19-168" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> start_time, end_time</span>
+<span id="cb19-169"><a href="#cb19-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-170"><a href="#cb19-170" aria-hidden="true" tabindex="-1"></a><span class="at">@app.callback</span>(</span>
+<span id="cb19-171"><a href="#cb19-171" aria-hidden="true" tabindex="-1"></a>    Output(<span class="st">'absolute-visits-by-item-graph'</span>, <span class="st">'figure'</span>),</span>
+<span id="cb19-172"><a href="#cb19-172" aria-hidden="true" tabindex="-1"></a>    Output(<span class="st">'relative-visits-by-item-graph'</span>, <span class="st">'figure'</span>),</span>
+<span id="cb19-173"><a href="#cb19-173" aria-hidden="true" tabindex="-1"></a>    Output(<span class="st">'visits-by-source-graph'</span>, <span class="st">'figure'</span>),</span>
+<span id="cb19-174"><a href="#cb19-174" aria-hidden="true" tabindex="-1"></a>    Input(<span class="st">'date-picker-range'</span>, <span class="st">'value'</span>),</span>
+<span id="cb19-175"><a href="#cb19-175" aria-hidden="true" tabindex="-1"></a>    Input(<span class="st">'checklist_item_topic'</span>, <span class="st">'value'</span>),</span>
+<span id="cb19-176"><a href="#cb19-176" aria-hidden="true" tabindex="-1"></a>    Input(<span class="st">'checklist_age_segment'</span>, <span class="st">'value'</span>),</span>
+<span id="cb19-177"><a href="#cb19-177" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Input('age-segment-dropdown', 'value')</span></span>
+<span id="cb19-178"><a href="#cb19-178" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb19-179"><a href="#cb19-179" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> update_graphs(value, selected_item_topics, selected_age_segments):</span>
+<span id="cb19-180"><a href="#cb19-180" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Фильтрация данных    </span></span>
+<span id="cb19-181"><a href="#cb19-181" aria-hidden="true" tabindex="-1"></a>    filtered_df <span class="op">=</span> df[</span>
+<span id="cb19-182"><a href="#cb19-182" aria-hidden="true" tabindex="-1"></a>        (df[<span class="st">'dt'</span>] <span class="op">&gt;=</span> df[<span class="st">'dt'</span>].iloc[value[<span class="dv">0</span>]]) <span class="op">&amp;</span></span>
+<span id="cb19-183"><a href="#cb19-183" aria-hidden="true" tabindex="-1"></a>        (df[<span class="st">'dt'</span>] <span class="op">&lt;=</span> df[<span class="st">'dt'</span>].iloc[value[<span class="dv">1</span>]])</span>
+<span id="cb19-184"><a href="#cb19-184" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb19-185"><a href="#cb19-185" aria-hidden="true" tabindex="-1"></a>    <span class="co"># print('ok')</span></span>
+<span id="cb19-186"><a href="#cb19-186" aria-hidden="true" tabindex="-1"></a>    <span class="co"># print(selected_item_topics)</span></span>
+<span id="cb19-187"><a href="#cb19-187" aria-hidden="true" tabindex="-1"></a>    <span class="co"># print(selected_age_segments)</span></span>
+<span id="cb19-188"><a href="#cb19-188" aria-hidden="true" tabindex="-1"></a>    filtered_df <span class="op">=</span> filtered_df[filtered_df[<span class="st">'item_topic'</span>].isin(selected_item_topics)]</span>
+<span id="cb19-189"><a href="#cb19-189" aria-hidden="true" tabindex="-1"></a>    filtered_df <span class="op">=</span> filtered_df[filtered_df[<span class="st">'age_segment'</span>].isin(selected_age_segments)]</span>
+<span id="cb19-190"><a href="#cb19-190" aria-hidden="true" tabindex="-1"></a>    top_item_topics <span class="op">=</span> filtered_df.groupby(<span class="st">'item_topic'</span>)[<span class="st">'visits'</span>].<span class="bu">sum</span>().sort_values(ascending<span class="op">=</span><span class="va">False</span>).head(<span class="dv">10</span>).index.values</span>
+<span id="cb19-191"><a href="#cb19-191" aria-hidden="true" tabindex="-1"></a>    filtered_df[<span class="st">'item_topic'</span>] <span class="op">=</span> filtered_df[<span class="st">'item_topic'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: x <span class="cf">if</span> x <span class="kw">in</span> top_item_topics <span class="cf">else</span> <span class="st">'Другое'</span>)</span>
+<span id="cb19-192"><a href="#cb19-192" aria-hidden="true" tabindex="-1"></a>    df_aggregated_by_item_topic <span class="op">=</span> filtered_df.groupby([<span class="st">'dt'</span>, <span class="st">'item_topic'</span>])[[<span class="st">'visits'</span>]].<span class="bu">sum</span>()</span>
+<span id="cb19-193"><a href="#cb19-193" aria-hidden="true" tabindex="-1"></a>    df_aggregated_by_item_topic[<span class="st">'all_visits'</span>] <span class="op">=</span> df_aggregated_by_item_topic.groupby(<span class="st">'dt'</span>)[<span class="st">'visits'</span>].transform(<span class="st">'sum'</span>)</span>
+<span id="cb19-194"><a href="#cb19-194" aria-hidden="true" tabindex="-1"></a>    df_aggregated_by_item_topic[<span class="st">'visits_pct'</span>] <span class="op">=</span> df_aggregated_by_item_topic[<span class="st">'visits'</span>] <span class="op">*</span> <span class="dv">100</span> <span class="op">/</span> df_aggregated_by_item_topic[<span class="st">'all_visits'</span>]</span>
+<span id="cb19-195"><a href="#cb19-195" aria-hidden="true" tabindex="-1"></a>    df_aggregated_by_item_topic <span class="op">=</span> df_aggregated_by_item_topic.reset_index()</span>
+<span id="cb19-196"><a href="#cb19-196" aria-hidden="true" tabindex="-1"></a>    top_source_topic <span class="op">=</span> filtered_df.groupby(<span class="st">'source_topic'</span>)[<span class="st">'visits'</span>].<span class="bu">sum</span>().sort_values(ascending<span class="op">=</span><span class="va">False</span>).head(<span class="dv">10</span>).index.values</span>
+<span id="cb19-197"><a href="#cb19-197" aria-hidden="true" tabindex="-1"></a>    <span class="co"># print(filtered_df.shape[0])</span></span>
+<span id="cb19-198"><a href="#cb19-198" aria-hidden="true" tabindex="-1"></a>    filtered_df[<span class="st">'source_topic'</span>] <span class="op">=</span> filtered_df[<span class="st">'source_topic'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: x <span class="cf">if</span> x <span class="kw">in</span> top_source_topic <span class="cf">else</span> <span class="st">'Другое'</span>)</span>
+<span id="cb19-199"><a href="#cb19-199" aria-hidden="true" tabindex="-1"></a>    df_aggregated_by_source_topic <span class="op">=</span> (filtered_df.groupby(<span class="st">'source_topic'</span>)[[<span class="st">'visits'</span>]].<span class="bu">sum</span>() <span class="op">*</span><span class="dv">100</span> <span class="op">/</span> filtered_df.visits.<span class="bu">sum</span>()).sort_values(<span class="st">'visits'</span>, ascending<span class="op">=</span><span class="va">False</span>).reset_index()</span>
+<span id="cb19-200"><a href="#cb19-200" aria-hidden="true" tabindex="-1"></a>    config <span class="op">=</span> <span class="bu">dict</span>(</span>
+<span id="cb19-201"><a href="#cb19-201" aria-hidden="true" tabindex="-1"></a>        df <span class="op">=</span> df_aggregated_by_item_topic</span>
+<span id="cb19-202"><a href="#cb19-202" aria-hidden="true" tabindex="-1"></a>        , x <span class="op">=</span> <span class="st">'dt'</span>  </span>
+<span id="cb19-203"><a href="#cb19-203" aria-hidden="true" tabindex="-1"></a>        , y <span class="op">=</span> <span class="st">'visits'</span></span>
+<span id="cb19-204"><a href="#cb19-204" aria-hidden="true" tabindex="-1"></a>        , category <span class="op">=</span> <span class="st">'item_topic'</span></span>
+<span id="cb19-205"><a href="#cb19-205" aria-hidden="true" tabindex="-1"></a>        , width <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb19-206"><a href="#cb19-206" aria-hidden="true" tabindex="-1"></a>        , height <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb19-207"><a href="#cb19-207" aria-hidden="true" tabindex="-1"></a>        , orientation <span class="op">=</span> <span class="st">'v'</span></span>
+<span id="cb19-208"><a href="#cb19-208" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb19-209"><a href="#cb19-209" aria-hidden="true" tabindex="-1"></a>    visits_by_item_topic_absolute_fig <span class="op">=</span> pagri_data_tools.area(config, titles_for_axis)</span>
+<span id="cb19-210"><a href="#cb19-210" aria-hidden="true" tabindex="-1"></a>    visits_by_item_topic_absolute_fig <span class="op">=</span> visits_by_item_topic_absolute_fig.update_layout(title_text<span class="op">=</span><span class="st">'Количество визитов по темам карточек'</span>, showlegend<span class="op">=</span><span class="va">False</span>)    </span>
+<span id="cb19-211"><a href="#cb19-211" aria-hidden="true" tabindex="-1"></a>    config <span class="op">=</span> <span class="bu">dict</span>(</span>
+<span id="cb19-212"><a href="#cb19-212" aria-hidden="true" tabindex="-1"></a>        df <span class="op">=</span> df_aggregated_by_item_topic</span>
+<span id="cb19-213"><a href="#cb19-213" aria-hidden="true" tabindex="-1"></a>        , x <span class="op">=</span> <span class="st">'dt'</span>  </span>
+<span id="cb19-214"><a href="#cb19-214" aria-hidden="true" tabindex="-1"></a>        , y <span class="op">=</span> <span class="st">'visits_pct'</span></span>
+<span id="cb19-215"><a href="#cb19-215" aria-hidden="true" tabindex="-1"></a>        , category <span class="op">=</span> <span class="st">'item_topic'</span></span>
+<span id="cb19-216"><a href="#cb19-216" aria-hidden="true" tabindex="-1"></a>        , width <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb19-217"><a href="#cb19-217" aria-hidden="true" tabindex="-1"></a>        , height <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb19-218"><a href="#cb19-218" aria-hidden="true" tabindex="-1"></a>        , orientation <span class="op">=</span> <span class="st">'v'</span></span>
+<span id="cb19-219"><a href="#cb19-219" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb19-220"><a href="#cb19-220" aria-hidden="true" tabindex="-1"></a>    display(df_aggregated_by_source_topic)</span>
+<span id="cb19-221"><a href="#cb19-221" aria-hidden="true" tabindex="-1"></a>    visits_by_item_topic_pct_fig <span class="op">=</span> pagri_data_tools.area(config, titles_for_axis)</span>
+<span id="cb19-222"><a href="#cb19-222" aria-hidden="true" tabindex="-1"></a>    visits_by_item_topic_pct_fig.update_layout(title_text<span class="op">=</span><span class="st">'Количество визитов по темам карточек, %'</span>, showlegend<span class="op">=</span><span class="va">False</span>)    </span>
+<span id="cb19-223"><a href="#cb19-223" aria-hidden="true" tabindex="-1"></a>    config <span class="op">=</span> <span class="bu">dict</span>(</span>
+<span id="cb19-224"><a href="#cb19-224" aria-hidden="true" tabindex="-1"></a>        df <span class="op">=</span> df_aggregated_by_source_topic</span>
+<span id="cb19-225"><a href="#cb19-225" aria-hidden="true" tabindex="-1"></a>        , x <span class="op">=</span> <span class="st">'source_topic'</span>  </span>
+<span id="cb19-226"><a href="#cb19-226" aria-hidden="true" tabindex="-1"></a>        , y <span class="op">=</span> <span class="st">'visits'</span></span>
+<span id="cb19-227"><a href="#cb19-227" aria-hidden="true" tabindex="-1"></a>        , width <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb19-228"><a href="#cb19-228" aria-hidden="true" tabindex="-1"></a>        , height <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb19-229"><a href="#cb19-229" aria-hidden="true" tabindex="-1"></a>        , orientation <span class="op">=</span> <span class="st">'h'</span></span>
+<span id="cb19-230"><a href="#cb19-230" aria-hidden="true" tabindex="-1"></a>        , showgrid_y <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb19-231"><a href="#cb19-231" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb19-232"><a href="#cb19-232" aria-hidden="true" tabindex="-1"></a>    visits_by_source_topic_fig <span class="op">=</span> pagri_data_tools.bar(config, titles_for_axis)</span>
+<span id="cb19-233"><a href="#cb19-233" aria-hidden="true" tabindex="-1"></a>    visits_by_source_topic_fig <span class="op">=</span> visits_by_source_topic_fig.update_layout(title_text<span class="op">=</span><span class="st">'Количество визитов по темам источников, %'</span>, showlegend<span class="op">=</span><span class="va">False</span>)    </span>
+<span id="cb19-234"><a href="#cb19-234" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-235"><a href="#cb19-235" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> visits_by_item_topic_absolute_fig, visits_by_item_topic_pct_fig, visits_by_source_topic_fig</span>
+<span id="cb19-236"><a href="#cb19-236" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-237"><a href="#cb19-237" aria-hidden="true" tabindex="-1"></a><span class="co"># @app.callback(</span></span>
+<span id="cb19-238"><a href="#cb19-238" aria-hidden="true" tabindex="-1"></a><span class="co">#     Output("my-ag-grid", "rowData"),</span></span>
+<span id="cb19-239"><a href="#cb19-239" aria-hidden="true" tabindex="-1"></a><span class="co">#     Input("store-checklist-value", 'data'),</span></span>
+<span id="cb19-240"><a href="#cb19-240" aria-hidden="true" tabindex="-1"></a><span class="co"># )</span></span>
+<span id="cb19-241"><a href="#cb19-241" aria-hidden="true" tabindex="-1"></a><span class="co"># def update_ag_grid(data):</span></span>
+<span id="cb19-242"><a href="#cb19-242" aria-hidden="true" tabindex="-1"></a><span class="co">#   if data is not None:</span></span>
+<span id="cb19-243"><a href="#cb19-243" aria-hidden="true" tabindex="-1"></a><span class="co">#     return ag_grid_data_df[ag_grid_data_df["value"].isin(data)].to_dict('records')</span></span>
+<span id="cb19-244"><a href="#cb19-244" aria-hidden="true" tabindex="-1"></a><span class="co">#   return no_update</span></span>
+<span id="cb19-245"><a href="#cb19-245" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-246"><a href="#cb19-246" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-247"><a href="#cb19-247" aria-hidden="true" tabindex="-1"></a><span class="at">@app.callback</span>(</span>
+<span id="cb19-248"><a href="#cb19-248" aria-hidden="true" tabindex="-1"></a>    [Output(<span class="st">"popover_item_topic"</span>, <span class="st">"is_open"</span>), Output(<span class="st">"checklist_item_topic"</span>, <span class="st">"value"</span>, allow_duplicate<span class="op">=</span><span class="va">True</span>), Output(<span class="st">"store-checklist-value_item_topic"</span>, <span class="st">"data"</span>),</span>
+<span id="cb19-249"><a href="#cb19-249" aria-hidden="true" tabindex="-1"></a>     Output(<span class="st">"popover_age_segment"</span>, <span class="st">"is_open"</span>), Output(<span class="st">"checklist_age_segment"</span>, <span class="st">"value"</span>, allow_duplicate<span class="op">=</span><span class="va">True</span>), Output(<span class="st">"store-checklist-value_age_segment"</span>, <span class="st">"data"</span>)],</span>
+<span id="cb19-250"><a href="#cb19-250" aria-hidden="true" tabindex="-1"></a>    [Input(<span class="st">"select-all-button_item_topic"</span>, <span class="st">'n_clicks'</span>), Input(<span class="st">"clear-button_item_topic"</span>, <span class="st">"n_clicks"</span>), Input(<span class="st">"cancel-button_item_topic"</span>, <span class="st">'n_clicks'</span>), Input(<span class="st">"apply-button_item_topic"</span>, <span class="st">"n_clicks"</span>)],</span>
+<span id="cb19-251"><a href="#cb19-251" aria-hidden="true" tabindex="-1"></a>    [State(<span class="st">"checklist_item_topic"</span>, <span class="st">"options"</span>), State(<span class="st">"checklist_item_topic"</span>, <span class="st">"value"</span>)],</span>
+<span id="cb19-252"><a href="#cb19-252" aria-hidden="true" tabindex="-1"></a>    [Input(<span class="st">"select-all-button_age_segment"</span>, <span class="st">'n_clicks'</span>), Input(<span class="st">"clear-button_age_segment"</span>, <span class="st">"n_clicks"</span>), Input(<span class="st">"cancel-button_age_segment"</span>, <span class="st">'n_clicks'</span>), Input(<span class="st">"apply-button_age_segment"</span>, <span class="st">"n_clicks"</span>)],</span>
+<span id="cb19-253"><a href="#cb19-253" aria-hidden="true" tabindex="-1"></a>    [State(<span class="st">"checklist_age_segment"</span>, <span class="st">"options"</span>), State(<span class="st">"checklist_age_segment"</span>, <span class="st">"value"</span>)],    </span>
+<span id="cb19-254"><a href="#cb19-254" aria-hidden="true" tabindex="-1"></a>    prevent_initial_call<span class="op">=</span><span class="va">True</span></span>
+<span id="cb19-255"><a href="#cb19-255" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb19-256"><a href="#cb19-256" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> update_popover(select_all_button_n_clicks_item_topic, clear_button_n_clicks_item_topic, cancel_n_clicks_item_topic, apply_n_clicks_item_topic, options_item_topic, value_item_topic,</span>
+<span id="cb19-257"><a href="#cb19-257" aria-hidden="true" tabindex="-1"></a>                   select_all_button_n_clicks_age_segment, clear_button_n_clicks_age_segment, cancel_n_clicks_age_segment, apply_n_clicks_age_segment, options_age_segment, value_age_segment):</span>
+<span id="cb19-258"><a href="#cb19-258" aria-hidden="true" tabindex="-1"></a>    <span class="co"># print(ctx.triggered_id)</span></span>
+<span id="cb19-259"><a href="#cb19-259" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> ctx.triggered_id <span class="op">==</span> <span class="st">'select-all-button_item_topic'</span>:</span>
+<span id="cb19-260"><a href="#cb19-260" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> no_update, checklist_all_values_item_topic, no_update, no_update, no_update, no_update</span>
+<span id="cb19-261"><a href="#cb19-261" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-262"><a href="#cb19-262" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> ctx.triggered_id <span class="op">==</span> <span class="st">'clear-button_item_topic'</span>:</span>
+<span id="cb19-263"><a href="#cb19-263" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> no_update, [], no_update, no_update, no_update, no_update</span>
+<span id="cb19-264"><a href="#cb19-264" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-265"><a href="#cb19-265" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> ctx.triggered_id <span class="op">==</span> <span class="st">'cancel-button_item_topic'</span>:</span>
+<span id="cb19-266"><a href="#cb19-266" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">False</span>, checklist_all_values_item_topic, checklist_all_values_item_topic, no_update, no_update, no_update</span>
+<span id="cb19-267"><a href="#cb19-267" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-268"><a href="#cb19-268" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> ctx.triggered_id <span class="op">==</span> <span class="st">'apply-button_item_topic'</span>:</span>
+<span id="cb19-269"><a href="#cb19-269" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">False</span>, no_update, value_item_topic, no_update, no_update, no_update</span>
+<span id="cb19-270"><a href="#cb19-270" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb19-271"><a href="#cb19-271" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> ctx.triggered_id <span class="op">==</span> <span class="st">'select-all-button_age_segment'</span>:</span>
+<span id="cb19-272"><a href="#cb19-272" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> no_update, no_update, no_update, no_update, checklist_all_values_age_segment, no_update</span>
+<span id="cb19-273"><a href="#cb19-273" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-274"><a href="#cb19-274" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> ctx.triggered_id <span class="op">==</span> <span class="st">'clear-button_age_segment'</span>:</span>
+<span id="cb19-275"><a href="#cb19-275" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> no_update, no_update, no_update, no_update, [], no_update</span>
+<span id="cb19-276"><a href="#cb19-276" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-277"><a href="#cb19-277" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> ctx.triggered_id <span class="op">==</span> <span class="st">'cancel-button_age_segment'</span>:</span>
+<span id="cb19-278"><a href="#cb19-278" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> no_update, no_update, no_update, <span class="va">False</span>, checklist_all_values_age_segment, checklist_all_values_age_segment</span>
+<span id="cb19-279"><a href="#cb19-279" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-280"><a href="#cb19-280" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> ctx.triggered_id <span class="op">==</span> <span class="st">'apply-button_age_segment'</span>:</span>
+<span id="cb19-281"><a href="#cb19-281" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> no_update, no_update, no_update, <span class="va">False</span>, no_update, value_age_segment</span>
+<span id="cb19-282"><a href="#cb19-282" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-283"><a href="#cb19-283" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-284"><a href="#cb19-284" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> no_update</span>
+<span id="cb19-285"><a href="#cb19-285" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-286"><a href="#cb19-286" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
+<span id="cb19-287"><a href="#cb19-287" aria-hidden="true" tabindex="-1"></a>    app.run_server(debug<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 
         <iframe width="100%" height="650" src="http://127.0.0.1:8050/" frameborder="0" allowfullscreen=""></iframe>
         
 </div>
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">visits</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">source_topic</th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Дети</td>
+<td>14872</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Другое</td>
+<td>92536</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Здоровье</td>
+<td>12493</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Знаменитости</td>
+<td>23377</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">История</td>
+<td>14285</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Кино</td>
+<td>19601</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Полезные советы</td>
+<td>26717</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Путешествия</td>
+<td>23512</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Россия</td>
+<td>29044</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Семейные отношения</td>
+<td>32502</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Семья</td>
+<td>13582</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>[2024-12-28 13:04:35,193] ERROR in app: Exception on /_dash-update-component [POST]
+Traceback (most recent call last):
+  File "/home/pagri/.cache/pypoetry/virtualenvs/pagri-projects-W8_aXYna-py3.12/lib/python3.12/site-packages/pandas/core/indexes/base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'source_topic'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/pagri/.cache/pypoetry/virtualenvs/pagri-projects-W8_aXYna-py3.12/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pagri/.cache/pypoetry/virtualenvs/pagri-projects-W8_aXYna-py3.12/lib/python3.12/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pagri/.cache/pypoetry/virtualenvs/pagri-projects-W8_aXYna-py3.12/lib/python3.12/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pagri/.cache/pypoetry/virtualenvs/pagri-projects-W8_aXYna-py3.12/lib/python3.12/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pagri/.cache/pypoetry/virtualenvs/pagri-projects-W8_aXYna-py3.12/lib/python3.12/site-packages/dash/dash.py", line 1376, in dispatch
+    ctx.run(
+  File "/home/pagri/.cache/pypoetry/virtualenvs/pagri-projects-W8_aXYna-py3.12/lib/python3.12/site-packages/dash/_callback.py", line 507, in add_context
+    raise err
+  File "/home/pagri/.cache/pypoetry/virtualenvs/pagri-projects-W8_aXYna-py3.12/lib/python3.12/site-packages/dash/_callback.py", line 496, in add_context
+    output_value = _invoke_callback(func, *func_args, **func_kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pagri/.cache/pypoetry/virtualenvs/pagri-projects-W8_aXYna-py3.12/lib/python3.12/site-packages/dash/_callback.py", line 43, in _invoke_callback
+    return func(*args, **kwargs)  # %% callback invoked %%
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/ipykernel_21255/879414424.py", line 231, in update_graphs
+    visits_by_source_topic_fig = pagri_data_tools.bar(config, titles_for_axis)
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pagri/git_repos/pagri_analytics_modules/pagri_data_tools/pagri_graphs.py", line 2260, in bar
+    return base_graph_for_bar_line_area(config, titles_for_axis, 'bar')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pagri/git_repos/pagri_analytics_modules/pagri_data_tools/pagri_graphs.py", line 1961, in base_graph_for_bar_line_area
+    if pd.api.types.is_numeric_dtype(config['df'][config['y']]):
+                                     ~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/home/pagri/.cache/pypoetry/virtualenvs/pagri-projects-W8_aXYna-py3.12/lib/python3.12/site-packages/pandas/core/frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pagri/.cache/pypoetry/virtualenvs/pagri-projects-W8_aXYna-py3.12/lib/python3.12/site-packages/pandas/core/indexes/base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'source_topic'</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">visits</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">source_topic</th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Дети</td>
+<td>6463</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Другое</td>
+<td>40480</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Здоровье</td>
+<td>5471</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Знаменитости</td>
+<td>10339</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">История</td>
+<td>6329</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Кино</td>
+<td>8577</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Полезные советы</td>
+<td>11596</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Путешествия</td>
+<td>10287</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Россия</td>
+<td>12734</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Семейные отношения</td>
+<td>14141</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Семья</td>
+<td>5900</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>[2024-12-28 13:04:47,706] ERROR in app: Exception on /_dash-update-component [POST]
+Traceback (most recent call last):
+  File "/home/pagri/.cache/pypoetry/virtualenvs/pagri-projects-W8_aXYna-py3.12/lib/python3.12/site-packages/pandas/core/indexes/base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'source_topic'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/pagri/.cache/pypoetry/virtualenvs/pagri-projects-W8_aXYna-py3.12/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pagri/.cache/pypoetry/virtualenvs/pagri-projects-W8_aXYna-py3.12/lib/python3.12/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pagri/.cache/pypoetry/virtualenvs/pagri-projects-W8_aXYna-py3.12/lib/python3.12/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pagri/.cache/pypoetry/virtualenvs/pagri-projects-W8_aXYna-py3.12/lib/python3.12/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pagri/.cache/pypoetry/virtualenvs/pagri-projects-W8_aXYna-py3.12/lib/python3.12/site-packages/dash/dash.py", line 1376, in dispatch
+    ctx.run(
+  File "/home/pagri/.cache/pypoetry/virtualenvs/pagri-projects-W8_aXYna-py3.12/lib/python3.12/site-packages/dash/_callback.py", line 507, in add_context
+    raise err
+  File "/home/pagri/.cache/pypoetry/virtualenvs/pagri-projects-W8_aXYna-py3.12/lib/python3.12/site-packages/dash/_callback.py", line 496, in add_context
+    output_value = _invoke_callback(func, *func_args, **func_kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pagri/.cache/pypoetry/virtualenvs/pagri-projects-W8_aXYna-py3.12/lib/python3.12/site-packages/dash/_callback.py", line 43, in _invoke_callback
+    return func(*args, **kwargs)  # %% callback invoked %%
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/ipykernel_21255/879414424.py", line 231, in update_graphs
+    visits_by_source_topic_fig = pagri_data_tools.bar(config, titles_for_axis)
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pagri/git_repos/pagri_analytics_modules/pagri_data_tools/pagri_graphs.py", line 2260, in bar
+    return base_graph_for_bar_line_area(config, titles_for_axis, 'bar')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pagri/git_repos/pagri_analytics_modules/pagri_data_tools/pagri_graphs.py", line 1961, in base_graph_for_bar_line_area
+    if pd.api.types.is_numeric_dtype(config['df'][config['y']]):
+                                     ~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/home/pagri/.cache/pypoetry/virtualenvs/pagri-projects-W8_aXYna-py3.12/lib/python3.12/site-packages/pandas/core/frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pagri/.cache/pypoetry/virtualenvs/pagri-projects-W8_aXYna-py3.12/lib/python3.12/site-packages/pandas/core/indexes/base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'source_topic'</code></pre>
+</div>
 </div>
 <div id="cell-22" class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dash</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dash <span class="im">import</span> html, dcc, no_update, ctx, State</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dash_bootstrap_components <span class="im">as</span> dbc</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dash.dependencies <span class="im">import</span> Input, Output</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dash_iconify <span class="im">import</span> DashIconify</span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dash_ag_grid <span class="im">as</span> dag</span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>full_filter_icon <span class="op">=</span> DashIconify(</span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>      icon<span class="op">=</span><span class="st">"bx:filter"</span>,</span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>      color<span class="op">=</span><span class="st">"green"</span>,</span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>      width<span class="op">=</span><span class="dv">30</span>,</span>
-<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>      height<span class="op">=</span><span class="dv">30</span></span>
-<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>partial_filter_icon <span class="op">=</span> DashIconify(</span>
-<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>      icon<span class="op">=</span><span class="st">"prime:filter-fill"</span>,</span>
-<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>      color<span class="op">=</span><span class="st">"green"</span>,</span>
-<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>      width<span class="op">=</span><span class="dv">20</span>,</span>
-<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>      height<span class="op">=</span><span class="dv">20</span></span>
-<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>checklist_all_values <span class="op">=</span> [i <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">21</span>)]</span>
-<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a><span class="bu">filter</span> <span class="op">=</span> html.Div([</span>
-<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a>        dbc.Row([</span>
-<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a>            dbc.Col(dbc.Button(<span class="st">"Select All"</span>, <span class="bu">id</span><span class="op">=</span><span class="st">'select-all-button'</span>, n_clicks<span class="op">=</span><span class="dv">0</span>, color<span class="op">=</span><span class="st">"link"</span>)),</span>
-<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a>            dbc.Col(dbc.Button(<span class="st">"Clear"</span>, <span class="bu">id</span><span class="op">=</span><span class="st">'clear-button'</span>, n_clicks<span class="op">=</span><span class="dv">0</span>, color<span class="op">=</span><span class="st">"link"</span>))</span>
-<span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a>        ]),</span>
-<span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a>        dbc.Row([</span>
-<span id="cb19-31"><a href="#cb19-31" aria-hidden="true" tabindex="-1"></a>            dbc.Col(dbc.Input(<span class="bu">id</span><span class="op">=</span><span class="st">'input-value'</span>)),</span>
-<span id="cb19-32"><a href="#cb19-32" aria-hidden="true" tabindex="-1"></a>              ]),</span>
-<span id="cb19-33"><a href="#cb19-33" aria-hidden="true" tabindex="-1"></a>        dbc.Row([</span>
-<span id="cb19-34"><a href="#cb19-34" aria-hidden="true" tabindex="-1"></a>            dbc.Col(</span>
-<span id="cb19-35"><a href="#cb19-35" aria-hidden="true" tabindex="-1"></a>            dcc.Checklist(</span>
-<span id="cb19-36"><a href="#cb19-36" aria-hidden="true" tabindex="-1"></a>            options<span class="op">=</span>[{<span class="st">"label"</span>: <span class="ss">f"Option </span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">"</span>, <span class="st">"value"</span>: i} <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">21</span>)],</span>
-<span id="cb19-37"><a href="#cb19-37" aria-hidden="true" tabindex="-1"></a>            value<span class="op">=</span>checklist_all_values,</span>
-<span id="cb19-38"><a href="#cb19-38" aria-hidden="true" tabindex="-1"></a>            <span class="bu">id</span><span class="op">=</span><span class="st">"checklist"</span>,</span>
-<span id="cb19-39"><a href="#cb19-39" aria-hidden="true" tabindex="-1"></a>            style<span class="op">=</span>{<span class="st">'maxHeight'</span>: <span class="st">'180px'</span>, <span class="st">'overflowY'</span>: <span class="st">'scroll'</span>, <span class="st">'accent-color'</span>: <span class="st">'transparent'</span>}))</span>
-<span id="cb19-40"><a href="#cb19-40" aria-hidden="true" tabindex="-1"></a>        ]),</span>
-<span id="cb19-41"><a href="#cb19-41" aria-hidden="true" tabindex="-1"></a>      dbc.Row([</span>
-<span id="cb19-42"><a href="#cb19-42" aria-hidden="true" tabindex="-1"></a>        dbc.Col(dbc.Button(<span class="st">"Cancel"</span>, <span class="bu">id</span><span class="op">=</span><span class="st">'cancel-button'</span>, outline<span class="op">=</span><span class="va">True</span>, color<span class="op">=</span><span class="st">"secondary"</span>, className<span class="op">=</span><span class="st">"me-1"</span>)),</span>
-<span id="cb19-43"><a href="#cb19-43" aria-hidden="true" tabindex="-1"></a>        dbc.Col(dbc.Button(<span class="st">"Apply"</span>, <span class="bu">id</span><span class="op">=</span><span class="st">'apply-button'</span>, outline<span class="op">=</span><span class="va">True</span>, color<span class="op">=</span><span class="st">"success"</span>, className<span class="op">=</span><span class="st">"me-1"</span>)),</span>
-<span id="cb19-44"><a href="#cb19-44" aria-hidden="true" tabindex="-1"></a>        ],</span>
-<span id="cb19-45"><a href="#cb19-45" aria-hidden="true" tabindex="-1"></a>        justify<span class="op">=</span><span class="st">'end'</span>)</span>
-<span id="cb19-46"><a href="#cb19-46" aria-hidden="true" tabindex="-1"></a>        ])</span>
-<span id="cb19-47"><a href="#cb19-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-48"><a href="#cb19-48" aria-hidden="true" tabindex="-1"></a>popover <span class="op">=</span> html.Div(</span>
-<span id="cb19-49"><a href="#cb19-49" aria-hidden="true" tabindex="-1"></a>        [</span>
-<span id="cb19-50"><a href="#cb19-50" aria-hidden="true" tabindex="-1"></a>        dbc.Button(<span class="bu">id</span><span class="op">=</span><span class="st">"popover-target"</span>, children<span class="op">=</span>full_filter_icon, n_clicks<span class="op">=</span><span class="dv">0</span>, color<span class="op">=</span><span class="va">None</span>, style<span class="op">=</span>{<span class="st">'background-color'</span>: <span class="st">'transparent'</span>, <span class="st">'border'</span>: <span class="st">'none'</span>}),</span>
-<span id="cb19-51"><a href="#cb19-51" aria-hidden="true" tabindex="-1"></a>        dbc.Popover(</span>
-<span id="cb19-52"><a href="#cb19-52" aria-hidden="true" tabindex="-1"></a>            <span class="bu">id</span><span class="op">=</span><span class="st">'popover'</span>,</span>
-<span id="cb19-53"><a href="#cb19-53" aria-hidden="true" tabindex="-1"></a>            children<span class="op">=</span><span class="bu">filter</span>,</span>
-<span id="cb19-54"><a href="#cb19-54" aria-hidden="true" tabindex="-1"></a>            target<span class="op">=</span><span class="st">"popover-target"</span>,</span>
-<span id="cb19-55"><a href="#cb19-55" aria-hidden="true" tabindex="-1"></a>            body<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb19-56"><a href="#cb19-56" aria-hidden="true" tabindex="-1"></a>            trigger<span class="op">=</span><span class="st">"click"</span>,</span>
-<span id="cb19-57"><a href="#cb19-57" aria-hidden="true" tabindex="-1"></a>            placement<span class="op">=</span><span class="st">'right'</span>,</span>
-<span id="cb19-58"><a href="#cb19-58" aria-hidden="true" tabindex="-1"></a>                )</span>
-<span id="cb19-59"><a href="#cb19-59" aria-hidden="true" tabindex="-1"></a>            ]</span>
-<span id="cb19-60"><a href="#cb19-60" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb19-61"><a href="#cb19-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-62"><a href="#cb19-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-63"><a href="#cb19-63" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the data for the grid</span></span>
-<span id="cb19-64"><a href="#cb19-64" aria-hidden="true" tabindex="-1"></a>ag_grid_data_df <span class="op">=</span> pd.DataFrame([{<span class="st">"id"</span>: i, <span class="st">"value"</span>: i} <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">21</span>)], columns<span class="op">=</span>[<span class="st">'id'</span>, <span class="st">'value'</span>])</span>
-<span id="cb19-65"><a href="#cb19-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-66"><a href="#cb19-66" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the column definitions for the grid</span></span>
-<span id="cb19-67"><a href="#cb19-67" aria-hidden="true" tabindex="-1"></a>ag_grid_column_defs <span class="op">=</span> [</span>
-<span id="cb19-68"><a href="#cb19-68" aria-hidden="true" tabindex="-1"></a>{<span class="st">"headerName"</span>: <span class="st">"ID"</span>, <span class="st">"field"</span>: <span class="st">"id"</span>, <span class="st">"sortable"</span>: <span class="va">True</span>, <span class="st">"filter"</span>: <span class="va">True</span>},</span>
-<span id="cb19-69"><a href="#cb19-69" aria-hidden="true" tabindex="-1"></a>{<span class="st">"headerName"</span>: <span class="st">"Option"</span>, <span class="st">"field"</span>: <span class="st">"value"</span>, <span class="st">"sortable"</span>: <span class="va">True</span>, <span class="st">"filter"</span>: <span class="va">True</span>, <span class="st">"valueFormatter"</span>: {<span class="st">"function"</span>: <span class="st">"'Option ' + params.value"</span>}}</span>
-<span id="cb19-70"><a href="#cb19-70" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb19-71"><a href="#cb19-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-72"><a href="#cb19-72" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the AG Grid component</span></span>
-<span id="cb19-73"><a href="#cb19-73" aria-hidden="true" tabindex="-1"></a>ag_grid <span class="op">=</span> dag.AgGrid(</span>
-<span id="cb19-74"><a href="#cb19-74" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span><span class="op">=</span><span class="st">'my-ag-grid'</span>,</span>
-<span id="cb19-75"><a href="#cb19-75" aria-hidden="true" tabindex="-1"></a>rowData<span class="op">=</span>ag_grid_data_df.to_dict(<span class="st">'records'</span>),</span>
-<span id="cb19-76"><a href="#cb19-76" aria-hidden="true" tabindex="-1"></a>columnDefs<span class="op">=</span>ag_grid_column_defs</span>
-<span id="cb19-77"><a href="#cb19-77" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb19-78"><a href="#cb19-78" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-79"><a href="#cb19-79" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> dash.Dash(<span class="va">__name__</span>, external_stylesheets<span class="op">=</span>[dbc.themes.BOOTSTRAP])</span>
-<span id="cb19-80"><a href="#cb19-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-81"><a href="#cb19-81" aria-hidden="true" tabindex="-1"></a>app.layout <span class="op">=</span> dbc.Container([</span>
-<span id="cb19-82"><a href="#cb19-82" aria-hidden="true" tabindex="-1"></a>    dbc.Row([</span>
-<span id="cb19-83"><a href="#cb19-83" aria-hidden="true" tabindex="-1"></a>       dbc.Col(popover, width<span class="op">=</span><span class="dv">5</span>)</span>
-<span id="cb19-84"><a href="#cb19-84" aria-hidden="true" tabindex="-1"></a>    ], justify<span class="op">=</span><span class="st">"end"</span>),</span>
-<span id="cb19-85"><a href="#cb19-85" aria-hidden="true" tabindex="-1"></a>    dbc.Row([</span>
-<span id="cb19-86"><a href="#cb19-86" aria-hidden="true" tabindex="-1"></a>        dbc.Col(ag_grid, width<span class="op">=</span><span class="dv">5</span>)</span>
-<span id="cb19-87"><a href="#cb19-87" aria-hidden="true" tabindex="-1"></a>    ], justify<span class="op">=</span><span class="st">"center"</span>),</span>
-<span id="cb19-88"><a href="#cb19-88" aria-hidden="true" tabindex="-1"></a>    dcc.Store(<span class="bu">id</span><span class="op">=</span><span class="st">'store-checklist-value'</span>, storage_type<span class="op">=</span><span class="st">'memory'</span>)</span>
-<span id="cb19-89"><a href="#cb19-89" aria-hidden="true" tabindex="-1"></a>    ])</span>
-<span id="cb19-90"><a href="#cb19-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-91"><a href="#cb19-91" aria-hidden="true" tabindex="-1"></a><span class="at">@app.callback</span>(</span>
-<span id="cb19-92"><a href="#cb19-92" aria-hidden="true" tabindex="-1"></a>    Output(<span class="st">"my-ag-grid"</span>, <span class="st">"rowData"</span>),</span>
-<span id="cb19-93"><a href="#cb19-93" aria-hidden="true" tabindex="-1"></a>    Input(<span class="st">"store-checklist-value"</span>, <span class="st">'data'</span>),</span>
-<span id="cb19-94"><a href="#cb19-94" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb19-95"><a href="#cb19-95" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> update_ag_grid(data):</span>
-<span id="cb19-96"><a href="#cb19-96" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> data <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
-<span id="cb19-97"><a href="#cb19-97" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> ag_grid_data_df[ag_grid_data_df[<span class="st">"value"</span>].isin(data)].to_dict(<span class="st">'records'</span>)</span>
-<span id="cb19-98"><a href="#cb19-98" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> no_update</span>
-<span id="cb19-99"><a href="#cb19-99" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-100"><a href="#cb19-100" aria-hidden="true" tabindex="-1"></a><span class="at">@app.callback</span>(</span>
-<span id="cb19-101"><a href="#cb19-101" aria-hidden="true" tabindex="-1"></a>    [Output(<span class="st">"checklist"</span>, <span class="st">"options"</span>), Output(<span class="st">"checklist"</span>, <span class="st">"value"</span>)],</span>
-<span id="cb19-102"><a href="#cb19-102" aria-hidden="true" tabindex="-1"></a>    Input(<span class="st">"input-value"</span>, <span class="st">'value'</span>),</span>
-<span id="cb19-103"><a href="#cb19-103" aria-hidden="true" tabindex="-1"></a>    prevent_initial_call<span class="op">=</span><span class="va">True</span></span>
-<span id="cb19-104"><a href="#cb19-104" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb19-105"><a href="#cb19-105" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> update_checklist_by_input(value):</span>
-<span id="cb19-106"><a href="#cb19-106" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> value <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
-<span id="cb19-107"><a href="#cb19-107" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [{<span class="st">"label"</span>: <span class="ss">f"Option </span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">"</span>, <span class="st">"value"</span>: i} <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">21</span>) <span class="cf">if</span> value <span class="kw">in</span> <span class="ss">f"Option </span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">"</span>], []</span>
-<span id="cb19-108"><a href="#cb19-108" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-109"><a href="#cb19-109" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-110"><a href="#cb19-110" aria-hidden="true" tabindex="-1"></a><span class="at">@app.callback</span>(</span>
-<span id="cb19-111"><a href="#cb19-111" aria-hidden="true" tabindex="-1"></a>    [Output(<span class="st">"popover"</span>, <span class="st">"is_open"</span>), Output(<span class="st">"checklist"</span>, <span class="st">"value"</span>, allow_duplicate<span class="op">=</span><span class="va">True</span>), Output(<span class="st">"popover-target"</span>, <span class="st">"children"</span>), Output(<span class="st">"store-checklist-value"</span>, <span class="st">"data"</span>)],</span>
-<span id="cb19-112"><a href="#cb19-112" aria-hidden="true" tabindex="-1"></a>    [Input(<span class="st">"select-all-button"</span>, <span class="st">'n_clicks'</span>), Input(<span class="st">"clear-button"</span>, <span class="st">"n_clicks"</span>), Input(<span class="st">"cancel-button"</span>, <span class="st">'n_clicks'</span>), Input(<span class="st">"apply-button"</span>, <span class="st">"n_clicks"</span>)],</span>
-<span id="cb19-113"><a href="#cb19-113" aria-hidden="true" tabindex="-1"></a>    [State(<span class="st">"checklist"</span>, <span class="st">"options"</span>), State(<span class="st">"checklist"</span>, <span class="st">"value"</span>)],</span>
-<span id="cb19-114"><a href="#cb19-114" aria-hidden="true" tabindex="-1"></a>    prevent_initial_call<span class="op">=</span><span class="va">True</span></span>
-<span id="cb19-115"><a href="#cb19-115" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb19-116"><a href="#cb19-116" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> update_popover(select_all_button_n_clicks, clear_button_n_clicks, cancel_n_clicks, apply_n_clicks, options, value):</span>
-<span id="cb19-117"><a href="#cb19-117" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-118"><a href="#cb19-118" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> ctx.triggered_id <span class="op">==</span> <span class="st">'select-all-button'</span>:</span>
-<span id="cb19-119"><a href="#cb19-119" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> no_update, checklist_all_values, no_update, no_update</span>
-<span id="cb19-120"><a href="#cb19-120" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-121"><a href="#cb19-121" aria-hidden="true" tabindex="-1"></a>  <span class="cf">elif</span> ctx.triggered_id <span class="op">==</span> <span class="st">'clear-button'</span>:</span>
-<span id="cb19-122"><a href="#cb19-122" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> no_update, [], no_update, no_update</span>
-<span id="cb19-123"><a href="#cb19-123" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-124"><a href="#cb19-124" aria-hidden="true" tabindex="-1"></a>  <span class="cf">elif</span> ctx.triggered_id <span class="op">==</span> <span class="st">'cancel-button'</span>:</span>
-<span id="cb19-125"><a href="#cb19-125" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">False</span>, checklist_all_values, full_filter_icon, checklist_all_values</span>
-<span id="cb19-126"><a href="#cb19-126" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-127"><a href="#cb19-127" aria-hidden="true" tabindex="-1"></a>  <span class="cf">elif</span> ctx.triggered_id <span class="op">==</span> <span class="st">'apply-button'</span>:</span>
-<span id="cb19-128"><a href="#cb19-128" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">len</span>(value) <span class="op">==</span> <span class="bu">len</span>(checklist_all_values):</span>
-<span id="cb19-129"><a href="#cb19-129" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> <span class="va">False</span>, no_update, full_filter_icon, value</span>
-<span id="cb19-130"><a href="#cb19-130" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb19-131"><a href="#cb19-131" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> <span class="va">False</span>, no_update, partial_filter_icon, value</span>
-<span id="cb19-132"><a href="#cb19-132" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-133"><a href="#cb19-133" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> no_update</span>
-<span id="cb19-134"><a href="#cb19-134" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-135"><a href="#cb19-135" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-136"><a href="#cb19-136" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
-<span id="cb19-137"><a href="#cb19-137" aria-hidden="true" tabindex="-1"></a>  app.run_server(debug<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dash</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dash <span class="im">import</span> html, dcc, no_update, ctx, State</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dash_bootstrap_components <span class="im">as</span> dbc</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dash.dependencies <span class="im">import</span> Input, Output</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dash_iconify <span class="im">import</span> DashIconify</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dash_ag_grid <span class="im">as</span> dag</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>full_filter_icon <span class="op">=</span> DashIconify(</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>      icon<span class="op">=</span><span class="st">"bx:filter"</span>,</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>      color<span class="op">=</span><span class="st">"green"</span>,</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>      width<span class="op">=</span><span class="dv">30</span>,</span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>      height<span class="op">=</span><span class="dv">30</span></span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>partial_filter_icon <span class="op">=</span> DashIconify(</span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>      icon<span class="op">=</span><span class="st">"prime:filter-fill"</span>,</span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>      color<span class="op">=</span><span class="st">"green"</span>,</span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a>      width<span class="op">=</span><span class="dv">20</span>,</span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a>      height<span class="op">=</span><span class="dv">20</span></span>
+<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a>checklist_all_values <span class="op">=</span> [i <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">21</span>)]</span>
+<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a><span class="bu">filter</span> <span class="op">=</span> html.Div([</span>
+<span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a>        dbc.Row([</span>
+<span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a>            dbc.Col(dbc.Button(<span class="st">"Select All"</span>, <span class="bu">id</span><span class="op">=</span><span class="st">'select-all-button'</span>, n_clicks<span class="op">=</span><span class="dv">0</span>, color<span class="op">=</span><span class="st">"link"</span>)),</span>
+<span id="cb22-28"><a href="#cb22-28" aria-hidden="true" tabindex="-1"></a>            dbc.Col(dbc.Button(<span class="st">"Clear"</span>, <span class="bu">id</span><span class="op">=</span><span class="st">'clear-button'</span>, n_clicks<span class="op">=</span><span class="dv">0</span>, color<span class="op">=</span><span class="st">"link"</span>))</span>
+<span id="cb22-29"><a href="#cb22-29" aria-hidden="true" tabindex="-1"></a>        ]),</span>
+<span id="cb22-30"><a href="#cb22-30" aria-hidden="true" tabindex="-1"></a>        dbc.Row([</span>
+<span id="cb22-31"><a href="#cb22-31" aria-hidden="true" tabindex="-1"></a>            dbc.Col(dbc.Input(<span class="bu">id</span><span class="op">=</span><span class="st">'input-value'</span>)),</span>
+<span id="cb22-32"><a href="#cb22-32" aria-hidden="true" tabindex="-1"></a>              ]),</span>
+<span id="cb22-33"><a href="#cb22-33" aria-hidden="true" tabindex="-1"></a>        dbc.Row([</span>
+<span id="cb22-34"><a href="#cb22-34" aria-hidden="true" tabindex="-1"></a>            dbc.Col(</span>
+<span id="cb22-35"><a href="#cb22-35" aria-hidden="true" tabindex="-1"></a>            dcc.Checklist(</span>
+<span id="cb22-36"><a href="#cb22-36" aria-hidden="true" tabindex="-1"></a>            options<span class="op">=</span>[{<span class="st">"label"</span>: <span class="ss">f"Option </span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">"</span>, <span class="st">"value"</span>: i} <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">21</span>)],</span>
+<span id="cb22-37"><a href="#cb22-37" aria-hidden="true" tabindex="-1"></a>            value<span class="op">=</span>checklist_all_values,</span>
+<span id="cb22-38"><a href="#cb22-38" aria-hidden="true" tabindex="-1"></a>            <span class="bu">id</span><span class="op">=</span><span class="st">"checklist"</span>,</span>
+<span id="cb22-39"><a href="#cb22-39" aria-hidden="true" tabindex="-1"></a>            style<span class="op">=</span>{<span class="st">'maxHeight'</span>: <span class="st">'180px'</span>, <span class="st">'overflowY'</span>: <span class="st">'scroll'</span>, <span class="st">'accent-color'</span>: <span class="st">'transparent'</span>}))</span>
+<span id="cb22-40"><a href="#cb22-40" aria-hidden="true" tabindex="-1"></a>        ]),</span>
+<span id="cb22-41"><a href="#cb22-41" aria-hidden="true" tabindex="-1"></a>      dbc.Row([</span>
+<span id="cb22-42"><a href="#cb22-42" aria-hidden="true" tabindex="-1"></a>        dbc.Col(dbc.Button(<span class="st">"Cancel"</span>, <span class="bu">id</span><span class="op">=</span><span class="st">'cancel-button'</span>, outline<span class="op">=</span><span class="va">True</span>, color<span class="op">=</span><span class="st">"secondary"</span>, className<span class="op">=</span><span class="st">"me-1"</span>)),</span>
+<span id="cb22-43"><a href="#cb22-43" aria-hidden="true" tabindex="-1"></a>        dbc.Col(dbc.Button(<span class="st">"Apply"</span>, <span class="bu">id</span><span class="op">=</span><span class="st">'apply-button'</span>, outline<span class="op">=</span><span class="va">True</span>, color<span class="op">=</span><span class="st">"success"</span>, className<span class="op">=</span><span class="st">"me-1"</span>)),</span>
+<span id="cb22-44"><a href="#cb22-44" aria-hidden="true" tabindex="-1"></a>        ],</span>
+<span id="cb22-45"><a href="#cb22-45" aria-hidden="true" tabindex="-1"></a>        justify<span class="op">=</span><span class="st">'end'</span>)</span>
+<span id="cb22-46"><a href="#cb22-46" aria-hidden="true" tabindex="-1"></a>        ])</span>
+<span id="cb22-47"><a href="#cb22-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-48"><a href="#cb22-48" aria-hidden="true" tabindex="-1"></a>popover <span class="op">=</span> html.Div(</span>
+<span id="cb22-49"><a href="#cb22-49" aria-hidden="true" tabindex="-1"></a>        [</span>
+<span id="cb22-50"><a href="#cb22-50" aria-hidden="true" tabindex="-1"></a>        dbc.Button(<span class="bu">id</span><span class="op">=</span><span class="st">"popover-target"</span>, children<span class="op">=</span>full_filter_icon, n_clicks<span class="op">=</span><span class="dv">0</span>, color<span class="op">=</span><span class="va">None</span>, style<span class="op">=</span>{<span class="st">'background-color'</span>: <span class="st">'transparent'</span>, <span class="st">'border'</span>: <span class="st">'none'</span>}),</span>
+<span id="cb22-51"><a href="#cb22-51" aria-hidden="true" tabindex="-1"></a>        dbc.Popover(</span>
+<span id="cb22-52"><a href="#cb22-52" aria-hidden="true" tabindex="-1"></a>            <span class="bu">id</span><span class="op">=</span><span class="st">'popover'</span>,</span>
+<span id="cb22-53"><a href="#cb22-53" aria-hidden="true" tabindex="-1"></a>            children<span class="op">=</span><span class="bu">filter</span>,</span>
+<span id="cb22-54"><a href="#cb22-54" aria-hidden="true" tabindex="-1"></a>            target<span class="op">=</span><span class="st">"popover-target"</span>,</span>
+<span id="cb22-55"><a href="#cb22-55" aria-hidden="true" tabindex="-1"></a>            body<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb22-56"><a href="#cb22-56" aria-hidden="true" tabindex="-1"></a>            trigger<span class="op">=</span><span class="st">"click"</span>,</span>
+<span id="cb22-57"><a href="#cb22-57" aria-hidden="true" tabindex="-1"></a>            placement<span class="op">=</span><span class="st">'right'</span>,</span>
+<span id="cb22-58"><a href="#cb22-58" aria-hidden="true" tabindex="-1"></a>                )</span>
+<span id="cb22-59"><a href="#cb22-59" aria-hidden="true" tabindex="-1"></a>            ]</span>
+<span id="cb22-60"><a href="#cb22-60" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb22-61"><a href="#cb22-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-62"><a href="#cb22-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-63"><a href="#cb22-63" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the data for the grid</span></span>
+<span id="cb22-64"><a href="#cb22-64" aria-hidden="true" tabindex="-1"></a>ag_grid_data_df <span class="op">=</span> pd.DataFrame([{<span class="st">"id"</span>: i, <span class="st">"value"</span>: i} <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">21</span>)], columns<span class="op">=</span>[<span class="st">'id'</span>, <span class="st">'value'</span>])</span>
+<span id="cb22-65"><a href="#cb22-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-66"><a href="#cb22-66" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the column definitions for the grid</span></span>
+<span id="cb22-67"><a href="#cb22-67" aria-hidden="true" tabindex="-1"></a>ag_grid_column_defs <span class="op">=</span> [</span>
+<span id="cb22-68"><a href="#cb22-68" aria-hidden="true" tabindex="-1"></a>{<span class="st">"headerName"</span>: <span class="st">"ID"</span>, <span class="st">"field"</span>: <span class="st">"id"</span>, <span class="st">"sortable"</span>: <span class="va">True</span>, <span class="st">"filter"</span>: <span class="va">True</span>},</span>
+<span id="cb22-69"><a href="#cb22-69" aria-hidden="true" tabindex="-1"></a>{<span class="st">"headerName"</span>: <span class="st">"Option"</span>, <span class="st">"field"</span>: <span class="st">"value"</span>, <span class="st">"sortable"</span>: <span class="va">True</span>, <span class="st">"filter"</span>: <span class="va">True</span>, <span class="st">"valueFormatter"</span>: {<span class="st">"function"</span>: <span class="st">"'Option ' + params.value"</span>}}</span>
+<span id="cb22-70"><a href="#cb22-70" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb22-71"><a href="#cb22-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-72"><a href="#cb22-72" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the AG Grid component</span></span>
+<span id="cb22-73"><a href="#cb22-73" aria-hidden="true" tabindex="-1"></a>ag_grid <span class="op">=</span> dag.AgGrid(</span>
+<span id="cb22-74"><a href="#cb22-74" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span><span class="op">=</span><span class="st">'my-ag-grid'</span>,</span>
+<span id="cb22-75"><a href="#cb22-75" aria-hidden="true" tabindex="-1"></a>rowData<span class="op">=</span>ag_grid_data_df.to_dict(<span class="st">'records'</span>),</span>
+<span id="cb22-76"><a href="#cb22-76" aria-hidden="true" tabindex="-1"></a>columnDefs<span class="op">=</span>ag_grid_column_defs</span>
+<span id="cb22-77"><a href="#cb22-77" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb22-78"><a href="#cb22-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-79"><a href="#cb22-79" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> dash.Dash(<span class="va">__name__</span>, external_stylesheets<span class="op">=</span>[dbc.themes.BOOTSTRAP])</span>
+<span id="cb22-80"><a href="#cb22-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-81"><a href="#cb22-81" aria-hidden="true" tabindex="-1"></a>app.layout <span class="op">=</span> dbc.Container([</span>
+<span id="cb22-82"><a href="#cb22-82" aria-hidden="true" tabindex="-1"></a>    dbc.Row([</span>
+<span id="cb22-83"><a href="#cb22-83" aria-hidden="true" tabindex="-1"></a>       dbc.Col(popover, width<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb22-84"><a href="#cb22-84" aria-hidden="true" tabindex="-1"></a>    ], justify<span class="op">=</span><span class="st">"end"</span>),</span>
+<span id="cb22-85"><a href="#cb22-85" aria-hidden="true" tabindex="-1"></a>    dbc.Row([</span>
+<span id="cb22-86"><a href="#cb22-86" aria-hidden="true" tabindex="-1"></a>        dbc.Col(ag_grid, width<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb22-87"><a href="#cb22-87" aria-hidden="true" tabindex="-1"></a>    ], justify<span class="op">=</span><span class="st">"center"</span>),</span>
+<span id="cb22-88"><a href="#cb22-88" aria-hidden="true" tabindex="-1"></a>    dcc.Store(<span class="bu">id</span><span class="op">=</span><span class="st">'store-checklist-value'</span>, storage_type<span class="op">=</span><span class="st">'memory'</span>)</span>
+<span id="cb22-89"><a href="#cb22-89" aria-hidden="true" tabindex="-1"></a>    ])</span>
+<span id="cb22-90"><a href="#cb22-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-91"><a href="#cb22-91" aria-hidden="true" tabindex="-1"></a><span class="at">@app.callback</span>(</span>
+<span id="cb22-92"><a href="#cb22-92" aria-hidden="true" tabindex="-1"></a>    Output(<span class="st">"my-ag-grid"</span>, <span class="st">"rowData"</span>),</span>
+<span id="cb22-93"><a href="#cb22-93" aria-hidden="true" tabindex="-1"></a>    Input(<span class="st">"store-checklist-value"</span>, <span class="st">'data'</span>),</span>
+<span id="cb22-94"><a href="#cb22-94" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb22-95"><a href="#cb22-95" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> update_ag_grid(data):</span>
+<span id="cb22-96"><a href="#cb22-96" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> data <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb22-97"><a href="#cb22-97" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> ag_grid_data_df[ag_grid_data_df[<span class="st">"value"</span>].isin(data)].to_dict(<span class="st">'records'</span>)</span>
+<span id="cb22-98"><a href="#cb22-98" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> no_update</span>
+<span id="cb22-99"><a href="#cb22-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-100"><a href="#cb22-100" aria-hidden="true" tabindex="-1"></a><span class="at">@app.callback</span>(</span>
+<span id="cb22-101"><a href="#cb22-101" aria-hidden="true" tabindex="-1"></a>    [Output(<span class="st">"checklist"</span>, <span class="st">"options"</span>), Output(<span class="st">"checklist"</span>, <span class="st">"value"</span>)],</span>
+<span id="cb22-102"><a href="#cb22-102" aria-hidden="true" tabindex="-1"></a>    Input(<span class="st">"input-value"</span>, <span class="st">'value'</span>),</span>
+<span id="cb22-103"><a href="#cb22-103" aria-hidden="true" tabindex="-1"></a>    prevent_initial_call<span class="op">=</span><span class="va">True</span></span>
+<span id="cb22-104"><a href="#cb22-104" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb22-105"><a href="#cb22-105" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> update_checklist_by_input(value):</span>
+<span id="cb22-106"><a href="#cb22-106" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> value <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb22-107"><a href="#cb22-107" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [{<span class="st">"label"</span>: <span class="ss">f"Option </span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">"</span>, <span class="st">"value"</span>: i} <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">21</span>) <span class="cf">if</span> value <span class="kw">in</span> <span class="ss">f"Option </span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">"</span>], []</span>
+<span id="cb22-108"><a href="#cb22-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-109"><a href="#cb22-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-110"><a href="#cb22-110" aria-hidden="true" tabindex="-1"></a><span class="at">@app.callback</span>(</span>
+<span id="cb22-111"><a href="#cb22-111" aria-hidden="true" tabindex="-1"></a>    [Output(<span class="st">"popover"</span>, <span class="st">"is_open"</span>), Output(<span class="st">"checklist"</span>, <span class="st">"value"</span>, allow_duplicate<span class="op">=</span><span class="va">True</span>), Output(<span class="st">"popover-target"</span>, <span class="st">"children"</span>), Output(<span class="st">"store-checklist-value"</span>, <span class="st">"data"</span>)],</span>
+<span id="cb22-112"><a href="#cb22-112" aria-hidden="true" tabindex="-1"></a>    [Input(<span class="st">"select-all-button"</span>, <span class="st">'n_clicks'</span>), Input(<span class="st">"clear-button"</span>, <span class="st">"n_clicks"</span>), Input(<span class="st">"cancel-button"</span>, <span class="st">'n_clicks'</span>), Input(<span class="st">"apply-button"</span>, <span class="st">"n_clicks"</span>)],</span>
+<span id="cb22-113"><a href="#cb22-113" aria-hidden="true" tabindex="-1"></a>    [State(<span class="st">"checklist"</span>, <span class="st">"options"</span>), State(<span class="st">"checklist"</span>, <span class="st">"value"</span>)],</span>
+<span id="cb22-114"><a href="#cb22-114" aria-hidden="true" tabindex="-1"></a>    prevent_initial_call<span class="op">=</span><span class="va">True</span></span>
+<span id="cb22-115"><a href="#cb22-115" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb22-116"><a href="#cb22-116" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> update_popover(select_all_button_n_clicks, clear_button_n_clicks, cancel_n_clicks, apply_n_clicks, options, value):</span>
+<span id="cb22-117"><a href="#cb22-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-118"><a href="#cb22-118" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> ctx.triggered_id <span class="op">==</span> <span class="st">'select-all-button'</span>:</span>
+<span id="cb22-119"><a href="#cb22-119" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> no_update, checklist_all_values, no_update, no_update</span>
+<span id="cb22-120"><a href="#cb22-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-121"><a href="#cb22-121" aria-hidden="true" tabindex="-1"></a>  <span class="cf">elif</span> ctx.triggered_id <span class="op">==</span> <span class="st">'clear-button'</span>:</span>
+<span id="cb22-122"><a href="#cb22-122" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> no_update, [], no_update, no_update</span>
+<span id="cb22-123"><a href="#cb22-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-124"><a href="#cb22-124" aria-hidden="true" tabindex="-1"></a>  <span class="cf">elif</span> ctx.triggered_id <span class="op">==</span> <span class="st">'cancel-button'</span>:</span>
+<span id="cb22-125"><a href="#cb22-125" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">False</span>, checklist_all_values, full_filter_icon, checklist_all_values</span>
+<span id="cb22-126"><a href="#cb22-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-127"><a href="#cb22-127" aria-hidden="true" tabindex="-1"></a>  <span class="cf">elif</span> ctx.triggered_id <span class="op">==</span> <span class="st">'apply-button'</span>:</span>
+<span id="cb22-128"><a href="#cb22-128" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">len</span>(value) <span class="op">==</span> <span class="bu">len</span>(checklist_all_values):</span>
+<span id="cb22-129"><a href="#cb22-129" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> <span class="va">False</span>, no_update, full_filter_icon, value</span>
+<span id="cb22-130"><a href="#cb22-130" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb22-131"><a href="#cb22-131" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> <span class="va">False</span>, no_update, partial_filter_icon, value</span>
+<span id="cb22-132"><a href="#cb22-132" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-133"><a href="#cb22-133" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> no_update</span>
+<span id="cb22-134"><a href="#cb22-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-135"><a href="#cb22-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-136"><a href="#cb22-136" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
+<span id="cb22-137"><a href="#cb22-137" aria-hidden="true" tabindex="-1"></a>  app.run_server(debug<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
