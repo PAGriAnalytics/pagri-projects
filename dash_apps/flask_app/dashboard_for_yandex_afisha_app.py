@@ -701,7 +701,8 @@ def init_dash(server):
                     dbc.CardHeader('Темы источников (столбцы) - темы карточек (строки)'),
                     dbc.CardBody(id='crosstab')]))),
         dcc.Store(id='store-checklist-value_item_topic', storage_type='memory'), 
-        dcc.Store(id='store-checklist-value_age_segment', storage_type='memory')
+        dcc.Store(id='store-checklist-value_age_segment', storage_type='memory'),
+        dcc.Interval(id='interval1', interval=60000)
     ], fluid=True)
     @dashboard_for_yandex_afisha_app.callback(
         [Output('date_range_slider_start_text', 'children'),
@@ -722,9 +723,10 @@ def init_dash(server):
         Input('date-picker-range', 'value'),
         Input('checklist_item_topic', 'value'),
         Input('checklist_age_segment', 'value'),
+        Input('interval1', 'n_intervals')
         # Input('age-segment-dropdown', 'value')
     )
-    def update_graphs(value, selected_item_topics, selected_age_segments):
+    def update_graphs(value, selected_item_topics, selected_age_segments, n_intervals):
         # Фильтрация данных    
         if not selected_item_topics or not selected_age_segments or value[0] >= value[1]:
             return {}, {}, {}, {}
