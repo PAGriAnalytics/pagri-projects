@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>dashboard_for_yandex_afisha – Pavel Grigoryev projects</title>
+<title>Анализ пользовательского взаимодействия с карточками статей – Pavel Grigoryev projects</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -71,7 +71,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-280d6d4f74a85e61f4910c27c1872fe4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-291b58f730f807dde46511813a32e7c9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -99,19 +99,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<style>html{ scroll-behavior: smooth; }</style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 <link rel="stylesheet" href="../../styles.css">
-<meta property="og:title" content="Pavel Grigoryev projects">
+<meta property="og:title" content="Анализ пользовательского взаимодействия с карточками статей – Pavel Grigoryev projects">
 <meta property="og:description" content="">
+<meta property="og:image" content="https://PAGriAnalytics.github.io/pagri-projects/projects/tt/dashboard_scheme.png">
 <meta property="og:site_name" content="Pavel Grigoryev projects">
 <meta property="og:locale" content="en_US">
+<meta property="og:image:height" content="455">
+<meta property="og:image:width" content="778">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -142,48 +146,135 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Оглавление</h2>
+   
+  <ul>
+  <li><a href="#составление-технического-задания" id="toc-составление-технического-задания" class="nav-link active" data-scroll-target="#составление-технического-задания">Составление технического задания</a></li>
+  <li><a href="#создание-дашборда" id="toc-создание-дашборда" class="nav-link" data-scroll-target="#создание-дашборда">Создание дашборда</a></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Анализ пользовательского взаимодействия с карточками статей</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><strong>Автор:</strong></p>
+<p>Григорьев Павел</p>
+<p><strong>Описание проекта:</strong></p>
+<p>Проект направлен на создание дашборда для визуализации данных, который упростит работу менеджеров Яндекс.Дзен, отвечая на их регулярные вопросы о взаимодействии пользователей с карточками статей. Дашборд будет автоматически подключаться к базе данных и визуализировать необходимую информацию.</p>
+<p><strong>Цель:</strong></p>
+<p>Создать интерактивный дашборд для визуализации взаимодействия пользователей с карточками статей в Яндекс.Дзен.</p>
+<p><strong>Источники данных:</strong></p>
+<p>Данные получены из внутренней системы Яндекс.Дзен.</p>
+<p><strong>Главные выводы:</strong><br>
+тут помещаем самое главное из общего вывода, примерно до полустраницы, чтобы не было сильно много и при этом указать все главные выводы Будет идеально, елси выводы на похожие темы будут рядом, то есть елси мы имеем несколько выводов о доходе, то лушче поместить их рядом</p>
+<ul>
+<li>Женщины чаще возвращают кредит, чем мужчины.</li>
+<li>Долги присутствуют у людей с разным доходом.</li>
+</ul>
+<p><strong>Рекомендации:</strong></p>
+<ul>
+<li>Добавить контроль данных, чтобы не дублировались значения с разными регистрами в колонке с образованием.</li>
+<li>Добавить уникальный идентификатор клиента, чтобы избежать дублирования строк.</li>
+</ul>
+<p><strong>Дашборд:</strong></p>
 <p>https://square-firefly-0750.ploomberapp.io/api/dashboard_for_yandex_afisha/</p>
-<div id="cell-2" class="cell" data-execution_count="102">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># импортируем библиотеки</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sqlalchemy <span class="im">import</span> create_engine</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>db_config <span class="op">=</span> {<span class="st">'user'</span>: <span class="st">'praktikum_student'</span>, <span class="co"># имя пользователя</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>            <span class="st">'pwd'</span>: <span class="st">'Sdf4$2;d-d30pp'</span>, <span class="co"># пароль</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>            <span class="st">'host'</span>: <span class="st">'rc1b-wcoijxj3yxfsf3fs.mdb.yandexcloud.net'</span>,</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>            <span class="st">'port'</span>: <span class="dv">6432</span>, <span class="co"># порт подключения</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>            <span class="st">'db'</span>: <span class="st">'data-analyst-zen-project-db'</span>} <span class="co"># название базы данных</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>connection_string <span class="op">=</span> <span class="st">'postgresql://</span><span class="sc">{}</span><span class="st">:</span><span class="sc">{}</span><span class="st">@</span><span class="sc">{}</span><span class="st">:</span><span class="sc">{}</span><span class="st">/</span><span class="sc">{}</span><span class="st">'</span>.<span class="bu">format</span>(db_config[<span class="st">'user'</span>],</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>                                                db_config[<span class="st">'pwd'</span>],</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>                                                db_config[<span class="st">'host'</span>],</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>                                                db_config[<span class="st">'port'</span>],</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>                                                db_config[<span class="st">'db'</span>])</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>engine <span class="op">=</span> create_engine(connection_string) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Презентация:</strong></p>
+<p><a href="../../presentations/research_of_food_service_industry_presentation.html">В формате html</a><br>
+<a href="../../presentations/research_of_food_service_industry_presentation.pdf">В формате pdf</a></p>
+<section id="составление-технического-задания" class="level2">
+<h2 class="anchored" data-anchor-id="составление-технического-задания">Составление технического задания</h2>
+<p>Пообщавшись с менеджерами и администраторами баз данных, было составлено краткое ТЗ: - Бизнес-задача: анализ взаимодействия пользователей с карточками Яндекс.Дзен; - Насколько часто предполагается пользоваться дашбордом: не реже, чем раз в неделю; - Кто будет основным пользователем дашборда: менеджеры по анализу контента; - Состав данных для дашборда: - История событий по темам карточек (два графика - абсолютные числа и процентное соотношение); - Разбивка событий по темам источников; - Таблица соответствия тем источников темам карточек; - По каким параметрам данные должны группироваться: - Дата и время; - Тема карточки; - Тема источника; - Возрастная группа; - Характер данных: - История событий по темам карточек — абсолютные величины с разбивкой по минутам; - Разбивка событий по темам источников — относительные величины (% событий); - Соответствия тем источников темам карточек - абсолютные величины; - Важность: все графики имеют равную важность; - Источники данных для дашборда: cырые данные о событиях взаимодействия пользователей с карточками (таблица log_raw); - База данных, в которой будут храниться агрегированные данные: дополнительные агрегированные таблицы в БД zen; - Частота обновления данных: один раз в сутки, в полночь по UTC;</p>
+<p>Макет дашборда:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="dashboard_scheme.png" class="img-fluid figure-img"></p>
+<figcaption>Макет дашборда</figcaption>
+</figure>
+</div>
+</section>
+<section id="создание-дашборда" class="level2">
+<h2 class="anchored" data-anchor-id="создание-дашборда">Создание дашборда</h2>
+<p>Подключимся к базе данных и загрузим данные.</p>
+<div id="cell-17" class="cell" data-execution_count="4">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>load_ext autoreload</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>autoreload <span class="dv">2</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pagri_data_tools  <span class="co"># type: ignore</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>pd.set_option(<span class="st">'display.max_columns'</span>, <span class="va">None</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>pd.options.display.float_format <span class="op">=</span> <span class="st">'</span><span class="sc">{:,.2f}</span><span class="st">'</span>.<span class="bu">format</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="cell-18" class="cell" data-execution_count="1">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># импортируем библиотеки</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sqlalchemy <span class="im">import</span> create_engine</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>db_config <span class="op">=</span> {<span class="st">'user'</span>: <span class="st">'praktikum_student'</span>, <span class="co"># имя пользователя</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>            <span class="st">'pwd'</span>: <span class="st">'Sdf4$2;d-d30pp'</span>, <span class="co"># пароль</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>            <span class="st">'host'</span>: <span class="st">'rc1b-wcoijxj3yxfsf3fs.mdb.yandexcloud.net'</span>,</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>            <span class="st">'port'</span>: <span class="dv">6432</span>, <span class="co"># порт подключения</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>            <span class="st">'db'</span>: <span class="st">'data-analyst-zen-project-db'</span>} <span class="co"># название базы данных</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>connection_string <span class="op">=</span> <span class="st">'postgresql://</span><span class="sc">{}</span><span class="st">:</span><span class="sc">{}</span><span class="st">@</span><span class="sc">{}</span><span class="st">:</span><span class="sc">{}</span><span class="st">/</span><span class="sc">{}</span><span class="st">'</span>.<span class="bu">format</span>(db_config[<span class="st">'user'</span>],</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>                                                db_config[<span class="st">'pwd'</span>],</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>                                                db_config[<span class="st">'host'</span>],</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>                                                db_config[<span class="st">'port'</span>],</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>                                                db_config[<span class="st">'db'</span>])</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>engine <span class="op">=</span> create_engine(connection_string) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <p>Чтобы посмотреть, какие таблицы есть в базе данных, вы можете использовать SQL-запрос для получения списка таблиц. В PostgreSQL это можно сделать с помощью запроса к системной таблице <code>information_schema.tables</code>.</p>
-<div id="cell-4" class="cell" data-execution_count="103">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Запрос для получения списка таблиц</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>query <span class="op">=</span> <span class="st">"""</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="st">SELECT table_name</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="st">FROM information_schema.tables</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="st">WHERE table_schema = 'public'</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="st">ORDER BY table_name;</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-20" class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Запрос для получения списка таблиц</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>query <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="st">SELECT table_name</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="st">FROM information_schema.tables</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="st">WHERE table_schema = 'public'</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="st">ORDER BY table_name;</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
-<div id="cell-5" class="cell" data-execution_count="104">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>tables <span class="op">=</span> pd.read_sql(query, engine)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>tables</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="104">
+<div id="cell-21" class="cell" data-execution_count="3">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>tables <span class="op">=</span> pd.read_sql(query, engine)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>tables</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="3">
 <div>
 
 
@@ -213,10 +304,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-6" class="cell" data-execution_count="111">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>table <span class="op">=</span> pd.read_sql(<span class="st">'select * from dash_visits'</span>, engine)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>table.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="111">
+<p>Нам нужна таблица <code>dash_visits</code>. Загрузим ее и сохраним в датафрейм.</p>
+<div id="cell-23" class="cell" data-execution_count="6">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_sql(<span class="st">'select * from dash_visits'</span>, engine)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="6">
 <div>
 
 
@@ -284,8 +379,127 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-7" class="cell" data-execution_count="106">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>table.groupby([<span class="st">'dt'</span>, <span class="st">'item_topic'</span>])[[<span class="st">'visits'</span>]].<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Изучим визиты в разрезе тем карточек.</p>
+<p>Агрегирурем даннные для построения графиков.<br>
+Так как тем карточек и источников слшиком много, возьмем топ 10, а остальные поместим в категорию “другие”.</p>
+<div id="cell-26" class="cell" data-execution_count="7">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>top_item_topics <span class="op">=</span> df.groupby(<span class="st">'item_topic'</span>)[<span class="st">'visits'</span>].<span class="bu">sum</span>().sort_values(ascending<span class="op">=</span><span class="va">False</span>).head(<span class="dv">10</span>).index.values</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'item_topic'</span>] <span class="op">=</span> df[<span class="st">'item_topic'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: x <span class="cf">if</span> x <span class="kw">in</span> top_item_topics <span class="cf">else</span> <span class="st">'Другое'</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>df_aggregated_by_item_topic <span class="op">=</span> df.groupby([<span class="st">'dt'</span>, <span class="st">'item_topic'</span>])[[<span class="st">'visits'</span>]].<span class="bu">sum</span>()</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>df_aggregated_by_item_topic[<span class="st">'all_visits'</span>] <span class="op">=</span> df_aggregated_by_item_topic.groupby(<span class="st">'dt'</span>)[<span class="st">'visits'</span>].transform(<span class="st">'sum'</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>df_aggregated_by_item_topic[<span class="st">'visits_pct'</span>] <span class="op">=</span> df_aggregated_by_item_topic[<span class="st">'visits'</span>] <span class="op">*</span> <span class="dv">100</span> <span class="op">/</span> df_aggregated_by_item_topic[<span class="st">'all_visits'</span>]</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>df_aggregated_by_item_topic <span class="op">=</span> df_aggregated_by_item_topic.reset_index()</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>top_source_topic <span class="op">=</span> df.groupby(<span class="st">'source_topic'</span>)[<span class="st">'visits'</span>].<span class="bu">sum</span>().sort_values(ascending<span class="op">=</span><span class="va">False</span>).head(<span class="dv">10</span>).index.values</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co"># print(df.shape[0])</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'source_topic'</span>] <span class="op">=</span> df[<span class="st">'source_topic'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: x <span class="cf">if</span> x <span class="kw">in</span> top_source_topic <span class="cf">else</span> <span class="st">'Другое'</span>)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>df_aggregated_by_source_topic <span class="op">=</span> (df.groupby(<span class="st">'source_topic'</span>)[[<span class="st">'visits'</span>]].<span class="bu">sum</span>() <span class="op">*</span><span class="dv">100</span> <span class="op">/</span> df.visits.<span class="bu">sum</span>()).sort_values(<span class="st">'visits'</span>, ascending<span class="op">=</span><span class="va">False</span>).reset_index()</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>df_aggregated_by_source_topic.rename(columns<span class="op">=</span>{<span class="st">'visits'</span>: <span class="st">'visits_pct'</span>}, inplace<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Создадим словарь для подписей графиков.</p>
+<div id="cell-28" class="cell" data-execution_count="11">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>titles_for_axis <span class="op">=</span> <span class="bu">dict</span>(</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    visits <span class="op">=</span> [<span class="st">'Количество визитов'</span>, <span class="st">'количество визитов'</span>, <span class="dv">0</span>]</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    , visits_pct <span class="op">=</span> [<span class="st">'Количество визитов, %'</span>, <span class="st">'количество визитов, %'</span>, <span class="dv">0</span>]</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># categorical column ['Именительный падеж', 'для кого / чего', 'по кому чему']</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Распределение долей по городу и тарифу с нормализацией по городу</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    , item_topic <span class="op">=</span> [<span class="st">'Тема карточки'</span>, <span class="st">'темы карточки'</span>, <span class="st">'теме карточки'</span>]</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    , source_topic <span class="op">=</span> [<span class="st">'Тема источника'</span>, <span class="st">'темы источника'</span>, <span class="st">'теме источника'</span>]</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    , age_segment <span class="op">=</span> [<span class="st">'Возрастная группа'</span>, <span class="st">'возрастная группа'</span>, <span class="st">'возрастной группе'</span>]</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    , dt <span class="op">=</span> [<span class="st">'Дата'</span>, <span class="st">'даты'</span>, <span class="st">'дате'</span>]</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="cell-29" class="cell" data-execution_count="12">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>config <span class="op">=</span> <span class="bu">dict</span>(</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> df_aggregated_by_item_topic</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    , x <span class="op">=</span> <span class="st">'dt'</span>  </span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    , y <span class="op">=</span> <span class="st">'visits'</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    , category <span class="op">=</span> <span class="st">'item_topic'</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    , width <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    , height <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    , orientation <span class="op">=</span> <span class="st">'v'</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.area(config, titles_for_axis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>                            <div id="9938ea50-62a3-47c4-bdf9-4f079a281d42" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("9938ea50-62a3-47c4-bdf9-4f079a281d42")) {                    Plotly.newPlot(                        "9938ea50-62a3-47c4-bdf9-4f079a281d42",                        [{"customdata":[["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"]],"fillpattern":{"shape":""},"hovertemplate":"\u0414\u0430\u0442\u0430 = %{x}\u003cbr\u003e\u041a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u0432\u0438\u0437\u0438\u0442\u043e\u0432 = %{y:.4s}\u003cbr\u003e\u0422\u0435\u043c\u0430 \u043a\u0430\u0440\u0442\u043e\u0447\u043a\u0438 = %{data.name}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"\u0414\u0440\u0443\u0433\u043e\u0435","line":{"color":"rgba(128, 60, 170, 0.9)"},"marker":{"symbol":"circle"},"mode":"lines","name":"\u0414\u0440\u0443\u0433\u043e\u0435","orientation":"v","showlegend":true,"stackgroup":"1","x":["2019-09-24T18:58:00","2019-09-24T18:57:00","2019-09-24T18:56:00","2019-09-24T18:59:00","2019-09-24T18:55:00","2019-09-24T19:00:00","2019-09-24T18:54:00","2019-09-24T18:31:00","2019-09-24T18:32:00","2019-09-24T18:30:00","2019-09-24T18:53:00","2019-09-24T18:29:00","2019-09-24T18:33:00","2019-09-24T18:52:00","2019-09-24T18:28:00","2019-09-24T18:34:00","2019-09-24T18:35:00"],"xaxis":"x","y":[27510,27269,24399,23979,14554,7923,6341,1176,1163,1128,889,845,772,493,379,356,89],"yaxis":"y","type":"scatter","hoverlabel":{"bgcolor":"white"},"textfont":{"family":"Segoe UI","size":14},"textposition":"top center"},{"customdata":[["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"]],"fillpattern":{"shape":""},"hovertemplate":"\u0414\u0430\u0442\u0430 = %{x}\u003cbr\u003e\u041a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u0432\u0438\u0437\u0438\u0442\u043e\u0432 = %{y:.4s}\u003cbr\u003e\u0422\u0435\u043c\u0430 \u043a\u0430\u0440\u0442\u043e\u0447\u043a\u0438 = %{data.name}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"\u041d\u0430\u0443\u043a\u0430","line":{"color":"#049CB3"},"marker":{"symbol":"circle"},"mode":"lines","name":"\u041d\u0430\u0443\u043a\u0430","orientation":"v","showlegend":true,"stackgroup":"1","x":["2019-09-24T18:58:00","2019-09-24T18:57:00","2019-09-24T18:56:00","2019-09-24T18:59:00","2019-09-24T18:55:00","2019-09-24T19:00:00","2019-09-24T18:54:00","2019-09-24T18:31:00","2019-09-24T18:32:00","2019-09-24T18:30:00","2019-09-24T18:53:00","2019-09-24T18:29:00","2019-09-24T18:33:00","2019-09-24T18:52:00","2019-09-24T18:28:00","2019-09-24T18:34:00","2019-09-24T18:35:00"],"xaxis":"x","y":[4372,4277,3823,3720,2308,1187,991,153,177,145,144,116,112,91,66,47,7],"yaxis":"y","type":"scatter","hoverlabel":{"bgcolor":"white"},"textfont":{"family":"Segoe UI","size":14},"textposition":"top center"},{"customdata":[["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"]],"fillpattern":{"shape":""},"hovertemplate":"\u0414\u0430\u0442\u0430 = %{x}\u003cbr\u003e\u041a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u0432\u0438\u0437\u0438\u0442\u043e\u0432 = %{y:.4s}\u003cbr\u003e\u0422\u0435\u043c\u0430 \u043a\u0430\u0440\u0442\u043e\u0447\u043a\u0438 = %{data.name}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"\u041e\u0442\u043d\u043e\u0448\u0435\u043d\u0438\u044f","line":{"color":"rgba(112, 155, 219, 0.9)"},"marker":{"symbol":"circle"},"mode":"lines","name":"\u041e\u0442\u043d\u043e\u0448\u0435\u043d\u0438\u044f","orientation":"v","showlegend":true,"stackgroup":"1","x":["2019-09-24T18:58:00","2019-09-24T18:57:00","2019-09-24T18:56:00","2019-09-24T18:59:00","2019-09-24T18:55:00","2019-09-24T19:00:00","2019-09-24T18:54:00","2019-09-24T18:31:00","2019-09-24T18:32:00","2019-09-24T18:30:00","2019-09-24T18:53:00","2019-09-24T18:29:00","2019-09-24T18:33:00","2019-09-24T18:52:00","2019-09-24T18:28:00","2019-09-24T18:34:00","2019-09-24T18:35:00"],"xaxis":"x","y":[4145,4133,3614,3431,2190,1189,933,145,168,150,147,123,120,66,51,52,9],"yaxis":"y","type":"scatter","hoverlabel":{"bgcolor":"white"},"textfont":{"family":"Segoe UI","size":14},"textposition":"top center"},{"customdata":[["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"]],"fillpattern":{"shape":""},"hovertemplate":"\u0414\u0430\u0442\u0430 = %{x}\u003cbr\u003e\u041a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u0432\u0438\u0437\u0438\u0442\u043e\u0432 = %{y:.4s}\u003cbr\u003e\u0422\u0435\u043c\u0430 \u043a\u0430\u0440\u0442\u043e\u0447\u043a\u0438 = %{data.name}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"\u0418\u043d\u0442\u0435\u0440\u0435\u0441\u043d\u044b\u0435 \u0444\u0430\u043a\u0442\u044b","line":{"color":"rgba(99, 113, 156, 0.9)"},"marker":{"symbol":"circle"},"mode":"lines","name":"\u0418\u043d\u0442\u0435\u0440\u0435\u0441\u043d\u044b\u0435 \u0444\u0430\u043a\u0442\u044b","orientation":"v","showlegend":true,"stackgroup":"1","x":["2019-09-24T18:58:00","2019-09-24T18:57:00","2019-09-24T18:56:00","2019-09-24T18:59:00","2019-09-24T18:55:00","2019-09-24T19:00:00","2019-09-24T18:54:00","2019-09-24T18:31:00","2019-09-24T18:32:00","2019-09-24T18:30:00","2019-09-24T18:53:00","2019-09-24T18:29:00","2019-09-24T18:33:00","2019-09-24T18:52:00","2019-09-24T18:28:00","2019-09-24T18:34:00","2019-09-24T18:35:00"],"xaxis":"x","y":[3910,3903,3499,3475,2053,1103,902,179,185,173,153,134,99,64,56,45,9],"yaxis":"y","type":"scatter","hoverlabel":{"bgcolor":"white"},"textfont":{"family":"Segoe UI","size":14},"textposition":"top center"},{"customdata":[["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"]],"fillpattern":{"shape":""},"hovertemplate":"\u0414\u0430\u0442\u0430 = %{x}\u003cbr\u003e\u041a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u0432\u0438\u0437\u0438\u0442\u043e\u0432 = %{y:.4s}\u003cbr\u003e\u0422\u0435\u043c\u0430 \u043a\u0430\u0440\u0442\u043e\u0447\u043a\u0438 = %{data.name}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"\u041e\u0431\u0449\u0435\u0441\u0442\u0432\u043e","line":{"color":"#5c6bc0"},"marker":{"symbol":"circle"},"mode":"lines","name":"\u041e\u0431\u0449\u0435\u0441\u0442\u0432\u043e","orientation":"v","showlegend":true,"stackgroup":"1","x":["2019-09-24T18:58:00","2019-09-24T18:57:00","2019-09-24T18:56:00","2019-09-24T18:59:00","2019-09-24T18:55:00","2019-09-24T19:00:00","2019-09-24T18:54:00","2019-09-24T18:31:00","2019-09-24T18:32:00","2019-09-24T18:30:00","2019-09-24T18:53:00","2019-09-24T18:29:00","2019-09-24T18:33:00","2019-09-24T18:52:00","2019-09-24T18:28:00","2019-09-24T18:34:00","2019-09-24T18:35:00"],"xaxis":"x","y":[3897,3723,3390,3431,2146,1144,886,169,164,155,131,107,105,67,63,51,11],"yaxis":"y","type":"scatter","hoverlabel":{"bgcolor":"white"},"textfont":{"family":"Segoe UI","size":14},"textposition":"top center"},{"customdata":[["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"]],"fillpattern":{"shape":""},"hovertemplate":"\u0414\u0430\u0442\u0430 = %{x}\u003cbr\u003e\u041a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u0432\u0438\u0437\u0438\u0442\u043e\u0432 = %{y:.4s}\u003cbr\u003e\u0422\u0435\u043c\u0430 \u043a\u0430\u0440\u0442\u043e\u0447\u043a\u0438 = %{data.name}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"\u041f\u043e\u0434\u0431\u043e\u0440\u043a\u0438","line":{"color":"#B690C4"},"marker":{"symbol":"circle"},"mode":"lines","name":"\u041f\u043e\u0434\u0431\u043e\u0440\u043a\u0438","orientation":"v","showlegend":true,"stackgroup":"1","x":["2019-09-24T18:58:00","2019-09-24T18:57:00","2019-09-24T18:56:00","2019-09-24T18:59:00","2019-09-24T18:55:00","2019-09-24T19:00:00","2019-09-24T18:54:00","2019-09-24T18:31:00","2019-09-24T18:32:00","2019-09-24T18:30:00","2019-09-24T18:53:00","2019-09-24T18:29:00","2019-09-24T18:33:00","2019-09-24T18:52:00","2019-09-24T18:28:00","2019-09-24T18:34:00","2019-09-24T18:35:00"],"xaxis":"x","y":[3520,3381,3112,3051,1925,1040,831,133,155,138,107,106,103,75,41,40,14],"yaxis":"y","type":"scatter","hoverlabel":{"bgcolor":"white"},"textfont":{"family":"Segoe UI","size":14},"textposition":"top center"},{"customdata":[["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"]],"fillpattern":{"shape":""},"hovertemplate":"\u0414\u0430\u0442\u0430 = %{x}\u003cbr\u003e\u041a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u0432\u0438\u0437\u0438\u0442\u043e\u0432 = %{y:.4s}\u003cbr\u003e\u0422\u0435\u043c\u0430 \u043a\u0430\u0440\u0442\u043e\u0447\u043a\u0438 = %{data.name}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"\u0420\u043e\u0441\u0441\u0438\u044f","line":{"color":"rgba(17, 100, 120, 0.9)"},"marker":{"symbol":"circle"},"mode":"lines","name":"\u0420\u043e\u0441\u0441\u0438\u044f","orientation":"v","showlegend":true,"stackgroup":"1","x":["2019-09-24T18:58:00","2019-09-24T18:57:00","2019-09-24T18:56:00","2019-09-24T18:59:00","2019-09-24T18:55:00","2019-09-24T19:00:00","2019-09-24T18:54:00","2019-09-24T18:31:00","2019-09-24T18:32:00","2019-09-24T18:30:00","2019-09-24T18:53:00","2019-09-24T18:29:00","2019-09-24T18:33:00","2019-09-24T18:52:00","2019-09-24T18:28:00","2019-09-24T18:34:00","2019-09-24T18:35:00"],"xaxis":"x","y":[3296,3361,2978,2921,1812,990,756,147,118,126,115,92,87,74,40,46,7],"yaxis":"y","type":"scatter","hoverlabel":{"bgcolor":"white"},"textfont":{"family":"Segoe UI","size":14},"textposition":"top center"},{"customdata":[["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"]],"fillpattern":{"shape":""},"hovertemplate":"\u0414\u0430\u0442\u0430 = %{x}\u003cbr\u003e\u041a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u0432\u0438\u0437\u0438\u0442\u043e\u0432 = %{y:.4s}\u003cbr\u003e\u0422\u0435\u043c\u0430 \u043a\u0430\u0440\u0442\u043e\u0447\u043a\u0438 = %{data.name}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"\u0418\u0441\u0442\u043e\u0440\u0438\u044f","line":{"color":"rgba(194, 143, 113, 0.8)"},"marker":{"symbol":"circle"},"mode":"lines","name":"\u0418\u0441\u0442\u043e\u0440\u0438\u044f","orientation":"v","showlegend":true,"stackgroup":"1","x":["2019-09-24T18:58:00","2019-09-24T18:57:00","2019-09-24T18:56:00","2019-09-24T18:59:00","2019-09-24T18:55:00","2019-09-24T19:00:00","2019-09-24T18:54:00","2019-09-24T18:31:00","2019-09-24T18:32:00","2019-09-24T18:30:00","2019-09-24T18:53:00","2019-09-24T18:29:00","2019-09-24T18:33:00","2019-09-24T18:52:00","2019-09-24T18:28:00","2019-09-24T18:34:00","2019-09-24T18:35:00"],"xaxis":"x","y":[3052,3029,2635,2689,1635,875,701,125,121,123,105,72,85,49,43,32,18],"yaxis":"y","type":"scatter","hoverlabel":{"bgcolor":"white"},"textfont":{"family":"Segoe UI","size":14},"textposition":"top center"},{"customdata":[["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"]],"fillpattern":{"shape":""},"hovertemplate":"\u0414\u0430\u0442\u0430 = %{x}\u003cbr\u003e\u041a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u0432\u0438\u0437\u0438\u0442\u043e\u0432 = %{y:.4s}\u003cbr\u003e\u0422\u0435\u043c\u0430 \u043a\u0430\u0440\u0442\u043e\u0447\u043a\u0438 = %{data.name}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"\u041f\u043e\u043b\u0435\u0437\u043d\u044b\u0435 \u0441\u043e\u0432\u0435\u0442\u044b","line":{"color":"#B690C4"},"marker":{"symbol":"circle"},"mode":"lines","name":"\u041f\u043e\u043b\u0435\u0437\u043d\u044b\u0435 \u0441\u043e\u0432\u0435\u0442\u044b","orientation":"v","showlegend":true,"stackgroup":"1","x":["2019-09-24T18:58:00","2019-09-24T18:57:00","2019-09-24T18:56:00","2019-09-24T18:59:00","2019-09-24T18:55:00","2019-09-24T19:00:00","2019-09-24T18:54:00","2019-09-24T18:31:00","2019-09-24T18:32:00","2019-09-24T18:30:00","2019-09-24T18:53:00","2019-09-24T18:29:00","2019-09-24T18:33:00","2019-09-24T18:52:00","2019-09-24T18:28:00","2019-09-24T18:34:00","2019-09-24T18:35:00"],"xaxis":"x","y":[3039,3047,2590,2711,1606,906,724,142,128,127,104,75,94,54,37,34,17],"yaxis":"y","type":"scatter","hoverlabel":{"bgcolor":"white"},"textfont":{"family":"Segoe UI","size":14},"textposition":"top center"},{"customdata":[["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"]],"fillpattern":{"shape":""},"hovertemplate":"\u0414\u0430\u0442\u0430 = %{x}\u003cbr\u003e\u041a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u0432\u0438\u0437\u0438\u0442\u043e\u0432 = %{y:.4s}\u003cbr\u003e\u0422\u0435\u043c\u0430 \u043a\u0430\u0440\u0442\u043e\u0447\u043a\u0438 = %{data.name}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"\u0421\u0435\u043c\u044c\u044f","line":{"color":"#03A9F4"},"marker":{"symbol":"circle"},"mode":"lines","name":"\u0421\u0435\u043c\u044c\u044f","orientation":"v","showlegend":true,"stackgroup":"1","x":["2019-09-24T18:58:00","2019-09-24T18:57:00","2019-09-24T18:56:00","2019-09-24T18:59:00","2019-09-24T18:55:00","2019-09-24T19:00:00","2019-09-24T18:54:00","2019-09-24T18:31:00","2019-09-24T18:32:00","2019-09-24T18:30:00","2019-09-24T18:53:00","2019-09-24T18:29:00","2019-09-24T18:33:00","2019-09-24T18:52:00","2019-09-24T18:28:00","2019-09-24T18:34:00","2019-09-24T18:35:00"],"xaxis":"x","y":[2287,2378,2121,1977,1259,681,535,114,110,101,87,79,58,41,32,32,5],"yaxis":"y","type":"scatter","hoverlabel":{"bgcolor":"white"},"textfont":{"family":"Segoe UI","size":14},"textposition":"top center"},{"customdata":[["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"],["= 1"]],"fillpattern":{"shape":""},"hovertemplate":"\u0414\u0430\u0442\u0430 = %{x}\u003cbr\u003e\u041a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u0432\u0438\u0437\u0438\u0442\u043e\u0432 = %{y:.4s}\u003cbr\u003e\u0422\u0435\u043c\u0430 \u043a\u0430\u0440\u0442\u043e\u0447\u043a\u0438 = %{data.name}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"\u0416\u0435\u043d\u0449\u0438\u043d\u044b","line":{"color":"#8B9467"},"marker":{"symbol":"circle"},"mode":"lines","name":"\u0416\u0435\u043d\u0449\u0438\u043d\u044b","orientation":"v","showlegend":true,"stackgroup":"1","x":["2019-09-24T18:58:00","2019-09-24T18:57:00","2019-09-24T18:56:00","2019-09-24T18:59:00","2019-09-24T18:55:00","2019-09-24T19:00:00","2019-09-24T18:54:00","2019-09-24T18:31:00","2019-09-24T18:32:00","2019-09-24T18:30:00","2019-09-24T18:53:00","2019-09-24T18:29:00","2019-09-24T18:33:00","2019-09-24T18:52:00","2019-09-24T18:28:00","2019-09-24T18:34:00","2019-09-24T18:35:00"],"xaxis":"x","y":[2219,2258,2007,1981,1208,666,540,109,98,76,75,68,91,38,27,28,10],"yaxis":"y","type":"scatter","hoverlabel":{"bgcolor":"white"},"textfont":{"family":"Segoe UI","size":14},"textposition":"top center"}],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"rgb(36,36,36)"},"error_y":{"color":"rgb(36,36,36)"},"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"rgb(36,36,36)","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"rgb(36,36,36)"},"baxis":{"endlinecolor":"rgb(36,36,36)","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"rgb(36,36,36)"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"},"colorscale":[[0.0,"#440154"],[0.1111111111111111,"#482878"],[0.2222222222222222,"#3e4989"],[0.3333333333333333,"#31688e"],[0.4444444444444444,"#26828e"],[0.5555555555555556,"#1f9e89"],[0.6666666666666666,"#35b779"],[0.7777777777777778,"#6ece58"],[0.8888888888888888,"#b5de2b"],[1.0,"#fde725"]],"type":"contour"}],"heatmapgl":[{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"},"colorscale":[[0.0,"#440154"],[0.1111111111111111,"#482878"],[0.2222222222222222,"#3e4989"],[0.3333333333333333,"#31688e"],[0.4444444444444444,"#26828e"],[0.5555555555555556,"#1f9e89"],[0.6666666666666666,"#35b779"],[0.7777777777777778,"#6ece58"],[0.8888888888888888,"#b5de2b"],[1.0,"#fde725"]],"type":"heatmapgl"}],"heatmap":[{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"},"colorscale":[[0.0,"#440154"],[0.1111111111111111,"#482878"],[0.2222222222222222,"#3e4989"],[0.3333333333333333,"#31688e"],[0.4444444444444444,"#26828e"],[0.5555555555555556,"#1f9e89"],[0.6666666666666666,"#35b779"],[0.7777777777777778,"#6ece58"],[0.8888888888888888,"#b5de2b"],[1.0,"#fde725"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"},"colorscale":[[0.0,"#440154"],[0.1111111111111111,"#482878"],[0.2222222222222222,"#3e4989"],[0.3333333333333333,"#31688e"],[0.4444444444444444,"#26828e"],[0.5555555555555556,"#1f9e89"],[0.6666666666666666,"#35b779"],[0.7777777777777778,"#6ece58"],[0.8888888888888888,"#b5de2b"],[1.0,"#fde725"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"},"colorscale":[[0.0,"#440154"],[0.1111111111111111,"#482878"],[0.2222222222222222,"#3e4989"],[0.3333333333333333,"#31688e"],[0.4444444444444444,"#26828e"],[0.5555555555555556,"#1f9e89"],[0.6666666666666666,"#35b779"],[0.7777777777777778,"#6ece58"],[0.8888888888888888,"#b5de2b"],[1.0,"#fde725"]],"type":"histogram2d"}],"histogram":[{"marker":{"line":{"color":"white","width":0.6}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"}},"marker":{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"}},"type":"scattermapbox"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"},"colorscale":[[0.0,"#440154"],[0.1111111111111111,"#482878"],[0.2222222222222222,"#3e4989"],[0.3333333333333333,"#31688e"],[0.4444444444444444,"#26828e"],[0.5555555555555556,"#1f9e89"],[0.6666666666666666,"#35b779"],[0.7777777777777778,"#6ece58"],[0.8888888888888888,"#b5de2b"],[1.0,"#fde725"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"rgb(237,237,237)"},"line":{"color":"white"}},"header":{"fill":{"color":"rgb(217,217,217)"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"}},"colorscale":{"diverging":[[0.0,"rgb(103,0,31)"],[0.1,"rgb(178,24,43)"],[0.2,"rgb(214,96,77)"],[0.3,"rgb(244,165,130)"],[0.4,"rgb(253,219,199)"],[0.5,"rgb(247,247,247)"],[0.6,"rgb(209,229,240)"],[0.7,"rgb(146,197,222)"],[0.8,"rgb(67,147,195)"],[0.9,"rgb(33,102,172)"],[1.0,"rgb(5,48,97)"]],"sequential":[[0.0,"#440154"],[0.1111111111111111,"#482878"],[0.2222222222222222,"#3e4989"],[0.3333333333333333,"#31688e"],[0.4444444444444444,"#26828e"],[0.5555555555555556,"#1f9e89"],[0.6666666666666666,"#35b779"],[0.7777777777777778,"#6ece58"],[0.8888888888888888,"#b5de2b"],[1.0,"#fde725"]],"sequentialminus":[[0.0,"#440154"],[0.1111111111111111,"#482878"],[0.2222222222222222,"#3e4989"],[0.3333333333333333,"#31688e"],[0.4444444444444444,"#26828e"],[0.5555555555555556,"#1f9e89"],[0.6666666666666666,"#35b779"],[0.7777777777777778,"#6ece58"],[0.8888888888888888,"#b5de2b"],[1.0,"#fde725"]]},"colorway":["#1F77B4","#FF7F0E","#2CA02C","#D62728","#9467BD","#8C564B","#E377C2","#7F7F7F","#BCBD22","#17BECF"],"font":{"color":"rgb(36,36,36)"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"white","showlakes":true,"showland":true,"subunitcolor":"white"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"white","plot_bgcolor":"white","polar":{"angularaxis":{"gridcolor":"rgb(232,232,232)","linecolor":"rgb(36,36,36)","showgrid":false,"showline":true,"ticks":"outside"},"bgcolor":"white","radialaxis":{"gridcolor":"rgb(232,232,232)","linecolor":"rgb(36,36,36)","showgrid":false,"showline":true,"ticks":"outside"}},"scene":{"xaxis":{"backgroundcolor":"white","gridcolor":"rgb(232,232,232)","gridwidth":2,"linecolor":"rgb(36,36,36)","showbackground":true,"showgrid":false,"showline":true,"ticks":"outside","zeroline":false,"zerolinecolor":"rgb(36,36,36)"},"yaxis":{"backgroundcolor":"white","gridcolor":"rgb(232,232,232)","gridwidth":2,"linecolor":"rgb(36,36,36)","showbackground":true,"showgrid":false,"showline":true,"ticks":"outside","zeroline":false,"zerolinecolor":"rgb(36,36,36)"},"zaxis":{"backgroundcolor":"white","gridcolor":"rgb(232,232,232)","gridwidth":2,"linecolor":"rgb(36,36,36)","showbackground":true,"showgrid":false,"showline":true,"ticks":"outside","zeroline":false,"zerolinecolor":"rgb(36,36,36)"}},"shapedefaults":{"fillcolor":"black","line":{"width":0},"opacity":0.3},"ternary":{"aaxis":{"gridcolor":"rgb(232,232,232)","linecolor":"rgb(36,36,36)","showgrid":false,"showline":true,"ticks":"outside"},"baxis":{"gridcolor":"rgb(232,232,232)","linecolor":"rgb(36,36,36)","showgrid":false,"showline":true,"ticks":"outside"},"bgcolor":"white","caxis":{"gridcolor":"rgb(232,232,232)","linecolor":"rgb(36,36,36)","showgrid":false,"showline":true,"ticks":"outside"}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"rgb(232,232,232)","linecolor":"rgb(36,36,36)","showgrid":false,"showline":true,"ticks":"outside","title":{"standoff":15},"zeroline":false,"zerolinecolor":"rgb(36,36,36)"},"yaxis":{"automargin":true,"gridcolor":"rgb(232,232,232)","linecolor":"rgb(36,36,36)","showgrid":false,"showline":true,"ticks":"outside","title":{"standoff":15},"zeroline":false,"zerolinecolor":"rgb(36,36,36)"}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"\u0414\u0430\u0442\u0430","font":{"size":14,"color":"rgba(0, 0, 0, 0.7)"}},"tickfont":{"size":14,"color":"rgba(0, 0, 0, 0.7)"},"linecolor":"rgba(0, 0, 0, 0.4)","tickcolor":"rgba(0, 0, 0, 0.4)","visible":true,"showgrid":true,"gridwidth":1,"gridcolor":"rgba(0, 0, 0, 0.1)"},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"\u041a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u0432\u0438\u0437\u0438\u0442\u043e\u0432","font":{"size":14,"color":"rgba(0, 0, 0, 0.7)"}},"tickfont":{"size":14,"color":"rgba(0, 0, 0, 0.7)"},"linecolor":"rgba(0, 0, 0, 0.4)","tickcolor":"rgba(0, 0, 0, 0.4)","visible":true,"showgrid":true,"gridwidth":1,"gridcolor":"rgba(0, 0, 0, 0.07)"},"legend":{"title":{"text":"\u0422\u0435\u043c\u0430 \u043a\u0430\u0440\u0442\u043e\u0447\u043a\u0438","font":{"color":"rgba(0, 0, 0, 0.7)","size":14}},"tracegroupgap":0,"font":{"color":"rgba(0, 0, 0, 0.7)"},"orientation":"v","y":0.8},"margin":{"t":80},"title":{"font":{"size":16,"color":"rgba(0, 0, 0, 0.7)"},"text":" \u041a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u0432\u0438\u0437\u0438\u0442\u043e\u0432 \u0432 \u0437\u0430\u0432\u0438\u0441\u0438\u043c\u043e\u0441\u0442\u0438 \u043e\u0442 \u0434\u0430\u0442\u044b \u0438 \u0442\u0435\u043c\u044b \u043a\u0430\u0440\u0442\u043e\u0447\u043a\u0438"},"font":{"size":14,"family":"Segoe UI","color":"rgba(0, 0, 0, 0.7)"},"hoverlabel":{"bgcolor":"white"}},                        {"responsive": true}                    ).then(function(){
+                            
+var gd = document.getElementById('9938ea50-62a3-47c4-bdf9-4f079a281d42');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };                });            </script>        </div>
+</div>
+</div>
+<div id="cell-30" class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>config <span class="op">=</span> <span class="bu">dict</span>(</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> df_aggregated_by_item_topic</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    , x <span class="op">=</span> <span class="st">'dt'</span>  </span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    , y <span class="op">=</span> <span class="st">'visits_pct'</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    , category <span class="op">=</span> <span class="st">'item_topic'</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    , width <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    , height <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    , orientation <span class="op">=</span> <span class="st">'v'</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co"># display(df_aggregated_by_source_topic)</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>visits_by_item_topic_pct_fig <span class="op">=</span> pagri_data_tools.area(config, titles_for_axis)</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>visits_by_item_topic_pct_fig.update_layout(title_text<span class="op">=</span><span class="va">None</span>, showlegend<span class="op">=</span><span class="va">False</span>, margin<span class="op">=</span><span class="bu">dict</span>(l<span class="op">=</span><span class="dv">0</span>, r<span class="op">=</span><span class="dv">0</span>, b<span class="op">=</span><span class="dv">0</span>, t<span class="op">=</span><span class="dv">0</span>))    </span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>config <span class="op">=</span> <span class="bu">dict</span>(</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> df_aggregated_by_source_topic</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>    , x <span class="op">=</span> <span class="st">'source_topic'</span>  </span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>    , y <span class="op">=</span> <span class="st">'visits_pct'</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>    , text <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>    , width <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>    , height <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>    , orientation <span class="op">=</span> <span class="st">'h'</span></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>    , showgrid_y <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>visits_by_source_topic_fig <span class="op">=</span> pagri_data_tools.bar(config, titles_for_axis)</span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>visits_by_source_topic_fig <span class="op">=</span> visits_by_source_topic_fig.update_layout(title_text<span class="op">=</span><span class="va">None</span>, showlegend<span class="op">=</span><span class="va">False</span>, margin<span class="op">=</span><span class="bu">dict</span>(l<span class="op">=</span><span class="dv">0</span>, r<span class="op">=</span><span class="dv">0</span>, b<span class="op">=</span><span class="dv">0</span>, t<span class="op">=</span><span class="dv">0</span>))    </span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>crosstab <span class="op">=</span> df_origin.pivot_table(index <span class="op">=</span> <span class="st">'item_topic'</span>, columns <span class="op">=</span> <span class="st">'source_topic'</span>, values<span class="op">=</span><span class="st">'visits'</span>, aggfunc<span class="op">=</span><span class="st">'sum'</span>).fillna(<span class="dv">0</span>).astype(<span class="bu">int</span>).reset_index().rename(columns<span class="op">=</span>{<span class="st">'item_topic'</span>: <span class="st">' '</span>})</span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>rowData <span class="op">=</span> crosstab.to_dict(<span class="st">'records'</span>)</span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>table_component <span class="op">=</span> dag.AgGrid(</span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>    rowData<span class="op">=</span>rowData, columnDefs<span class="op">=</span>[{<span class="st">"field"</span>: i, <span class="st">'headerName'</span>: i.replace(<span class="st">'_'</span>, <span class="st">' '</span>), <span class="st">"cellStyle"</span>: {<span class="st">"fontSize"</span>: <span class="st">"14px"</span>}, <span class="st">'type'</span>: <span class="st">'numeric'</span>, <span class="st">'editable'</span>: <span class="va">False</span>, <span class="st">"tooltipField"</span>: i, <span class="st">"minWidth"</span>: <span class="dv">100</span>} <span class="cf">if</span> pd.api.types.is_numeric_dtype(crosstab[i])</span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>                                    <span class="cf">else</span> {<span class="st">"field"</span>: i, <span class="st">'headerName'</span>: i.replace(<span class="st">'_'</span>, <span class="st">' '</span>), <span class="st">"cellStyle"</span>: {<span class="st">"fontSize"</span>: <span class="st">"14px"</span>}, <span class="st">'type'</span>: <span class="st">'text'</span>, <span class="st">'editable'</span>: <span class="va">False</span>, <span class="st">"tooltipField"</span>: i, <span class="st">"minWidth"</span>: <span class="dv">100</span>} <span class="cf">for</span> i <span class="kw">in</span> crosstab.columns]  <span class="co"># , 'type': 'numeric', "valueFormatter": {"function": "Number(params.value).toFixed(1)"}} , , 'autoSizeColumn': True</span></span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>    <span class="co"># , columnSizeOptions = {"skipHeader": True}</span></span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>    , columnSize<span class="op">=</span><span class="st">"responsiveSizeToFit"</span>, defaultColDef<span class="op">=</span>{<span class="st">"sortable"</span>: <span class="va">True</span>, <span class="st">"filter"</span>: <span class="va">False</span>, <span class="st">"animateRows"</span>: <span class="va">True</span>, <span class="st">"wrapHeaderText"</span>: <span class="va">True</span>, <span class="st">"autoHeaderHeight"</span>: <span class="va">True</span>}, dashGridOptions<span class="op">=</span>{<span class="st">"pagination"</span>: <span class="va">True</span>, <span class="st">'paginationPageSize'</span>: <span class="dv">10</span>, <span class="st">"animateRows"</span>: <span class="va">True</span>, <span class="st">"animateColumns"</span>: <span class="va">True</span>}</span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ag-theme-quartz, ag-theme-quartz-dark, ag-theme-alpine, ag-theme-alpine-dark, ag-theme-balham, ag-theme-balham-dark, ag-theme-material.</span></span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="cell-32" class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df.groupby([<span class="st">'dt'</span>, <span class="st">'item_topic'</span>])[[<span class="st">'visits'</span>]].<span class="bu">sum</span>().reset_index()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-display" data-execution_count="106">
 <div>
 
@@ -358,8 +572,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-8" class="cell" data-execution_count="107">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>(table.groupby(<span class="st">'source_topic'</span>)[[<span class="st">'visits'</span>]].<span class="bu">sum</span>() <span class="op">*</span><span class="dv">100</span> <span class="op">/</span> table.visits.<span class="bu">sum</span>()).sort_values(<span class="st">'visits'</span>, ascending<span class="op">=</span><span class="va">False</span>).head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-33" class="cell" data-execution_count="107">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>(table.groupby(<span class="st">'source_topic'</span>)[[<span class="st">'visits'</span>]].<span class="bu">sum</span>() <span class="op">*</span><span class="dv">100</span> <span class="op">/</span> table.visits.<span class="bu">sum</span>()).sort_values(<span class="st">'visits'</span>, ascending<span class="op">=</span><span class="va">False</span>).head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-display" data-execution_count="107">
 <div>
 
@@ -402,21 +619,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-9" class="cell" data-execution_count="108">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>top_item_topics <span class="op">=</span> table.groupby(<span class="st">'item_topic'</span>)[<span class="st">'visits'</span>].<span class="bu">sum</span>().sort_values(ascending<span class="op">=</span><span class="va">False</span>).head(<span class="dv">10</span>).index.values</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>table[<span class="st">'item_topic'</span>] <span class="op">=</span> table[<span class="st">'item_topic'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: x <span class="cf">if</span> x <span class="kw">in</span> top_item_topics <span class="cf">else</span> <span class="st">'Другое'</span>)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>top_item_topics</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-34" class="cell" data-execution_count="108">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>top_item_topics <span class="op">=</span> table.groupby(<span class="st">'item_topic'</span>)[<span class="st">'visits'</span>].<span class="bu">sum</span>().sort_values(ascending<span class="op">=</span><span class="va">False</span>).head(<span class="dv">10</span>).index.values</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>table[<span class="st">'item_topic'</span>] <span class="op">=</span> table[<span class="st">'item_topic'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: x <span class="cf">if</span> x <span class="kw">in</span> top_item_topics <span class="cf">else</span> <span class="st">'Другое'</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>top_item_topics</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-display" data-execution_count="108">
 <pre><code>array(['Наука', 'Отношения', 'Интересные факты', 'Общество', 'Подборки',
        'Россия', 'Полезные советы', 'История', 'Семья', 'Женщины'],
       dtype=object)</code></pre>
 </div>
 </div>
-<div id="cell-10" class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>table.pivot_table(index <span class="op">=</span> <span class="st">'item_topic'</span>, columns <span class="op">=</span> <span class="st">'source_topic'</span>, values<span class="op">=</span><span class="st">'visits'</span>, aggfunc<span class="op">=</span><span class="st">'sum'</span>).fillna(<span class="dv">0</span>).astype(<span class="bu">int</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-35" class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>table.pivot_table(index <span class="op">=</span> <span class="st">'item_topic'</span>, columns <span class="op">=</span> <span class="st">'source_topic'</span>, values<span class="op">=</span><span class="st">'visits'</span>, aggfunc<span class="op">=</span><span class="st">'sum'</span>).fillna(<span class="dv">0</span>).astype(<span class="bu">int</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -841,4 +1065,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>
