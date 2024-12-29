@@ -788,8 +788,12 @@ def init_dash(server):
         visits_by_source_topic_fig = visits_by_source_topic_fig.update_layout(title_text=None, showlegend=False, margin=dict(l=0, r=0, b=0, t=0))    
         crosstab = filtered_df_origin.pivot_table(index = 'item_topic', columns = 'source_topic', values='visits', aggfunc='sum').fillna(0).astype(int).reset_index().rename(columns={'item_topic': ' '})
         rowData = crosstab.to_dict('records')
+        min_visits = crosstab.select_dtypes(include=['number']).min().min()
+        max_visits = crosstab.select_dtypes(include=['number']).max().max()
         table_component = dag.AgGrid(
-            rowData=rowData, columnDefs=[{"field": i, 'headerName': i.replace('_', ' '), "cellStyle": {"fontSize": "14px"}, 'type': 'numeric', 'editable': False, "tooltipField": i, "minWidth": 100} if pd.api.types.is_numeric_dtype(crosstab[i])
+            rowData=rowData, columnDefs=[{"field": i, 'headerName': i.replace('_', ' '), "cellStyle": {"fontSize": "14px"}, 'type': 'numeric', 'editable': False, "tooltipField": i, "minWidth": 100
+                                                , "cellStyle": {"function": "heatMap(params)"}
+                                                , "cellRendererParams": {"min": min_visits, "max": max_visits},} if pd.api.types.is_numeric_dtype(crosstab[i])
                                             else {"field": i, 'headerName': i.replace('_', ' '), "cellStyle": {"fontSize": "14px"}, 'type': 'text', 'editable': False, "tooltipField": i, "minWidth": 100} for i in crosstab.columns]  # , 'type': 'numeric', "valueFormatter": {"function": "Number(params.value).toFixed(1)"}} , , 'autoSizeColumn': True
             # , columnSizeOptions = {"skipHeader": True}
             , columnSize="responsiveSizeToFit", defaultColDef={"sortable": True, "filter": False, "animateRows": True, "wrapHeaderText": True, "autoHeaderHeight": True}, dashGridOptions={"pagination": True, 'paginationPageSize': 10, "animateRows": True, "animateColumns": True}
