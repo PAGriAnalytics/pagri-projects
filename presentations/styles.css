@@ -1,6 +1,9 @@
 .reveal h1, .reveal h2, .reveal h3 {
       color: #04795c; /* Замените на нужный вам цвет */
 }
+.dataframe {
+      font-size: 10px; /* Уменьшите размер шрифта */
+}
 .reveal .progress {
       height: 20px; /* Увеличьте высоту прогресс-бара */
       color: #04795c
