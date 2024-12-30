@@ -25,3 +25,12 @@ a:hover {
 .navbar a {
     text-decoration: none; /* Убираем подчеркивание */
 }
+/* .listing-title:hover {
+    text-decoration: underline;
+}
+.description_for_list:hover {
+    text-decoration: underline; 
+}
+.listing-title, .description_for_list {
+    transition: text-decoration 0.3s ease; 
+} */
