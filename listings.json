@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/projects/churn_prediction_in_fitness_center/temp_for_report.html",
       "/projects/business_metrics_in_yandex_afisha/business_metrics_in_yandex_afisha.html",
       "/projects/dashboard_for_yandex_afisha/dashboard_for_yandex_afisha.html",
       "/projects/creditworthiness-research/creditworthiness_research.html",
@@ -9,6 +10,7 @@
       "/projects/research_on_video_game_sales/research_on_video_game_sales.html",
       "/projects/research_of_food_service_industry/research_of_food_service_industry.html",
       "/projects/prospective_tariff_for_telecom/prospective_tariff_for_telecom.html",
+      "/projects/churn_prediction_in_fitness_center/churn_prediction_in_fitness_center.html",
       "/projects/revenue_growth_hypotheses/revenue_growth_hypotheses.html"
     ]
   }
