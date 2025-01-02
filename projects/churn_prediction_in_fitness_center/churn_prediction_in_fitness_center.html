@@ -168,8 +168,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#исследование-корреляционных-связей" id="toc-исследование-корреляционных-связей" class="nav-link" data-scroll-target="#исследование-корреляционных-связей">Исследование корреляционных связей</a></li>
   <li><a href="#промежуточный-вывод-2" id="toc-промежуточный-вывод-2" class="nav-link" data-scroll-target="#промежуточный-вывод-2">Промежуточный вывод</a></li>
   </ul></li>
-  <li><a href="#модель-прогнозирования-оттока-клиентов" id="toc-модель-прогнозирования-оттока-клиентов" class="nav-link" data-scroll-target="#модель-прогнозирования-оттока-клиентов">Модель прогнозирования оттока клиентов</a></li>
-  <li><a href="#кластеризация-клиентов" id="toc-кластеризация-клиентов" class="nav-link" data-scroll-target="#кластеризация-клиентов">Кластеризация клиентов</a></li>
+  <li><a href="#модель-прогнозирования-оттока-клиентов" id="toc-модель-прогнозирования-оттока-клиентов" class="nav-link" data-scroll-target="#модель-прогнозирования-оттока-клиентов">Модель прогнозирования оттока клиентов</a>
+  <ul class="collapse">
+  <li><a href="#промежуточный-вывод-3" id="toc-промежуточный-вывод-3" class="nav-link" data-scroll-target="#промежуточный-вывод-3">Промежуточный вывод</a></li>
+  </ul></li>
+  <li><a href="#кластеризация-клиентов" id="toc-кластеризация-клиентов" class="nav-link" data-scroll-target="#кластеризация-клиентов">Кластеризация клиентов</a>
+  <ul class="collapse">
+  <li><a href="#промежуточный-вывод-4" id="toc-промежуточный-вывод-4" class="nav-link" data-scroll-target="#промежуточный-вывод-4">Промежуточный вывод</a></li>
+  </ul></li>
   <li><a href="#общий-вывод" id="toc-общий-вывод" class="nav-link" data-scroll-target="#общий-вывод">Общий вывод</a></li>
   </ul>
 </nav>
@@ -223,7 +229,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <section id="загрузка-библиотек" class="level2">
 <h2 class="anchored" data-anchor-id="загрузка-библиотек">Загрузка библиотек <skip></skip></h2>
-<div id="cell-10" class="cell" data-execution_count="1">
+<div id="cell-10" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>load_ext autoreload</span>
@@ -232,8 +238,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pagri_data_tools  <span class="co"># type: ignore</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>pd.set_option(<span class="st">'display.max_columns'</span>, <span class="va">None</span>)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>pd.options.display.float_format <span class="op">=</span> <span class="st">'</span><span class="sc">{:,.2f}</span><span class="st">'</span>.<span class="bu">format</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> RandomForestClassifier</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score, precision_score, recall_score, f1_score</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> roc_auc_score, roc_curve</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.cluster.hierarchy <span class="im">import</span> dendrogram, linkage</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.graph_objects <span class="im">as</span> go</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.figure_factory <span class="im">as</span> ff</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>pd.set_option(<span class="st">'display.max_columns'</span>, <span class="va">None</span>)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>pd.options.display.float_format <span class="op">=</span> <span class="st">'</span><span class="sc">{:,.2f}</span><span class="st">'</span>.<span class="bu">format</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
@@ -3995,39 +4010,12 @@ if (outputEl) {{
 </details>
 </div>
 <p>Посмотрим на коэффициенты корреляции между числовыми переменными.</p>
-<div id="cell-144" class="cell" data-execution_count="91">
+<div id="cell-144" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.heatmap_corr(df.astype({<span class="st">'gender'</span>: <span class="st">'int'</span>, <span class="st">'near_location'</span>: <span class="st">'int'</span>, <span class="st">'partner'</span>: <span class="st">'int'</span>, <span class="st">'group_visits'</span>: <span class="st">'int'</span>, <span class="st">'churn'</span>: <span class="st">'int'</span></span>
 <span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>         , <span class="st">'promo_friends'</span>: <span class="st">'int'</span>, <span class="st">'phone'</span>: <span class="st">'int'</span>}), titles_for_axis<span class="op">=</span>titles_for_axis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display">
-<div>                            <div id="5b76e08d-0e1e-4987-840e-cb6c7854e2fd" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("5b76e08d-0e1e-4987-840e-cb6c7854e2fd")) {                    Plotly.newPlot(                        "5b76e08d-0e1e-4987-840e-cb6c7854e2fd",                        [{"colorscale":[[0,"rgba(204, 153, 255, 0.1)"],[1,"rgb(127, 60, 141)"]],"hoverinfo":"x+y+z","hoverlabel":{"bgcolor":"white","font":{"color":"black","size":14}},"hoverongaps":false,"x":["\u041f\u043e\u043b","\u041f\u0440\u043e\u0436\u0438\u0432\u0430\u043d\u0438\u0435 \u0438\u043b\u0438 \u0440\u0430\u0431\u043e\u0442\u0430 \u0432 \u0440\u0430\u0439\u043e\u043d\u0435","\u0421\u043e\u0442\u0440\u0443\u0434\u043d\u0438\u043a \u043a\u043e\u043c\u043f\u0430\u043d\u0438\u0438-\u043f\u0430\u0440\u0442\u043d\u0451\u0440\u0430","\u041f\u0440\u0438\u0448\u0435\u043b \u043f\u043e \u043f\u0440\u043e\u043c\u043e","\u041d\u0430\u043b\u0438\u0447\u0438\u0435 \u0442\u0435\u043b\u0435\u0444\u043e\u043d\u0430","\u0414\u043b\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0441\u0442\u044c \u0430\u0431\u043e\u043d\u0435\u043c\u0435\u043d\u0442\u0430","\u041f\u043e\u0441\u0435\u0448\u044f\u043b \u0433\u0440\u0443\u043f\u043f\u043e\u0432\u044b\u0435 \u0437\u0430\u043d\u044f\u0442\u0438\u044f","\u0412\u043e\u0437\u0440\u0430\u0441\u0442","\u0421\u0443\u043c\u043c\u0430\u0440\u043d\u0430\u044f \u0432\u044b\u0440\u0443\u0447\u043a\u0430 \u043e\u0442 \u0434\u0440\u0443\u0433\u0438\u0445 \u0443\u0441\u043b\u0443\u0433","\u0421\u0440\u043e\u043a \u0434\u043e \u043a\u043e\u043d\u0446\u0430 \u0430\u0431\u043e\u043d\u0435\u043c\u0435\u043d\u0442\u0430","\u0412\u0440\u0435\u043c\u044f \u0441 \u043c\u043e\u043c\u0435\u043d\u0442\u0430 \u043f\u0435\u0440\u0432\u043e\u0433\u043e \u043f\u043e\u0441\u0435\u0449\u0435\u043d\u0438\u044f","\u041f\u043e\u0441\u0435\u0449\u0435\u043d\u0438\u0439 \u0432 \u043d\u0435\u0434\u0435\u043b\u044e \u0437\u0430 \u0432\u0441\u0435 \u0432\u0440\u0435\u043c\u044f","\u041f\u043e\u0441\u0435\u0449\u0435\u043d\u0438\u0439 \u0432 \u043d\u0435\u0434\u0435\u043b\u044e \u0437\u0430 \u043f\u043e\u0441\u043b. \u043c\u0435\u0441\u044f\u0446","\u0424\u0430\u043a\u0442 \u043e\u0442\u0442\u043e\u043a\u0430"],"xgap":3,"y":["\u041f\u043e\u043b","\u041f\u0440\u043e\u0436\u0438\u0432\u0430\u043d\u0438\u0435 \u0438\u043b\u0438 \u0440\u0430\u0431\u043e\u0442\u0430 \u0432 \u0440\u0430\u0439\u043e\u043d\u0435","\u0421\u043e\u0442\u0440\u0443\u0434\u043d\u0438\u043a \u043a\u043e\u043c\u043f\u0430\u043d\u0438\u0438-\u043f\u0430\u0440\u0442\u043d\u0451\u0440\u0430","\u041f\u0440\u0438\u0448\u0435\u043b \u043f\u043e \u043f\u0440\u043e\u043c\u043e","\u041d\u0430\u043b\u0438\u0447\u0438\u0435 \u0442\u0435\u043b\u0435\u0444\u043e\u043d\u0430","\u0414\u043b\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0441\u0442\u044c \u0430\u0431\u043e\u043d\u0435\u043c\u0435\u043d\u0442\u0430","\u041f\u043e\u0441\u0435\u0448\u044f\u043b \u0433\u0440\u0443\u043f\u043f\u043e\u0432\u044b\u0435 \u0437\u0430\u043d\u044f\u0442\u0438\u044f","\u0412\u043e\u0437\u0440\u0430\u0441\u0442","\u0421\u0443\u043c\u043c\u0430\u0440\u043d\u0430\u044f \u0432\u044b\u0440\u0443\u0447\u043a\u0430 \u043e\u0442 \u0434\u0440\u0443\u0433\u0438\u0445 \u0443\u0441\u043b\u0443\u0433","\u0421\u0440\u043e\u043a \u0434\u043e \u043a\u043e\u043d\u0446\u0430 \u0430\u0431\u043e\u043d\u0435\u043c\u0435\u043d\u0442\u0430","\u0412\u0440\u0435\u043c\u044f \u0441 \u043c\u043e\u043c\u0435\u043d\u0442\u0430 \u043f\u0435\u0440\u0432\u043e\u0433\u043e \u043f\u043e\u0441\u0435\u0449\u0435\u043d\u0438\u044f","\u041f\u043e\u0441\u0435\u0449\u0435\u043d\u0438\u0439 \u0432 \u043d\u0435\u0434\u0435\u043b\u044e \u0437\u0430 \u0432\u0441\u0435 \u0432\u0440\u0435\u043c\u044f","\u041f\u043e\u0441\u0435\u0449\u0435\u043d\u0438\u0439 \u0432 \u043d\u0435\u0434\u0435\u043b\u044e \u0437\u0430 \u043f\u043e\u0441\u043b. \u043c\u0435\u0441\u044f\u0446","\u0424\u0430\u043a\u0442 \u043e\u0442\u0442\u043e\u043a\u0430"],"ygap":3,"z":[[1.0,0.006699227595081317,-0.010462622250800375,-0.005033272441053866,-0.008542118064000159,0.0005022612202794619,0.017878940218983876,0.013806900920359985,-0.009334436022096548,-0.0012807905220732039,0.013578571154470497,0.014620159193697508,0.009156488375539324,0.0007077339851530629],[0.006699227595081317,1.0,-0.005119431260762568,0.21096427925008865,-0.015763230257229064,0.15023283141656668,0.15472804797381015,0.05835783944636729,0.040761205686103384,0.14396065286348328,0.07092056405516435,0.04312747860589099,0.0626636334587928,-0.12809799029981037],[-0.010462622250800375,-0.005119431260762568,1.0,0.45195980363869315,0.00996961020531328,0.30616625123888946,0.02270956691695448,0.04747969875962812,0.02294118530093523,0.29463212487768453,0.061229353260984526,0.024937869800103492,0.04556109136199883,-0.15798573698509757],[-0.005033272441053866,0.21096427925008865,0.45195980363869315,1.0,0.0019815922319345184,0.2445515680706725,0.1201695062698497,0.05011330741390243,0.03689767600024032,0.2395532247502876,0.07272110093298272,0.028063220773726392,0.05376837706307644,-0.1622330778335148],[-0.008542118064000159,-0.015763230257229064,0.00996961020531328,0.0019815922319345184,1.0,-0.00689326400034569,-0.01009914686077033,-0.01140323895325858,0.009279431489794177,-0.01119625683393781,-0.018801227382775076,0.008340465501805306,0.013374852916164469,-0.0011766013624798532],[0.0005022612202794619,0.15023283141656668,0.30616625123888946,0.2445515680706725,-0.00689326400034569,1.0,0.16999083401910625,0.13824928942953593,0.1114450633414921,0.973063587268638,0.17072527097297188,0.09621113639809181,0.15940737656659107,-0.38998421158607827],[0.017878940218983876,0.15472804797381015,0.02270956691695448,0.1201695062698497,-0.01009914686077033,0.16999083401910625,1.0,0.0809335689017378,0.032079086460015664,0.16370256315859597,0.07585284603823925,0.05669475243091919,0.07592327472709624,-0.17532465549814902],[0.013806900920359985,0.05835783944636729,0.04747969875962812,0.05011330741390243,-0.01140323895325858,0.13824928942953593,0.0809335689017378,1.0,0.0802401252729973,0.1345113413984975,0.1646928200194272,0.11995313211399046,0.18309454215453572,-0.4047352528235887],[-0.009334436022096548,0.040761205686103384,0.02294118530093523,0.03689767600024032,0.009279431489794177,0.1114450633414921,0.032079086460015664,0.0802401252729973,1.0,0.11395803901687136,0.07902833869660025,0.044426412947372866,0.07956967740944954,-0.19869745106820316],[-0.0012807905220732039,0.14396065286348328,0.29463212487768453,0.2395532247502876,-0.01119625683393781,0.973063587268638,0.16370256315859597,0.1345113413984975,0.11395803901687136,1.0,0.16107755141527505,0.08538667401855933,0.14760511232324422,-0.381392983695714],[0.013578571154470497,0.07092056405516435,0.061229353260984526,0.07272110093298272,-0.018801227382775076,0.17072527097297188,0.07585284603823925,0.1646928200194272,0.07902833869660025,0.16107755141527505,1.0,0.11233807027900257,0.1819750367269465,-0.43821996844797967],[0.014620159193697508,0.04312747860589099,0.024937869800103492,0.028063220773726392,0.008340465501805306,0.09621113639809181,0.05669475243091919,0.11995313211399046,0.044426412947372866,0.08538667401855933,0.11233807027900257,1.0,0.9527394994322875,-0.24971511133289484],[0.009156488375539324,0.0626636334587928,0.04556109136199883,0.05376837706307644,0.013374852916164469,0.15940737656659107,0.07592327472709624,0.18309454215453572,0.07956967740944954,0.14760511232324422,0.1819750367269465,0.9527394994322875,1.0,-0.41234839070726526],[0.0007077339851530629,-0.12809799029981037,-0.15798573698509757,-0.1622330778335148,-0.0011766013624798532,-0.38998421158607827,-0.17532465549814902,-0.4047352528235887,-0.19869745106820316,-0.381392983695714,-0.43821996844797967,-0.24971511133289484,-0.41234839070726526,1.0]],"type":"heatmap","hovertemplate":"\u043e\u0441\u044c X = %{x}\u003cbr\u003e\u043e\u0441\u044c Y = %{y}\u003cbr\u003e\u041a\u043e\u044d\u0444\u0444\u0438\u0446\u0438\u0435\u043d\u0442 \u043a\u043e\u0440\u0440\u0435\u043b\u044f\u0446\u0438\u0438 = %{z:.2f}\u003cextra\u003e\u003c\u002fextra\u003e"}],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"rgb(36,36,36)"},"error_y":{"color":"rgb(36,36,36)"},"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"rgb(36,36,36)","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"rgb(36,36,36)"},"baxis":{"endlinecolor":"rgb(36,36,36)","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"rgb(36,36,36)"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"},"colorscale":[[0.0,"#440154"],[0.1111111111111111,"#482878"],[0.2222222222222222,"#3e4989"],[0.3333333333333333,"#31688e"],[0.4444444444444444,"#26828e"],[0.5555555555555556,"#1f9e89"],[0.6666666666666666,"#35b779"],[0.7777777777777778,"#6ece58"],[0.8888888888888888,"#b5de2b"],[1.0,"#fde725"]],"type":"contour"}],"heatmapgl":[{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"},"colorscale":[[0.0,"#440154"],[0.1111111111111111,"#482878"],[0.2222222222222222,"#3e4989"],[0.3333333333333333,"#31688e"],[0.4444444444444444,"#26828e"],[0.5555555555555556,"#1f9e89"],[0.6666666666666666,"#35b779"],[0.7777777777777778,"#6ece58"],[0.8888888888888888,"#b5de2b"],[1.0,"#fde725"]],"type":"heatmapgl"}],"heatmap":[{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"},"colorscale":[[0.0,"#440154"],[0.1111111111111111,"#482878"],[0.2222222222222222,"#3e4989"],[0.3333333333333333,"#31688e"],[0.4444444444444444,"#26828e"],[0.5555555555555556,"#1f9e89"],[0.6666666666666666,"#35b779"],[0.7777777777777778,"#6ece58"],[0.8888888888888888,"#b5de2b"],[1.0,"#fde725"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"},"colorscale":[[0.0,"#440154"],[0.1111111111111111,"#482878"],[0.2222222222222222,"#3e4989"],[0.3333333333333333,"#31688e"],[0.4444444444444444,"#26828e"],[0.5555555555555556,"#1f9e89"],[0.6666666666666666,"#35b779"],[0.7777777777777778,"#6ece58"],[0.8888888888888888,"#b5de2b"],[1.0,"#fde725"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"},"colorscale":[[0.0,"#440154"],[0.1111111111111111,"#482878"],[0.2222222222222222,"#3e4989"],[0.3333333333333333,"#31688e"],[0.4444444444444444,"#26828e"],[0.5555555555555556,"#1f9e89"],[0.6666666666666666,"#35b779"],[0.7777777777777778,"#6ece58"],[0.8888888888888888,"#b5de2b"],[1.0,"#fde725"]],"type":"histogram2d"}],"histogram":[{"marker":{"line":{"color":"white","width":0.6}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"}},"marker":{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"}},"type":"scattermapbox"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"},"colorscale":[[0.0,"#440154"],[0.1111111111111111,"#482878"],[0.2222222222222222,"#3e4989"],[0.3333333333333333,"#31688e"],[0.4444444444444444,"#26828e"],[0.5555555555555556,"#1f9e89"],[0.6666666666666666,"#35b779"],[0.7777777777777778,"#6ece58"],[0.8888888888888888,"#b5de2b"],[1.0,"#fde725"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"rgb(237,237,237)"},"line":{"color":"white"}},"header":{"fill":{"color":"rgb(217,217,217)"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"}},"colorscale":{"diverging":[[0.0,"rgb(103,0,31)"],[0.1,"rgb(178,24,43)"],[0.2,"rgb(214,96,77)"],[0.3,"rgb(244,165,130)"],[0.4,"rgb(253,219,199)"],[0.5,"rgb(247,247,247)"],[0.6,"rgb(209,229,240)"],[0.7,"rgb(146,197,222)"],[0.8,"rgb(67,147,195)"],[0.9,"rgb(33,102,172)"],[1.0,"rgb(5,48,97)"]],"sequential":[[0.0,"#440154"],[0.1111111111111111,"#482878"],[0.2222222222222222,"#3e4989"],[0.3333333333333333,"#31688e"],[0.4444444444444444,"#26828e"],[0.5555555555555556,"#1f9e89"],[0.6666666666666666,"#35b779"],[0.7777777777777778,"#6ece58"],[0.8888888888888888,"#b5de2b"],[1.0,"#fde725"]],"sequentialminus":[[0.0,"#440154"],[0.1111111111111111,"#482878"],[0.2222222222222222,"#3e4989"],[0.3333333333333333,"#31688e"],[0.4444444444444444,"#26828e"],[0.5555555555555556,"#1f9e89"],[0.6666666666666666,"#35b779"],[0.7777777777777778,"#6ece58"],[0.8888888888888888,"#b5de2b"],[1.0,"#fde725"]]},"colorway":["rgba(128, 60, 170, 0.9)","#049CB3","rgba(112, 155, 219, 0.9)","rgba(99, 113, 156, 0.9)","#5c6bc0","#B690C4","rgba(17, 100, 120, 0.9)","rgba(194, 143, 113, 0.8)","#B690C4","#03A9F4","#8B9467","#a771f2","rgba(102, 204, 204, 0.9)","rgba(168, 70, 90, 0.9)","rgba(50, 152, 103, 0.8)","#8F7A7A","rgba(156, 130, 217, 0.9)"],"font":{"color":"rgb(36,36,36)"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"white","showlakes":true,"showland":true,"subunitcolor":"white"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"white","plot_bgcolor":"white","polar":{"angularaxis":{"gridcolor":"rgb(232,232,232)","linecolor":"rgb(36,36,36)","showgrid":false,"showline":true,"ticks":"outside"},"bgcolor":"white","radialaxis":{"gridcolor":"rgb(232,232,232)","linecolor":"rgb(36,36,36)","showgrid":false,"showline":true,"ticks":"outside"}},"scene":{"xaxis":{"backgroundcolor":"white","gridcolor":"rgb(232,232,232)","gridwidth":2,"linecolor":"rgb(36,36,36)","showbackground":true,"showgrid":false,"showline":true,"ticks":"outside","zeroline":false,"zerolinecolor":"rgb(36,36,36)"},"yaxis":{"backgroundcolor":"white","gridcolor":"rgb(232,232,232)","gridwidth":2,"linecolor":"rgb(36,36,36)","showbackground":true,"showgrid":false,"showline":true,"ticks":"outside","zeroline":false,"zerolinecolor":"rgb(36,36,36)"},"zaxis":{"backgroundcolor":"white","gridcolor":"rgb(232,232,232)","gridwidth":2,"linecolor":"rgb(36,36,36)","showbackground":true,"showgrid":false,"showline":true,"ticks":"outside","zeroline":false,"zerolinecolor":"rgb(36,36,36)"}},"shapedefaults":{"fillcolor":"black","line":{"width":0},"opacity":0.3},"ternary":{"aaxis":{"gridcolor":"rgb(232,232,232)","linecolor":"rgb(36,36,36)","showgrid":false,"showline":true,"ticks":"outside"},"baxis":{"gridcolor":"rgb(232,232,232)","linecolor":"rgb(36,36,36)","showgrid":false,"showline":true,"ticks":"outside"},"bgcolor":"white","caxis":{"gridcolor":"rgb(232,232,232)","linecolor":"rgb(36,36,36)","showgrid":false,"showline":true,"ticks":"outside"}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"rgb(232,232,232)","linecolor":"rgb(36,36,36)","showgrid":false,"showline":true,"ticks":"outside","title":{"standoff":15},"zeroline":false,"zerolinecolor":"rgb(36,36,36)"},"yaxis":{"automargin":true,"gridcolor":"rgb(232,232,232)","linecolor":"rgb(36,36,36)","showgrid":false,"showline":true,"ticks":"outside","title":{"standoff":15},"zeroline":false,"zerolinecolor":"rgb(36,36,36)"}}},"xaxis":{"showgrid":false,"title":{"font":{"size":14,"color":"rgba(0, 0, 0, 0.7)"}},"tickfont":{"size":14,"color":"rgba(0, 0, 0, 0.7)"},"linecolor":"rgba(0, 0, 0, 0.4)","tickcolor":"rgba(0, 0, 0, 0.4)"},"yaxis":{"showgrid":false,"title":{"font":{"size":14,"color":"rgba(0, 0, 0, 0.7)"}},"tickfont":{"size":14,"color":"rgba(0, 0, 0, 0.7)"},"linecolor":"rgba(0, 0, 0, 0.4)","tickcolor":"rgba(0, 0, 0, 0.4)"},"title":{"text":"\u0422\u0435\u043f\u043b\u043e\u0432\u0430\u044f \u043a\u0430\u0440\u0442\u0430 \u043a\u043e\u0440\u0440\u0435\u043b\u044f\u0446\u0438\u043e\u043d\u043d\u044b\u0445 \u0441\u0432\u044f\u0437\u0435\u0439 \u043c\u0435\u0436\u0434\u0443 \u0447\u0438\u0441\u043b\u043e\u0432\u044b\u043c\u0438 \u0441\u0442\u043e\u043b\u0431\u0446\u0430\u043c\u0438","font":{"size":16,"color":"rgba(0, 0, 0, 0.7)"}},"annotations":[{"font":{"color":"white","size":14},"showarrow":false,"text":"1.00","x":0,"y":0},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.01","x":1,"y":0},{"font":{"color":"black","size":14},"showarrow":false,"text":"-0.01","x":2,"y":0},{"font":{"color":"black","size":14},"showarrow":false,"text":"-0.01","x":3,"y":0},{"font":{"color":"black","size":14},"showarrow":false,"text":"-0.01","x":4,"y":0},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.00","x":5,"y":0},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.02","x":6,"y":0},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.01","x":7,"y":0},{"font":{"color":"black","size":14},"showarrow":false,"text":"-0.01","x":8,"y":0},{"font":{"color":"black","size":14},"showarrow":false,"text":"-0.00","x":9,"y":0},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.01","x":10,"y":0},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.01","x":11,"y":0},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.01","x":12,"y":0},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.00","x":13,"y":0},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.01","x":0,"y":1},{"font":{"color":"white","size":14},"showarrow":false,"text":"1.00","x":1,"y":1},{"font":{"color":"black","size":14},"showarrow":false,"text":"-0.01","x":2,"y":1},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.21","x":3,"y":1},{"font":{"color":"black","size":14},"showarrow":false,"text":"-0.02","x":4,"y":1},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.15","x":5,"y":1},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.15","x":6,"y":1},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.06","x":7,"y":1},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.04","x":8,"y":1},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.14","x":9,"y":1},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.07","x":10,"y":1},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.04","x":11,"y":1},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.06","x":12,"y":1},{"font":{"color":"black","size":14},"showarrow":false,"text":"-0.13","x":13,"y":1},{"font":{"color":"black","size":14},"showarrow":false,"text":"-0.01","x":0,"y":2},{"font":{"color":"black","size":14},"showarrow":false,"text":"-0.01","x":1,"y":2},{"font":{"color":"white","size":14},"showarrow":false,"text":"1.00","x":2,"y":2},{"font":{"color":"white","size":14},"showarrow":false,"text":"0.45","x":3,"y":2},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.01","x":4,"y":2},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.31","x":5,"y":2},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.02","x":6,"y":2},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.05","x":7,"y":2},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.02","x":8,"y":2},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.29","x":9,"y":2},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.06","x":10,"y":2},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.02","x":11,"y":2},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.05","x":12,"y":2},{"font":{"color":"black","size":14},"showarrow":false,"text":"-0.16","x":13,"y":2},{"font":{"color":"black","size":14},"showarrow":false,"text":"-0.01","x":0,"y":3},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.21","x":1,"y":3},{"font":{"color":"white","size":14},"showarrow":false,"text":"0.45","x":2,"y":3},{"font":{"color":"white","size":14},"showarrow":false,"text":"1.00","x":3,"y":3},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.00","x":4,"y":3},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.24","x":5,"y":3},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.12","x":6,"y":3},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.05","x":7,"y":3},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.04","x":8,"y":3},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.24","x":9,"y":3},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.07","x":10,"y":3},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.03","x":11,"y":3},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.05","x":12,"y":3},{"font":{"color":"black","size":14},"showarrow":false,"text":"-0.16","x":13,"y":3},{"font":{"color":"black","size":14},"showarrow":false,"text":"-0.01","x":0,"y":4},{"font":{"color":"black","size":14},"showarrow":false,"text":"-0.02","x":1,"y":4},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.01","x":2,"y":4},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.00","x":3,"y":4},{"font":{"color":"white","size":14},"showarrow":false,"text":"1.00","x":4,"y":4},{"font":{"color":"black","size":14},"showarrow":false,"text":"-0.01","x":5,"y":4},{"font":{"color":"black","size":14},"showarrow":false,"text":"-0.01","x":6,"y":4},{"font":{"color":"black","size":14},"showarrow":false,"text":"-0.01","x":7,"y":4},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.01","x":8,"y":4},{"font":{"color":"black","size":14},"showarrow":false,"text":"-0.01","x":9,"y":4},{"font":{"color":"black","size":14},"showarrow":false,"text":"-0.02","x":10,"y":4},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.01","x":11,"y":4},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.01","x":12,"y":4},{"font":{"color":"black","size":14},"showarrow":false,"text":"-0.00","x":13,"y":4},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.00","x":0,"y":5},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.15","x":1,"y":5},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.31","x":2,"y":5},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.24","x":3,"y":5},{"font":{"color":"black","size":14},"showarrow":false,"text":"-0.01","x":4,"y":5},{"font":{"color":"white","size":14},"showarrow":false,"text":"1.00","x":5,"y":5},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.17","x":6,"y":5},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.14","x":7,"y":5},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.11","x":8,"y":5},{"font":{"color":"white","size":14},"showarrow":false,"text":"0.97","x":9,"y":5},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.17","x":10,"y":5},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.10","x":11,"y":5},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.16","x":12,"y":5},{"font":{"color":"black","size":14},"showarrow":false,"text":"-0.39","x":13,"y":5},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.02","x":0,"y":6},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.15","x":1,"y":6},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.02","x":2,"y":6},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.12","x":3,"y":6},{"font":{"color":"black","size":14},"showarrow":false,"text":"-0.01","x":4,"y":6},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.17","x":5,"y":6},{"font":{"color":"white","size":14},"showarrow":false,"text":"1.00","x":6,"y":6},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.08","x":7,"y":6},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.03","x":8,"y":6},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.16","x":9,"y":6},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.08","x":10,"y":6},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.06","x":11,"y":6},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.08","x":12,"y":6},{"font":{"color":"black","size":14},"showarrow":false,"text":"-0.18","x":13,"y":6},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.01","x":0,"y":7},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.06","x":1,"y":7},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.05","x":2,"y":7},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.05","x":3,"y":7},{"font":{"color":"black","size":14},"showarrow":false,"text":"-0.01","x":4,"y":7},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.14","x":5,"y":7},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.08","x":6,"y":7},{"font":{"color":"white","size":14},"showarrow":false,"text":"1.00","x":7,"y":7},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.08","x":8,"y":7},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.13","x":9,"y":7},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.16","x":10,"y":7},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.12","x":11,"y":7},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.18","x":12,"y":7},{"font":{"color":"black","size":14},"showarrow":false,"text":"-0.40","x":13,"y":7},{"font":{"color":"black","size":14},"showarrow":false,"text":"-0.01","x":0,"y":8},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.04","x":1,"y":8},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.02","x":2,"y":8},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.04","x":3,"y":8},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.01","x":4,"y":8},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.11","x":5,"y":8},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.03","x":6,"y":8},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.08","x":7,"y":8},{"font":{"color":"white","size":14},"showarrow":false,"text":"1.00","x":8,"y":8},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.11","x":9,"y":8},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.08","x":10,"y":8},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.04","x":11,"y":8},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.08","x":12,"y":8},{"font":{"color":"black","size":14},"showarrow":false,"text":"-0.20","x":13,"y":8},{"font":{"color":"black","size":14},"showarrow":false,"text":"-0.00","x":0,"y":9},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.14","x":1,"y":9},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.29","x":2,"y":9},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.24","x":3,"y":9},{"font":{"color":"black","size":14},"showarrow":false,"text":"-0.01","x":4,"y":9},{"font":{"color":"white","size":14},"showarrow":false,"text":"0.97","x":5,"y":9},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.16","x":6,"y":9},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.13","x":7,"y":9},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.11","x":8,"y":9},{"font":{"color":"white","size":14},"showarrow":false,"text":"1.00","x":9,"y":9},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.16","x":10,"y":9},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.09","x":11,"y":9},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.15","x":12,"y":9},{"font":{"color":"black","size":14},"showarrow":false,"text":"-0.38","x":13,"y":9},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.01","x":0,"y":10},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.07","x":1,"y":10},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.06","x":2,"y":10},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.07","x":3,"y":10},{"font":{"color":"black","size":14},"showarrow":false,"text":"-0.02","x":4,"y":10},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.17","x":5,"y":10},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.08","x":6,"y":10},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.16","x":7,"y":10},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.08","x":8,"y":10},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.16","x":9,"y":10},{"font":{"color":"white","size":14},"showarrow":false,"text":"1.00","x":10,"y":10},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.11","x":11,"y":10},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.18","x":12,"y":10},{"font":{"color":"black","size":14},"showarrow":false,"text":"-0.44","x":13,"y":10},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.01","x":0,"y":11},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.04","x":1,"y":11},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.02","x":2,"y":11},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.03","x":3,"y":11},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.01","x":4,"y":11},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.10","x":5,"y":11},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.06","x":6,"y":11},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.12","x":7,"y":11},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.04","x":8,"y":11},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.09","x":9,"y":11},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.11","x":10,"y":11},{"font":{"color":"white","size":14},"showarrow":false,"text":"1.00","x":11,"y":11},{"font":{"color":"white","size":14},"showarrow":false,"text":"0.95","x":12,"y":11},{"font":{"color":"black","size":14},"showarrow":false,"text":"-0.25","x":13,"y":11},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.01","x":0,"y":12},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.06","x":1,"y":12},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.05","x":2,"y":12},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.05","x":3,"y":12},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.01","x":4,"y":12},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.16","x":5,"y":12},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.08","x":6,"y":12},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.18","x":7,"y":12},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.08","x":8,"y":12},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.15","x":9,"y":12},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.18","x":10,"y":12},{"font":{"color":"white","size":14},"showarrow":false,"text":"0.95","x":11,"y":12},{"font":{"color":"white","size":14},"showarrow":false,"text":"1.00","x":12,"y":12},{"font":{"color":"black","size":14},"showarrow":false,"text":"-0.41","x":13,"y":12},{"font":{"color":"black","size":14},"showarrow":false,"text":"0.00","x":0,"y":13},{"font":{"color":"black","size":14},"showarrow":false,"text":"-0.13","x":1,"y":13},{"font":{"color":"black","size":14},"showarrow":false,"text":"-0.16","x":2,"y":13},{"font":{"color":"black","size":14},"showarrow":false,"text":"-0.16","x":3,"y":13},{"font":{"color":"black","size":14},"showarrow":false,"text":"-0.00","x":4,"y":13},{"font":{"color":"black","size":14},"showarrow":false,"text":"-0.39","x":5,"y":13},{"font":{"color":"black","size":14},"showarrow":false,"text":"-0.18","x":6,"y":13},{"font":{"color":"black","size":14},"showarrow":false,"text":"-0.40","x":7,"y":13},{"font":{"color":"black","size":14},"showarrow":false,"text":"-0.20","x":8,"y":13},{"font":{"color":"black","size":14},"showarrow":false,"text":"-0.38","x":9,"y":13},{"font":{"color":"black","size":14},"showarrow":false,"text":"-0.44","x":10,"y":13},{"font":{"color":"black","size":14},"showarrow":false,"text":"-0.25","x":11,"y":13},{"font":{"color":"black","size":14},"showarrow":false,"text":"-0.41","x":12,"y":13},{"font":{"color":"white","size":14},"showarrow":false,"text":"1.00","x":13,"y":13}],"font":{"size":14,"family":"Segoe UI","color":"rgba(0, 0, 0, 0.7)"},"legend":{"title":{"font":{"color":"rgba(0, 0, 0, 0.7)","size":14}},"font":{"color":"rgba(0, 0, 0, 0.7)"}},"margin":{"l":50,"r":50,"b":50,"t":70},"hoverlabel":{"bgcolor":"white"}},                        {"responsive": true}                    ).then(function(){
-                            
-var gd = document.getElementById('5b76e08d-0e1e-4987-840e-cb6c7854e2fd');
-var x = new MutationObserver(function (mutations, observer) {{
-        var display = window.getComputedStyle(gd).display;
-        if (!display || display === 'none') {{
-            console.log([gd, 'removed!']);
-            Plotly.purge(gd);
-            observer.disconnect();
-        }}
-}});
-
-// Listen for the removal of the full notebook cells
-var notebookContainer = gd.closest('#notebook-container');
-if (notebookContainer) {{
-    x.observe(notebookContainer, {childList: true});
-}}
-
-// Listen for the clearing of the current output cell
-var outputEl = gd.closest('.output');
-if (outputEl) {{
-    x.observe(outputEl, {childList: true});
-}}
-
-                        })                };                });            </script>        </div>
-</div>
 </div>
 <p><strong>Наблюдения:</strong></p>
 <ul>
@@ -4066,16 +4054,15 @@ if (outputEl) {{
 </section>
 <section id="модель-прогнозирования-оттока-клиентов" class="level2">
 <h2 class="anchored" data-anchor-id="модель-прогнозирования-оттока-клиентов">Модель прогнозирования оттока клиентов</h2>
-<p>Постройте модель бинарной классификации клиентов, где целевой признак — факт оттока клиента в следующем месяце: Разбейте данные на обучающую и валидационную выборку функцией train_test_split(). Обучите модель на train-выборке двумя способами: логистической регрессией, случайным лесом. Оцените метрики accuracy, precision и recall для обеих моделей на валидационной выборке. Сравните по ним модели. Какая модель показала себя лучше на основании метрик?</p>
-<div id="cell-151" class="cell" data-execution_count="97">
+<p>Раделим данные на обучающую и валидационную выборки.</p>
+<div id="cell-151" class="cell" data-execution_count="134">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
-<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.astype({<span class="st">'gender'</span>: <span class="st">'int'</span>, <span class="st">'near_location'</span>: <span class="st">'int'</span>, <span class="st">'partner'</span>: <span class="st">'int'</span>, <span class="st">'group_visits'</span>: <span class="st">'int'</span>, <span class="st">'churn'</span>: <span class="st">'int'</span></span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>         , <span class="st">'promo_friends'</span>: <span class="st">'int'</span>, <span class="st">'phone'</span>: <span class="st">'int'</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>Раделим данные на обучающую и валидационную выборки.</p>
-<div id="cell-153" class="cell" data-execution_count="98">
+<div id="cell-152" class="cell" data-execution_count="137">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> df.drop(<span class="st">'churn'</span>, axis <span class="op">=</span> <span class="dv">1</span>)</span>
@@ -4085,7 +4072,7 @@ if (outputEl) {{
 </details>
 </div>
 <p>Стандартизируем данные.</p>
-<div id="cell-155" class="cell" data-execution_count="99">
+<div id="cell-154" class="cell" data-execution_count="138">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co"># стандартизируем данные методом StandartScaler</span></span>
@@ -4096,20 +4083,1079 @@ if (outputEl) {{
 </details>
 </div>
 <p>Создадим и обучим модель логистической регрессии.</p>
-<div id="cell-157" class="cell">
+<div id="cell-156" class="cell" data-execution_count="139">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Создаем модель логистической регрессии</span></span>
-<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> LogisticRegression(solver<span class="op">=</span><span class="st">"liblinear"</span>)</span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>logistic_regression_model <span class="op">=</span> LogisticRegression(solver<span class="op">=</span><span class="st">"liblinear"</span>)</span>
 <span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Обучаем модель</span></span>
-<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a>model.fit(X_train, y_train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a>logistic_regression_model.fit(X_train_st, y_train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell-output cell-output-display" data-execution_count="139">
+<style>#sk-container-id-9 {
+  /* Definition of color scheme common for light and dark mode */
+  --sklearn-color-text: black;
+  --sklearn-color-line: gray;
+  /* Definition of color scheme for unfitted estimators */
+  --sklearn-color-unfitted-level-0: #fff5e6;
+  --sklearn-color-unfitted-level-1: #f6e4d2;
+  --sklearn-color-unfitted-level-2: #ffe0b3;
+  --sklearn-color-unfitted-level-3: chocolate;
+  /* Definition of color scheme for fitted estimators */
+  --sklearn-color-fitted-level-0: #f0f8ff;
+  --sklearn-color-fitted-level-1: #d4ebff;
+  --sklearn-color-fitted-level-2: #b3dbfd;
+  --sklearn-color-fitted-level-3: cornflowerblue;
+
+  /* Specific color for light theme */
+  --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, white)));
+  --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-icon: #696969;
+
+  @media (prefers-color-scheme: dark) {
+    /* Redefinition of color scheme for dark theme */
+    --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, #111)));
+    --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-icon: #878787;
+  }
+}
+
+#sk-container-id-9 {
+  color: var(--sklearn-color-text);
+}
+
+#sk-container-id-9 pre {
+  padding: 0;
+}
+
+#sk-container-id-9 input.sk-hidden--visually {
+  border: 0;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+#sk-container-id-9 div.sk-dashed-wrapped {
+  border: 1px dashed var(--sklearn-color-line);
+  margin: 0 0.4em 0.5em 0.4em;
+  box-sizing: border-box;
+  padding-bottom: 0.4em;
+  background-color: var(--sklearn-color-background);
+}
+
+#sk-container-id-9 div.sk-container {
+  /* jupyter's `normalize.less` sets `[hidden] { display: none; }`
+     but bootstrap.min.css set `[hidden] { display: none !important; }`
+     so we also need the `!important` here to be able to override the
+     default hidden behavior on the sphinx rendered scikit-learn.org.
+     See: https://github.com/scikit-learn/scikit-learn/issues/21755 */
+  display: inline-block !important;
+  position: relative;
+}
+
+#sk-container-id-9 div.sk-text-repr-fallback {
+  display: none;
+}
+
+div.sk-parallel-item,
+div.sk-serial,
+div.sk-item {
+  /* draw centered vertical line to link estimators */
+  background-image: linear-gradient(var(--sklearn-color-text-on-default-background), var(--sklearn-color-text-on-default-background));
+  background-size: 2px 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+/* Parallel-specific style estimator block */
+
+#sk-container-id-9 div.sk-parallel-item::after {
+  content: "";
+  width: 100%;
+  border-bottom: 2px solid var(--sklearn-color-text-on-default-background);
+  flex-grow: 1;
+}
+
+#sk-container-id-9 div.sk-parallel {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  background-color: var(--sklearn-color-background);
+  position: relative;
+}
+
+#sk-container-id-9 div.sk-parallel-item {
+  display: flex;
+  flex-direction: column;
+}
+
+#sk-container-id-9 div.sk-parallel-item:first-child::after {
+  align-self: flex-end;
+  width: 50%;
+}
+
+#sk-container-id-9 div.sk-parallel-item:last-child::after {
+  align-self: flex-start;
+  width: 50%;
+}
+
+#sk-container-id-9 div.sk-parallel-item:only-child::after {
+  width: 0;
+}
+
+/* Serial-specific style estimator block */
+
+#sk-container-id-9 div.sk-serial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--sklearn-color-background);
+  padding-right: 1em;
+  padding-left: 1em;
+}
+
+
+/* Toggleable style: style used for estimator/Pipeline/ColumnTransformer box that is
+clickable and can be expanded/collapsed.
+- Pipeline and ColumnTransformer use this feature and define the default style
+- Estimators will overwrite some part of the style using the `sk-estimator` class
+*/
+
+/* Pipeline and ColumnTransformer style (default) */
+
+#sk-container-id-9 div.sk-toggleable {
+  /* Default theme specific background. It is overwritten whether we have a
+  specific estimator or a Pipeline/ColumnTransformer */
+  background-color: var(--sklearn-color-background);
+}
+
+/* Toggleable label */
+#sk-container-id-9 label.sk-toggleable__label {
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  margin-bottom: 0;
+  padding: 0.5em;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+#sk-container-id-9 label.sk-toggleable__label-arrow:before {
+  /* Arrow on the left of the label */
+  content: "▸";
+  float: left;
+  margin-right: 0.25em;
+  color: var(--sklearn-color-icon);
+}
+
+#sk-container-id-9 label.sk-toggleable__label-arrow:hover:before {
+  color: var(--sklearn-color-text);
+}
+
+/* Toggleable content - dropdown */
+
+#sk-container-id-9 div.sk-toggleable__content {
+  max-height: 0;
+  max-width: 0;
+  overflow: hidden;
+  text-align: left;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-9 div.sk-toggleable__content.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-9 div.sk-toggleable__content pre {
+  margin: 0.2em;
+  border-radius: 0.25em;
+  color: var(--sklearn-color-text);
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-9 div.sk-toggleable__content.fitted pre {
+  /* unfitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-9 input.sk-toggleable__control:checked~div.sk-toggleable__content {
+  /* Expand drop-down */
+  max-height: 200px;
+  max-width: 100%;
+  overflow: auto;
+}
+
+#sk-container-id-9 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
+  content: "▾";
+}
+
+/* Pipeline/ColumnTransformer-specific style */
+
+#sk-container-id-9 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-9 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator-specific style */
+
+/* Colorize estimator box */
+#sk-container-id-9 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-9 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+#sk-container-id-9 div.sk-label label.sk-toggleable__label,
+#sk-container-id-9 div.sk-label label {
+  /* The background is the default theme color */
+  color: var(--sklearn-color-text-on-default-background);
+}
+
+/* On hover, darken the color of the background */
+#sk-container-id-9 div.sk-label:hover label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+/* Label box, darken color on hover, fitted */
+#sk-container-id-9 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator label */
+
+#sk-container-id-9 div.sk-label label {
+  font-family: monospace;
+  font-weight: bold;
+  display: inline-block;
+  line-height: 1.2em;
+}
+
+#sk-container-id-9 div.sk-label-container {
+  text-align: center;
+}
+
+/* Estimator-specific */
+#sk-container-id-9 div.sk-estimator {
+  font-family: monospace;
+  border: 1px dotted var(--sklearn-color-border-box);
+  border-radius: 0.25em;
+  box-sizing: border-box;
+  margin-bottom: 0.5em;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-9 div.sk-estimator.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+/* on hover */
+#sk-container-id-9 div.sk-estimator:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-9 div.sk-estimator.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Specification for estimator info (e.g. "i" and "?") */
+
+/* Common style for "i" and "?" */
+
+.sk-estimator-doc-link,
+a:link.sk-estimator-doc-link,
+a:visited.sk-estimator-doc-link {
+  float: right;
+  font-size: smaller;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1em;
+  height: 1em;
+  width: 1em;
+  text-decoration: none !important;
+  margin-left: 1ex;
+  /* unfitted */
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+  color: var(--sklearn-color-unfitted-level-1);
+}
+
+.sk-estimator-doc-link.fitted,
+a:link.sk-estimator-doc-link.fitted,
+a:visited.sk-estimator-doc-link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+div.sk-estimator:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover,
+div.sk-label-container:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+div.sk-estimator.fitted:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover,
+div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+/* Span, style for the box shown on hovering the info icon */
+.sk-estimator-doc-link span {
+  display: none;
+  z-index: 9999;
+  position: relative;
+  font-weight: normal;
+  right: .2ex;
+  padding: .5ex;
+  margin: .5ex;
+  width: min-content;
+  min-width: 20ex;
+  max-width: 50ex;
+  color: var(--sklearn-color-text);
+  box-shadow: 2pt 2pt 4pt #999;
+  /* unfitted */
+  background: var(--sklearn-color-unfitted-level-0);
+  border: .5pt solid var(--sklearn-color-unfitted-level-3);
+}
+
+.sk-estimator-doc-link.fitted span {
+  /* fitted */
+  background: var(--sklearn-color-fitted-level-0);
+  border: var(--sklearn-color-fitted-level-3);
+}
+
+.sk-estimator-doc-link:hover span {
+  display: block;
+}
+
+/* "?"-specific style due to the `<a>` HTML tag */
+
+#sk-container-id-9 a.estimator_doc_link {
+  float: right;
+  font-size: 1rem;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1rem;
+  height: 1rem;
+  width: 1rem;
+  text-decoration: none;
+  /* unfitted */
+  color: var(--sklearn-color-unfitted-level-1);
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+}
+
+#sk-container-id-9 a.estimator_doc_link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+#sk-container-id-9 a.estimator_doc_link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+#sk-container-id-9 a.estimator_doc_link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+}
+</style><div id="sk-container-id-9" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>LogisticRegression(solver='liblinear')</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br>On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden=""><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-9" type="checkbox" checked=""><label for="sk-estimator-id-9" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;&nbsp;LogisticRegression<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.5/modules/generated/sklearn.linear_model.LogisticRegression.html">?<span>Documentation for LogisticRegression</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></label><div class="sk-toggleable__content fitted"><pre>LogisticRegression(solver='liblinear')</pre></div> </div></div></div></div>
+</div>
 </div>
 <p>Создадим и обучим модель случайного леса.</p>
+<div id="cell-158" class="cell" data-execution_count="140">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Создаем модель логистической регрессии</span></span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>random_forest_model <span class="op">=</span> RandomForestClassifier(n_estimators<span class="op">=</span><span class="dv">100</span>)</span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Обучаем модель</span></span>
+<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a>random_forest_model.fit(X_train_st, y_train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="140">
+<style>#sk-container-id-10 {
+  /* Definition of color scheme common for light and dark mode */
+  --sklearn-color-text: black;
+  --sklearn-color-line: gray;
+  /* Definition of color scheme for unfitted estimators */
+  --sklearn-color-unfitted-level-0: #fff5e6;
+  --sklearn-color-unfitted-level-1: #f6e4d2;
+  --sklearn-color-unfitted-level-2: #ffe0b3;
+  --sklearn-color-unfitted-level-3: chocolate;
+  /* Definition of color scheme for fitted estimators */
+  --sklearn-color-fitted-level-0: #f0f8ff;
+  --sklearn-color-fitted-level-1: #d4ebff;
+  --sklearn-color-fitted-level-2: #b3dbfd;
+  --sklearn-color-fitted-level-3: cornflowerblue;
+
+  /* Specific color for light theme */
+  --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, white)));
+  --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-icon: #696969;
+
+  @media (prefers-color-scheme: dark) {
+    /* Redefinition of color scheme for dark theme */
+    --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, #111)));
+    --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-icon: #878787;
+  }
+}
+
+#sk-container-id-10 {
+  color: var(--sklearn-color-text);
+}
+
+#sk-container-id-10 pre {
+  padding: 0;
+}
+
+#sk-container-id-10 input.sk-hidden--visually {
+  border: 0;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+#sk-container-id-10 div.sk-dashed-wrapped {
+  border: 1px dashed var(--sklearn-color-line);
+  margin: 0 0.4em 0.5em 0.4em;
+  box-sizing: border-box;
+  padding-bottom: 0.4em;
+  background-color: var(--sklearn-color-background);
+}
+
+#sk-container-id-10 div.sk-container {
+  /* jupyter's `normalize.less` sets `[hidden] { display: none; }`
+     but bootstrap.min.css set `[hidden] { display: none !important; }`
+     so we also need the `!important` here to be able to override the
+     default hidden behavior on the sphinx rendered scikit-learn.org.
+     See: https://github.com/scikit-learn/scikit-learn/issues/21755 */
+  display: inline-block !important;
+  position: relative;
+}
+
+#sk-container-id-10 div.sk-text-repr-fallback {
+  display: none;
+}
+
+div.sk-parallel-item,
+div.sk-serial,
+div.sk-item {
+  /* draw centered vertical line to link estimators */
+  background-image: linear-gradient(var(--sklearn-color-text-on-default-background), var(--sklearn-color-text-on-default-background));
+  background-size: 2px 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+/* Parallel-specific style estimator block */
+
+#sk-container-id-10 div.sk-parallel-item::after {
+  content: "";
+  width: 100%;
+  border-bottom: 2px solid var(--sklearn-color-text-on-default-background);
+  flex-grow: 1;
+}
+
+#sk-container-id-10 div.sk-parallel {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  background-color: var(--sklearn-color-background);
+  position: relative;
+}
+
+#sk-container-id-10 div.sk-parallel-item {
+  display: flex;
+  flex-direction: column;
+}
+
+#sk-container-id-10 div.sk-parallel-item:first-child::after {
+  align-self: flex-end;
+  width: 50%;
+}
+
+#sk-container-id-10 div.sk-parallel-item:last-child::after {
+  align-self: flex-start;
+  width: 50%;
+}
+
+#sk-container-id-10 div.sk-parallel-item:only-child::after {
+  width: 0;
+}
+
+/* Serial-specific style estimator block */
+
+#sk-container-id-10 div.sk-serial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--sklearn-color-background);
+  padding-right: 1em;
+  padding-left: 1em;
+}
+
+
+/* Toggleable style: style used for estimator/Pipeline/ColumnTransformer box that is
+clickable and can be expanded/collapsed.
+- Pipeline and ColumnTransformer use this feature and define the default style
+- Estimators will overwrite some part of the style using the `sk-estimator` class
+*/
+
+/* Pipeline and ColumnTransformer style (default) */
+
+#sk-container-id-10 div.sk-toggleable {
+  /* Default theme specific background. It is overwritten whether we have a
+  specific estimator or a Pipeline/ColumnTransformer */
+  background-color: var(--sklearn-color-background);
+}
+
+/* Toggleable label */
+#sk-container-id-10 label.sk-toggleable__label {
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  margin-bottom: 0;
+  padding: 0.5em;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+#sk-container-id-10 label.sk-toggleable__label-arrow:before {
+  /* Arrow on the left of the label */
+  content: "▸";
+  float: left;
+  margin-right: 0.25em;
+  color: var(--sklearn-color-icon);
+}
+
+#sk-container-id-10 label.sk-toggleable__label-arrow:hover:before {
+  color: var(--sklearn-color-text);
+}
+
+/* Toggleable content - dropdown */
+
+#sk-container-id-10 div.sk-toggleable__content {
+  max-height: 0;
+  max-width: 0;
+  overflow: hidden;
+  text-align: left;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-10 div.sk-toggleable__content.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-10 div.sk-toggleable__content pre {
+  margin: 0.2em;
+  border-radius: 0.25em;
+  color: var(--sklearn-color-text);
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-10 div.sk-toggleable__content.fitted pre {
+  /* unfitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-10 input.sk-toggleable__control:checked~div.sk-toggleable__content {
+  /* Expand drop-down */
+  max-height: 200px;
+  max-width: 100%;
+  overflow: auto;
+}
+
+#sk-container-id-10 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
+  content: "▾";
+}
+
+/* Pipeline/ColumnTransformer-specific style */
+
+#sk-container-id-10 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-10 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator-specific style */
+
+/* Colorize estimator box */
+#sk-container-id-10 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-10 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+#sk-container-id-10 div.sk-label label.sk-toggleable__label,
+#sk-container-id-10 div.sk-label label {
+  /* The background is the default theme color */
+  color: var(--sklearn-color-text-on-default-background);
+}
+
+/* On hover, darken the color of the background */
+#sk-container-id-10 div.sk-label:hover label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+/* Label box, darken color on hover, fitted */
+#sk-container-id-10 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator label */
+
+#sk-container-id-10 div.sk-label label {
+  font-family: monospace;
+  font-weight: bold;
+  display: inline-block;
+  line-height: 1.2em;
+}
+
+#sk-container-id-10 div.sk-label-container {
+  text-align: center;
+}
+
+/* Estimator-specific */
+#sk-container-id-10 div.sk-estimator {
+  font-family: monospace;
+  border: 1px dotted var(--sklearn-color-border-box);
+  border-radius: 0.25em;
+  box-sizing: border-box;
+  margin-bottom: 0.5em;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-10 div.sk-estimator.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+/* on hover */
+#sk-container-id-10 div.sk-estimator:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-10 div.sk-estimator.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Specification for estimator info (e.g. "i" and "?") */
+
+/* Common style for "i" and "?" */
+
+.sk-estimator-doc-link,
+a:link.sk-estimator-doc-link,
+a:visited.sk-estimator-doc-link {
+  float: right;
+  font-size: smaller;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1em;
+  height: 1em;
+  width: 1em;
+  text-decoration: none !important;
+  margin-left: 1ex;
+  /* unfitted */
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+  color: var(--sklearn-color-unfitted-level-1);
+}
+
+.sk-estimator-doc-link.fitted,
+a:link.sk-estimator-doc-link.fitted,
+a:visited.sk-estimator-doc-link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+div.sk-estimator:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover,
+div.sk-label-container:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+div.sk-estimator.fitted:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover,
+div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+/* Span, style for the box shown on hovering the info icon */
+.sk-estimator-doc-link span {
+  display: none;
+  z-index: 9999;
+  position: relative;
+  font-weight: normal;
+  right: .2ex;
+  padding: .5ex;
+  margin: .5ex;
+  width: min-content;
+  min-width: 20ex;
+  max-width: 50ex;
+  color: var(--sklearn-color-text);
+  box-shadow: 2pt 2pt 4pt #999;
+  /* unfitted */
+  background: var(--sklearn-color-unfitted-level-0);
+  border: .5pt solid var(--sklearn-color-unfitted-level-3);
+}
+
+.sk-estimator-doc-link.fitted span {
+  /* fitted */
+  background: var(--sklearn-color-fitted-level-0);
+  border: var(--sklearn-color-fitted-level-3);
+}
+
+.sk-estimator-doc-link:hover span {
+  display: block;
+}
+
+/* "?"-specific style due to the `<a>` HTML tag */
+
+#sk-container-id-10 a.estimator_doc_link {
+  float: right;
+  font-size: 1rem;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1rem;
+  height: 1rem;
+  width: 1rem;
+  text-decoration: none;
+  /* unfitted */
+  color: var(--sklearn-color-unfitted-level-1);
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+}
+
+#sk-container-id-10 a.estimator_doc_link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+#sk-container-id-10 a.estimator_doc_link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+#sk-container-id-10 a.estimator_doc_link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+}
+</style><div id="sk-container-id-10" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>RandomForestClassifier()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br>On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden=""><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-10" type="checkbox" checked=""><label for="sk-estimator-id-10" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;&nbsp;RandomForestClassifier<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.5/modules/generated/sklearn.ensemble.RandomForestClassifier.html">?<span>Documentation for RandomForestClassifier</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></label><div class="sk-toggleable__content fitted"><pre>RandomForestClassifier()</pre></div> </div></div></div></div>
+</div>
+</div>
+<div id="cell-159" class="cell" data-execution_count="141">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>models <span class="op">=</span> {<span class="st">'logistic_regression'</span>: logistic_regression_model, <span class="st">'random_forest'</span>: random_forest_model}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Оценим качество моделей</p>
+<div id="cell-161" class="cell" data-execution_count="142">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>metrics_df <span class="op">=</span> pd.DataFrame(index<span class="op">=</span>[<span class="st">'Accuracy'</span>, <span class="st">'Precision'</span>, <span class="st">'Recall'</span>, <span class="st">'F1 Score'</span>, <span class="st">'ROC_AUC'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="cell-162" class="cell" data-execution_count="129">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>metrics_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="129">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Accuracy</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Precision</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Recall</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">F1 Score</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">ROC_AUC</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="cell-163" class="cell" data-execution_count="147">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>roc_curves <span class="op">=</span> {}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="cell-164" class="cell" data-execution_count="153">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> model_name, model <span class="kw">in</span> models.items():</span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Предсказания модели</span></span>
+<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a>    y_pred <span class="op">=</span> model.predict(X_test_st)</span>
+<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a>    y_pred_proba <span class="op">=</span> model.predict_proba(X_test_st)[:, <span class="dv">1</span>]  <span class="co"># Для ROC-AUC</span></span>
+<span id="cb71-5"><a href="#cb71-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-6"><a href="#cb71-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Расчет метрик</span></span>
+<span id="cb71-7"><a href="#cb71-7" aria-hidden="true" tabindex="-1"></a>    accuracy <span class="op">=</span> accuracy_score(y_test, y_pred)</span>
+<span id="cb71-8"><a href="#cb71-8" aria-hidden="true" tabindex="-1"></a>    precision <span class="op">=</span> precision_score(y_test, y_pred)</span>
+<span id="cb71-9"><a href="#cb71-9" aria-hidden="true" tabindex="-1"></a>    recall <span class="op">=</span> recall_score(y_test, y_pred)</span>
+<span id="cb71-10"><a href="#cb71-10" aria-hidden="true" tabindex="-1"></a>    f1 <span class="op">=</span> f1_score(y_test, y_pred)</span>
+<span id="cb71-11"><a href="#cb71-11" aria-hidden="true" tabindex="-1"></a>    roc_auc <span class="op">=</span> roc_auc_score(y_test, y_pred_proba)</span>
+<span id="cb71-12"><a href="#cb71-12" aria-hidden="true" tabindex="-1"></a>    fpr, tpr, thresholds <span class="op">=</span> roc_curve(y_test, y_pred_proba)</span>
+<span id="cb71-13"><a href="#cb71-13" aria-hidden="true" tabindex="-1"></a>    roc_curves[model_name] <span class="op">=</span> [roc_auc, fpr, tpr, thresholds]</span>
+<span id="cb71-14"><a href="#cb71-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Добавление метрик в датафрейм</span></span>
+<span id="cb71-15"><a href="#cb71-15" aria-hidden="true" tabindex="-1"></a>    metrics_df[model_name] <span class="op">=</span> [accuracy, precision, recall, f1, roc_auc]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="cell-165" class="cell" data-execution_count="144">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>metrics_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="144">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">logistic_regression</th>
+<th data-quarto-table-cell-role="th">random_forest</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Accuracy</td>
+<td>0.90</td>
+<td>0.89</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Precision</td>
+<td>0.79</td>
+<td>0.79</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Recall</td>
+<td>0.81</td>
+<td>0.78</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">F1 Score</td>
+<td>0.80</td>
+<td>0.78</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">ROC_AUC</td>
+<td>0.95</td>
+<td>0.94</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p><strong>Наблюдения:</strong></p>
+<ul>
+<li>Логистическая регрессия показала лучший результат по всем метрикам.</li>
+</ul>
+<p>Построим график roc-кривой</p>
+<div id="cell-168" class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> model_name, (roc_auc, fpr, tpr, thresholds) <span class="kw">in</span> roc_curves.items():</span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>    fig <span class="op">=</span> px.line(x<span class="op">=</span>fpr, y<span class="op">=</span>tpr, title<span class="op">=</span><span class="ss">f"ROC Curve for </span><span class="sc">{</span>model_name<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a>    fig.add_trace(go.Scatter(x<span class="op">=</span>fpr, y<span class="op">=</span>tpr, mode<span class="op">=</span><span class="st">'lines'</span>, name<span class="op">=</span><span class="ss">f"ROC Curve (AUC = </span><span class="sc">{</span>roc_auc<span class="sc">:.2f}</span><span class="ss">)"</span>, line_color<span class="op">=</span><span class="st">'rgba(128, 60, 170, 0.9)'</span>))</span>
+<span id="cb73-5"><a href="#cb73-5" aria-hidden="true" tabindex="-1"></a>    fig.add_trace(go.Scatter(x<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">1</span>], y<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">1</span>], mode<span class="op">=</span><span class="st">'lines'</span>, line<span class="op">=</span><span class="bu">dict</span>(dash<span class="op">=</span><span class="st">'dash'</span>), name<span class="op">=</span><span class="st">'Random Guessing'</span>, line_color<span class="op">=</span><span class="st">'#049CB3'</span>))    </span>
+<span id="cb73-6"><a href="#cb73-6" aria-hidden="true" tabindex="-1"></a>    pagri_data_tools.plotly_default_settings(fig)</span>
+<span id="cb73-7"><a href="#cb73-7" aria-hidden="true" tabindex="-1"></a>    fig.update_layout(xaxis_title<span class="op">=</span><span class="st">'False Positive Rate'</span></span>
+<span id="cb73-8"><a href="#cb73-8" aria-hidden="true" tabindex="-1"></a>                      , yaxis_title<span class="op">=</span><span class="st">'True Positive Rate'</span></span>
+<span id="cb73-9"><a href="#cb73-9" aria-hidden="true" tabindex="-1"></a>                      , width<span class="op">=</span><span class="dv">800</span></span>
+<span id="cb73-10"><a href="#cb73-10" aria-hidden="true" tabindex="-1"></a>                      , legend <span class="op">=</span> <span class="bu">dict</span>(</span>
+<span id="cb73-11"><a href="#cb73-11" aria-hidden="true" tabindex="-1"></a>                            title_font_color<span class="op">=</span><span class="st">'rgba(0, 0, 0, 0.7)'</span></span>
+<span id="cb73-12"><a href="#cb73-12" aria-hidden="true" tabindex="-1"></a>                            , font_color<span class="op">=</span><span class="st">'rgba(0, 0, 0, 0.7)'</span></span>
+<span id="cb73-13"><a href="#cb73-13" aria-hidden="true" tabindex="-1"></a>                            , orientation<span class="op">=</span><span class="st">"h"</span>  <span class="co"># Горизонтальное расположение</span></span>
+<span id="cb73-14"><a href="#cb73-14" aria-hidden="true" tabindex="-1"></a>                            , yanchor<span class="op">=</span><span class="st">"top"</span>    <span class="co"># Привязка к верхней части</span></span>
+<span id="cb73-15"><a href="#cb73-15" aria-hidden="true" tabindex="-1"></a>                            , y<span class="op">=</span><span class="fl">1.05</span>         <span class="co"># Положение по вертикали (отрицательное значение переместит вниз)</span></span>
+<span id="cb73-16"><a href="#cb73-16" aria-hidden="true" tabindex="-1"></a>                            , xanchor<span class="op">=</span><span class="st">"center"</span> <span class="co"># Привязка к центру</span></span>
+<span id="cb73-17"><a href="#cb73-17" aria-hidden="true" tabindex="-1"></a>                            , x<span class="op">=</span><span class="fl">0.5</span>              <span class="co"># Центрирование по горизонтали                       </span></span>
+<span id="cb73-18"><a href="#cb73-18" aria-hidden="true" tabindex="-1"></a>                        )</span>
+<span id="cb73-19"><a href="#cb73-19" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="cell-169" class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Создаем фигуру</span></span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> go.Figure()</span>
+<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a>curve_colors <span class="op">=</span> [<span class="st">'rgba(128, 60, 170, 0.9)'</span>, <span class="st">'#049CB3'</span>]</span>
+<span id="cb74-4"><a href="#cb74-4" aria-hidden="true" tabindex="-1"></a>color_index <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb74-5"><a href="#cb74-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Добавляем ROC-кривые для каждой модели</span></span>
+<span id="cb74-6"><a href="#cb74-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> model_name, (roc_auc, fpr, tpr, thresholds) <span class="kw">in</span> roc_curves.items():</span>
+<span id="cb74-7"><a href="#cb74-7" aria-hidden="true" tabindex="-1"></a>    fig.add_trace(go.Scatter(</span>
+<span id="cb74-8"><a href="#cb74-8" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span>fpr, </span>
+<span id="cb74-9"><a href="#cb74-9" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span>tpr, </span>
+<span id="cb74-10"><a href="#cb74-10" aria-hidden="true" tabindex="-1"></a>        mode<span class="op">=</span><span class="st">'lines'</span>, </span>
+<span id="cb74-11"><a href="#cb74-11" aria-hidden="true" tabindex="-1"></a>        name<span class="op">=</span><span class="ss">f"</span><span class="sc">{</span>model_name<span class="sc">.</span>replace(<span class="st">'_'</span>, <span class="st">' '</span>)<span class="sc">}</span><span class="ss"> (AUC = </span><span class="sc">{</span>roc_auc<span class="sc">:.2f}</span><span class="ss">)"</span>, </span>
+<span id="cb74-12"><a href="#cb74-12" aria-hidden="true" tabindex="-1"></a>        line_color<span class="op">=</span>curve_colors[color_index],</span>
+<span id="cb74-13"><a href="#cb74-13" aria-hidden="true" tabindex="-1"></a>    ))</span>
+<span id="cb74-14"><a href="#cb74-14" aria-hidden="true" tabindex="-1"></a>    color_index <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb74-15"><a href="#cb74-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Добавляем линию случайного угадывания</span></span>
+<span id="cb74-16"><a href="#cb74-16" aria-hidden="true" tabindex="-1"></a>fig.add_trace(go.Scatter(</span>
+<span id="cb74-17"><a href="#cb74-17" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">1</span>], </span>
+<span id="cb74-18"><a href="#cb74-18" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">1</span>], </span>
+<span id="cb74-19"><a href="#cb74-19" aria-hidden="true" tabindex="-1"></a>    mode<span class="op">=</span><span class="st">'lines'</span>, </span>
+<span id="cb74-20"><a href="#cb74-20" aria-hidden="true" tabindex="-1"></a>    line<span class="op">=</span><span class="bu">dict</span>(dash<span class="op">=</span><span class="st">'dash'</span>, color<span class="op">=</span><span class="st">'gray'</span>), </span>
+<span id="cb74-21"><a href="#cb74-21" aria-hidden="true" tabindex="-1"></a>    name<span class="op">=</span><span class="st">'Random Guessing'</span></span>
+<span id="cb74-22"><a href="#cb74-22" aria-hidden="true" tabindex="-1"></a>))</span>
+<span id="cb74-23"><a href="#cb74-23" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.plotly_default_settings(fig)</span>
+<span id="cb74-24"><a href="#cb74-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Настройки графика</span></span>
+<span id="cb74-25"><a href="#cb74-25" aria-hidden="true" tabindex="-1"></a>fig.update_layout(</span>
+<span id="cb74-26"><a href="#cb74-26" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">"ROC Curves Comparison"</span>,</span>
+<span id="cb74-27"><a href="#cb74-27" aria-hidden="true" tabindex="-1"></a>    xaxis_title<span class="op">=</span><span class="st">'False Positive Rate'</span>,</span>
+<span id="cb74-28"><a href="#cb74-28" aria-hidden="true" tabindex="-1"></a>    yaxis_title<span class="op">=</span><span class="st">'True Positive Rate'</span>,</span>
+<span id="cb74-29"><a href="#cb74-29" aria-hidden="true" tabindex="-1"></a>    yaxis_rangemode<span class="op">=</span><span class="st">'tozero'</span>,</span>
+<span id="cb74-30"><a href="#cb74-30" aria-hidden="true" tabindex="-1"></a>    width<span class="op">=</span><span class="dv">800</span>,</span>
+<span id="cb74-31"><a href="#cb74-31" aria-hidden="true" tabindex="-1"></a>    height<span class="op">=</span><span class="dv">600</span>,</span>
+<span id="cb74-32"><a href="#cb74-32" aria-hidden="true" tabindex="-1"></a>    legend<span class="op">=</span><span class="bu">dict</span>(</span>
+<span id="cb74-33"><a href="#cb74-33" aria-hidden="true" tabindex="-1"></a>        title_font_color<span class="op">=</span><span class="st">'rgba(0, 0, 0, 0.7)'</span>,</span>
+<span id="cb74-34"><a href="#cb74-34" aria-hidden="true" tabindex="-1"></a>        font_color<span class="op">=</span><span class="st">'rgba(0, 0, 0, 0.7)'</span>,</span>
+<span id="cb74-35"><a href="#cb74-35" aria-hidden="true" tabindex="-1"></a>        orientation<span class="op">=</span><span class="st">"h"</span>,  <span class="co"># Горизонтальное расположение</span></span>
+<span id="cb74-36"><a href="#cb74-36" aria-hidden="true" tabindex="-1"></a>        yanchor<span class="op">=</span><span class="st">"top"</span>,    <span class="co"># Привязка к верхней части</span></span>
+<span id="cb74-37"><a href="#cb74-37" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="fl">1.05</span>,          <span class="co"># Положение по вертикали</span></span>
+<span id="cb74-38"><a href="#cb74-38" aria-hidden="true" tabindex="-1"></a>        xanchor<span class="op">=</span><span class="st">"center"</span>, <span class="co"># Привязка к центру</span></span>
+<span id="cb74-39"><a href="#cb74-39" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span><span class="fl">0.5</span>            <span class="co"># Центрирование по горизонтали</span></span>
+<span id="cb74-40"><a href="#cb74-40" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb74-41"><a href="#cb74-41" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p><strong>Наблюдения:</strong></p>
+<ul>
+<li>ROC-кривая для логистической регрессии выше практически на всех участках, чем у случайного леса.</li>
+</ul>
+<section id="промежуточный-вывод-3" class="level3">
+<h3 class="anchored" data-anchor-id="промежуточный-вывод-3">Промежуточный вывод</h3>
+<ul>
+<li>Логистическая регрессия показала лучший результат по всем метрикам.</li>
+<li>ROC-кривая для логистической регрессии выше практически на всех участках, чем у случайного леса.</li>
+</ul>
+</section>
 </section>
 <section id="кластеризация-клиентов" class="level2">
 <h2 class="anchored" data-anchor-id="кластеризация-клиентов">Кластеризация клиентов</h2>
-<p>Отложите в сторону столбец с оттоком и проведите кластеризацию объектов (клиентов): Стандартизируйте данные. Постройте матрицу расстояний функцией linkage() на стандартизованной матрице признаков и нарисуйте дендрограмму. Внимание: отрисовка дендрограммы может занять время! На основании полученного графика предположите, какое количество кластеров можно выделить. Обучите модель кластеризации на основании алгоритма K-Means и спрогнозируйте кластеры клиентов. Договоримся за число кластеров принять n=5, чтобы ваши результаты можно было сравнивать с результатами остальных студентов. Однако, конечно, в жизни никто не скажет вам правильный ответ, и решение остаётся за вами (на основании изучения графика из предыдущего пункта). Посмотрите на средние значения признаков для кластеров. Можно ли сразу что-то заметить? Постройте распределения признаков для кластеров. Можно ли что-то заметить по ним? Для каждого полученного кластера посчитайте долю оттока (методом groupby()). Отличаются ли они по доле оттока? Какие кластеры склонны к оттоку, а какие — надёжны?</p>
+<p>Постройте матрицу расстояний функцией linkage() на стандартизованной матрице признаков и нарисуйте дендрограмму. Внимание: отрисовка дендрограммы может занять время! На основании полученного графика предположите, какое количество кластеров можно выделить. Обучите модель кластеризации на основании алгоритма K-Means и спрогнозируйте кластеры клиентов. Договоримся за число кластеров принять n=5, чтобы ваши результаты можно было сравнивать с результатами остальных студентов. Однако, конечно, в жизни никто не скажет вам правильный ответ, и решение остаётся за вами (на основании изучения графика из предыдущего пункта). Посмотрите на средние значения признаков для кластеров. Можно ли сразу что-то заметить? Постройте распределения признаков для кластеров. Можно ли что-то заметить по ним? Для каждого полученного кластера посчитайте долю оттока (методом groupby()). Отличаются ли они по доле оттока? Какие кластеры склонны к оттоку, а какие — надёжны?</p>
+<p>Стандартизируем признаки.</p>
+<div id="cell-176" class="cell" data-execution_count="197">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>X_st <span class="op">=</span> scaler.fit_transform(X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Чтобы определить количество кластеров, построим дендрограмму.</p>
+<div id="cell-178" class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Вычисление иерархической структуры для дендограммы</span></span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>linked <span class="op">=</span> linkage(X_st, method<span class="op">=</span><span class="st">'ward'</span>)</span>
+<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Дендограмма в plotly</span></span>
+<span id="cb76-4"><a href="#cb76-4" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> ff.create_dendrogram(linked, orientation<span class="op">=</span><span class="st">'bottom'</span>)</span>
+<span id="cb76-5"><a href="#cb76-5" aria-hidden="true" tabindex="-1"></a>fig.update_layout(title<span class="op">=</span><span class="st">'Dendrogram for Scaled Random Data'</span>,</span>
+<span id="cb76-6"><a href="#cb76-6" aria-hidden="true" tabindex="-1"></a>                  xaxis_title<span class="op">=</span><span class="st">'Distance'</span>,</span>
+<span id="cb76-7"><a href="#cb76-7" aria-hidden="true" tabindex="-1"></a>                  yaxis_title<span class="op">=</span><span class="st">'Observations'</span>,</span>
+<span id="cb76-8"><a href="#cb76-8" aria-hidden="true" tabindex="-1"></a>                  width<span class="op">=</span><span class="dv">800</span>,</span>
+<span id="cb76-9"><a href="#cb76-9" aria-hidden="true" tabindex="-1"></a>                  height<span class="op">=</span><span class="dv">600</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<section id="промежуточный-вывод-4" class="level3">
+<h3 class="anchored" data-anchor-id="промежуточный-вывод-4">Промежуточный вывод</h3>
+</section>
 </section>
 <section id="общий-вывод" class="level2">
 <h2 class="anchored" data-anchor-id="общий-вывод">Общий вывод</h2>
@@ -4250,13 +5296,13 @@ if (outputEl) {{
 </ol>
 </blockquote>
 <p><strong>Сначала проверяем орфографические ошибки</strong></p>
-<div id="cell-186" class="cell">
+<div id="cell-205" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> IPython</span>
-<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>notebook_path <span class="op">=</span> <span class="st">"/"</span>.join(</span>
-<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>        IPython.extract_module_locals()[<span class="dv">1</span>][<span class="st">"__vsc_ipynb_file__"</span>].split(<span class="st">"/"</span>))</span>
-<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.correct_notebook_text(notebook_path)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> IPython</span>
+<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a>notebook_path <span class="op">=</span> <span class="st">"/"</span>.join(</span>
+<span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a>        IPython.extract_module_locals()[<span class="dv">1</span>][<span class="st">"__vsc_ipynb_file__"</span>].split(<span class="st">"/"</span>))</span>
+<span id="cb77-4"><a href="#cb77-4" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.correct_notebook_text(notebook_path)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p><strong>Затем создаем номера у глав и оглавление</strong></p>
@@ -4267,28 +5313,28 @@ if (outputEl) {{
 <blockquote class="blockquote">
 <p>Сначала можно в режиме <code>draft</code> сделать пробный варант, проверить и потом уже запустить в режиме <code>final</code></p>
 </blockquote>
-<div id="cell-190" class="cell">
+<div id="cell-209" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> IPython</span>
-<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>notebook_path <span class="op">=</span> <span class="st">"/"</span>.join(</span>
-<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>        IPython.extract_module_locals()[<span class="dv">1</span>][<span class="st">"__vsc_ipynb_file__"</span>].split(<span class="st">"/"</span>))</span>
-<span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.make_headers_link_and_toc(notebook_path)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> IPython</span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>notebook_path <span class="op">=</span> <span class="st">"/"</span>.join(</span>
+<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a>        IPython.extract_module_locals()[<span class="dv">1</span>][<span class="st">"__vsc_ipynb_file__"</span>].split(<span class="st">"/"</span>))</span>
+<span id="cb78-4"><a href="#cb78-4" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.make_headers_link_and_toc(notebook_path)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p><strong>Далее создаем ссыки на выводы и аномалии</strong></p>
 <p>Выбираем нужные выводы и нужный порядок выводов и добавляем их в список выводов и используем эту функцию</p>
-<div id="cell-193" class="cell">
+<div id="cell-212" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> IPython</span>
-<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>notebook_path <span class="op">=</span> <span class="st">"/"</span>.join(</span>
-<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>        IPython.extract_module_locals()[<span class="dv">1</span>][<span class="st">"__vsc_ipynb_file__"</span>].split(<span class="st">"/"</span>))</span>
-<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a>conclusions <span class="op">=</span> [</span>
-<span id="cb68-5"><a href="#cb68-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'С ноября 2017 по март 2018 тратилось много денег на компаню с id 3.'</span></span>
-<span id="cb68-6"><a href="#cb68-6" aria-hidden="true" tabindex="-1"></a>    , <span class="st">'Сумма заказа варируется от 0 до 2633.28 у.е.'</span></span>
-<span id="cb68-7"><a href="#cb68-7" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb68-8"><a href="#cb68-8" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.add_conclusions(notebook_path, conclusions)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> IPython</span>
+<span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a>notebook_path <span class="op">=</span> <span class="st">"/"</span>.join(</span>
+<span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a>        IPython.extract_module_locals()[<span class="dv">1</span>][<span class="st">"__vsc_ipynb_file__"</span>].split(<span class="st">"/"</span>))</span>
+<span id="cb79-4"><a href="#cb79-4" aria-hidden="true" tabindex="-1"></a>conclusions <span class="op">=</span> [</span>
+<span id="cb79-5"><a href="#cb79-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'С ноября 2017 по март 2018 тратилось много денег на компаню с id 3.'</span></span>
+<span id="cb79-6"><a href="#cb79-6" aria-hidden="true" tabindex="-1"></a>    , <span class="st">'Сумма заказа варируется от 0 до 2633.28 у.е.'</span></span>
+<span id="cb79-7"><a href="#cb79-7" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb79-8"><a href="#cb79-8" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.add_conclusions(notebook_path, conclusions)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <blockquote class="blockquote">
@@ -4306,10 +5352,10 @@ if (outputEl) {{
 важно, выводы не менять до момента, пока мы не создадим ссылки на них.<br>
 Чтобы автомтика не нарушилась.<br>
 Затем можно будет исправить уже сам текст выводов и это не нарушит ссылки.</p>
-<div id="cell-197" class="cell">
+<div id="cell-216" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="op">====</span> _anomalies_ В столбце с количеством детей есть отрицательные значения. <span class="dv">47</span> штук. </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="op">====</span> _anomalies_ В столбце с количеством детей есть отрицательные значения. <span class="dv">47</span> штук. </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <blockquote class="blockquote">
@@ -4322,11 +5368,11 @@ if (outputEl) {{
 <p>Делаем так - Из всех выводов в выбираем те, которые хотим поместить в начале отчета - Собриаем их в отдельном файле (чтобы удобно было копировать) Можно использовать clipboard history - Добавляем в начало вывода <em>conclusiions</em><br>
 - Далее по одному выводу полностью копируем, вставляем в поиск и удаляем в начале <em>conclusions</em><br>
 при этом в буфере обмена с <em>conclusions</em> - Переходим в нужное место через поиск и вставляем.</p>
-<div id="cell-201" class="cell">
+<div id="cell-220" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="op">====</span> _conclusion_ Только <span class="dv">5</span> процентов клиентов моложе <span class="dv">25</span> лет. Основная часть клиентов старше <span class="dv">30</span> лет.</span>
-<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="op">====</span> _anomalies_ В колонке возраста <span class="dv">101</span> нулевое значени.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="op">====</span> _conclusion_ Только <span class="dv">5</span> процентов клиентов моложе <span class="dv">25</span> лет. Основная часть клиентов старше <span class="dv">30</span> лет.</span>
+<span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a><span class="op">====</span> _anomalies_ В колонке возраста <span class="dv">101</span> нулевое значени.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>ВАЖНО<br>
@@ -4350,23 +5396,23 @@ if (outputEl) {{
 <blockquote class="blockquote">
 <p>Примеры списков</p>
 </blockquote>
-<div id="cell-208" class="cell">
+<div id="cell-227" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>order <span class="op">=</span> <span class="bu">dict</span>(</span>
-<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>            conclusions <span class="op">=</span>[ <span class="st">'Женщины чаще возвращают кредит, чем мужчины.'</span>]</span>
-<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a>            , anomalies <span class="op">=</span> [<span class="st">'В датафрейме есть строки дубликаты. 54 строки. Меньше 1 % от всего датафрейма.  '</span>]</span>
-<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a>order <span class="op">=</span> <span class="bu">dict</span>(</span>
+<span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a>            conclusions <span class="op">=</span>[ <span class="st">'Женщины чаще возвращают кредит, чем мужчины.'</span>]</span>
+<span id="cb82-3"><a href="#cb82-3" aria-hidden="true" tabindex="-1"></a>            , anomalies <span class="op">=</span> [<span class="st">'В датафрейме есть строки дубликаты. 54 строки. Меньше 1 % от всего датафрейма.  '</span>]</span>
+<span id="cb82-4"><a href="#cb82-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p><strong>Ставим переносы для булитов там, где их нет</strong></p>
-<div id="cell-211" class="cell">
+<div id="cell-230" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> IPython</span>
-<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>notebook_path <span class="op">=</span> <span class="st">"/"</span>.join(</span>
-<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>        IPython.extract_module_locals()[<span class="dv">1</span>][<span class="st">"__vsc_ipynb_file__"</span>].split(<span class="st">"/"</span>))</span>
-<span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.check_observes_new_line(notebook_path, mode<span class="op">=</span><span class="st">'final'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> IPython</span>
+<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a>notebook_path <span class="op">=</span> <span class="st">"/"</span>.join(</span>
+<span id="cb83-3"><a href="#cb83-3" aria-hidden="true" tabindex="-1"></a>        IPython.extract_module_locals()[<span class="dv">1</span>][<span class="st">"__vsc_ipynb_file__"</span>].split(<span class="st">"/"</span>))</span>
+<span id="cb83-4"><a href="#cb83-4" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.check_observes_new_line(notebook_path, mode<span class="op">=</span><span class="st">'final'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>ВАЖНО<br>
@@ -4376,20 +5422,20 @@ if (outputEl) {{
 <blockquote class="blockquote">
 <p>В главе гипотез для каждой гипоетзы, куда будем переходить из оглавления, в начале перед гипотезой ставим <em>hypothesis</em> и пробел</p>
 </blockquote>
-<div id="cell-215" class="cell">
+<div id="cell-234" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="op">====</span> _hypotsis_ <span class="op">**</span>Гипотеза <span class="dv">1</span>: Название гипотезы<span class="op">**</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="op">====</span> _hypotsis_ <span class="op">**</span>Гипотеза <span class="dv">1</span>: Название гипотезы<span class="op">**</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <blockquote class="blockquote">
 <p>Выполняем следующую функцию и в начале отчета появится список гипотез с ссылками<br>
 Далее нужно добавить результат гипотез вручную</p>
 </blockquote>
-<div id="cell-217" class="cell">
+<div id="cell-236" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.add_hypotheses_links_and_toc()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.add_hypotheses_links_and_toc()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p><strong>Финальное размещение ноутбука на git hub с ссылкой на google colab</strong></p>
