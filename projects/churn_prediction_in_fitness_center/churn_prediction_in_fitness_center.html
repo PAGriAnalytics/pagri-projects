@@ -4067,6 +4067,45 @@ if (outputEl) {{
 <section id="модель-прогнозирования-оттока-клиентов" class="level2">
 <h2 class="anchored" data-anchor-id="модель-прогнозирования-оттока-клиентов">Модель прогнозирования оттока клиентов</h2>
 <p>Постройте модель бинарной классификации клиентов, где целевой признак — факт оттока клиента в следующем месяце: Разбейте данные на обучающую и валидационную выборку функцией train_test_split(). Обучите модель на train-выборке двумя способами: логистической регрессией, случайным лесом. Оцените метрики accuracy, precision и recall для обеих моделей на валидационной выборке. Сравните по ним модели. Какая модель показала себя лучше на основании метрик?</p>
+<div id="cell-151" class="cell" data-execution_count="97">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Раделим данные на обучающую и валидационную выборки.</p>
+<div id="cell-153" class="cell" data-execution_count="98">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> df.drop(<span class="st">'churn'</span>, axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> df[<span class="st">'churn'</span>]</span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a><span class="co"># разделяем модель на обучающую и валидационную выборку</span></span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Стандартизируем данные.</p>
+<div id="cell-155" class="cell" data-execution_count="99">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co"># стандартизируем данные методом StandartScaler</span></span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>scaler <span class="op">=</span> StandardScaler()</span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>scaler.fit(X_train)</span>
+<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a>X_train_st <span class="op">=</span> scaler.transform(X_train)</span>
+<span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a>X_test_st <span class="op">=</span> scaler.transform(X_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Создадим и обучим модель логистической регрессии.</p>
+<div id="cell-157" class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Создаем модель логистической регрессии</span></span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> LogisticRegression(solver<span class="op">=</span><span class="st">"liblinear"</span>)</span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Обучаем модель</span></span>
+<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a>model.fit(X_train, y_train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Создадим и обучим модель случайного леса.</p>
 </section>
 <section id="кластеризация-клиентов" class="level2">
 <h2 class="anchored" data-anchor-id="кластеризация-клиентов">Кластеризация клиентов</h2>
@@ -4211,13 +4250,13 @@ if (outputEl) {{
 </ol>
 </blockquote>
 <p><strong>Сначала проверяем орфографические ошибки</strong></p>
-<div id="cell-177" class="cell">
+<div id="cell-186" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> IPython</span>
-<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>notebook_path <span class="op">=</span> <span class="st">"/"</span>.join(</span>
-<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>        IPython.extract_module_locals()[<span class="dv">1</span>][<span class="st">"__vsc_ipynb_file__"</span>].split(<span class="st">"/"</span>))</span>
-<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.correct_notebook_text(notebook_path)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> IPython</span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>notebook_path <span class="op">=</span> <span class="st">"/"</span>.join(</span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>        IPython.extract_module_locals()[<span class="dv">1</span>][<span class="st">"__vsc_ipynb_file__"</span>].split(<span class="st">"/"</span>))</span>
+<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.correct_notebook_text(notebook_path)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p><strong>Затем создаем номера у глав и оглавление</strong></p>
@@ -4228,28 +4267,28 @@ if (outputEl) {{
 <blockquote class="blockquote">
 <p>Сначала можно в режиме <code>draft</code> сделать пробный варант, проверить и потом уже запустить в режиме <code>final</code></p>
 </blockquote>
-<div id="cell-181" class="cell">
+<div id="cell-190" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> IPython</span>
-<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>notebook_path <span class="op">=</span> <span class="st">"/"</span>.join(</span>
-<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>        IPython.extract_module_locals()[<span class="dv">1</span>][<span class="st">"__vsc_ipynb_file__"</span>].split(<span class="st">"/"</span>))</span>
-<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.make_headers_link_and_toc(notebook_path)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> IPython</span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>notebook_path <span class="op">=</span> <span class="st">"/"</span>.join(</span>
+<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>        IPython.extract_module_locals()[<span class="dv">1</span>][<span class="st">"__vsc_ipynb_file__"</span>].split(<span class="st">"/"</span>))</span>
+<span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.make_headers_link_and_toc(notebook_path)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p><strong>Далее создаем ссыки на выводы и аномалии</strong></p>
 <p>Выбираем нужные выводы и нужный порядок выводов и добавляем их в список выводов и используем эту функцию</p>
-<div id="cell-184" class="cell">
+<div id="cell-193" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> IPython</span>
-<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>notebook_path <span class="op">=</span> <span class="st">"/"</span>.join(</span>
-<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>        IPython.extract_module_locals()[<span class="dv">1</span>][<span class="st">"__vsc_ipynb_file__"</span>].split(<span class="st">"/"</span>))</span>
-<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a>conclusions <span class="op">=</span> [</span>
-<span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'С ноября 2017 по март 2018 тратилось много денег на компаню с id 3.'</span></span>
-<span id="cb64-6"><a href="#cb64-6" aria-hidden="true" tabindex="-1"></a>    , <span class="st">'Сумма заказа варируется от 0 до 2633.28 у.е.'</span></span>
-<span id="cb64-7"><a href="#cb64-7" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb64-8"><a href="#cb64-8" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.add_conclusions(notebook_path, conclusions)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> IPython</span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>notebook_path <span class="op">=</span> <span class="st">"/"</span>.join(</span>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>        IPython.extract_module_locals()[<span class="dv">1</span>][<span class="st">"__vsc_ipynb_file__"</span>].split(<span class="st">"/"</span>))</span>
+<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a>conclusions <span class="op">=</span> [</span>
+<span id="cb68-5"><a href="#cb68-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'С ноября 2017 по март 2018 тратилось много денег на компаню с id 3.'</span></span>
+<span id="cb68-6"><a href="#cb68-6" aria-hidden="true" tabindex="-1"></a>    , <span class="st">'Сумма заказа варируется от 0 до 2633.28 у.е.'</span></span>
+<span id="cb68-7"><a href="#cb68-7" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb68-8"><a href="#cb68-8" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.add_conclusions(notebook_path, conclusions)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <blockquote class="blockquote">
@@ -4267,10 +4306,10 @@ if (outputEl) {{
 важно, выводы не менять до момента, пока мы не создадим ссылки на них.<br>
 Чтобы автомтика не нарушилась.<br>
 Затем можно будет исправить уже сам текст выводов и это не нарушит ссылки.</p>
-<div id="cell-188" class="cell">
+<div id="cell-197" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="op">====</span> _anomalies_ В столбце с количеством детей есть отрицательные значения. <span class="dv">47</span> штук. </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="op">====</span> _anomalies_ В столбце с количеством детей есть отрицательные значения. <span class="dv">47</span> штук. </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <blockquote class="blockquote">
@@ -4283,11 +4322,11 @@ if (outputEl) {{
 <p>Делаем так - Из всех выводов в выбираем те, которые хотим поместить в начале отчета - Собриаем их в отдельном файле (чтобы удобно было копировать) Можно использовать clipboard history - Добавляем в начало вывода <em>conclusiions</em><br>
 - Далее по одному выводу полностью копируем, вставляем в поиск и удаляем в начале <em>conclusions</em><br>
 при этом в буфере обмена с <em>conclusions</em> - Переходим в нужное место через поиск и вставляем.</p>
-<div id="cell-192" class="cell">
+<div id="cell-201" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="op">====</span> _conclusion_ Только <span class="dv">5</span> процентов клиентов моложе <span class="dv">25</span> лет. Основная часть клиентов старше <span class="dv">30</span> лет.</span>
-<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="op">====</span> _anomalies_ В колонке возраста <span class="dv">101</span> нулевое значени.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="op">====</span> _conclusion_ Только <span class="dv">5</span> процентов клиентов моложе <span class="dv">25</span> лет. Основная часть клиентов старше <span class="dv">30</span> лет.</span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="op">====</span> _anomalies_ В колонке возраста <span class="dv">101</span> нулевое значени.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>ВАЖНО<br>
@@ -4311,23 +4350,23 @@ if (outputEl) {{
 <blockquote class="blockquote">
 <p>Примеры списков</p>
 </blockquote>
-<div id="cell-199" class="cell">
+<div id="cell-208" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>order <span class="op">=</span> <span class="bu">dict</span>(</span>
-<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>            conclusions <span class="op">=</span>[ <span class="st">'Женщины чаще возвращают кредит, чем мужчины.'</span>]</span>
-<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>            , anomalies <span class="op">=</span> [<span class="st">'В датафрейме есть строки дубликаты. 54 строки. Меньше 1 % от всего датафрейма.  '</span>]</span>
-<span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>order <span class="op">=</span> <span class="bu">dict</span>(</span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>            conclusions <span class="op">=</span>[ <span class="st">'Женщины чаще возвращают кредит, чем мужчины.'</span>]</span>
+<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a>            , anomalies <span class="op">=</span> [<span class="st">'В датафрейме есть строки дубликаты. 54 строки. Меньше 1 % от всего датафрейма.  '</span>]</span>
+<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p><strong>Ставим переносы для булитов там, где их нет</strong></p>
-<div id="cell-202" class="cell">
+<div id="cell-211" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> IPython</span>
-<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>notebook_path <span class="op">=</span> <span class="st">"/"</span>.join(</span>
-<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>        IPython.extract_module_locals()[<span class="dv">1</span>][<span class="st">"__vsc_ipynb_file__"</span>].split(<span class="st">"/"</span>))</span>
-<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.check_observes_new_line(notebook_path, mode<span class="op">=</span><span class="st">'final'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> IPython</span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>notebook_path <span class="op">=</span> <span class="st">"/"</span>.join(</span>
+<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>        IPython.extract_module_locals()[<span class="dv">1</span>][<span class="st">"__vsc_ipynb_file__"</span>].split(<span class="st">"/"</span>))</span>
+<span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.check_observes_new_line(notebook_path, mode<span class="op">=</span><span class="st">'final'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>ВАЖНО<br>
@@ -4337,20 +4376,20 @@ if (outputEl) {{
 <blockquote class="blockquote">
 <p>В главе гипотез для каждой гипоетзы, куда будем переходить из оглавления, в начале перед гипотезой ставим <em>hypothesis</em> и пробел</p>
 </blockquote>
-<div id="cell-206" class="cell">
+<div id="cell-215" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="op">====</span> _hypotsis_ <span class="op">**</span>Гипотеза <span class="dv">1</span>: Название гипотезы<span class="op">**</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="op">====</span> _hypotsis_ <span class="op">**</span>Гипотеза <span class="dv">1</span>: Название гипотезы<span class="op">**</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <blockquote class="blockquote">
 <p>Выполняем следующую функцию и в начале отчета появится список гипотез с ссылками<br>
 Далее нужно добавить результат гипотез вручную</p>
 </blockquote>
-<div id="cell-208" class="cell">
+<div id="cell-217" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.add_hypotheses_links_and_toc()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>pagri_data_tools.add_hypotheses_links_and_toc()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p><strong>Финальное размещение ноутбука на git hub с ссылкой на google colab</strong></p>
